@@ -1,21 +1,12 @@
 @import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
 @theme {
   --color-primary: #15803D;
   --color-hover: #166534;
-  ----color-soft #DCFCE7;
-  --color-background: F7FBF8;
-  --color-surface: #ffffff;
+  --color-soft: #DCFCE7;
+  --color-background: #F7FBF8;
+  --color-surface: #FFFFFF;
   --color-text: #1F2937;
-  --color-waring: #D97706;
-  ----color-danger: #B91C1C;
+  --color-warning: #D97706;
+  --color-danger: #B91C1C;
 }
