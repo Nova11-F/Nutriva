@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/ui/Button";
-import Navbar from "../../components/navigation/Navbar";
-import Footer from "../../components/navigation/Foteer";
+import Card from "../../components/ui/Card";
 import imageLanding from "../../assets/images/landingpage.png";
 import { ChartLine, Sparkle, Soup, ShieldCheck, Check } from "lucide-react";
 
@@ -10,7 +9,6 @@ export default function LandingPage() {
 
   return (
     <>
-      <Navbar />
       <section
         id="beranda"
         className="relative overflow-hidden bg-background h-auto pt-40 pb-40 px-6 scroll-mt-26"
@@ -101,30 +99,30 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="flex justify-around items-center gap-10">
-          <div className="px-8 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150">
+          <Card className="px-8 py-10 flex flex-col gap-4 w-150">
             <p className="text-lg font-semibold text-primary">01</p>
             <h3 className="text-2xl font-semibold text-text">Menu & Porsi</h3>
             <p className="text-lg text-gray-500">
               Bingung menentukan menu dan porsi anak yang sesuai kebutuhan
               sehari-hari.
             </p>
-          </div>
-          <div className="px-8 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150">
+          </Card>
+          <Card className="px-8 py-10 flex flex-col gap-4 w-150">
             <p className="text-lg font-semibold text-primary">02</p>
             <h3 className="text-2xl font-semibold text-text">Pertumbuhan</h3>
             <p className="text-lg text-gray-500">
               Khawatir berat atau tinggi anak tidak berkembang sesuai harapan.
             </p>
-          </div>
-          <div className="px-8 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150">
+          </Card>
+          <Card className="px-8 py-10 flex flex-col gap-4 w-150">
             <p className="text-lg font-semibold text-primary">03</p>
             <h3 className="text-2xl font-semibold text-text">Informasi Gizi</h3>
             <p className="text-lg text-gray-500">
               Informasi dari internet sering berbeda-beda dan sulit
               dibandingkan.
             </p>
-          </div>
-          <div className="px-8 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150">
+          </Card>
+          <Card className="px-8 py-10 flex flex-col gap-4 w-150">
             <p className="text-lg font-semibold text-primary">04</p>
             <h3 className="text-2xl font-semibold text-text">
               Aksi Sehari-hari
@@ -133,7 +131,7 @@ export default function LandingPage() {
               Sulit menerjemahkan informasi menjadi langkah praktis yang bisa
               dilakukan.
             </p>
-          </div>
+          </Card>
         </div>
       </section>
 
@@ -154,7 +152,7 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <div className="px-12 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150 h-70 shadow-lg">
+          <Card className="px-12 py-10 flex flex-col gap-4 w-150 h-70 shadow-lg">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               P
             </p>
@@ -162,8 +160,8 @@ export default function LandingPage() {
             <p className="text-lg text-gray-500">
               Rencanakan kebutuhan nutrisi dan menu yang lebih terarah.
             </p>
-          </div>
-          <div className="px-12 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150 h-70 shadow-lg">
+          </Card>
+          <Card className="px-12 py-10 flex flex-col gap-4 w-150 h-70 shadow-lg">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               T
             </p>
@@ -172,8 +170,8 @@ export default function LandingPage() {
               Catat makanan dan pertumbuhan untuk melihat perubahan dari waktu
               ke waktu.
             </p>
-          </div>
-          <div className="px-12 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150 h-70 shadow-lg">
+          </Card>
+          <Card className="px-12 py-10 flex flex-col gap-4 w-150 h-70 shadow-lg">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               U
             </p>
@@ -181,7 +179,7 @@ export default function LandingPage() {
             <p className="text-xl text-gray-500">
               Pahami ringkasan dan analisis yang relevan dengan konteks anak.
             </p>
-          </div>
+          </Card>
         </div>
       </section>
 
@@ -350,7 +348,7 @@ export default function LandingPage() {
       </section>
 
       <section id="tentang" className="h-auto bg-soft px-80 py-30 scroll-mt-24">
-        <div className="bg-surface h-auto rounded-2xl shadow-lg flex items-center justify-between gap-20 mb-10 px-14 py-20">
+        <Card className="flex items-center justify-between gap-20 mb-10 px-14 py-20 shadow-md">
           <div className="flex flex-col gap-6 w-250 mb-10">
             <p className="text-lg font-bold text-primary uppercase">
               TRUST & SAFETY
@@ -380,7 +378,7 @@ export default function LandingPage() {
             <h4 className="text-text text-center font-bold text-3xl">Designed for guidance, not diagnosis</h4>
             <p className="text-gray-700 text-center text-lg">Ketika ada tanda yang perlu perhatian, Nutriva mengarahkan pengguna untuk mencari bantuan profesional.</p>
           </div>
-        </div>
+        </Card>
       </section>
 
       <section className="h-auto bg-primary flex flex-col items-center py-40 gap-15">
@@ -390,7 +388,6 @@ export default function LandingPage() {
         <p className="text-surface text-xl">Daftar untuk membuat profil anak atau masuk jika sudah memiliki akun.</p>
       </section>
 
-      <Footer/>
     </>
   );
 }
