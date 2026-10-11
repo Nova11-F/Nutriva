@@ -13,7 +13,7 @@ export default function Footer() {
             />
             <h1 className="text-primary font-bold text-3xl">Nutriva</h1>
           </div>
-          <p className="text-sm text-gray-500 max-w-sm leading-relaxed">
+          <p className="text-sm text-gray-500 max-w-md leading-relaxed">
             Pendamping Nutrisi & Tumbuh Kembang Anak untuk Orang Tua.
           </p>
         </div>
@@ -26,7 +26,7 @@ export default function Footer() {
             <li>
               <a
                 href="#experiences"
-                className="hover:text-seocndary transition"
+                className="hover:text-secondary transition"
               >
                 Nutrisi
               </a>

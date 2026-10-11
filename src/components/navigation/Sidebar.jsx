@@ -1,44 +1,39 @@
-import { User, Sprout, Sparkle, ChartNoAxesCombined, House,} from "lucide-react";
+import { NavLink } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
+import { navItems } from "./navItems";
 
-export default function SideBar() {
+export default function Sidebar() {
   return (
-    <>
-    <aside className="w-80 h-screen bg-surface flex flex-col border border-r-2 border-gray-300 px-4 py-20 gap-10">
+    <aside className="sticky top-0 hidden h-screen w-72 shrink-0 flex-col gap-10 border-r border-gray-300 bg-surface px-4 py-10 md:flex lg:w-80">
+      {/* Logo */}
       <div className="flex items-center gap-2 px-4">
-        <img
-          src={Logo}
-          alt="logo nutriva"
-          className="w-auto h-20 object-cover"
-        />
-        <h1 className="text-primary font-bold text-3xl">Nutriva</h1>
+        <img src={Logo} alt="Logo Nutriva" className="h-16 w-auto object-cover" />
+        <h1 className="text-3xl font-bold text-primary">Nutriva</h1>
       </div>
-      <div className="w-full">
-        <div className="flex items-center justify-start bg-soft h-auto p-4 rounded-xl gap-4 duration-300">
-        <House size={20} strokeWidth={3} className="text-primary"/>
-        <a className="text-primary font-medium">Beranda</a>
-        </div>
-        <div className="flex items-center justify-start h-auto p-4 rounded-xl gap-4 hover:bg-soft hover:text-primary transition-all duration-300">
-        <Sprout size={20} className="text-gray-500"/>
-        <a className="text-gray-500 font-medium">Nutrisi</a>
-        </div>
-        <div className="flex items-center justify-start h-auto p-4 rounded-xl gap-4 hover:bg-soft transition-all duration-300">
-        <ChartNoAxesCombined size={20} className="text-gray-500"/>
-        <a className="text-gray-500 font-medium">Pertumbuhan</a>
-        </div>
-        <div className="flex items-center justify-start h-auto p-4 rounded-xl gap-4 hover:bg-soft transition-all duration-300">
-        <Sparkle size={20} className="text-gray-500"/>
-        <a className="text-gray-500 font-medium">Asisten AI</a>
-        </div>
-        <div className="flex items-center justify-start h-auto p-4 rounded-xl gap-4 hover:bg-soft transition-all duration-300">
-        <User size={20} className="text-gray-500"/>
-        <a className="text-gray-500 font-medium">Profil</a>
-        </div>
-      </div>
-      <div>
 
-      </div>
+      {/* Menu */}
+      <nav className="flex flex-col gap-1">
+        {navItems.map(({ label, path, icon: Icon }) => (
+          <NavLink
+            key={path}
+            to={path}
+            className={({ isActive }) =>
+              `flex items-center gap-4 rounded-xl p-4 font-medium transition-all duration-300 ${
+                isActive
+                  ? "bg-soft text-primary"
+                  : "text-gray-500 hover:bg-soft hover:text-primary"
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <Icon size={20} strokeWidth={isActive ? 3 : 2} />
+                {label}
+              </>
+            )}
+          </NavLink>
+        ))}
+      </nav>
     </aside>
-    </>
   );
 }

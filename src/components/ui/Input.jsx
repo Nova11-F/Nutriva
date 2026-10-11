@@ -20,7 +20,7 @@ export default function Input({
   if (type === "checkbox") {
     return (
       <div className={className}>
-        <label htmlFor={id} className="flex items-start gap-2 text-xs text-gray-600">
+        <label htmlFor={id} className="flex items-start gap-2 text-xs text-gray-500 font-medium">
           <input
             id={id}
             type="checkbox"
@@ -40,7 +40,7 @@ export default function Input({
   return (
     <div className={className}>
       {label && (
-        <label htmlFor={id} className="mb-1 block text-xs text-gray-500">
+        <label htmlFor={id} className="mb-2 block text-sm text-gray-500">
           {label}
         </label>
       )}

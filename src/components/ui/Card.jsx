@@ -7,7 +7,7 @@ export default function Card({
   ...props
 }) {
   const variants = {
-    default: "bg-surface border border-gray-200",
+    default: "bg-surface border-2 border-gray-300",
     soft: "bg-soft border border-transparent",
     success: "bg-green-50 border border-green-200",
     warning: "bg-yellow-50 border border-yellow-300",
@@ -24,7 +24,7 @@ export default function Card({
 
   return (
     <div
-      className={`rounded-xl shadow-sm ${variants[variant]} ${paddings[padding]} ${
+      className={`rounded-xl ${variants[variant]} ${paddings[padding]} ${
         hoverable ? "transition hover:-translate-y-1 hover:shadow-lg" : ""
       } ${className}`}
       {...props}

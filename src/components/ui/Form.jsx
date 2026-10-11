@@ -1,4 +1,5 @@
 export default function Form({
+  id,
   title,       
   onSubmit,
   children,    
@@ -7,9 +8,10 @@ export default function Form({
 }) {
   return (
     <form
+      id={id}
       onSubmit={onSubmit}
       noValidate
-      className={`w-full rounded-xl border border-gray-100 bg-surface p-6 shadow-md ${className}`}
+      className={`w-full rounded-xl border border-gray-100 bg-surface px-10 py-8 shadow-md ${className}`}
     >
       {title && <h2 className="mb-4 text-sm font-semibold text-text">{title}</h2>}
 

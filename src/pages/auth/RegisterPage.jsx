@@ -31,11 +31,13 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="w-full max-w-sm">
-      <h1 className="text-xl font-bold text-text">Buat akun Nutriva</h1>
-      <p className="mb-4 text-xs text-gray-500">
+    <div className="w-full max-w-lg">
+      <div className="px-4 flex flex-col gap-4 mb-4">
+      <h1 className="text-4xl font-bold text-text text-center">Buat akun Nutriva</h1>
+      <p className="text-sm text-gray-500">
         Registrasi hanya membuat akun. Personalisasi baru aktif setelah profil anak dibuat.
       </p>
+      </div>
 
       <Form
         onSubmit={handleSubmit}
