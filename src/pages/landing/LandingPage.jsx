@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/ui/Button";
 import Navbar from "../../components/navigation/Navbar";
 import Footer from "../../components/navigation/Foteer";
@@ -5,6 +6,8 @@ import imageLanding from "../../assets/images/landingpage.png";
 import { ChartLine, Sparkle, Soup, ShieldCheck, Check } from "lucide-react";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar />
@@ -27,7 +30,7 @@ export default function LandingPage() {
               personal dalam satu platform.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Button variant="primary" size="xl">
+              <Button variant="primary" size="xl" onClick={() => navigate("/login")}>
                 Mulai Sekarang
               </Button>
               <Button variant="outline" size="xl">
@@ -285,7 +288,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="h-auto bg-background px-40 py-30 flex flex-col gap-15 scroll-mt-24">
+      <section 
+      className="h-auto bg-background px-40 py-30 flex flex-col gap-15 scroll-mt-24" 
+      id="cara-kerja">
         <div className="flex flex-col gap-6 mb-10">
           <p className="text-xl font-bold text-primary uppercase">CARA KERJA</p>
           <h1 className="text-6xl font-semibold text-text">
@@ -381,7 +386,7 @@ export default function LandingPage() {
       <section className="h-auto bg-primary flex flex-col items-center py-40 gap-15">
         <h3 className="text-surface text-6xl font-semibold">Mulai Dampingi Tumbuh Kembang Anak dengan Lebih Terarah</h3>
         <p className="text-surface text-2xl">Mulai dari langkah kecil: kenali kebutuhan anak, catat perkembangannya, dan pahami informasi yang relevan.</p>
-        <Button variant="outline" className="px-30 py-6">Mulai Sekarang</Button>
+        <Button variant="outline" className="px-30 py-6" onClick={() => navigate("/login")}>Mulai Sekarang</Button>
         <p className="text-surface text-xl">Daftar untuk membuat profil anak atau masuk jika sudah memiliki akun.</p>
       </section>
 
