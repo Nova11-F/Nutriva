@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import Button from "../ui/Button";
 
@@ -10,6 +11,7 @@ const menus = [
 ];
 
 export default function navbar() {
+const navigate = useNavigate();
 const [activeMenu, setActiveMenu] = useState("beranda");
 
   useEffect(() => {
@@ -79,10 +81,10 @@ const [activeMenu, setActiveMenu] = useState("beranda");
         ))}
       </div>
       <div className="flex items-center gap-4">
-        <Button variant="outline" size="md">
+        <Button variant="outline" size="md" onClick={() => navigate("/login")}>
           Masuk
         </Button>
-        <Button variant="primary" size="lg">
+        <Button variant="primary" size="lg" onClick={() => navigate("/login")}>
           Mulai Sekarang
         </Button>
       </div>
