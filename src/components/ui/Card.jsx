@@ -9,6 +9,7 @@ export default function Card({
   const variants = {
     default: "bg-surface border-2 border-gray-300",
     soft: "bg-soft border border-gray-200",
+    silver: "bg-background border border-soft",
     success: "bg-green-50 border border-green-200",
     warning: "bg-yellow-50 border border-yellow-300",
     danger: "bg-red-50 border border-red-200",
@@ -24,7 +25,7 @@ export default function Card({
 
   return (
     <div
-      className={`rounded-xl ${variants[variant]} ${paddings[padding]} ${
+      className={`rounded-xl transition-all duration-300 ${variants[variant]} ${paddings[padding]} ${
         hoverable ? "transition hover:-translate-y-1 hover:shadow-lg" : ""
       } ${className}`}
       {...props}
