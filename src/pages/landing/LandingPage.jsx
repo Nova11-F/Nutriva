@@ -152,7 +152,7 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <Card className="px-12 py-10 flex flex-col gap-4 w-150 h-70 shadow-lg">
+          <Card className="px-12 py-10 flex flex-col gap-4 w-150 h-70">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               P
             </p>
@@ -161,7 +161,7 @@ export default function LandingPage() {
               Rencanakan kebutuhan nutrisi dan menu yang lebih terarah.
             </p>
           </Card>
-          <Card className="px-12 py-10 flex flex-col gap-4 w-150 h-70 shadow-lg">
+          <Card className="px-12 py-10 flex flex-col gap-4 w-150 h-70">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               T
             </p>
@@ -171,7 +171,7 @@ export default function LandingPage() {
               ke waktu.
             </p>
           </Card>
-          <Card className="px-12 py-10 flex flex-col gap-4 w-150 h-70 shadow-lg">
+          <Card className="px-12 py-10 flex flex-col gap-4 w-150 h-70">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               U
             </p>
@@ -200,9 +200,9 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="flex justify-center items-center gap-10">
-          <div className="px-14 py-10 bg-background flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150 h-auto shadow-lg">
-            <div className="bg-soft w-fit p-4 rounded-xl">
-              <Soup size={20} strokeWidth={3} className="text-primary" />
+          <div className="group px-14 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150 h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft">
+            <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
+              <Soup size={20} strokeWidth={3} className="text-primary group-hover:text-surface transition-all duration-300" />
             </div>
             <h3 className="text-2xl font-semibold text-text">Nutrisi</h3>
             <p className="text-lg text-gray-500">
@@ -227,9 +227,9 @@ export default function LandingPage() {
               Pelajari manfaat
             </p>
           </div>
-          <div className="px-14 py-10 bg-background flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150 h-auto shadow-lg">
-            <div className="bg-soft w-fit p-4 rounded-xl">
-              <ChartLine size={20} strokeWidth={3} className="text-primary" />
+          <div className="group px-14 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150 h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft">
+            <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
+              <ChartLine size={20} strokeWidth={3} className="text-primary group-hover:text-surface transition-all duration-300" />
             </div>
             <h3 className="text-2xl font-semibold text-text">
               Pemantauan Pertumbuhan
@@ -256,9 +256,9 @@ export default function LandingPage() {
               Pelajari manfaat
             </p>
           </div>
-          <div className="px-14 py-10 bg-background flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150 h-auto shadow-lg">
-            <div className="bg-soft w-fit p-4 rounded-xl">
-              <Sparkle size={20} strokeWidth={3} className="text-primary" />
+          <div className="group px-14 py-10 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-150 h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft">
+            <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
+              <Sparkle size={20} strokeWidth={3} className="text-primary group-hover:text-surface transition-all duration-300" />
             </div>
             <h3 className="text-2xl font-semibold text-text">Asisten AI</h3>
             <p className="text-xl text-gray-500">
