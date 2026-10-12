@@ -10,7 +10,9 @@ export default function BottomNav() {
           to={path}
           className={({ isActive }) =>
             `flex flex-1 flex-col items-center gap-1 rounded-2xl px-1 py-2 text-[11px] transition-all duration-300 ${
-              isActive ? "bg-soft font-semibold text-primary" : "text-gray-500"
+              isActive 
+              ? "bg-soft font-semibold text-primary" 
+              : "text-gray-500 hover:bg-soft hover:text-primary"
             }`
           }
         >

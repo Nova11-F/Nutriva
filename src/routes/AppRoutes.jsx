@@ -10,6 +10,11 @@ import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
 import ChildProfilePage from "../pages/onboarding/ChildProfilePage";
 import HomePage from "../pages/home/HomePage";
+import NutritionPage from "../pages/nutrition/NutritionPage";
+import RecipeDetailPage from "../pages/nutrition/RecipeDetailPage";
+import GrowthPage from "../pages/growth/GrowthPage";
+import AssistantPage from "../pages/asisstant/AssistantPage";
+import ProfilePage from "../pages/profile/ProfilePage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 export default function AppRoutes() {
@@ -30,11 +35,11 @@ export default function AppRoutes() {
 
       <Route element={<MainLayout />}>
         <Route path="/home" element={<HomePage />} />
-        {/* <Route path="/nutrition" element={<NutritionPage />} />
+        <Route path="/nutrition" element={<NutritionPage />} />
         <Route path="/nutrition/:recipeId" element={<RecipeDetailPage />} />
         <Route path="/growth" element={<GrowthPage />} />
         <Route path="/assistant" element={<AssistantPage />} />
-        <Route path="/profile" element={<ProfilePage />} /> */}
+        <Route path="/profile" element={<ProfilePage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
