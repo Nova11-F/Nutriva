@@ -12,7 +12,9 @@ export default function Button({
     primary: "bg-primary text-surface hover:bg-hover",
     outline: "bg-surface border border-gray-300 hover:bg-secondary hover:text-surface",
     danger: "bg-red-500 text-white hover:bg-red-600",
-    ghost: "text-gray-600 hover:bg-gray-100",
+    ghost: "text-gray-600 ",
+    Noborder :"text-secondary hover:text-hover",
+    white: "bg-surface text-primary hover:bg-secondary",
   };
 
   const sizes = {
@@ -24,7 +26,7 @@ export default function Button({
 
   return (
     <button
-      className={`rounded-xl font-bold text-lg cursor-pointer hover:shadow-lg transition duration-300 ${variants[variant]} ${sizes[size]} ${className}`}
+      className={`rounded-xl font-bold text-lg cursor-pointer transition duration-300 ${variants[variant]} ${sizes[size]} ${className}`}
       disabled={loading}
       {...props}
     >
