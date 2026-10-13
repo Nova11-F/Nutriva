@@ -8,6 +8,7 @@ export default function Card({
 }) {
   const variants = {
     default: "bg-surface border-2 border-gray-300",
+    primary: "bg-primary text-surface",
     soft: "bg-soft border border-gray-200",
     silver: "bg-background border border-soft",
     success: "bg-green-50 border border-green-200",
