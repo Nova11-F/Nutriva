@@ -87,7 +87,7 @@ export default function ProfilePage() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between mb-2">
-            <div className="flex flex-col gap-2 px-4">
+            <div className="flex flex-col gap-2 px-4 mt-8">
               <div className="flex items-center gap-4">
                 <Baby size={32} strokeWidth={2} className="text-secondary" />
                 <h3 className="text-text text-2xl font-semibold">
