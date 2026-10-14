@@ -11,7 +11,7 @@ export default function LandingPage() {
     <>
       <section
         id="beranda"
-        className="relative overflow-hidden bg-background h-auto pt-40 pb-40 px-6 scroll-mt-26"
+        className="relative overflow-hidden bg-background h-auto pt-40 pb-40 px-6 scroll-mt-26 md:mt-26"
       >
         <div className="max-w-full mx-40 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
