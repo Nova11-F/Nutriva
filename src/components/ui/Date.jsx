@@ -10,8 +10,8 @@ export default function CurrentDate() {
 
   return(
             <div className="flex items-center gap-2 px-4 py-2 bg-surface border border-gray-300 rounded-lg">
-              <Calendar size={20} strokeWidth={3} className="text-secondary"/>
-              <p className="text-gray-700 text-md">{tanggal}</p>
+              <Calendar strokeWidth={2} className="size-4 text-secondary md:size-6"/>
+              <p className="text-xs text-gray-700 md:text-lg">{tanggal}</p>
             </div>
   );
 }

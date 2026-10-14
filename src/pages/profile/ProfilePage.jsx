@@ -12,18 +12,17 @@ export default function ProfilePage() {
         <Header variant="profil"/>
       <div className="px-4">
         <div className="flex flex-col gap-2 mt-6">
-          <div className="flex items-center gap-4 px-4 mb-4">
+          <div className="flex items-center gap-2 px-2 mb-2 md:px-4 md:mb-4">
             <SquareUserRound
-              size={32}
               strokeWidth={2}
-              className="text-secondary"
+              className="text-secondary size-6 md:size-8"
             />
-            <h3 className="text-text text-2xl font-semibold">
+            <h3 className="text-text text-xl font-semibold md:text-2xl">
               Profil Orang Tua
             </h3>
           </div>
-          <Card className="flex flex-col gap-6">
-            <div className="flex items-center justify-between">
+          <Card className="flex flex-col gap-4 md:gap-6">
+            <div className="grid grid-cols-1 gap-4 md:flex md:items-center md:justify-between">
               <div className="flex items-center gap-4">
                 <Card className="bg-secondary p-8 font-bold text-2xl">P</Card>
                 <div className="flex flex-col gap-2">
@@ -38,24 +37,24 @@ export default function ProfilePage() {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center gap-2 md:gap-4">
                 <Button
                   variant="outline"
-                  className="flex items-center justify-center gap-2"
+                  className="flex items-center justify-center gap-2 w-full md:w-fit"
                 >
-                  <Pencil size={24} />
+                  <Pencil className="size-5 md:size-6" />
                   <p>Edit Profil</p>
                 </Button>
                 <Button
                   variant="outline"
-                  className="flex items-center justify-center gap-2"
+                  className="flex items-center justify-center gap-2 w-full md:w-fit"
                 >
-                  <KeyRound size={24} />
+                  <KeyRound className="size-5 md:size-6" />
                   <p>Ubah Sandi</p>
                 </Button>
               </div>
             </div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-4">
               <Card variant="silver" className="px-8">
                 <h4 className="text-lg text-gray-500 font-bold">Email Aktif</h4>
                 <p className="text-lg text-text font-semibold">
@@ -86,31 +85,31 @@ export default function ProfilePage() {
           </Card>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex flex-col gap-2 px-4 mt-8">
-              <div className="flex items-center gap-4">
-                <Baby size={32} strokeWidth={2} className="text-secondary" />
-                <h3 className="text-text text-2xl font-semibold">
+          <div className="flex items-center justify-between mt-6">
+            <div className="flex flex-col gap-2 px-2  md:px-4">
+              <div className="flex items-center gap-2">
+                <Baby strokeWidth={2} className="text-secondary size-6 md:size-8" />
+                <h3 className="text-text text-xl font-semibold md:text-2xl">
                   Profil Anak
                 </h3>
               </div>
-              <p className="text-gray-500 text-md font-medium">
+              <p className="text-gray-500 text-xs font-medium md:text-lg">
                 Pantau kurva tumbuh kembang WHO dan kebutuhan gizi individual
                 balita
               </p>
             </div>
             <Card variant="silver" padding="sm">
-              <p className="text-gray-500 text-md font-semibold">
+              <p className="text-center text-text text-xs font-semibold md:text-md">
                 0 Anak Terdaftar
               </p>
             </Card>
           </div>
-          <Card  className="flex flex-col gap-4 mb-10">
-            <div className="w-fit flex items-center gap-2 bg-soft text-primary px-4 py-2 rounded-2xl text-md font-semibold tracking-wide uppercase">
-              <Sparkles size={18} className="fill-primary"/>
+          <Card  className="flex flex-col gap-4 mb-6 p-8">
+            <div className="w-fit flex items-center gap-2 bg-soft text-primary px-4 py-2 rounded-2xl text-xs font-semibold tracking-wide uppercase md:text-sm">
+              <Sparkles className="size-4 fill-primary md:size-5"/>
               Langkah Pertama Pemantauan
             </div>
-            <h3 className="text-2xl text-text font-bold px-4">Belum ada profil anak</h3>
+            <h3 className="text-xl text-text font-bold md:text-2xl">Belum ada profil anak</h3>
             <p className="text-lg font-medium text-gray-400">Tambahkan fitur Profil Anak yang mencakup identitas, riwayat kelahiran, data antropometri, dan informasi nutrisi. Lindungi data melalui autentikasi, pembatasan akses, persetujuan orang tua/wali, dan penyimpanan yang aman. Gunakan data tersebut untuk mempersonalisasi fitur Nutrisi, Pertumbuhan, dan AI Nutriva.</p>
             <div className="flex items-center gap-4">
             <Button variant="primary" className="w-fit flex items-center justify-center">
