@@ -22,14 +22,14 @@ export default function Header({
       className={`flex items-center justify-between px-6 mb-4 ${className}`}
       {...props}
     >
-      <h1 className="text-4xl text-text font-bold">
+      <h1 className="text-2xl  text-text font-bold md:text-4xl">
         {title}
       </h1>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 md:gap-4">
       <CurrentDate />
-        <div className="border border-gray-300 rounded-lg py-2 px-4">
-            <BellRing size={20} className="text-gray-500"/>
+        <div className="border border-gray-300 rounded-lg py-2 px-3">
+            <BellRing className="size-4 text-gray-500 md:size-6"/>
         </div>
       </div>
     </div>
