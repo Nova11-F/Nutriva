@@ -107,7 +107,7 @@ export default function GrowthPage() {
           </Card>
         </div>
         <div className=" grid grid-cols-1 md:flex items-stretch gap-4">
-          <Card className="flex flex-col gap-4">
+          <Card className="flex flex-col gap-4 md:gap-6 md:pt-6">
             <div className="flex items-center justify-start gap-2 md:gap-4">
               <div className="bg-soft px-3 py-2.5 rounded-xl md:p-6">
                 <Ruler className=" size-5 text-primary md:size-6" />
