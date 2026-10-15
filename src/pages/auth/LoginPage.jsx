@@ -5,10 +5,13 @@ import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
 import { useToast } from "../../hooks/useToast";
+import { useAuth } from "../../hooks/useAuth";
+import { childService } from "../../services/childService";
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const { showToast, hideToast } = useToast();
+  const { login } = useAuth();
 
   const [values, setValues] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -17,6 +20,7 @@ export default function LoginPage() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
   const handleSubmit = async (e) => {
@@ -32,14 +36,20 @@ export default function LoginPage() {
     const loadingId = showToast("Sedang masuk...", "loading");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const user = await login({
+        email: values.email,
+        password: values.password,
+      });
+
+      const existingChildren = await childService.getAllByUserId(user.id);
 
       hideToast(loadingId);
       showToast("Berhasil masuk", "success");
-      navigate("/onboarding"); 
+
+      navigate(existingChildren.length > 0 ? "/home" : "/onboarding");
     } catch (err) {
       hideToast(loadingId);
-      showToast("Email atau kata sandi salah", "error");
+      showToast(err.message, "error"); 
     } finally {
       setLoading(false);
     }
@@ -47,12 +57,12 @@ export default function LoginPage() {
 
   return (
     <div className="w-full max-w-lg">
-      <div className="px-4 flex flex-col gap-4 mb-8">
-      <h1 className="text-4xl font-bold text-text text-center">Masuk ke Nutriva</h1>
-      <p className="mt-1 text-xs text-gray-500">
-        Lanjutkan menggunakan akun Anda. Setelah masuk, sistem akan mengecek apakah
-        profil anak sudah tersedia.
-      </p>
+      <div className="mb-8 flex flex-col gap-4 px-4">
+        <h1 className="text-center text-4xl font-bold text-text">Masuk ke Nutriva</h1>
+        <p className="mt-1 text-xs text-gray-500">
+          Lanjutkan menggunakan akun Anda. Setelah masuk, sistem akan mengecek apakah
+          profil anak sudah tersedia.
+        </p>
       </div>
 
       <Form

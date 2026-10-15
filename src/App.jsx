@@ -1,13 +1,16 @@
 import AppRoutes from "./routes/AppRoutes";
 import { ToastProvider } from "./context/ToastContext";
 import { ChildProvider } from "./context/ChildContext";
+import { AuthProvider } from "./context/AuthContext";
 
 export default function App() {
   return (
     <ToastProvider>
-      <ChildProvider>
-        <AppRoutes />
-      </ChildProvider>
+      <AuthProvider>
+        <ChildProvider>
+          <AppRoutes />
+        </ChildProvider>
+      </AuthProvider>
     </ToastProvider>
   );
 }
