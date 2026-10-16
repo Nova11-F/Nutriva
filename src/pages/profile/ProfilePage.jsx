@@ -375,13 +375,12 @@ export default function ProfilePage() {
         </div>
 
         <div className="mb-10 flex flex-col gap-4">
-          <div className="flex items-center gap-2 px-4">
+          <div className="flex items-center gap-2 px-2">
             <SlidersHorizontal
-              size={32}
               strokeWidth={2}
-              className="text-secondary"
+              className="size-6 text-secondary md:size-8"
             />
-            <h3 className="text-2xl font-semibold text-text">
+            <h3 className="text-xl font-semibold tracking-wide text-text leading-none md:text-2xl">
               Pengaturan dan Preferensi Nutriva
             </h3>
           </div>
