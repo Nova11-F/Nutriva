@@ -1,11 +1,17 @@
-import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { authService } from "../services/authService";
 
 export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let ignore = false;
@@ -40,9 +46,19 @@ export function AuthProvider({ children }) {
     setUser(null);
   }, []);
 
+
+  const updateProfile = useCallback(
+    async (data) => {
+      const updated = await authService.updateProfile(user.id, data);
+      setUser(updated);
+      return updated;
+    },
+    [user],
+  );
+
   const value = useMemo(
-    () => ({ user, loading, login, register, logout }),
-    [user, loading, login, register, logout]
+    () => ({ user, loading, login, register, logout, updateProfile }),
+    [user, loading, login, register, logout, updateProfile],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

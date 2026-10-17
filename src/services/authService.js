@@ -44,4 +44,14 @@ export const authService = {
     const found = getUsers().find((u) => u.id === id);
     return found ? withoutPassword(found) : null;
   },
+
+
+async updateProfile(userId, { phone, city, role }) {
+  await delay();
+  const updated = getUsers().map((u) =>
+    u.id === userId ? { ...u, phone, city, role } : u
+  );
+  saveTable(USERS_KEY, updated);
+  return withoutPassword(updated.find((u) => u.id === userId));
+},
 };
