@@ -5,7 +5,6 @@ import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import Spinner from "../../components/ui/Spinner";
 import Header from "../../components/navigation/Header";
-import ChildProfileForm from "../../components/forms/ChildProfileForm";
 import { useAuth } from "../../hooks/useAuth";
 import { useChild } from "../../hooks/useChild";
 import { useToast } from "../../hooks/useToast";
@@ -50,46 +49,25 @@ const preferenceItems = [
 ];
 
 export default function ProfilePage() {
-  const [formState, setFormState] = useState(null);
   const navigate = useNavigate();
+  const goAdd = () => navigate("/onboarding", { state: { from: "/profile" } });
+  const goEdit = (id) =>
+    navigate(`/onboarding?edit=${id}`, { state: { from: "/profile" } });
   const { user, logout } = useAuth();
   const {
     child,
     childList,
     loading: childLoading,
     selectChild,
-    saveChild,
-    updateChild,
     clearChild,
   } = useChild();
   const { showToast } = useToast();
 
-  const [editingChild, setEditingChild] = useState(false);
   const [prefs, setPrefs] = useState({ meal: true, weight: true, tips: false });
 
   const handlePrefChange = (e) => {
     const { name, checked } = e.target;
     setPrefs((prev) => ({ ...prev, [name]: checked }));
-  };
-
-  const handleAddChild = async (values) => {
-    try {
-      await saveChild(values);
-      showToast(`Profil ${values.name} ditambahkan`, "success");
-      setFormState(null);
-    } catch (err) {
-      showToast(err.message, "error");
-    }
-  };
-
-  const handleUpdateChild = async (id, { name, birthDate, gender }) => {
-    try {
-      await updateChild({ name, birthDate, gender }, id);
-      showToast("Profil anak diperbarui", "success");
-      setFormState(null);
-    } catch (err) {
-      showToast(err.message, "error");
-    }
   };
 
   const handleDeleteChild = async (target) => {
@@ -215,8 +193,8 @@ export default function ProfilePage() {
                 balita
               </p>
             </div>
-            <Card variant="default" padding="sm">
-              <p className="text-center text-xs font-semibold text-text md:text-md">
+            <Card variant="silver" padding="sm">
+              <p className="md:text-md text-center text-xs font-semibold text-text">
                 {childList.length} Anak Terdaftar
               </p>
             </Card>
@@ -224,7 +202,7 @@ export default function ProfilePage() {
 
           {childLoading && <Spinner center label="Memuat profil anak..." />}
 
-          {!childLoading && childList.length === 0 && formState === null && (
+          {!childLoading && childList.length === 0 && (
             <Card className="mb-6 flex flex-col gap-4 p-8">
               <div className="flex w-fit items-center gap-2 rounded-2xl bg-soft px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary md:text-sm">
                 <Sparkles className="size-4 fill-primary md:size-5" />
@@ -240,7 +218,7 @@ export default function ProfilePage() {
               </p>
               <div className="flex flex-col gap-4 md:flex-row md:items-center">
                 <Button
-                  onClick={() => setFormState({ mode: "add" })}
+                  onClick={goAdd}
                   className="flex w-fit items-center justify-center gap-2"
                 >
                   <Plus size={24} />
@@ -257,34 +235,6 @@ export default function ProfilePage() {
           {!childLoading &&
             childList.map((c) => {
               const isActive = c.id === child?.id;
-              const isEditing =
-                formState?.mode === "edit" && formState.id === c.id;
-
-              if (isEditing) {
-                return (
-                  <ChildProfileForm
-                    key={c.id}
-                    title={`Ubah Profil ${c.name}`}
-                    initialValues={c}
-                    onSubmit={(values) => handleUpdateChild(c.id, values)}
-                    footer={
-                      <div className="flex gap-2">
-                        <Button type="submit" className="flex-1">
-                          Simpan Perubahan
-                        </Button>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          onClick={() => setFormState(null)}
-                        >
-                          Batal
-                        </Button>
-                      </div>
-                    }
-                  />
-                );
-              }
-
               return (
                 <Card
                   key={c.id}
@@ -292,8 +242,16 @@ export default function ProfilePage() {
                   className="flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="flex size-16 items-center justify-center rounded-xl bg-soft text-primary">
-                      <Baby size={32} />
+                    <div className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-soft text-primary">
+                      {c.photo ? (
+                        <img
+                          src={c.photo}
+                          alt={c.name}
+                          className="size-full object-cover"
+                        />
+                      ) : (
+                        <Baby size={32} />
+                      )}
                     </div>
                     <div className="flex flex-col gap-1">
                       <div className="flex flex-wrap items-center gap-2">
@@ -309,6 +267,7 @@ export default function ProfilePage() {
                       <p className="text-md font-medium text-gray-500">
                         {formatAge(getAgeInMonths(c.birthDate))} ·{" "}
                         {genderLabel[c.gender]}
+                        {c.birthOrder ? ` · Anak ke-${c.birthOrder}` : ""}
                       </p>
                     </div>
                   </div>
@@ -322,50 +281,28 @@ export default function ProfilePage() {
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={() => setFormState({ mode: "edit", id: c.id })}
-                      className="flex items-center justify-center gap-2 w-full md:w-fit"
+                      onClick={() => goEdit(c.id)}
+                      className="flex items-center gap-2 justify-center w-full rounded-md"
                     >
-                      <Pencil className="size-4 md:size-5"/> Ubah
+                      <Pencil className="size-5" /> Ubah
                     </Button>
                     <Button
                       size="sm"
                       variant="ghost"
                       onClick={() => handleDeleteChild(c)}
-                      className="group flex items-center justify-center gap-2 w-full md:w-fit bg-surface  border border-danger hover:bg-danger hover:text-surface"
+                      className="group flex items-center justify-center gap-2 border bg-surface border-danger text-danger hover:bg-danger w-full"
                     >
-                      <Trash2 className="size-4 text-danger md:size-5 group-hover:text-surface"/> <span className=" text-danger group-hover:text-surface">Hapus</span>
+                      <Trash2 className="size-5 text-danger group-hover:text-surface"/> <span className="text-danger group-hover:text-surface">Hapus</span>
                     </Button>
                   </div>
                 </Card>
               );
             })}
 
-          {!childLoading && formState?.mode === "add" && (
-            <ChildProfileForm
-              key="add"
-              title="Tambah Profil Anak"
-              onSubmit={handleAddChild}
-              footer={
-                <div className="flex gap-2">
-                  <Button type="submit" className="flex-1">
-                    Simpan Profil
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => setFormState(null)}
-                  >
-                    Batal
-                  </Button>
-                </div>
-              }
-            />
-          )}
-
-          {!childLoading && childList.length > 0 && formState === null && (
+          {!childLoading && childList.length > 0 && (
             <Button
               variant="outline"
-              onClick={() => setFormState({ mode: "add" })}
+              onClick={goAdd}
               className="mb-6 flex w-full items-center justify-center gap-2 md:w-fit"
             >
               <Plus size={20} />

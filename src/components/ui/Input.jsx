@@ -1,10 +1,40 @@
 import { useId, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-const fieldStyle =
+export const fieldStyle =
   "w-full rounded-lg border bg-gray-50 px-3 py-2 text-sm text-text " +
   "placeholder:text-gray-400 outline-none transition " +
   "focus:border-secondary focus:bg-surface focus:ring-2 focus:ring-green-100";
+
+  export function Select({ label, error, hint, options, placeholder = "Pilih salah satu", className = "", ...props }) {
+  const id = useId();
+  return (
+    <div className={className}>
+      {label && <label htmlFor={id} className="mb-1 block text-xs text-gray-500">{label}</label>}
+      <select id={id} className={`${fieldStyle} ${error ? "border-red-400" : "border-gray-200"}`} {...props}>
+        <option value="">{placeholder}</option>
+        {options.map((o) => {
+          const opt = typeof o === "string" ? { value: o, label: o } : o;
+          return <option key={opt.value} value={opt.value}>{opt.label}</option>;
+        })}
+      </select>
+      {hint && !error && <p className="mt-1 text-[11px] text-gray-400">{hint}</p>}
+      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
+    </div>
+  );
+}
+
+export function Textarea({ label, error, hint, className = "", rows = 3, ...props }) {
+  const id = useId();
+  return (
+    <div className={className}>
+      {label && <label htmlFor={id} className="mb-1 block text-xs text-gray-500">{label}</label>}
+      <textarea id={id} rows={rows} className={`${fieldStyle} resize-none ${error ? "border-red-400" : "border-gray-200"}`} {...props} />
+      {hint && !error && <p className="mt-1 text-[11px] text-gray-400">{hint}</p>}
+      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
+    </div>
+  );
+}
 
 export default function Input({
   label,

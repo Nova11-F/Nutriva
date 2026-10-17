@@ -15,3 +15,10 @@ export function formatMonthYear(isoDate) {
   if (!isoDate) return "-";
   return new Date(isoDate).toLocaleDateString("id-ID", { month: "long", year: "numeric" });
 }
+
+export function todayISO() {
+  const d = new Date();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${d.getFullYear()}-${month}-${day}`;
+}
