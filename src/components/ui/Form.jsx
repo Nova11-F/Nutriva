@@ -11,7 +11,7 @@ export default function Form({
       id={id}
       onSubmit={onSubmit}
       noValidate
-      className={`w-full rounded-xl border border-gray-100 bg-surface px-10 py-8 shadow-md ${className}`}
+      className={`w-full rounded-xl border border-gray-100 bg-surface p-6 shadow-md md:px-10 md:py-8 ${className}`}
     >
       {title && <h2 className="mb-4 text-sm font-semibold text-text">{title}</h2>}
 

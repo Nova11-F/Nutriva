@@ -57,9 +57,9 @@ export default function LoginPage() {
 
   return (
     <div className="w-full max-w-lg">
-      <div className="mb-8 flex flex-col gap-4 px-4">
+      <div className="mb-4 flex flex-col gap-2 px-4 md:gap-4 md:mb-8">
         <h1 className="text-center text-4xl font-bold text-text">Masuk ke Nutriva</h1>
-        <p className="mt-1 text-xs text-gray-500">
+        <p className="mt-1 text-sm text-gray-500 text-center">
           Lanjutkan menggunakan akun Anda. Setelah masuk, sistem akan mengecek apakah
           profil anak sudah tersedia.
         </p>
