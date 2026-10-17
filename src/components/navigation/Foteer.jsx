@@ -3,8 +3,8 @@ import Logo from "../../assets/images/logo.png";
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 pt-16 pb-12 px-6 md:px-12">
-      <div className="mx-20 grid grid-cols-1 md:grid-cols-5 gap-12 pb-16 border-b border-gray-200">
-        <div className="md:col-span-2 space-y-4">
+      <div className="mx-8 grid grid-cols-1 md:grid-cols-5 gap-8 pb-8 border-b border-gray-200 md:gap-12 md:mx-20 md:pb-16">
+        <div className="md:col-span-2 space-y-2 md:space-y-4">
           <div className="flex items-center gap-2">
             <img
               src={Logo}
@@ -18,11 +18,11 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-2 md:space-y-4">
           <h4 className="text-sm font-bold text-text uppercase tracking-wider">
             Produk
           </h4>
-          <ul className="space-y-2.5 text-sm text-gray-600">
+          <ul className="space-y-2 text-sm text-gray-600">
             <li>
               <a
                 href="#experiences"
@@ -50,11 +50,11 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-2 md:space-y-4">
           <h4 className="text-sm font-bold text-text uppercase tracking-wider">
             Nutriva
           </h4>
-          <ul className="space-y-2.5 text-sm text-gray-600">
+          <ul className="space-y-2 text-sm text-gray-600">
             <li>
               <a
                 href="#carakerja"
@@ -79,11 +79,11 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-2 md:space-y-4">
           <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
             Legal
           </h4>
-          <ul className="space-y-2.5 text-sm text-slate-600">
+          <ul className="space-y-2 text-sm text-slate-600">
             <li>
               <a href="#trust" className="hover:text-secondary transition">
                 Privasi
@@ -98,7 +98,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+      <div className="mx-8 pt-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 md:mx-20 md:pt-8">
         <p className="leading-relaxed">
           Nutriva menyediakan informasi edukatif dan bukan layanan diagnosis
           medis. Konsultasikan kondisi kesehatan anak kepada tenaga kesehatan

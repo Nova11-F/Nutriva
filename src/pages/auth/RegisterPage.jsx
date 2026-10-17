@@ -59,9 +59,9 @@ export default function RegisterPage() {
 
   return (
     <div className="w-full max-w-lg">
-      <div className="mb-4 flex flex-col gap-4 px-4">
+      <div className="mb-4 flex flex-col gap-2 px-4 md:mb-8 md:gap-4">
         <h1 className="text-center text-4xl font-bold text-text">Buat akun Nutriva</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 text-center">
           Registrasi hanya membuat akun. Personalisasi baru aktif setelah profil anak dibuat.
         </p>
       </div>
