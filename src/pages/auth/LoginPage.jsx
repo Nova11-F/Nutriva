@@ -7,6 +7,7 @@ import Card from "../../components/ui/Card";
 import { useToast } from "../../hooks/useToast";
 import { useAuth } from "../../hooks/useAuth";
 import { childService } from "../../services/childService";
+import { users } from "../../data/users";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ export default function LoginPage() {
       navigate(existingChildren.length > 0 ? "/home" : "/onboarding");
     } catch (err) {
       hideToast(loadingId);
-      showToast(err.message, "error"); 
+      showToast(err.message, "error");
     } finally {
       setLoading(false);
     }
@@ -58,10 +59,12 @@ export default function LoginPage() {
   return (
     <div className="w-full max-w-lg">
       <div className="mb-4 flex flex-col gap-2 px-4 md:gap-4 md:mb-8">
-        <h1 className="text-center text-4xl font-bold text-text">Masuk ke Nutriva</h1>
+        <h1 className="text-center text-4xl font-bold text-text">
+          Masuk ke Nutriva
+        </h1>
         <p className="mt-1 text-sm text-gray-500 text-center">
-          Lanjutkan menggunakan akun Anda. Setelah masuk, sistem akan mengecek apakah
-          profil anak sudah tersedia.
+          Lanjutkan menggunakan akun Anda. Setelah masuk, sistem akan mengecek
+          apakah profil anak sudah tersedia.
         </p>
       </div>
 
@@ -74,7 +77,10 @@ export default function LoginPage() {
             </Button>
             <p className="mt-4 text-center text-xs text-gray-500">
               Belum punya akun?{" "}
-              <Link to="/register" className="font-medium text-primary hover:underline">
+              <Link
+                to="/register"
+                className="font-medium text-primary hover:underline"
+              >
                 Daftar
               </Link>
             </p>
@@ -102,7 +108,10 @@ export default function LoginPage() {
             error={errors.password}
           />
           <div className="mt-2 text-right">
-            <Link to="/forgot-password" className="text-xs text-gray-500 hover:text-primary">
+            <Link
+              to="/forgot-password"
+              className="text-xs text-gray-500 hover:text-primary"
+            >
               Lupa kata sandi?
             </Link>
           </div>
@@ -112,8 +121,8 @@ export default function LoginPage() {
       <Card variant="success" className="mt-8 text-sm text-gray-600">
         <p className="mb-2 font-medium text-gray-700">Setelah masuk</p>
         <p>
-          Jika belum ada Profil Anak → Pengaturan Profil Anak. Jika sudah ada → Beranda
-          Personal.
+          Jika belum ada Profil Anak → Pengaturan Profil Anak. Jika sudah ada →
+          Beranda Personal.
         </p>
       </Card>
     </div>

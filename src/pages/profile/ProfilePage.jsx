@@ -272,9 +272,18 @@ export default function ProfilePage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div
+                    className={`grid items-center justify-end gap-2 ${
+                      isActive ? "grid-cols-2" : "grid-cols-3"
+                    }`}
+                  >
                     {!isActive && (
-                      <Button size="sm" onClick={() => selectChild(c.id)}>
+                      <Button
+                        size="sm"
+                        className="flex items-center gap-2 justify-center w-full rounded-md"
+                        onClick={() => selectChild(c.id)}
+                      >
+                        <Check className="size-5" />
                         Jadikan Aktif
                       </Button>
                     )}
@@ -282,7 +291,7 @@ export default function ProfilePage() {
                       size="sm"
                       variant="outline"
                       onClick={() => goEdit(c.id)}
-                      className="flex items-center gap-2 justify-center w-full rounded-md"
+                      className="flex items-center gap-2 justify-center w-50 rounded-md"
                     >
                       <Pencil className="size-5" /> Ubah
                     </Button>
@@ -290,9 +299,12 @@ export default function ProfilePage() {
                       size="sm"
                       variant="ghost"
                       onClick={() => handleDeleteChild(c)}
-                      className="group flex items-center justify-center gap-2 border bg-surface border-danger text-danger hover:bg-danger w-full"
+                      className="group flex items-center justify-center gap-2 border bg-surface border-danger text-danger hover:bg-danger w-50"
                     >
-                      <Trash2 className="size-5 text-danger group-hover:text-surface"/> <span className="text-danger group-hover:text-surface">Hapus</span>
+                      <Trash2 className="size-5 text-danger group-hover:text-surface" />{" "}
+                      <span className="text-danger group-hover:text-surface">
+                        Hapus
+                      </span>
                     </Button>
                   </div>
                 </Card>
