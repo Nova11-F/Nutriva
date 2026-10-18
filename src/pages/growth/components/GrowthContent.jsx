@@ -1,10 +1,11 @@
-import Header from "../../../components/navigation/Header"
+import Header from "../../../components/navigation/Header";
+import { useAuth } from "../../../hooks/useAuth";
 
-export default function GrowthContent(){
-    return(
-        <>
-        <Header variant="pertumbuhan"/>
-        <h1>Halo</h1>
-        </>
-    )
+export default function GrowthContent() {
+  const { user } = useAuth();
+  return (
+    <>
+      <Header variant="greeting" userName={user?.name ?? "Pengguna"} />
+    </>
+  );
 }
