@@ -56,10 +56,16 @@ export function AuthProvider({ children }) {
     [user],
   );
 
-  const value = useMemo(
-    () => ({ user, loading, login, register, logout, updateProfile }),
-    [user, loading, login, register, logout, updateProfile],
-  );
+  const changePassword = useCallback(
+  (data) => authService.changePassword(user.id, data),
+  [user]
+);
+
+const value = useMemo(
+  () => ({ user, loading, login, register, logout, updateProfile, changePassword }),
+  [user, loading, login, register, logout, updateProfile, changePassword]
+);
+
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

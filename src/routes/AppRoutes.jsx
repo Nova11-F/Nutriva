@@ -15,14 +15,15 @@ import RecipeDetailPage from "../pages/nutrition/RecipeDetailPage";
 import GrowthPage from "../pages/growth/GrowthPage";
 import AssistantPage from "../pages/asisstant/AssistantPage";
 import ProfilePage from "../pages/profile/ProfilePage";
+import ChangePasswordPage from "../pages/profile/ChangePasswordPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 export default function AppRoutes() {
   return (
     <Routes>
-<Route element={<PublicLayout />}>
-  <Route path="/" element={<LandingPage />} />
-</Route>
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<LandingPage />} />
+      </Route>
 
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<LoginPage />} />
@@ -31,6 +32,7 @@ export default function AppRoutes() {
 
       <Route element={<OnboardingLayout />}>
         <Route path="/onboarding" element={<ChildProfilePage />} />
+        <Route path="/profile/:changepass" element={<ChangePasswordPage />} />
       </Route>
 
       <Route element={<MainLayout />}>

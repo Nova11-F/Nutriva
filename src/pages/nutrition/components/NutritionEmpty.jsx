@@ -1,6 +1,5 @@
 import Card from "../../../components/ui/Card";
 import Button from "../../../components/ui/Button";
-import CurrentDate from "../../../components/ui/Date";
 import {
   Plus,
   CalendarDays,
