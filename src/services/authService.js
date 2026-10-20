@@ -54,4 +54,15 @@ async updateProfile(userId, { phone, city, role }) {
   saveTable(USERS_KEY, updated);
   return withoutPassword(updated.find((u) => u.id === userId));
 },
+
+async changePassword(userId, { currentPassword, newPassword }) {
+  await delay();
+  const all = getUsers();
+  const target = all.find((u) => u.id === userId);
+
+  if (!target) throw new Error("Akun tidak ditemukan");
+  if (target.password !== currentPassword) throw new Error("Kata sandi saat ini salah");
+
+  saveTable(USERS_KEY, all.map((u) => (u.id === userId ? { ...u, password: newPassword } : u)));
+},
 };

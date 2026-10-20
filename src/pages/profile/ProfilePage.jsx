@@ -93,6 +93,10 @@ export default function ProfilePage() {
 
   const comingSoon = () => showToast("Fitur ini belum tersedia", "info");
 
+  const goEditParent = () =>
+    navigate("/onboarding?mode=parent", { state: { from: "/profile" } });
+  const goChangePassword = () => navigate("/profile/changepass");
+
   const parent = {
     name: user?.name ?? "Pengguna",
     email: user?.email ?? "-",
@@ -146,7 +150,7 @@ export default function ProfilePage() {
               <div className="flex items-center justify-center gap-2 md:gap-4">
                 <Button
                   variant="outline"
-                  onClick={comingSoon}
+                  onClick={goEditParent}
                   className="flex w-full items-center justify-center gap-2 md:w-fit"
                 >
                   <Pencil className="size-5 md:size-6" />
@@ -154,7 +158,7 @@ export default function ProfilePage() {
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={comingSoon}
+                  onClick={goChangePassword}
                   className="flex w-full items-center justify-center gap-2 md:w-fit"
                 >
                   <KeyRound className="size-5 md:size-6" />

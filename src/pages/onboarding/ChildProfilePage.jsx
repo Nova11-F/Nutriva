@@ -1,5 +1,10 @@
 import { useRef, useState } from "react";
-import { Navigate, useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  Navigate,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Form from "../../components/ui/Form";
 import Button from "../../components/ui/Button";
@@ -17,30 +22,77 @@ import { growthService } from "../../services/growthService";
 import { ALLERGY_OPTIONS, NO_ALLERGY } from "../../constants/childOptions";
 import { todayISO } from "../../utils/formatDate";
 import {
-  validateIdentity, validateBody, validateNutrition, validateParent,
+  validateIdentity,
+  validateBody,
+  validateNutrition,
+  validateParent,
 } from "../../utils/onboardingValidators";
 
 const ALL_STEPS = [
-  { key: "identity", title: "Identitas Dasar", Component: Step1Identity, validate: validateIdentity,
-    description: "Kenali anak Anda: foto, nama, tanggal lahir, jenis kelamin, dan urutan kelahiran." },
-  { key: "body", title: "Pengukuran Fisik", Component: Step2Body, validate: validateBody,
-    description: "Data antropometri terbaru menjadi titik awal pemantauan pertumbuhan." },
-  { key: "nutrition", title: "Profil Nutrisi", Component: Step3Nutrition, validate: validateNutrition,
-    description: "Alergi dan preferensi makan agar rekomendasi menu lebih aman dan sesuai selera." },
-  { key: "medical", title: "Riwayat Kesehatan", Component: Step4Medical, validate: () => ({}), optional: true,
-    description: "Riwayat kesehatan anak. Boleh dikosongkan." },
-  { key: "parent", title: "Profil Orang Tua", Component: Step5Parent, validate: validateParent,
-    description: "Lengkapi data Anda sebagai orang tua atau wali." },
+  {
+    key: "identity",
+    title: "Identitas Dasar",
+    Component: Step1Identity,
+    validate: validateIdentity,
+    description:
+      "Kenali anak Anda: foto, nama, tanggal lahir, jenis kelamin, dan urutan kelahiran.",
+  },
+  {
+    key: "body",
+    title: "Pengukuran Fisik",
+    Component: Step2Body,
+    validate: validateBody,
+    description:
+      "Data antropometri terbaru menjadi titik awal pemantauan pertumbuhan.",
+  },
+  {
+    key: "nutrition",
+    title: "Profil Nutrisi",
+    Component: Step3Nutrition,
+    validate: validateNutrition,
+    description:
+      "Alergi dan preferensi makan agar rekomendasi menu lebih aman dan sesuai selera.",
+  },
+  {
+    key: "medical",
+    title: "Riwayat Kesehatan",
+    Component: Step4Medical,
+    validate: () => ({}),
+    optional: true,
+    description: "Riwayat kesehatan anak. Boleh dikosongkan.",
+  },
+  {
+    key: "parent",
+    title: "Profil Orang Tua",
+    Component: Step5Parent,
+    validate: validateParent,
+    description: "Lengkapi data Anda sebagai orang tua atau wali.",
+  },
 ];
 
 function buildInitialValues(editing, user) {
   const base = {
-    photo: "", name: "", birthDate: "", gender: "", birthOrder: "",
-    measuredAt: todayISO(), weight: "", height: "", headCircumference: "",
-    birthWeight: "", birthLength: "",
-    feedingType: "", allergies: [], otherAllergies: [], favoriteFoods: [], dislikedFoods: [],
-    medicalConditions: [], medicalNotes: "",
-    phone: user?.phone ?? "", city: user?.city ?? "", role: user?.role ?? "",
+    photo: "",
+    name: "",
+    birthDate: "",
+    gender: "",
+    birthOrder: "",
+    measuredAt: todayISO(),
+    weight: "",
+    height: "",
+    headCircumference: "",
+    birthWeight: "",
+    birthLength: "",
+    feedingType: "",
+    allergies: [],
+    otherAllergies: [],
+    favoriteFoods: [],
+    dislikedFoods: [],
+    medicalConditions: [],
+    medicalNotes: "",
+    phone: user?.phone ?? "",
+    city: user?.city ?? "",
+    role: user?.role ?? "",
   };
   if (!editing) return base;
 
@@ -77,7 +129,10 @@ function buildChildData(v) {
     birthWeight: v.birthWeight === "" ? null : Number(v.birthWeight),
     birthLength: v.birthLength === "" ? null : Number(v.birthLength),
     feedingType: v.feedingType,
-    allergies: [...v.allergies.filter((a) => a !== NO_ALLERGY), ...v.otherAllergies],
+    allergies: [
+      ...v.allergies.filter((a) => a !== NO_ALLERGY),
+      ...v.otherAllergies,
+    ],
     favoriteFoods: v.favoriteFoods,
     dislikedFoods: v.dislikedFoods,
     medicalConditions: v.medicalConditions,
@@ -89,16 +144,19 @@ export default function ChildProfilePage() {
   const [params] = useSearchParams();
   const { childList, loading } = useChild();
   const editId = Number(params.get("edit")) || null;
+  const parentOnly = params.get("mode") === "parent";
 
   if (loading) return <Spinner center label="Memuat data anak..." />;
+  if (parentOnly)
+    return <OnboardingWizard key="parent" editing={null} parentOnly />;
 
   const editing = editId ? childList.find((c) => c.id === editId) : null;
-  if (editId && !editing) return <Navigate to="/profile" replace />; 
+  if (editId && !editing) return <Navigate to="/profile" replace />;
 
   return <OnboardingWizard key={editing?.id ?? "new"} editing={editing} />;
 }
 
-function OnboardingWizard({ editing }) {
+function OnboardingWizard({ editing, parentOnly = false }) {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, updateProfile } = useAuth();
@@ -106,11 +164,14 @@ function OnboardingWizard({ editing }) {
   const { showToast } = useToast();
 
   const isEdit = Boolean(editing);
-  const backTo = location.state?.from ?? "/home"; 
+  const backTo = location.state?.from ?? "/home";
 
   const [steps] = useState(() => {
+    if (parentOnly) return ALL_STEPS.filter((s) => s.key === "parent");
     if (isEdit) return ALL_STEPS.filter((s) => s.key !== "parent");
-    return user?.phone ? ALL_STEPS.filter((s) => s.key !== "parent") : ALL_STEPS;
+    return user?.phone
+      ? ALL_STEPS.filter((s) => s.key !== "parent")
+      : ALL_STEPS;
   });
 
   const [step, setStep] = useState(0);
@@ -135,6 +196,7 @@ function OnboardingWizard({ editing }) {
     setErrors({});
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
 
   const saveAll = async () => {
     setSaving(true);
@@ -190,22 +252,34 @@ function OnboardingWizard({ editing }) {
     else goTo(step + 1);
   };
 
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
-            {isEdit ? `Ubah Profil ${editing.name}` : "Pendaftaran Profil Balita Baru"}
+            {parentOnly
+              ? "Ubah Profil Orang Tua"
+              : isEdit
+                ? `Ubah Profil ${editing.name}`
+                : "Pendaftaran Profil Balita Baru"}
           </h1>
           <p className="mt-1 text-xs text-gray-500">
-            {isEdit
-              ? "Perbarui data anak. Perubahan akan menyesuaikan rekomendasi nutrisi dan analisis."
-              : "Lengkapi data tumbuh kembang dan preferensi gizi si kecil untuk personalisasi menu gizi harian dan grafik."}
+            {parentOnly
+              ? "Perbarui nomor telepon, kota, dan peran Anda."
+              : isEdit
+                ? "Perbarui data anak. Perubahan akan menyesuaikan rekomendasi nutrisi dan analisis."
+                : "Lengkapi data tumbuh kembang dan preferensi gizi si kecil untuk personalisasi menu gizi harian dan grafik."}
           </p>
         </div>
-        <Button variant="outline" size="sm" onClick={() => navigate(backTo)}
-                className="flex shrink-0 items-center gap-2">
-          <ArrowLeft size={16} /> <span className="hidden md:inline">Batal & Kembali</span>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => navigate(backTo)}
+          className="flex shrink-0 items-center gap-2"
+        >
+          <ArrowLeft size={16} />{" "}
+          <span className="hidden md:inline">Batal & Kembali</span>
         </Button>
       </div>
 
@@ -220,27 +294,56 @@ function OnboardingWizard({ editing }) {
           footer={
             <div className="flex items-center justify-between gap-2">
               {step > 0 ? (
-                <Button type="button" variant="outline" onClick={() => goTo(step - 1)}
-                        className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => goTo(step - 1)}
+                  className="flex items-center gap-2"
+                >
                   <ArrowLeft size={16} /> Kembali
                 </Button>
-              ) : <span />}
+              ) : (
+                <span />
+              )}
 
               <div className="flex items-center gap-2">
                 {current.optional && (
-                  <Button type="button" variant="ghost" onClick={() => goTo(step + 1)}>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={() => goTo(step + 1)}
+                  >
                     Lewati
                   </Button>
                 )}
-                <Button type="submit" loading={saving} className="flex items-center gap-2">
-                  {isLast ? (isEdit ? "Simpan Perubahan" : "Simpan & Mulai") : <>Lanjut <ArrowRight size={16} /></>}
+                <Button
+                  type="submit"
+                  loading={saving}
+                  className="flex items-center gap-2"
+                >
+                  {isLast ? (
+                    isEdit ? (
+                      "Simpan Perubahan"
+                    ) : (
+                      "Simpan & Mulai"
+                    )
+                  ) : (
+                    <>
+                      Lanjut <ArrowRight size={16} />
+                    </>
+                  )}
                 </Button>
               </div>
             </div>
           }
         >
-          <Component values={values} errors={errors} onChange={handleChange}
-                     setValue={setValue} isEdit={isEdit} />
+          <Component
+            values={values}
+            errors={errors}
+            onChange={handleChange}
+            setValue={setValue}
+            isEdit={isEdit}
+          />
         </Form>
       </div>
     </div>
