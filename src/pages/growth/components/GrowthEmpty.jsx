@@ -1,6 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import Card from "../../../components/ui/Card";
-import Button from "../../../components/ui/Card";
-import CurrentDate from "../../../components/ui/Date";
+import Button from "../../../components/ui/Button";
 import {
   Plus,
   ChartColumn,
@@ -14,9 +14,13 @@ import {
 import Header from "../../../components/navigation/Header";
 
 export default function GrowthEmpty() {
+  const navigate = useNavigate();
+
+  const goAdd = () => navigate("/onboarding", { state: { from: "/profile" } });
+  const goAssistant = () => navigate("/assistant");
   return (
     <>
-        <Header variant="pertumbuhan"/>
+      <Header variant="pertumbuhan" />
       <div className="flex flex-col gap-6 mt-6 px-4 md:gap-8">
         <Card className="flex flex-col p-8 gap-2 md:gap-4 md:px-15 md:py-12 bg-linear-to-r from-background to-soft ">
           <div className="w-fit inline-flex items-center gap-2 bg-soft text-primary px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase md:px-4 md:py-2.5 md:text-sm">
@@ -35,8 +39,9 @@ export default function GrowthEmpty() {
           <Button
             variant="outline"
             className="flex items-center justify-center text-sm gap-2 md:text-xl md:w-fit"
+            onClick={goAdd}
           >
-            <Plus strokeWidth={2} className="size-4 md:size-6"/>
+            <Plus strokeWidth={2} className="size-4 md:size-6" />
             Tambah Profil Anak
           </Button>
         </Card>
@@ -50,7 +55,7 @@ export default function GrowthEmpty() {
             kembang si kecil secara optimal.
           </p>
         </div>
-        <div className="grid grid-cols-1 items-strech justify-between gap-4 md:gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 items-strech justify-between gap-4 md:grid-cols-3">
           <Card
             variant="default"
             className="group flex flex-col gap-2 p-8 tracking-wide md:gap-4 md:p-15 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
@@ -119,16 +124,13 @@ export default function GrowthEmpty() {
             <div className="flex items-stretch justify-between gap-2 md:gap-4">
               <Card variant="silver" className="flex flex-col gap-4 ">
                 <div className="flex gap-2 items-center">
-                  <Scale className="size-5 text-secondary md:size-6"/>
+                  <Scale className="size-5 text-secondary md:size-6" />
                   <h4 className="text-sm text-text font-semibold md:text-xl">
                     Menimbang Berat Badan
                   </h4>
                 </div>
-                <p className="text-gray-500 text-xs md:font-medium tracking-wide md:text-md">
-                  Lakukan penimbangan pada pagi hari sebelum sarapan, dengan
-                  pakaian seminimal mungkin. Gunakan timbangan digital dengan
-                  ketelitian 10–50 gram untuk memperoleh hasil pengukuran yang
-                  lebih akurat.
+                <p className="text-gray-500 text-xs md:font-medium tracking-wide md:text-lg">
+                  Timbang di pagi hari sebelum sarapan dengan pakaian minimal menggunakan timbangan digital akurat (ketelitian 10–50 g).
                 </p>
               </Card>
               <Card variant="silver" className="flex flex-col gap-4">
@@ -138,11 +140,9 @@ export default function GrowthEmpty() {
                     Mengukur Tinggi Badan
                   </h4>
                 </div>
-                <p className="text-gray-500 text-xs md:font-medium tracking-wide md:text-md">
-                  Ukur panjang badan anak usia di bawah 2 tahun dalam posisi
-                  telentang. Untuk anak usia 2 tahun ke atas, ukur tinggi badan
-                  dalam posisi berdiri tegak, tanpa alas kaki, dengan punggung
-                  menempel pada dinding.
+                <p className="text-gray-500 text-xs md:font-medium tracking-wide md:text-lg">
+                  Telentang untuk anak &lt; 2 tahun, atau berdiri tegak menempel
+                  dinding tanpa alas kaki untuk anak &gt; 2 tahun.
                 </p>
               </Card>
             </div>
@@ -155,15 +155,14 @@ export default function GrowthEmpty() {
             <h3 className="text-2xl font-bold">
               Ragu dengan grafik tumbuh kembang anak?
             </h3>
-            <p className="text-md">
-              Konsultasikan kebutuhan gizi makro dan mikro, pemberian ASI, serta
-              pilihan MPASI untuk mendukung kenaikan berat badan si kecil
-              bersama Asisten AI Nutriva. Dapatkan informasi dan rekomendasi
-              yang sesuai dengan kebutuhan nutrisi anak.
+            <p className="text-md md:text-lg">
+              Dapatkan rekomendasi gizi, ASI, dan MPASI tepat untuk berat badan
+              ideal si kecil bersama Asisten AI Nutriva.
             </p>
             <Button
               variant="white"
               className="group flex items-center justify-center gap-4"
+              onClick={goAssistant}
             >
               <MessageSquareMore
                 size={20}

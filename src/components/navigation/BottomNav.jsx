@@ -3,7 +3,7 @@ import { navItems } from "./navItems";
 
 export default function BottomNav() {
   return (
-    <nav className="fixed inset-x-4 bottom-4 z-40 flex items-center justify-between rounded-3xl bg-surface p-1.5 shadow-lg ring-1 ring-black/5 md:hidden">
+    <nav className="fixed inset-x-4 bottom-4 z-40 flex items-center justify-between rounded-3xl bg-surface p-1.5 shadow-lg ring-1 ring-black/5 xl:hidden">
       {navItems.map(({ label, shortLabel, path, icon: Icon }) => (
         <NavLink
           key={path}

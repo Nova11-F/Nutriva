@@ -6,7 +6,6 @@ function Ribbon({ className = "", reverse = false }) {
   return (
     <div className={`absolute -left-[10%] w-[120%] overflow-hidden py-3 ${className}`}>
       <div className={`flex w-max ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}>
-        {/* Isi diduplikasi 2x supaya putarannya tidak terputus */}
         {[0, 1].map((set) => (
           <div key={set} className="flex shrink-0 items-center">
             {Array.from({ length: 8 }).map((_, i) => (

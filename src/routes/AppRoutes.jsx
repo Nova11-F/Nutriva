@@ -13,7 +13,7 @@ import HomePage from "../pages/home/HomePage";
 import NutritionPage from "../pages/nutrition/NutritionPage";
 import RecipeDetailPage from "../pages/nutrition/RecipeDetailPage";
 import GrowthPage from "../pages/growth/GrowthPage";
-import AssistantPage from "../pages/asisstant/AssistantPage";
+import AssistantPage from "../pages/assistant/AssistantPage";
 import ProfilePage from "../pages/profile/ProfilePage";
 import ChangePasswordPage from "../pages/profile/ChangePasswordPage";
 import NotFoundPage from "../pages/NotFoundPage";
