@@ -148,7 +148,7 @@ export default function NotificationItems({
         }
         aria-expanded={open}
         aria-haspopup="dialog"
-        className="relative rounded-md border border-gray-300 px-2 py-1.5 transition-colors hover:bg-gray-50 md:rounded-lg md:px-3 md:py-2.5"
+        className="relative rounded-md border cursor-pointer border-gray-300 px-2 py-1.5 transition-colors hover:bg-gray-50 md:rounded-lg md:px-3 md:py-2.5"
       >
         <BellRing className="size-5 text-gray-500 md:size-6" />
         {unreadCount > 0 && (
