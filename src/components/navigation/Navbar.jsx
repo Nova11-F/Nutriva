@@ -92,7 +92,7 @@ export default function Navbar() {
           </h1>
         </div>
 
-        <div className="hidden items-center justify-center gap-8 lg:flex xl:gap-14">
+        <div className="hidden items-center justify-center gap-8 xl:flex xl:gap-10">
           {menus.map((menu) => (
             <button
               key={menu.id}
@@ -112,7 +112,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden shrink-0 items-center gap-4 lg:flex">
+        <div className="hidden shrink-0 items-center gap-4 xl:flex">
           <Button
             variant="outline"
             size="md"
@@ -136,7 +136,7 @@ export default function Navbar() {
           aria-label={isMenuOpen ? "Tutup menu" : "Buka menu"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
-          className="flex items-center justify-center rounded-lg p-2 text-text transition-colors hover:bg-soft lg:hidden"
+          className="flex items-center justify-center rounded-lg p-2 text-text transition-colors hover:bg-soft xl:hidden"
         >
           {isMenuOpen ? (
             <X size={28} />
@@ -148,7 +148,7 @@ export default function Navbar() {
 
       <div
         id="mobile-navigation"
-        className={`overflow-hidden border-t border-gray-200 bg-surface transition-all duration-300 ease-in-out lg:hidden ${
+        className={`overflow-hidden border-t border-gray-200 bg-surface transition-all duration-300 ease-in-out xl:hidden ${
           isMenuOpen
             ? "max-h-[420px] opacity-100"
             : "pointer-events-none max-h-0 border-t-0 opacity-0"

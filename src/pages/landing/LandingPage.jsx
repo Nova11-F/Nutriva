@@ -11,9 +11,9 @@ export default function LandingPage() {
     <>
       <section
         id="beranda"
-        className="relative overflow-hidden bg-background h-auto py-10 scroll-mt-26 md:py-40 md:px-6"
+        className="relative overflow-hidden bg-background h-auto py-10 scroll-mt-26 2xl:py-40 md:px-6"
       >
-        <div className="max-w-full mx-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center md:mx-40">
+        <div className="max-w-full mx-10 grid grid-cols-1 xl:grid-cols-2 gap-12 items-center 2xl:mx-40">
           <div className="space-y-2 md:space-y-4">
             <div className="inline-flex items-center gap-2 bg-soft text-primary px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase">
               <span className="w-2 h-2 rounded-full bg-primary"></span>
@@ -51,7 +51,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="hidden relative lg:flex justify-center">
+          <div className="hidden relative xl:flex justify-center">
             <div className="absolute -top-16 w-134 h-134 bg-soft rounded-full pointer-events-none"></div>
             <div className="absolute -top-20 right-42 w-44 h-44 bg-light rounded-full pointer-events-none"></div>
             <div className="relative bg-surface p-4 rounded-3xl shadow-2xl border border-soft max-w-md w-full">
@@ -85,12 +85,12 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="h-auto bg-surface px-10 py-20 flex flex-col gap-10 scroll-mt-26 md:px-40">
+      <section className="h-auto bg-surface px-10 py-20 flex flex-col gap-10 scroll-mt-26 2xl:px-40">
         <div className="flex flex-col gap-6">
           <p className="text-xl font-bold text-primary uppercase">
             Kenapa Nutriva
           </p>
-          <h1 className="text-3xl font-semibold text-text md:text-6xl">
+          <h1 className="text-3xl font-semibold text-text lg:text-4xl 2xl:text-6xl">
             Menjadi orang tua tidak seharusnya berarti menebak sendiri
           </h1>
           <p className="text-lg font-medium text-gray-500 md:text-xl">
@@ -98,8 +98,8 @@ export default function LandingPage() {
             menjadi lebih mudah
           </p>
         </div>
-        <div className="grid grid-cols-1 items-center gap-4 md:flex md:items-center">
-          <Card className="px-6 py-8 flex flex-col gap-2 w-fit md:px-8 md:py-10 md:gap-4 md:w-150">
+        <div className="flex flex-col items-center gap-4 lg:flex 2xl:flex-row">
+          <Card className="px-6 py-8 flex flex-col gap-2 w-full md:px-8 md:py-10 md:gap-4 2xl:w-150">
             <p className="text-lg font-semibold text-primary">01</p>
             <h3 className="text-xl font-semibold text-text md:text-2xl">Menu & Porsi</h3>
             <p className="text-md text-gray-500 md:text-lg">
@@ -107,14 +107,14 @@ export default function LandingPage() {
               sehari-hari.
             </p>
           </Card>
-          <Card className="px-6 py-8 flex flex-col gap-2 w-fit md:px-8 md:py-10 md:gap-4 md:w-150">
+          <Card className="px-6 py-8 flex flex-col gap-2 w-full md:px-8 md:py-10 md:gap-4 2xl:w-150">
             <p className="text-lg font-semibold text-primary">02</p>
             <h3 className="text-xl font-semibold text-text md:text-2xl">Pertumbuhan</h3>
             <p className="text-md text-gray-500 md:text-lg">
               Khawatir berat atau tinggi anak tidak berkembang sesuai harapan.
             </p>
           </Card>
-          <Card className="px-6 py-8 flex flex-col gap-2 w-fit md:px-8 md:py-10 md:gap-4 md:w-150">
+          <Card className="px-6 py-8 flex flex-col gap-2 w-full md:px-8 md:py-10 md:gap-4 2xl:w-150">
             <p className="text-lg font-semibold text-primary">03</p>
             <h3 className="text-xl font-semibold text-text md:text-2xl">Informasi Gizi</h3>
             <p className="text-md text-gray-500 md:text-lg">
@@ -122,7 +122,7 @@ export default function LandingPage() {
               dibandingkan.
             </p>
           </Card>
-          <Card className="px-6 py-8 flex flex-col gap-2 w-fit md:px-8 md:py-10 md:gap-4 md:w-150">
+          <Card className="px-6 py-8 flex flex-col gap-2 w-full md:px-8 md:py-10 md:gap-4 2xl:w-150">
             <p className="text-lg font-semibold text-primary">04</p>
             <h3 className="text-xl font-semibold text-text md:text-2xl">
               Aksi Sehari-hari
@@ -137,13 +137,13 @@ export default function LandingPage() {
 
       <section
         id="value"
-        className="h-auto bg-soft px-10 py-20 flex flex-col gap-10 scroll-mt-26 md:px-40"
+        className="h-auto bg-soft px-10 py-20 flex flex-col gap-10 scroll-mt-26 2xl:px-40"
       >
         <div className="flex flex-col gap-6">
           <p className="text-xl font-bold text-primary uppercase">
             Value Proposition
           </p>
-          <h1 className="text-3xl font-semibold text-text md:text-6xl">
+          <h1 className="text-3xl font-semibold text-text lg:text-4xl 2xl:text-6xl">
             Dari Informasi Menjadi Tindakan
           </h1>
           <p className="text-lg font-medium text-gray-500 md:text-xl">
@@ -151,32 +151,32 @@ export default function LandingPage() {
             langkah yang mudah diikuti.
           </p>
         </div>
-        <div className="grid grid-cols-1 items-center gap-4 md:flex md:items-stretch">
-          <Card className="p-8 flex flex-col gap-2 w-auto h-auto md:gap-4 md:px-12 md:py-10 md:w-150 md:h-70">
+        <div className="flex flex-col items-center gap-4 lg:flex lg:flex-row lg:items-stretch">
+          <Card className="p-8 flex flex-col gap-2 w-full md:gap-4 md:px-12 md:py-10 h-fit">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               P
             </p>
-            <h3 className="px-1 text-xl font-semibold text-text md:text-2xl">Plan</h3>
-            <p className="text-md text-gray-500 md:text-xl">
+            <h3 className="px-1 font-semibold text-text text-2xl">Plan</h3>
+            <p className=" text-gray-500 md:text-lg">
               Rencanakan kebutuhan nutrisi dan menu yang lebih terarah.
             </p>
           </Card>
-          <Card className="p-8 flex flex-col gap-2 w-auto h-auto md:gap-4 md:px-12 md:py-10 md:w-150 md:h-70">
+          <Card className="p-8 flex flex-col gap-2 w-full md:gap-4 md:px-12 md:py-10 h-fit">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               T
             </p>
-            <h3 className="px-1 text-xl font-semibold text-text md:text-2xl">Track</h3>
-            <p className="text-md text-gray-500 md:text-xl">
+            <h3 className="px-1 font-semibold text-text text-2xl">Track</h3>
+            <p className="text-gray-500 text-lg">
               Catat makanan dan pertumbuhan untuk melihat perubahan dari waktu
               ke waktu.
             </p>
           </Card>
-          <Card className="p-8 flex flex-col gap-2 w-auto h-auto md:gap-4 md:px-12 md:py-10 md:w-150 md:h-70">
+          <Card className="p-8 flex flex-col gap-2 w-full md:gap-4 md:px-12 md:py-10 h-fit">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               U
             </p>
-            <h3 className="px-1 text-xl font-semibold text-text md:text-2xl">Understand</h3>
-            <p className="text-md text-gray-500 md:text-xl">
+            <h3 className="px-1 font-semibold text-text text-2xl">Understand</h3>
+            <p className="text-gray-500 text-lg">
               Pahami ringkasan dan analisis yang relevan dengan konteks anak.
             </p>
           </Card>
@@ -185,21 +185,21 @@ export default function LandingPage() {
 
       <section
         id="fitur"
-        className="h-auto bg-surface px-10 py-20 flex flex-col gap-10 scroll-mt-26 md:px-40 md:py-30"
+        className="h-auto bg-surface px-10 py-20 flex flex-col gap-10 scroll-mt-26 2xl:px-40 2xl:py-30"
       >
         <div className="flex flex-col gap-6">
           <p className="text-xl font-bold text-primary uppercase">
             CORE EXPERIENCES
           </p>
-          <h1 className="text-3xl font-semibold text-text md:text-6xl">
+          <h1 className="text-3xl font-semibold text-text lg:text-4xl 2xl:text-6xl">
             Tiga pengalaman utama dalam satu pendamping
           </h1>
-          <p className="text-lg font-medium text-gray-500 md:text-xl">
+          <p className="text-lg font-medium text-gray-500 lg:text-xl">
             Fokus pada hal yang paling sering dibutuhkan orang tua:
             merencanakan, memantau, dan memahami.
           </p>
         </div>
-        <div className="grid grid-cols-1 items-strech gap-4 md:flex md:items-stretch">
+        <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-stretch">
           <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-fit h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft md:w-150">
             <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
               <Soup size={20} strokeWidth={2} className="text-primary group-hover:text-surface transition-all duration-300" />
@@ -287,11 +287,11 @@ export default function LandingPage() {
       </section>
 
       <section 
-      className="h-auto bg-background px-10 py-20 flex flex-col gap-10 scroll-mt-24 md:px-40 md:py-30" 
+      className="h-auto bg-background px-10 py-20 flex flex-col gap-10 scroll-mt-24 2xl:px-40 2xl:py-30" 
       id="cara-kerja">
         <div className="flex flex-col gap-4 mb-6 md:mb-10">
           <p className="text-xl font-bold text-primary uppercase">CARA KERJA</p>
-          <h1 className="text-3xl font-semibold text-text md:text-6xl">
+          <h1 className="text-3xl font-semibold text-text lg:text-4xl 2xl:text-6xl">
             Mulai dengan sederhana, lanjutkan sesuai kebutuhan
           </h1>
           <p className="text-lg font-medium text-gray-500 md:text-xl">

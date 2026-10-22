@@ -167,7 +167,7 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-2 md:grid-cols-4 md:gap-4">
+            <div className="grid grid-cols-1 gap-2 lg:grid-cols-4 lg:gap-4">
               {infoItems.map(({ label, value }) => (
                 <Card key={label} variant="silver" className="px-8">
                   <h4 className="text-lg font-bold text-gray-500">{label}</h4>
@@ -367,7 +367,7 @@ export default function ProfilePage() {
           </Card>
         </div>
 
-        <div className="flex flex-col gap-4 border-t-2 border-t-gray-500 pt-6 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-4 border-t-2 border-t-gray-500 pt-6 md:flex-row md:mb-15 xl:mb-0 md:items-center md:justify-between">
           <div className="flex flex-col gap-2">
             <h4 className="text-xl font-semibold text-text">
               Keluar dari Akun Nutriva

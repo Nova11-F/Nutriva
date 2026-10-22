@@ -2,7 +2,7 @@ import Logo from "../../assets/images/logo.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200 pt-16 pb-12 px-6 md:px-12">
+    <footer className="bg-white border-t border-gray-200 pt-16 pb-12 px-2 2xl:px-12">
       <div className="mx-8 grid grid-cols-1 md:grid-cols-5 gap-8 pb-8 border-b border-gray-200 md:gap-12 md:mx-20 md:pb-16">
         <div className="md:col-span-2 space-y-2 md:space-y-4">
           <div className="flex items-center gap-2">

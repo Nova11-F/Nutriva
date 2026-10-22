@@ -197,10 +197,20 @@ function OnboardingWizard({ editing, parentOnly = false }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-
   const saveAll = async () => {
     setSaving(true);
     try {
+      if (parentOnly) {
+        await updateProfile({
+          phone: values.phone.replace(/[\s-]/g, ""),
+          city: values.city.trim(),
+          role: values.role,
+        });
+        showToast("Profil orang tua diperbarui", "success");
+        navigate(backTo);
+        return;
+      }
+
       const data = buildChildData(values);
 
       if (isEdit) {
@@ -251,7 +261,6 @@ function OnboardingWizard({ editing, parentOnly = false }) {
     if (isLast) saveAll();
     else goTo(step + 1);
   };
-
 
   return (
     <div className="flex flex-col gap-6">
