@@ -8,7 +8,7 @@ import {
   Check,
   ShieldAlert,
   Sparkles,
-  Clock,
+  Bookmark,
   Users,
   ChevronRight,
 } from "lucide-react";
@@ -176,9 +176,24 @@ export default function NutritionContent({ child }) {
               pemantauan alergi makanan setiap hari.
             </p>
           </div>
-          <Button className="flex w-full items-center justify-center gap-2 md:w-fit">
-            <Plus size={16} /> Catat Asupan Makanan
-          </Button>
+<div className="flex w-full flex-col gap-2 md:w-fit md:flex-row">
+  <Button
+    variant="outline"
+    onClick={() => navigate("/nutrition/saved")}
+    className="flex items-center justify-center gap-2"
+  >
+    <Bookmark size={16} />
+    Menu Tersimpan
+    {/* {count > 0 && ( */}
+      <span className="rounded-full bg-primary px-2 py-0.5 text-[11px] font-bold text-surface">
+        {/* {count} */}
+      </span>
+    {/* )} */}
+  </Button>
+  <Button className="flex items-center justify-center gap-2">
+    <Plus size={16} /> Catat Asupan Makanan
+  </Button>
+</div>
         </div>
 
         <section className="flex flex-col gap-3">
