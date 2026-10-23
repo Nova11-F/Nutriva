@@ -11,6 +11,7 @@ import RegisterPage from "../pages/auth/RegisterPage";
 import ChildProfilePage from "../pages/onboarding/ChildProfilePage";
 import HomePage from "../pages/home/HomePage";
 import NutritionPage from "../pages/nutrition/NutritionPage";
+import RecipeListPage from "../pages/nutrition/RecipeListPage";
 import RecipeDetailPage from "../pages/nutrition/RecipeDetailPage";
 import GrowthPage from "../pages/growth/GrowthPage";
 import AssistantPage from "../pages/assistant/AssistantPage";
@@ -38,6 +39,7 @@ export default function AppRoutes() {
       <Route element={<MainLayout />}>
         <Route path="/home" element={<HomePage />} />
         <Route path="/nutrition" element={<NutritionPage />} />
+        <Route path="/nutrition/:recipes" element={<RecipeListPage />} />
         <Route path="/nutrition/:recipeId" element={<RecipeDetailPage />} />
         <Route path="/growth" element={<GrowthPage />} />
         <Route path="/assistant" element={<AssistantPage />} />
