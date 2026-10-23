@@ -1,5 +1,5 @@
 import Header from "../../../components/navigation/Header";
-import Greeting from "../../../components/ui/Greeting";
+import { useNavigate } from "react-router-dom";
 import Card from "../../../components/ui/Card";
 import Button from "../../../components/ui/Button";
 import { ChartLine, Plus, Info, ShieldAlert, Sparkles, Check } from "lucide-react";
@@ -31,13 +31,13 @@ const meals = [
 ];
 
 export default function HomeDashboard({ child }) {
+  const navigate = useNavigate();
   const name = child?.name ?? "Aisha";
 
   return (
     <>
       <Header />
       <div className="flex flex-col gap-4 px-4 pb-6 md:px-6">
-      <Greeting />
         <div className="flex gap-2 overflow-x-auto pb-1">
           {tabs.map((t) => (
             <button
@@ -181,7 +181,9 @@ export default function HomeDashboard({ child }) {
               </p>
             </div>
           </div>
-          <Button className="flex w-full items-center justify-center gap-2 md:w-fit">
+          <Button 
+          onClick={() => navigate("/assistant")}
+          className="flex w-full items-center justify-center gap-2 md:w-fit">
             <Sparkles size={16} /> Tanya Asisten AI
           </Button>
         </Card>
