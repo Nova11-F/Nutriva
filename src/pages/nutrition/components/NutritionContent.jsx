@@ -40,41 +40,6 @@ const profiles = [
   },
 ];
 
-const achievements = [
-  {
-    label: "Total Energi Harian",
-    value: "875",
-    target: "/ 1.100 kkal",
-    percent: 79,
-    status: "79% Tercapai",
-    note: "Sisa 225 kkal",
-  },
-  {
-    label: "Protein Harian (Hewani)",
-    value: "24",
-    target: "/ 26 gram",
-    percent: 92,
-    status: "92% Optimal",
-    note: "Hampir Terpenuhi",
-  },
-  {
-    label: "Zat Besi (Fe) - Anti Stunting",
-    value: "7.2",
-    target: "/ 9 mg/hari",
-    percent: 80,
-    status: "80% Tercapai",
-    note: "Perlu 1 sumber lagi",
-  },
-  {
-    label: "Lemak Sehat & Kalsium",
-    value: "420",
-    target: "/ 500 mg",
-    percent: 84,
-    status: "84% Aman",
-    note: "Cukup dari susu & keju",
-  },
-];
-
 const schedule = [
   {
     time: "07:00 WIB",
@@ -176,24 +141,22 @@ export default function NutritionContent({ child }) {
               pemantauan alergi makanan setiap hari.
             </p>
           </div>
-<div className="flex w-full flex-col gap-2 md:w-fit md:flex-row">
-  <Button
-    variant="outline"
-    onClick={() => navigate("/nutrition/saved")}
-    className="flex items-center justify-center gap-2"
-  >
-    <Bookmark size={16} />
-    Menu Tersimpan
-    {/* {count > 0 && ( */}
-      <span className="rounded-full bg-primary px-2 py-0.5 text-[11px] font-bold text-surface">
-        {/* {count} */}
-      </span>
-    {/* )} */}
-  </Button>
-  <Button className="flex items-center justify-center gap-2">
-    <Plus size={16} /> Catat Asupan Makanan
-  </Button>
-</div>
+          <div className="flex w-full flex-col gap-2 md:w-fit md:flex-row">
+            <Button
+              variant="outline"
+              onClick={() => navigate("/nutrition/saved")}
+              className="flex items-center justify-center gap-2"
+            >
+              <Bookmark className="size-4 md:size-6" />
+              Menu Tersimpan
+              <span className="rounded-full bg-primary px-2 py-0.5 text-[11px] font-bold text-surface">
+                12
+              </span>
+            </Button>
+            <Button className="flex items-center justify-center gap-2" onClick={() => navigate("/nutrition/MealPlan")}>
+              <Plus className="size-4 md:size-6" /> Buat Jadwal Makan
+            </Button>
+          </div>
         </div>
 
         <section className="flex flex-col gap-3">
@@ -288,43 +251,6 @@ export default function NutritionContent({ child }) {
           </div>
         </section>
 
-        <section className="flex flex-col gap-3">
-          <div className="flex items-center justify-between">
-            <h2 className="font-bold text-text">
-              Pencapaian Nutrisi Harian · {name}
-            </h2>
-            <span className="hidden items-center gap-1 text-xs text-primary md:flex">
-              <span className="size-1.5 rounded-full bg-primary" /> Bahan Baku
-              Terpantau
-            </span>
-          </div>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            {achievements.map((a) => (
-              <Card key={a.label} className="flex flex-col gap-2">
-                <p className="text-[11px] font-semibold uppercase text-gray-500">
-                  {a.label}
-                </p>
-                <p className="text-xl font-bold text-text">
-                  {a.value}{" "}
-                  <span className="text-xs font-medium text-gray-500">
-                    {a.target}
-                  </span>
-                </p>
-                <div className="h-1.5 overflow-hidden rounded-full bg-gray-200">
-                  <div
-                    className="h-full rounded-full bg-primary"
-                    style={{ width: `${a.percent}%` }}
-                  />
-                </div>
-                <div className="flex justify-between text-[11px]">
-                  <span className="font-semibold text-primary">{a.status}</span>
-                  <span className="text-gray-400">{a.note}</span>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
-
         <Card className="flex flex-col gap-4">
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
@@ -390,9 +316,8 @@ export default function NutritionContent({ child }) {
           </ol>
         </Card>
 
-        {/* Inspirasi menu */}
         <section className="flex flex-col gap-3">
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <div className="flex gap-2 md:flex-row md:items-center justify-between">
             <div>
               <h2 className="text-lg font-bold text-text">
                 Inspirasi Menu Nutrisi Sesuai Usia
@@ -461,8 +386,10 @@ export default function NutritionContent({ child }) {
           </div>
         </section>
 
-        <Card className="flex flex-col gap-4 border-primary bg-primary text-surface md:flex-row md:items-center md:justify-between"
-        variant="primary">
+        <Card
+          className="flex flex-col gap-4 border-primary bg-primary text-surface md:flex-row md:items-center md:justify-between"
+          variant="primary"
+        >
           <div className="flex items-start gap-3">
             <ShieldAlert className="shrink-0" />
             <div>

@@ -25,7 +25,7 @@ export default function StepIndicator({ steps, current }) {
         Tahap {current + 1}: {steps[current].title}
       </p>
 
-      <ol className="hidden gap-3 md:grid" style={{ gridTemplateColumns: `repeat(${total}, minmax(0, 1fr))` }}>
+      <ol className="gap-3 grid" style={{ gridTemplateColumns: `repeat(${total}, minmax(0, 1fr))` }}>
         {steps.map((s, i) => {
           const done = i < current;
           const active = i === current;
