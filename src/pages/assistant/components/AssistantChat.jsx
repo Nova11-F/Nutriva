@@ -96,7 +96,7 @@ export default function AssistantChat({ child }) {
         </div>
 
         <ChatInput value={draft} onChange={setDraft} onSend={handleSend}
-                   disabled={sending} suggestions={suggestedQuestions} />
+        disabled={sending} suggestions={suggestedQuestions} />
       </div>
     </>
   );
