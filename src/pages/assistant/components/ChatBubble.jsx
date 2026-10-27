@@ -15,7 +15,7 @@ export default function ChatBubble({ role, text, createdAt }) {
       )}
       <div className={`flex max-w-[85%] flex-col gap-1 md:max-w-[70%] ${isUser ? "items-end" : "items-start"}`}>
         <div
-          className={`whitespace-pre-wrap break-words rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+          className={`whitespace-pre-wrap break-words rounded-2xl px-4 py-2.5 text-sm leading-relaxed md:text-lg ${
             isUser
               ? "rounded-br-sm bg-primary text-surface"
               : "rounded-bl-sm border border-gray-200 bg-surface text-text"
