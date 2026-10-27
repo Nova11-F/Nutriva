@@ -78,7 +78,6 @@ const meals = [
 export default function HomeDashboard({ child }) {
   const navigate = useNavigate();
   const name = child?.name ?? "Aisha";
-
   return (
     <>
       <Header />
