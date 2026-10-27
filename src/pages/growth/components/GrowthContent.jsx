@@ -376,10 +376,10 @@ export default function GrowthContent() {
             <table className="w-full text-left text-sm">
               <thead>
                 <tr className="border-b border-gray-200 text-xs uppercase text-gray-500">
-                  <th className="py-2 pr-4 font-semibold">Tanggal</th>
-                  <th className="py-2 pr-4 font-semibold">Berat (kg)</th>
-                  <th className="py-2 pr-4 font-semibold">PB/TB (cm)</th>
-                  <th className="py-2 pr-4 font-semibold">
+                  <th className="py-2 pr-4 text-center font-semibold">Tanggal</th>
+                  <th className="py-2 pr-4 text-center font-semibold">Berat (kg)</th>
+                  <th className="py-2 pr-4 text-center font-semibold">PB/TB (cm)</th>
+                  <th className="py-2 pr-4 text-center font-semibold">
                     Lingkar Kepala (cm)
                   </th>
                   <th className="py-2 pr-4 font-semibold">Keterangan</th>
@@ -397,9 +397,9 @@ export default function GrowthContent() {
                     <td className="py-3 pr-4 font-medium text-text">
                       {formatDate(r.date)}
                     </td>
-                    <td className="py-3 pr-4 ">{r.weight}</td>
-                    <td className="py-3 pr-4">{r.height}</td>
-                    <td className="py-3 pr-4">{r.head}</td>
+                    <td className="py-3 pr-4 text-center">{r.weight}</td>
+                    <td className="py-3 pr-4 text-center">{r.height}</td>
+                    <td className="py-3 pr-4 text-center">{r.head}</td>
                     <td className="py-3 pr-4 text-gray-500">{r.note || "-"}</td>
                     <td className="py-3">
                       <div className="flex justify-center gap-2">

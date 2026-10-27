@@ -142,7 +142,7 @@ export default function NutritionContent({ child }) {
           <div className="flex w-full flex-col gap-2 md:w-fit md:flex-row">
             <Button
               variant="outline"
-              onClick={() => navigate("/nutrition/saved")}
+              onClick={() => navigate("/nutrition/recipes")}
               className="flex items-center justify-center gap-2"
             >
               <Bookmark className="size-4 md:size-6" />
@@ -377,12 +377,13 @@ export default function NutritionContent({ child }) {
                     <span className="text-sm font-semibold text-gray-800">
                       {m.kcal} • {m.protein}
                     </span>
-                    <button
-                      onClick={() => navigate(`/nutrition/${m.id}`)}
+                    <Button
+                      variant="noborder"
+                      onClick={() => navigate(`/nutrition/recipeId`)}
                       className="flex cursor-pointer items-center gap-1 text-sm font-semibold text-secondary hover:text-primary hover:underline"
                     >
                       Lihat Resep <span aria-hidden="true">&rarr;</span>
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </Card>
