@@ -155,7 +155,7 @@ export default function GrowthContent() {
       <div className="flex flex-col gap-5 px-4 pb-6 md:px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-text">
+            <h2 className="text-2xl font-bold text-text md:text-3xl">
               Pemantauan Pertumbuhan
             </h2>
             <p className="text-sm text-gray-500">
@@ -168,7 +168,7 @@ export default function GrowthContent() {
             }
             className="flex w-full items-center justify-center gap-2 md:w-fit"
           >
-            <Plus size={16} /> Catat Pengukuran
+            <Plus className="size-4 md:size-6" strokeWidth={3} /> Catat Pengukuran
           </Button>
         </div>
 
@@ -286,7 +286,7 @@ export default function GrowthContent() {
                   key={t.key}
                   onClick={() => setTab(t.key)}
                   aria-pressed={tab === t.key}
-                  className={`rounded-md px-3 py-1.5 transition ${
+                  className={`rounded-md px-3 py-1.5 transition cursor-pointer ${
                     tab === t.key
                       ? "bg-surface text-text shadow-sm"
                       : "text-gray-500"
@@ -412,14 +412,14 @@ export default function GrowthContent() {
                             })
                           }
                         >
-                          <Pencil size={16} />
+                          <Pencil className="size-4 md:size-5" strokeWidth={3} />
                         </Button>
                         <Button
                           aria-label="Hapus"
                           className="text-gray-400"
                           variant="danger"
                         >
-                          <Trash2 size={16} />
+                          <Trash2 className="size-4 md:size-5" strokeWidth={3}/>
                         </Button>
                       </div>
                     </td>

@@ -32,7 +32,7 @@ export default function LandingPage() {
                 Mulai Sekarang
               </Button>
               <Button variant="outline" size="xl" className="w-full md:w-fit">
-                <a href="#pelajari">Pelajari Nutriva</a>
+                <a href="#value">Pelajari Nutriva</a>
               </Button>
             </div>
             <div className="flex items-center gap-6 px-4 pt-2 text-xs font-medium text-slate-500 uppercase tracking-wider">
@@ -152,7 +152,7 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="flex flex-col items-center gap-4 lg:flex lg:flex-row lg:items-stretch">
-          <Card className="p-8 flex flex-col gap-2 w-full md:gap-4 md:px-12 md:py-10 h-fit">
+          <Card className="p-8 flex flex-col gap-2 w-full md:gap-4 md:px-12 md:py-10">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               P
             </p>
@@ -161,7 +161,7 @@ export default function LandingPage() {
               Rencanakan kebutuhan nutrisi dan menu yang lebih terarah.
             </p>
           </Card>
-          <Card className="p-8 flex flex-col gap-2 w-full md:gap-4 md:px-12 md:py-10 h-fit">
+          <Card className="p-8 flex flex-col gap-2 w-full md:gap-4 md:px-12 md:py-10">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               T
             </p>
@@ -171,7 +171,7 @@ export default function LandingPage() {
               ke waktu.
             </p>
           </Card>
-          <Card className="p-8 flex flex-col gap-2 w-full md:gap-4 md:px-12 md:py-10 h-fit">
+          <Card className="p-8 flex flex-col gap-2 w-full md:gap-4 md:px-12 md:py-10">
             <p className="text-xl font-bold text-primary bg-soft px-6 py-4 rounded-xl w-fit">
               U
             </p>
@@ -199,8 +199,8 @@ export default function LandingPage() {
             merencanakan, memantau, dan memahami.
           </p>
         </div>
-        <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-stretch">
-          <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-fit h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft md:w-150">
+        <div className="flex flex-col items-stretch gap-4 lg:flex-row lg:justify-between">
+          <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-full h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft">
             <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
               <Soup size={20} strokeWidth={2} className="text-primary group-hover:text-surface transition-all duration-300" />
             </div>
@@ -227,7 +227,7 @@ export default function LandingPage() {
               Pelajari manfaat
             </p>
           </div>
-          <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-fit h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft md:w-150">
+          <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-full h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft">
             <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
               <ChartLine size={20} strokeWidth={2} className="text-primary group-hover:text-surface transition-all duration-300" />
             </div>
@@ -256,7 +256,7 @@ export default function LandingPage() {
               Pelajari manfaat
             </p>
           </div>
-          <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-fit h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft md:w-150">
+          <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-full h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft ">
             <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
               <Sparkle size={20} strokeWidth={2} className="text-primary group-hover:text-surface transition-all duration-300" />
             </div>
@@ -299,8 +299,8 @@ export default function LandingPage() {
             personal.
           </p>
         </div>
-        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-4">
-          <div className="max-sm:flex max-sm:flex-col max-sm:items-center max-sm:gap-2">
+        <div className="grid grid-cols-1 items-stretch gap-10 md:grid-cols-4">
+          <div className="flex flex-col items-center gap-2">
             <p className="flex items-center justify-center text-2xl font-semibold text-surface w-20 h-20 rounded-full bg-primary md:mb-6">
               1
             </p>
@@ -311,7 +311,7 @@ export default function LandingPage() {
               Isi informasi dasar agar pengalaman lebih relevan.
             </p>
           </div>
-          <div className="max-sm:flex max-sm:flex-col max-sm:items-center max-sm:gap-2">
+          <div className="flex flex-col items-center gap-2">
             <p className="flex items-center justify-center text-2xl font-semibold text-surface w-20 h-20 rounded-full bg-primary md:mb-6">
               2
             </p>
@@ -322,25 +322,25 @@ export default function LandingPage() {
               Susun menu dan catat asupan sesuai kebutuhan harian.
             </p>
           </div>
-          <div className="max-sm:flex max-sm:flex-col max-sm:items-center max-sm:gap-2">
+          <div className="flex flex-col items-center gap-2">
             <p className="flex items-center justify-center text-2xl font-semibold text-surface w-20 h-20 rounded-full bg-primary md:mb-6">
               3
             </p>
             <h3 className="text-2xl font-semibold text-text md:mb-2">
               Pantau Pertumbuhan
             </h3>
-            <p className="text-md text-gray-500 md:text-lg md:w-auto">
+            <p className="text-md text-gray-500 md:text-lg md:w-auto text-center">
               Tambahkan pengukuran dan lihat pola dari waktu ke waktu.
             </p>
           </div>
-          <div className="max-sm:flex max-sm:flex-col max-sm:items-center max-sm:gap-2">
+          <div className="flex flex-col items-center gap-2">
             <p className="flex items-center justify-center text-2xl font-semibold text-surface w-20 h-20 rounded-full bg-primary md:mb-6">
               4
             </p>
             <h3 className="text-2xl font-semibold text-text md:mb-2">
               Dapatkan Analisis
             </h3>
-            <p className="text-md text-gray-500 md:text-lg md:w-auto">
+            <p className="text-md text-gray-500 md:text-lg md:w-auto text-center">
               Gunakan ringkasan dan Asisten AI sebagai panduan edukatif.
             </p>
           </div>
@@ -349,7 +349,7 @@ export default function LandingPage() {
 
       <section id="tentang" className="h-auto bg-soft px-10 py-20 scroll-mt-24 md:px-40 ">
         <Card className="flex items-center p-8 gap-8 justify-around shadow-md md:px-12 md:py-10 md:gap-10 max-sm:flex-col">
-          <div className="flex flex-col gap-4 w-fit md:mb-10">
+          <div className="flex flex-col gap-4  md:mb-10">
             <p className="text-lg font-bold text-primary uppercase">
               TRUST & SAFETY
             </p>
@@ -369,7 +369,7 @@ export default function LandingPage() {
             <p className="flex items-center gap-4 text-text font-semibold"><span className="bg-soft rounded-full w-auto h-auto p-2"> <Check size={20} className="text-primary"/></span>Pendekatan non-diagnostik</p>
             </div>
           </div>
-          <div className="bg-background border border-gray-300 rounded-xl w-auto h-auto flex flex-col items-center justify-center px-4 py-10 gap-8">
+          <div className="bg-background border border-gray-300 rounded-xl flex flex-col items-center justify-center px-4 py-10 gap-8">
             <ShieldCheck
               strokeWidth={1}
               className="size-20 text-primary fill-soft md:size-35"

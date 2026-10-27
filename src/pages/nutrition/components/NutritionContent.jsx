@@ -1,4 +1,5 @@
 import Header from "../../../components/navigation/Header";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../../../components/ui/Card";
 import Button from "../../../components/ui/Button";
@@ -123,6 +124,7 @@ const inspirations = [
 export default function NutritionContent({ child }) {
   const navigate = useNavigate();
   const name = child?.name ?? "Rayyan";
+  const [childId, setChildId] = useState(1);
   return (
     <>
       <Header variant="nutrisi" />
@@ -149,7 +151,10 @@ export default function NutritionContent({ child }) {
                 12
               </span>
             </Button>
-            <Button className="flex items-center justify-center gap-2" onClick={() => navigate("/nutrition/MealPlan")}>
+            <Button
+              className="flex items-center justify-center gap-2"
+              onClick={() => navigate("/nutrition/MealPlan")}
+            >
               <Plus className="size-4 md:size-6" /> Buat Jadwal Makan
             </Button>
           </div>
@@ -176,44 +181,59 @@ export default function NutritionContent({ child }) {
           </div>
 
           <div className="grid gap-3 md:grid-cols-3">
-            {profiles.map((p) => (
-              <Card
-                key={p.id}
-                variant={p.active ? "success" : "default"}
-                className="flex flex-col gap-3 cursor-pointer"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex size-10 items-center justify-center rounded-lg bg-soft text-sm font-bold text-primary">
-                    {p.initial}
+            {profiles.map((p) => {
+              const active = p.id === childId;
+              return (
+                <Card
+                  key={p.id}
+                  variant={active ? "success" : "default"}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={active}
+                  onClick={() => setChildId(p.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setChildId(p.id);
+                    }
+                  }}
+                  className="flex cursor-pointer justify-center flex-col gap-3 transition hover:border-primary"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex size-10 items-center justify-center rounded-lg bg-soft text-sm font-bold text-primary">
+                      {p.initial}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate font-semibold text-text">
+                        {p.name}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {p.age} · {p.weight}
+                      </p>
+                    </div>
+                    {p.active && (
+                      <span className="rounded bg-primary px-1.5 py-0.5 text-[10px] font-semibold text-surface">
+                        Aktif
+                      </span>
+                    )}
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate font-semibold text-text">{p.name}</p>
-                    <p className="text-xs text-gray-500">
-                      {p.age} · {p.weight}
-                    </p>
-                  </div>
-                  {p.active && (
-                    <span className="rounded bg-primary px-1.5 py-0.5 text-[10px] font-semibold text-surface">
-                      Aktif
+                  <div className="flex flex-wrap gap-2 text-[11px]">
+                    <span
+                      className={`rounded-full px-2 py-0.5 ${
+                        p.allergy.startsWith("Alergi")
+                          ? "bg-yellow-50 text-warning"
+                          : "bg-gray-100 text-gray-600"
+                      }`}
+                    >
+                      {p.allergy}
                     </span>
-                  )}
-                </div>
-                <div className="flex flex-wrap gap-2 text-[11px]">
-                  <span
-                    className={`rounded-full px-2 py-0.5 ${
-                      p.allergy.startsWith("Alergi")
-                        ? "bg-yellow-50 text-warning"
-                        : "bg-gray-100 text-gray-600"
-                    }`}
-                  >
-                    {p.allergy}
-                  </span>
-                  <span className="rounded-full bg-soft px-2 py-0.5 text-primary">
-                    {p.phase}
-                  </span>
-                </div>
-              </Card>
-            ))}
+                    <span className="rounded-full bg-soft px-2 py-0.5 text-primary">
+                      {p.phase}
+                    </span>
+                  </div>
+                </Card>
+              );
+            })}
 
             <Card variant="soft" className="flex flex-col gap-2">
               <div className="flex items-center gap-2 font-semibold text-text">
