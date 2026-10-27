@@ -319,7 +319,7 @@ export default function RecipeListPage() {
 
               <div className="flex flex-wrap items-center gap-3">
                 <button
-                  onClick={() => navigate(`/nutrition/${featured.id}`)}
+                  onClick={() => navigate(`/nutrition/recipeId`)}
                   className="flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
                 >
                   Lihat Detail Resep & Takaran <ArrowRight size={16} />
@@ -402,12 +402,14 @@ export default function RecipeListPage() {
                       <span className="text-sm font-semibold text-gray-800">
                         {m.kcal} • {m.protein}
                       </span>
-                      <button
-                        onClick={() => navigate(`/nutrition/${m.id}`)}
+                      <Button
+                      variant="noborder"
+                      size="sm"
+                        onClick={() => navigate(`/nutrition/recipeId`)}
                         className="flex cursor-pointer items-center gap-1 text-sm font-semibold text-secondary hover:text-primary hover:underline"
                       >
                         Lihat Resep <span aria-hidden="true">&rarr;</span>
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Card>
