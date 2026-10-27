@@ -129,10 +129,6 @@ export default function NutritionContent({ child }) {
       <div className="flex flex-col gap-5 px-4 pb-6 md:px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
           <div>
-            <span className="inline-flex items-center gap-1 rounded-full bg-soft px-3 py-1 text-[11px] font-semibold text-primary">
-              <span className="size-1.5 rounded-full bg-primary" /> Rekomendasi
-              Terpadu · Sinkron Alergi
-            </span>
             <h1 className="mt-2 text-2xl font-bold text-text md:text-3xl">
               Nutrisi & Gizi Anak
             </h1>
@@ -201,18 +197,6 @@ export default function NutritionContent({ child }) {
                       Aktif
                     </span>
                   )}
-                </div>
-                <div>
-                  <div className="flex justify-between text-xs text-gray-500">
-                    <span>Asupan Hari Ini</span>
-                    <span>{p.intake}</span>
-                  </div>
-                  <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-gray-200">
-                    <div
-                      className="h-full rounded-full bg-primary"
-                      style={{ width: `${p.percent}%` }}
-                    />
-                  </div>
                 </div>
                 <div className="flex flex-wrap gap-2 text-[11px]">
                   <span
