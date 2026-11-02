@@ -1,8 +1,9 @@
-import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { childService } from "../services/childService";
+import { ChildContext } from "./ChildContextInstance";
 
-export const ChildContext = createContext(null);
+export { ChildContext };
 
 const ACTIVE_KEY = "nutriva_active_child";
 const EMPTY = []; 
