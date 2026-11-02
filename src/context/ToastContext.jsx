@@ -1,7 +1,8 @@
-import { createContext, useCallback, useState } from "react";
-import { ToastContainer } from "../components/ui/Toast";
+import { useCallback, useMemo, useState } from "react";
+import Toast from "../components/ui/Toast";
+import { ToastContext } from "./ToastContextInstance";
 
-export const ToastContext = createContext(null);
+export { ToastContext };
 
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
@@ -12,21 +13,33 @@ export function ToastProvider({ children }) {
 
   const showToast = useCallback(
     (message, type = "info", duration = 3000) => {
-      const id = Date.now() + Math.random(); // id unik
+      const id = Date.now() + Math.random();
       setToasts((prev) => [...prev, { id, message, type }]);
 
-      if (type !== "loading") {
+      if (type !== "loading" && duration > 0) {
         setTimeout(() => hideToast(id), duration);
       }
-      return id; 
+
+      return id;
     },
     [hideToast]
   );
 
+  const value = useMemo(() => ({ showToast, hideToast }), [showToast, hideToast]);
+
   return (
-    <ToastContext.Provider value={{ showToast, hideToast }}>
+    <ToastContext.Provider value={value}>
       {children}
-      <ToastContainer toasts={toasts} onClose={hideToast} />
+      <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+        {toasts.map((toast) => (
+          <Toast
+            key={toast.id}
+            message={toast.message}
+            type={toast.type}
+            onClose={() => hideToast(toast.id)}
+          />
+        ))}
+      </div>
     </ToastContext.Provider>
   );
 }

@@ -1,0 +1,717 @@
+Dokumentasi Arsitektur & Skema Database: Nutriva (Database.md)
+Nama Proyek: Nutriva   
+PNG
+Tim Pengembang: Tim GarudaCode   
+JPG
+Database Engine: Supabase PostgreSQL + pgvector   
+PNG
+Layanan Autentikasi: Supabase Auth   
+PNG
+1. Ikhtisar Arsitektur Database
+Arsitektur basis data Nutriva dirancang menggunakan Supabase PostgreSQL untuk menggantikan penyimpanan lokal sementara (src/services/fakeDb.js dan src/data/) pada repositori frontend. Skema ini mendukung empat kapabilitas utama aplikasi:   
+PNG
+Autentikasi & Manajemen Profil Anak (MVP Utama): Mengelola sesi pengguna melalui Supabase Auth dan menyimpan data antropometri serta preferensi dasar anak sejak tahap onboarding.   
+PNG
++ 2
+Perencanaan Makan & Pencatatan Nutrisi (Flow 1): Menyimpan katalog resep tervalidasi untuk fitur Rule-Based Recommendation berdasarkan ketersediaan bahan, budget, dan pantangan, serta katalog makanan dengan satuan saji rumah tangga (serving) untuk kalkulasi gizi harian otomatis.   
+PNG
++ 2
+Pemantauan Pertumbuhan & Deteksi Dini (Flow 2): Mencatat deret waktu (time-series) berat dan tinggi badan anak guna menyuplai grafik Chart.js / Recharts serta menyimpan status evaluasi pola pertumbuhan non-diagnostik.   
+PNG
++ 2
+Asisten Gizi AI Berbasis RAG (Flow 3): Menggunakan ekstensi pgvector untuk menyimpan embedding dokumen pedoman gizi resmi (WHO, UNICEF, Kemenkes RI) serta menyimpan riwayat percakapan kontekstual dan status validasi keamanan medis.   
+PNG
++ 3
+2. Pemetaan Migrasi Data Frontend (src/data/) ke Tabel Supabase
+Tabel berikut memetakan file mock data dan service yang sudah dibuat oleh tim frontend ke skema tabel produksi di Supabase PostgreSQL:   
+PNG
+File Mock Data Frontend	File Service Frontend	Tabel Target di Supabase PostgreSQL	Keterangan Migrasi
+src/data/users.js	src/services/authService.js	auth.users & public.profiles	
+Kredensial login dikelola Supabase Auth, atribut profil pengguna disimpan di public.profiles. 
+PNG
+
+src/data/children.js	src/services/childService.js	public.children	
+Menyimpan data profil anak (Nama, Tanggal lahir, Jenis kelamin, BB/TB awal, dan preferensi). 
+PNG
++ 1
+
+src/data/growthRecords.js	src/services/growthService.js	public.growth_records	
+Menyimpan riwayat pengukuran BB/TB, tanggal ukur, serta insight pertumbuhan. 
+PNG
++ 1
+
+src/data/recipe.js	src/services/recipeService.js	public.recipes & public.saved_meal_plans	
+Menyimpan master resep untuk Rule-Based Recommendation dan menu yang disimpan pengguna.  
+PNG
++ 1
+
+(Sub-alur Log Food)	src/services/recipeService.js	public.foods, public.food_logs, public.favorite_foods	
+Menyimpan database nutrisi makanan, porsi makan harian, serta fitur recent/favorite food. 
+PNG
++ 2
+
+src/data/chatMessages.js	src/services/assistantService.js	public.chat_messages & public.knowledge_documents	
+Menyimpan riwayat chat AI Assistant dan dokumen vektor pengetahuan gizi (pgvector).  
+PNG
++ 2
+
+3. Entity-Relationship Diagram (ERD)
+Code snippet
+erDiagram
+    PROFILES ||--o{ CHILDREN : "memiliki (1:N)"
+    PROFILES ||--o{ FAVORITE_FOODS : "menyukai"
+    PROFILES ||--o{ CHAT_MESSAGES : "mengirim"
+    
+    CHILDREN ||--o{ GROWTH_RECORDS : "memiliki riwayat ukur"
+    CHILDREN ||--o{ SAVED_MEAL_PLANS : "memiliki rencana makan"
+    CHILDREN ||--o{ FOOD_LOGS : "mencatat asupan"
+    CHILDREN ||--o{ CHAT_MESSAGES : "menjadi konteks AI"
+
+    RECIPES ||--o{ SAVED_MEAL_PLANS : "direferensikan di"
+    FOODS ||--o{ FOOD_LOGS : "dihitung nutrisinya di"
+    FOODS ||--o{ FAVORITE_FOODS : "ditandai favorit"
+
+    PROFILES {
+        uuid id PK "FK ke auth.users"
+        text full_name
+        text user_segment "parent | expecting_mother"
+        text avatar_url
+        boolean ai_context_consent
+        timestamptz created_at
+    }
+
+    CHILDREN {
+        uuid id PK
+        uuid user_id FK
+        text name
+        text nickname
+        date birth_date
+        text gender
+        numeric initial_weight_kg
+        numeric initial_height_cm
+        text_array dietary_preferences
+        text_array avoided_foods
+        text photo_url
+        timestamptz created_at
+    }
+
+    GROWTH_RECORDS {
+        uuid id PK
+        uuid child_id FK
+        date measurement_date
+        numeric age_in_months
+        numeric weight_kg
+        numeric height_cm
+        boolean needs_attention
+        text insight_status
+        text insight_message
+        timestamptz created_at
+    }
+
+    RECIPES {
+        uuid id PK
+        text title
+        text slug
+        text image_url
+        int min_age_months
+        int max_age_months
+        text budget_tier
+        text portion_size
+        text meal_frequency
+        jsonb main_nutrients
+        text_array ingredients
+        text_array allergen_tags
+        jsonb instructions
+        text source_authority
+        text validated_by
+    }
+
+    SAVED_MEAL_PLANS {
+        uuid id PK
+        uuid child_id FK
+        uuid recipe_id FK
+        date planned_date
+        jsonb input_preferences
+        timestamptz created_at
+    }
+
+    FOODS {
+        uuid id PK
+        text name
+        text preparation_type
+        jsonb serving_options
+        numeric calories_per_100g
+        numeric protein_per_100g
+        numeric fat_per_100g
+        numeric carbs_per_100g
+    }
+
+    FOOD_LOGS {
+        uuid id PK
+        uuid child_id FK
+        uuid food_id FK
+        date log_date
+        text serving_label
+        numeric portion_grams
+        jsonb calculated_nutrition
+        timestamptz created_at
+    }
+
+    KNOWLEDGE_DOCUMENTS {
+        uuid id PK
+        text title
+        text content
+        text source_authority
+        text validated_by
+        vector embedding
+    }
+
+    CHAT_MESSAGES {
+        uuid id PK
+        uuid user_id FK
+        uuid child_id FK
+        text sender
+        text message_text
+        boolean requires_medical_referral
+        jsonb trusted_sources
+        jsonb suggested_actions
+        timestamptz created_at
+    }
+4. Kamus Data (Data Dictionary)
+4.1. Tabel public.profiles
+Menyimpan data profil pengguna yang berelasi satu-ke-satu dengan tabel autentikasi bawaan auth.users.   
+PNG
+Nama Kolom	Tipe Data	Constraint	Deskripsi
+id	UUID	PK, FK (auth.users.id)	
+ID unik pengguna dari Supabase Auth.  
+PNG
+
+full_name	TEXT	NOT NULL	
+Nama lengkap orang tua / calon orang tua.  
+JPG
+
+user_segment	TEXT	DEFAULT 'parent'	
+Segmen pengguna: 'parent' (Orang Tua) atau 'expecting_mother' (Calon Ibu).  
+JPG
+
+avatar_url	TEXT	NULLABLE	URL foto profil pengguna dari Supabase Storage (mendukung PhotoUpload.jsx).
+ai_context_consent	BOOLEAN	DEFAULT TRUE	
+Izin pengguna agar data profil anak dapat dimuat oleh AI Assistant (Load User Context).  
+JPG
+
+created_at	TIMESTAMPTZ	DEFAULT NOW()	Waktu pembuatan akun.
+updated_at	TIMESTAMPTZ	DEFAULT NOW()	Waktu pembaruan profil terakhir.
+4.2. Tabel public.children
+Menyimpan profil anak yang diinput pada proses Buat Profil Anak saat onboarding maupun melalui halaman profil.   
+PNG
++ 2
+Nama Kolom	Tipe Data	Constraint	Deskripsi
+id	UUID	PK, DEFAULT uuid_generate_v4()	ID unik profil anak.
+user_id	UUID	FK (public.profiles.id), NOT NULL	
+ID orang tua pemilik profil anak.  
+PNG
+
+name	TEXT	NOT NULL	
+Nama lengkap anak. 
+PNG
+
+nickname	TEXT	NULLABLE	
+Nama panggilan anak. 
+PNG
+
+birth_date	DATE	NOT NULL	
+Tanggal lahir anak (digunakan untuk menghitung usia bulan secara dinamis).  
+PNG
++ 1
+
+gender	TEXT	NOT NULL	
+Jenis kelamin anak ('Laki-laki' atau 'Perempuan'). 
+PNG
++ 1
+
+initial_weight_kg	NUMERIC(5,2)	NOT NULL, CHECK (1.0 <= val <= 50.0)	
+Berat badan awal anak dalam kilogram.  
+PNG
++ 1
+
+initial_height_cm	NUMERIC(5,2)	NOT NULL, CHECK (30.0 <= val <= 160.0)	
+Tinggi/panjang badan awal anak dalam sentimeter.  
+PNG
++ 1
+
+dietary_preferences	TEXT[]	DEFAULT '{}'	
+Preferensi makanan dasar anak (diinput saat onboarding / ChipSelect.jsx). 
+PNG
++ 1
+
+avoided_foods	TEXT[]	DEFAULT '{}'	
+Daftar alergi atau makanan yang dihindari (TagInput.jsx). 
+PNG
+
+photo_url	TEXT	NULLABLE	URL foto profil anak pada Supabase Storage.
+created_at	TIMESTAMPTZ	DEFAULT NOW()	Waktu pembuatan profil anak.
+4.3. Tabel public.growth_records
+Menyimpan riwayat pengukuran antropometri untuk fitur Flow 2 — Growth Monitoring & Early Intervention.   
+PNG
+Nama Kolom	Tipe Data	Constraint	Deskripsi
+id	UUID	PK	ID unik catatan pengukuran.
+child_id	UUID	FK (public.children.id), NOT NULL	
+Referensi ke profil anak yang diukur.  
+PNG
++ 1
+
+measurement_date	DATE	NOT NULL	
+Tanggal pengukuran berat dan tinggi badan.  
+PNG
+
+age_in_months	NUMERIC(4,1)	NOT NULL	Usia anak dalam bulan pada saat tanggal pengukuran.
+weight_kg	NUMERIC(5,2)	NOT NULL	
+Berat badan anak dalam kg. 
+PNG
+
+height_cm	NUMERIC(5,2)	NOT NULL	
+Tinggi atau panjang badan anak dalam cm.  
+PNG
+
+z_score_waz	NUMERIC(4,2)	NULLABLE	
+Nilai Weight-for-Age Z-Score (BB/U) berdasarkan standar WHO/Kemenkes.  
+JPG
+
+z_score_haz	NUMERIC(4,2)	NULLABLE	
+Nilai Height-for-Age Z-Score (TB/U) untuk deteksi risiko stunting.  
+JPG
+
+needs_attention	BOOLEAN	DEFAULT FALSE	
+Hasil evaluasi Ada pola yang perlu diperhatikan? (TRUE = IF YES, FALSE = IF NO). 
+PNG
+
+insight_status	TEXT	NOT NULL	
+Kategori status: 'normal_routine' atau 'early_awareness'. 
+PNG
+
+insight_message	TEXT	NOT NULL	
+Pesan insight: "Lanjutkan monitoring rutin" atau "Pertimbangkan pemeriksaan ke Posyandu/Puskesmas/Nakes".  
+PNG
+
+4.4. Tabel public.recipes & public.saved_meal_plans
+Menyimpan data resep tervalidasi dan histori rencana makan untuk sub-alur Plan Meal pada Flow 1.   
+PNG
++ 2
+Tabel	Nama Kolom	Tipe Data	Deskripsi
+recipes	id, title, slug, image_url	UUID, TEXT	Identitas utama resep dan gambar menu (misal: bubur-wortel.png, bubur-dagingSapi.png).
+recipes	min_age_months, max_age_months	INT	
+Rentang usia anak yang direkomendasikan sesuai standar IYCF WHO/Kemenkes. 
+PNG
++ 1
+
+recipes	budget_tier	TEXT	
+Kategori anggaran ('ekonomis', 'sedang', 'premium') untuk filter input budget. 
+PNG
++ 1
+
+recipes	portion_size, meal_frequency	TEXT	
+Takaran porsi saji dan frekuensi makan harian yang ditampilkan ke pengguna.  
+PNG
++ 1
+
+recipes	main_nutrients	JSONB	
+Kandungan utama: {"calories": 250, "protein_g": 12, "fat_g": 8, "carbs_g": 30, "iron_mg": 3.5}. 
+PNG
+
+recipes	ingredients, allergen_tags	TEXT[]	
+Array bahan untuk dicocokkan dengan bahan tersedia dan makanan yang dihindari.  
+PNG
+
+recipes	source_authority, validated_by	TEXT	
+Otoritas sumber (Kemenkes RI / WHO) dan validator (Ahli Gizi).  
+JPG
+
+saved_meal_plans	child_id, recipe_id, planned_date	UUID, DATE	
+Menyimpan menu yang disetujui pengguna (Menu sesuai? -> IF YES -> Save Menu). 
+PNG
+
+4.5. Tabel public.foods, public.food_logs, & public.favorite_foods
+Menyimpan master nutrisi bahan/olahan makanan dan catatan asupan harian untuk sub-alur Log Food pada Flow 1.   
+PNG
++ 2
+Tabel	Nama Kolom	Tipe Data	Deskripsi
+foods	name, preparation_type	TEXT	
+Nama makanan dan jenis olahan (kukus, rebus, goreng, segar).  
+PNG
+
+foods	serving_options	JSONB	
+Pilihan porsi rumah tangga agar mudah dipilih: [{"label": "1 mangkuk kecil", "grams": 100}]. 
+PNG
+
+foods	calories_per_100g, protein_per_100g, fat_per_100g, carbs_per_100g	NUMERIC	
+Basis angka kandungan gizi per 100 gram untuk Nutrition Calculation.  
+PNG
++ 1
+
+food_logs	child_id, food_id, log_date	UUID, DATE	
+Relasi pencatatan makan anak per tanggal untuk agregasi Daily Nutrition Summary. 
+PNG
++ 1
+
+food_logs	serving_label, portion_grams, calculated_nutrition	TEXT, NUMERIC, JSONB	
+Porsi yang diinput (Input Portion) dan hasil hitung (Nutrition Result).  
+PNG
+
+favorite_foods	user_id, food_id	UUID	
+Mendukung akses cepat makanan favorit pada pencarian makanan. 
+PNG
+
+4.6. Tabel public.knowledge_documents & public.chat_messages
+Menyimpan basis pengetahuan vektor dan riwayat interaksi untuk Flow 3 — Personalized AI Nutrition Assistant.   
+PNG
++ 2
+Tabel	Nama Kolom	Tipe Data	Deskripsi
+knowledge_documents	title, content, age_group_tag	TEXT	
+Judul dan isi materi edukasi gizi terpercaya beserta tag kelompok usia.  
+PNG
++ 1
+
+knowledge_documents	source_authority, validated_by	TEXT	
+Sumber dokumen (WHO, UNICEF, Kemenkes RI) dan pakar (Dokter Anak / Ahli Gizi). 
+JPG
+
+knowledge_documents	embedding	VECTOR(1536)	
+Vektor embedding teks untuk pencarian kemiripan semantik (Retrieve Trusted Knowledge).  
+PNG
++ 1
+
+chat_messages	user_id, child_id, sender, message_text	UUID, TEXT	
+Konteks percakapan antara 'user' dan 'assistant'. 
+PNG
++ 1
+
+chat_messages	requires_medical_referral	BOOLEAN	
+Penanda hasil Safety Check jika pertanyaan membutuhkan penanganan medis (IF YES).  
+PNG
++ 1
+
+chat_messages	trusted_sources, suggested_actions	JSONB	
+Daftar rujukan sumber tepercaya dan tombol Next Best Action (Suggested Action). 
+PNG
++ 2
+
+5. Skrip DDL SQL Lengkap (Supabase SQL Editor)
+Salin dan jalankan skrip SQL berikut pada menu SQL Editor di dashboard proyek Supabase:
+SQL
+-- ============================================================================
+-- 1. EKSTENSI DATABASE
+-- ============================================================================
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "vector";
+CREATE EXTENSION IF NOT EXISTS "pg_trgm"; -- Untuk fitur Search Cepat pada Food Search
+
+-- ============================================================================
+-- 2. TABEL PROFILES & CHILDREN (MVP UTAMA - AUTH & ONBOARDING)
+-- ============================================================================
+CREATE TABLE public.profiles (
+  id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  full_name TEXT NOT NULL,
+  user_segment TEXT DEFAULT 'parent' CHECK (user_segment IN ('parent', 'expecting_mother')),
+  avatar_url TEXT,
+  ai_context_consent BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE public.children (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  nickname TEXT,
+  birth_date DATE NOT NULL CHECK (birth_date <= CURRENT_DATE),
+  gender TEXT NOT NULL CHECK (gender IN ('Laki-laki', 'Perempuan', 'male', 'female')),
+  initial_weight_kg NUMERIC(5,2) NOT NULL CHECK (initial_weight_kg BETWEEN 1.0 AND 50.0),
+  initial_height_cm NUMERIC(5,2) NOT NULL CHECK (initial_height_cm BETWEEN 30.0 AND 160.0),
+  dietary_preferences TEXT[] DEFAULT '{}',
+  avoided_foods TEXT[] DEFAULT '{}',
+  photo_url TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ============================================================================
+-- 3. TABEL GROWTH RECORDS (FLOW 2 - GROWTH MONITORING & EARLY INTERVENTION)
+-- ============================================================================
+CREATE TABLE public.growth_records (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  child_id UUID NOT NULL REFERENCES public.children(id) ON DELETE CASCADE,
+  measurement_date DATE NOT NULL CHECK (measurement_date <= CURRENT_DATE),
+  age_in_months NUMERIC(4,1) NOT NULL,
+  weight_kg NUMERIC(5,2) NOT NULL CHECK (weight_kg BETWEEN 1.0 AND 50.0),
+  height_cm NUMERIC(5,2) NOT NULL CHECK (height_cm BETWEEN 30.0 AND 160.0),
+  z_score_waz NUMERIC(4,2),
+  z_score_haz NUMERIC(4,2),
+  z_score_whz NUMERIC(4,2),
+  needs_attention BOOLEAN DEFAULT FALSE,
+  insight_status TEXT NOT NULL DEFAULT 'normal_routine' CHECK (insight_status IN ('normal_routine', 'early_awareness')),
+  insight_message TEXT NOT NULL DEFAULT 'Lanjutkan monitoring rutin',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ============================================================================
+-- 4. TABEL RECIPES & SAVED MEAL PLANS (FLOW 1 - PLAN MEAL)
+-- ============================================================================
+CREATE TABLE public.recipes (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  title TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  image_url TEXT,
+  min_age_months INT NOT NULL CHECK (min_age_months >= 0),
+  max_age_months INT NOT NULL CHECK (max_age_months >= min_age_months),
+  budget_tier TEXT NOT NULL DEFAULT 'sedang' CHECK (budget_tier IN ('ekonomis', 'sedang', 'premium')),
+  portion_size TEXT NOT NULL,
+  meal_frequency TEXT NOT NULL,
+  main_nutrients JSONB NOT NULL,
+  ingredients TEXT[] NOT NULL DEFAULT '{}',
+  allergen_tags TEXT[] NOT NULL DEFAULT '{}',
+  instructions JSONB NOT NULL DEFAULT '[]',
+  source_authority TEXT NOT NULL DEFAULT 'Kemenkes RI & WHO/UNICEF',
+  validated_by TEXT NOT NULL DEFAULT 'Ahli Gizi',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE public.saved_meal_plans (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  child_id UUID NOT NULL REFERENCES public.children(id) ON DELETE CASCADE,
+  recipe_id UUID NOT NULL REFERENCES public.recipes(id) ON DELETE CASCADE,
+  planned_date DATE NOT NULL DEFAULT CURRENT_DATE,
+  input_preferences JSONB DEFAULT '{}',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ============================================================================
+-- 5. TABEL FOODS, FOOD LOGS & FAVORITES (FLOW 1 - LOG FOOD)
+-- ============================================================================
+CREATE TABLE public.foods (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  preparation_type TEXT,
+  serving_options JSONB NOT NULL DEFAULT '[{"label": "100 gram", "grams": 100}]',
+  calories_per_100g NUMERIC(6,2) NOT NULL,
+  protein_per_100g NUMERIC(5,2) NOT NULL,
+  fat_per_100g NUMERIC(5,2) NOT NULL,
+  carbs_per_100g NUMERIC(5,2) NOT NULL,
+  iron_mg_per_100g NUMERIC(5,2) DEFAULT 0,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE public.food_logs (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  child_id UUID NOT NULL REFERENCES public.children(id) ON DELETE CASCADE,
+  food_id UUID REFERENCES public.foods(id) ON DELETE SET NULL,
+  custom_food_name TEXT,
+  log_date DATE NOT NULL DEFAULT CURRENT_DATE,
+  serving_label TEXT NOT NULL,
+  portion_grams NUMERIC(6,2) NOT NULL CHECK (portion_grams > 0),
+  calculated_nutrition JSONB NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE public.favorite_foods (
+  user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+  food_id UUID NOT NULL REFERENCES public.foods(id) ON DELETE CASCADE,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  PRIMARY KEY (user_id, food_id)
+);
+
+-- ============================================================================
+-- 6. TABEL KNOWLEDGE BASE & CHAT MESSAGES (FLOW 3 - AI NUTRITION ASSISTANT)
+-- ============================================================================
+CREATE TABLE public.knowledge_documents (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  title TEXT NOT NULL,
+  content TEXT NOT NULL,
+  source_authority TEXT NOT NULL,
+  validated_by TEXT,
+  age_group_tag TEXT,
+  embedding VECTOR(1536),
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE public.chat_messages (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+  child_id UUID REFERENCES public.children(id) ON DELETE SET NULL,
+  sender TEXT NOT NULL CHECK (sender IN ('user', 'assistant')),
+  message_text TEXT NOT NULL,
+  requires_medical_referral BOOLEAN DEFAULT FALSE,
+  trusted_sources JSONB DEFAULT '[]',
+  suggested_actions JSONB DEFAULT '[]',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ============================================================================
+-- 7. INDEKS OPTIMASI QUERY (INDEXING)
+-- ============================================================================
+CREATE INDEX idx_children_user_id ON public.children(user_id);
+CREATE INDEX idx_growth_child_date ON public.growth_records(child_id, measurement_date DESC);
+CREATE INDEX idx_recipes_age_budget ON public.recipes(min_age_months, max_age_months, budget_tier);
+CREATE INDEX idx_recipes_ingredients_gin ON public.recipes USING GIN (ingredients);
+CREATE INDEX idx_foods_name_trgm ON public.foods USING GIN (name gin_trgm_ops);
+CREATE INDEX idx_food_logs_child_date ON public.food_logs(child_id, log_date DESC);
+CREATE INDEX idx_chat_messages_child_created ON public.chat_messages(child_id, created_at ASC);
+CREATE INDEX idx_knowledge_embedding_hnsw ON public.knowledge_documents USING hnsw (embedding vector_cosine_ops);
+6. Database Triggers, Views & RPC Functions (Otomasi Backend)
+Untuk menyederhanakan pekerjaan di src/services/ dan memastikan integritas data antar-alur, tambahkan fungsi dan trigger berikut di Supabase:   
+PNG
++ 4
+SQL
+-- ============================================================================
+-- A. TRIGGER OTOMATIS MEMBUAT PROFIL SAAT USER REGISTER DI SUPABASE AUTH
+-- ============================================================================
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO public.profiles (id, full_name)
+  VALUES (
+    NEW.id,
+    COALESCE(NEW.raw_user_meta_data->>'full_name', split_part(NEW.email, '@', 1))
+  );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+
+-- ============================================================================
+-- B. TRIGGER OTOMATIS MENCATAT BB/TB AWAL KE GROWTH_RECORDS SAAT BUAT PROFIL ANAK
+-- ============================================================================
+CREATE OR REPLACE FUNCTION public.seed_initial_growth_record()
+RETURNS TRIGGER AS $$
+DECLARE
+  v_age_months NUMERIC(4,1);
+BEGIN
+  v_age_months := ROUND((CURRENT_DATE - NEW.birth_date) / 30.4375, 1);
+  
+  INSERT INTO public.growth_records (
+    child_id,
+    measurement_date,
+    age_in_months,
+    weight_kg,
+    height_cm,
+    needs_attention,
+    insight_status,
+    insight_message
+  ) VALUES (
+    NEW.id,
+    CURRENT_DATE,
+    GREATEST(v_age_months, 0),
+    NEW.initial_weight_kg,
+    NEW.initial_height_cm,
+    FALSE,
+    'normal_routine',
+    'Data awal berhasil dicatat. Lanjutkan monitoring rutin.'
+  );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER on_child_profile_created
+  AFTER INSERT ON public.children
+  FOR EACH ROW EXECUTE FUNCTION public.seed_initial_growth_record();
+
+-- ============================================================================
+-- C. VIEW DAILY NUTRITION SUMMARY (FLOW 1 - AGREGASI NUTRISI HARIAN)
+-- ============================================================================
+CREATE OR REPLACE VIEW public.daily_nutrition_summaries AS
+SELECT
+  child_id,
+  log_date,
+  COUNT(id) AS total_logged_items,
+  SUM((calculated_nutrition->>'calories')::NUMERIC) AS total_calories_kcal,
+  SUM((calculated_nutrition->>'protein_g')::NUMERIC) AS total_protein_g,
+  SUM((calculated_nutrition->>'fat_g')::NUMERIC) AS total_fat_g,
+  SUM((calculated_nutrition->>'carbs_g')::NUMERIC) AS total_carbs_g
+FROM public.food_logs
+GROUP BY child_id, log_date;
+
+-- ============================================================================
+-- D. RPC FUNCTION UNTUK RAG SIMILARITY SEARCH (FLOW 3 - RETRIEVE KNOWLEDGE)
+-- ============================================================================
+CREATE OR REPLACE FUNCTION public.match_knowledge_documents(
+  query_embedding VECTOR(1536),
+  match_threshold FLOAT DEFAULT 0.75,
+  match_count INT DEFAULT 4
+)
+RETURNS TABLE (
+  id UUID,
+  title TEXT,
+  content TEXT,
+  source_authority TEXT,
+  validated_by TEXT,
+  similarity FLOAT
+)
+LANGUAGE sql STABLE
+AS $$
+  SELECT
+    kd.id,
+    kd.title,
+    kd.content,
+    kd.source_authority,
+    kd.validated_by,
+    1 - (kd.embedding <=> query_embedding) AS similarity
+  FROM public.knowledge_documents kd
+  WHERE 1 - (kd.embedding <=> query_embedding) > match_threshold
+  ORDER BY kd.embedding <=> query_embedding
+  LIMIT match_count;
+$$;
+7. Kebijakan Keamanan (Row Level Security / RLS) & Storage
+Setiap orang tua hanya diizinkan mengakses dan mengubah data profil anaknya sendiri, sedangkan tabel katalog (recipes, foods, knowledge_documents) bersifat read-only bagi pengguna terautentikasi:   
+PNG
+SQL
+-- Aktifkan RLS pada seluruh tabel
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.children ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.growth_records ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.recipes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.saved_meal_plans ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.foods ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.food_logs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.favorite_foods ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.knowledge_documents ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.chat_messages ENABLE ROW LEVEL SECURITY;
+
+-- Kebijakan Tabel Pribadi Pengguna
+CREATE POLICY "Users can manage own profile" ON public.profiles
+  FOR ALL USING (auth.uid() = id);
+
+CREATE POLICY "Parents can manage own children" ON public.children
+  FOR ALL USING (auth.uid() = user_id);
+
+CREATE POLICY "Parents can manage own child growth records" ON public.growth_records
+  FOR ALL USING (
+    EXISTS (SELECT 1 FROM public.children c WHERE c.id = growth_records.child_id AND c.user_id = auth.uid())
+  );
+
+CREATE POLICY "Parents can manage own saved meal plans" ON public.saved_meal_plans
+  FOR ALL USING (
+    EXISTS (SELECT 1 FROM public.children c WHERE c.id = saved_meal_plans.child_id AND c.user_id = auth.uid())
+  );
+
+CREATE POLICY "Parents can manage own child food logs" ON public.food_logs
+  FOR ALL USING (
+    EXISTS (SELECT 1 FROM public.children c WHERE c.id = food_logs.child_id AND c.user_id = auth.uid())
+  );
+
+CREATE POLICY "Users can manage own favorite foods" ON public.favorite_foods
+  FOR ALL USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can manage own chat messages" ON public.chat_messages
+  FOR ALL USING (auth.uid() = user_id);
+
+-- Kebijakan Tabel Referensi Publik (Read-Only untuk User Terautentikasi)
+CREATE POLICY "Authenticated users can read recipes" ON public.recipes
+  FOR SELECT TO authenticated USING (true);
+
+CREATE POLICY "Authenticated users can read foods" ON public.foods
+  FOR SELECT TO authenticated USING (true);
+
+CREATE POLICY "Authenticated users can read knowledge documents" ON public.knowledge_documents
+  FOR SELECT TO authenticated USING (true);

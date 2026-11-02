@@ -5,22 +5,43 @@ export function useFetch(fetcher, deps = []) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const load = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      setData(await fetcher());
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-
-  }, deps);
+  const depsKey = JSON.stringify(deps);
 
   useEffect(() => {
-    load();
-  }, [load]);
+    let ignore = false;
+    // Set loading asynchronously
+    Promise.resolve().then(() => {
+      if (!ignore) {
+        setLoading(true);
+        setError(null);
+      }
+    });
 
-  return { data, loading, error, reload: load };
+    fetcher()
+      .then((res) => {
+        if (!ignore) setData(res);
+      })
+      .catch((err) => {
+        if (!ignore) setError(err.message);
+      })
+      .finally(() => {
+        if (!ignore) setLoading(false);
+      });
+
+    return () => {
+      ignore = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [depsKey]);
+
+  const reload = useCallback(() => {
+    setLoading(true);
+    setError(null);
+    return fetcher()
+      .then((res) => setData(res))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, [fetcher]);
+
+  return { data, loading, error, reload };
 }

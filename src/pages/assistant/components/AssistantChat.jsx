@@ -37,7 +37,7 @@ export default function AssistantChat({ child }) {
     setSending(true);
 
     try {
-      const reply = await assistantService.sendMessage(child.id, text);
+      const reply = await assistantService.sendMessage(child, text);
       setExtra((prev) => [...prev, reply]);
     } catch (err) {
       showToast(err.message || "Pesan gagal dikirim", "error");
