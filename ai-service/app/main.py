@@ -39,6 +39,11 @@ from .settings import get_settings  # noqa: E402
 _load_dotenv()          # .env lokal (jika ada) sebelum membaca Settings; di HF Space pakai Secrets
 settings = get_settings()
 settings.validate()
+if settings.is_production:                                   # fail fast: jangan diam-diam pakai balasan mock di prod
+    _llm = LLMConfig.from_env()
+    if _llm.provider == "mock" or not _llm.api_key:
+        raise RuntimeError("Konfigurasi production tidak valid: LLM_PROVIDER tidak boleh 'mock' dan "
+                           "LLM_API_KEY wajib diisi (default: provider 'gemini').")
 setup_logging(settings.log_level)
 _llm_slots = threading.BoundedSemaphore(max(1, settings.max_concurrent_llm))
 

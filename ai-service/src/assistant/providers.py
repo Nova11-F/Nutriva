@@ -1,5 +1,6 @@
 """Adapter provider LLM. Semua mengembalikan (teks_balasan, usage_dict).
 
+- gemini            : Google Gemini API (POST {base_url}/models/{model}:generateContent). Base LLM resmi Nutriva.
 - openai_compatible : endpoint POST {base_url}/chat/completions (format OpenAI Chat Completions).
                       Dipakai juga oleh banyak provider lain yang menyediakan endpoint kompatibel OpenAI.
 - anthropic         : Anthropic Messages API, POST https://api.anthropic.com/v1/messages
@@ -16,6 +17,41 @@ from .config import LLMConfig
 
 class LLMError(RuntimeError):
     pass
+
+
+def _gemini(cfg: LLMConfig, system: str, user: str) -> tuple[str, dict]:
+    """Google Gemini API (generateContent). Base LLM resmi Nutriva.
+
+    Key dikirim via header `x-goog-api-key` (bukan query string) agar tidak bocor ke log URL.
+    `LLM_EXTRA_BODY` digabung ke `generationConfig`, mis. {"thinkingConfig": {"thinkingBudget": 0}}.
+    """
+    if not (cfg.api_key and cfg.model):
+        raise LLMError("LLM_API_KEY dan LLM_MODEL wajib diisi untuk gemini")
+    base = cfg.base_url or "https://generativelanguage.googleapis.com/v1beta"
+    gen: dict = {"maxOutputTokens": cfg.max_tokens}
+    if cfg.send_sampling:
+        gen.update(temperature=cfg.temperature, topP=cfg.top_p)
+    if cfg.json_mode:
+        gen["responseMimeType"] = "application/json"
+    gen.update(cfg.extra_body)
+    body = {"systemInstruction": {"parts": [{"text": system}]},
+            "contents": [{"role": "user", "parts": [{"text": user}]}],
+            "generationConfig": gen}
+    headers = {"x-goog-api-key": cfg.api_key, "Content-Type": "application/json", **cfg.extra_headers}
+    r = httpx.post(f"{base}/models/{cfg.model}:generateContent", json=body, headers=headers, timeout=cfg.timeout_s)
+    if r.status_code >= 400:
+        raise LLMError(f"HTTP {r.status_code}: {r.text[:500]}")
+    data = r.json()
+    cands = data.get("candidates") or []
+    if not cands:
+        fb = data.get("promptFeedback", {})
+        raise LLMError(f"Gemini tidak mengembalikan kandidat (blockReason={fb.get('blockReason')})")
+    parts = (cands[0].get("content") or {}).get("parts") or []
+    text = "".join(p.get("text", "") for p in parts if isinstance(p, dict))
+    if not text:
+        raise LLMError(f"Gemini mengembalikan jawaban kosong (finishReason={cands[0].get('finishReason')})")
+    um = data.get("usageMetadata", {})
+    return text, {"input_tokens": um.get("promptTokenCount"), "output_tokens": um.get("candidatesTokenCount")}
 
 
 def _openai_compatible(cfg: LLMConfig, system: str, user: str) -> tuple[str, dict]:
@@ -75,7 +111,8 @@ def _mock(cfg: LLMConfig, system: str, user: str) -> tuple[str, dict]:
     return json.dumps(out, ensure_ascii=False), {"input_tokens": 0, "output_tokens": 0}
 
 
-PROVIDERS = {"openai_compatible": _openai_compatible, "openai": _openai_compatible,
+PROVIDERS = {"gemini": _gemini, "google": _gemini,
+             "openai_compatible": _openai_compatible, "openai": _openai_compatible,
              "anthropic": _anthropic, "mock": _mock}
 
 

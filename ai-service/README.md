@@ -41,7 +41,7 @@ python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\
 pip install -r requirements-dev.txt
 cp .env.example .env                                    # isi SUPABASE_URL, SUPABASE_ANON_KEY, LLM_*
 uvicorn app.main:app --reload --port 8000
-python -m pytest -q                                     # 55 test, tanpa API key (LLM mock)
+python -m pytest -q                                     # 65 test, tanpa API key (LLM mock)
 ```
 
 Untuk mencoba tanpa Supabase: `AUTH_MODE=disabled` (ditolak otomatis bila `APP_ENV=production`). Untuk mencoba tanpa LLM: `LLM_PROVIDER=mock`.
@@ -53,8 +53,9 @@ Untuk mencoba tanpa Supabase: `AUTH_MODE=disabled` (ditolak otomatis bila `APP_E
    `git subtree push --prefix ai-service https://huggingface.co/spaces/<user>/nutriva-ai main`
    (atau salin isi folder ke clone repo Space lalu push). Header YAML di README ini dibaca HF untuk `sdk: docker` dan `app_port: 7860`.
 3. Settings → *Variables and secrets*:
-   - Variables: `APP_ENV=production`, `ALLOWED_ORIGINS=https://<domain-frontend>`, `SUPABASE_URL`, `LLM_PROVIDER`, `LLM_BASE_URL`, `LLM_MODEL`, `LLM_JSON_MODE`, `LLM_MAX_TOKENS`, `LLM_TIMEOUT_S`.
-   - Secrets: `LLM_API_KEY`, `SUPABASE_ANON_KEY` (anon key sebenarnya publik, tetapi disimpan sebagai secret agar tidak tercetak di log build).
+   - Variables: `APP_ENV=production`, `ALLOWED_ORIGINS=https://<domain-frontend>`, `SUPABASE_URL`, `LLM_PROVIDER=gemini`, `LLM_MODEL=gemini-3.5-flash-lite`, `LLM_JSON_MODE=true`, `LLM_MAX_TOKENS`, `LLM_TIMEOUT_S` (`LLM_BASE_URL` opsional; default Gemini dipakai bila kosong).
+   - Secrets: `LLM_API_KEY` (key Gemini dari Google AI Studio), `SUPABASE_ANON_KEY` (anon key sebenarnya publik, tetapi disimpan sebagai secret agar tidak tercetak di log build).
+   - Di production, startup gagal bila `LLM_PROVIDER=mock` atau `LLM_API_KEY` kosong (mencegah balasan tiruan bocor ke pengguna).
 4. Tunggu build selesai, cek `https://<user>-nutriva-ai.hf.space/health`.
 5. Di frontend (Vercel/Netlify): set `VITE_AI_API_URL=https://<user>-nutriva-ai.hf.space`, lalu redeploy.
 
@@ -80,5 +81,5 @@ Startup gagal dengan pesan jelas bila konfigurasi production tidak aman (auth di
 
 - Rate limit dan cache in-memory hanya benar untuk 1 replika; untuk >1 replika ganti ke Redis.
 - Space gratis dapat tidur bila lama tidak dipakai, sehingga request pertama lambat (cold start). Frontend menampilkan pesan "layanan baru dinyalakan" untuk HTTP 503/timeout.
-- Latensi LLM bergantung provider; saat uji Sprint 2 dengan model gratis OpenRouter, median ±18 detik.
+- Latensi LLM bergantung provider/model; untuk Gemini `gemini-3.5-flash-lite` umumnya beberapa detik. Chat di frontend diberi timeout 90 detik untuk mengakomodasi cold start.
 - Retrieval memakai TF-IDF lokal (tabel `knowledge_documents`/pgvector di Supabase belum dipakai).

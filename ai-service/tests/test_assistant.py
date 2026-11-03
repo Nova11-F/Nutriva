@@ -103,6 +103,37 @@ def test_anthropic_request_format(monkeypatch):
     assert r["meta"]["llm_called"] and not r["meta"]["guardrail_flags"]
 
 
+def test_gemini_native_request_format(monkeypatch):
+    seen = {}
+
+    def fake_post(url, json, headers, timeout):
+        seen.update(url=url, body=json, headers=headers)
+        return _Resp({"candidates": [{"content": {"parts": [{"text": __import__("json").dumps(GOOD)}]},
+                                      "finishReason": "STOP"}],
+                      "usageMetadata": {"promptTokenCount": 900, "candidatesTokenCount": 60}})
+
+    monkeypatch.setattr(providers.httpx, "post", fake_post)
+    cfg = LLMConfig(provider="gemini", api_key="k", model="gemini-3.5-flash-lite", max_tokens=2048)
+    r = ask("anakku susah makan, gimana?", cfg=cfg)
+    assert seen["url"] == ("https://generativelanguage.googleapis.com/v1beta/"
+                           "models/gemini-3.5-flash-lite:generateContent")
+    assert seen["headers"]["x-goog-api-key"] == "k"
+    assert seen["body"]["systemInstruction"]["parts"][0]["text"]
+    assert seen["body"]["contents"][0]["role"] == "user"
+    assert seen["body"]["generationConfig"]["maxOutputTokens"] == 2048
+    assert seen["body"]["generationConfig"]["responseMimeType"] == "application/json"
+    assert r["meta"]["llm_called"] and r["sources"] == GOOD["sources"]
+    assert r["meta"]["usage"]["input_tokens"] == 900
+
+
+def test_gemini_blocked_response_falls_back(monkeypatch):
+    monkeypatch.setattr(providers.httpx, "post",
+                        lambda *a, **k: _Resp({"promptFeedback": {"blockReason": "SAFETY"}}))
+    cfg = LLMConfig(provider="gemini", api_key="k", model="gemini-3.5-flash-lite")
+    r = ask("kapan mulai mpasi?", cfg=cfg)
+    assert "fallback_used" in r["meta"]["guardrail_flags"]
+
+
 def test_invalid_json_then_fallback(monkeypatch):
     monkeypatch.setattr(providers.httpx, "post",
                         lambda *a, **k: _Resp({"choices": [{"message": {"content": "maaf saya tidak bisa"}}]}))

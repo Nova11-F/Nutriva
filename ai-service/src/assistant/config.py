@@ -1,10 +1,11 @@
 """Konfigurasi LLM dari environment variable (atau file .env di root project).
 
 Variabel:
-  LLM_PROVIDER          openai_compatible | anthropic | mock      (default: mock)
-  LLM_API_KEY           API key provider
-  LLM_BASE_URL          base URL untuk openai_compatible (mis. https://api.openai.com/v1)
-  LLM_MODEL             nama model persis seperti di dokumentasi provider
+  LLM_PROVIDER          gemini | openai_compatible | anthropic | mock      (default: gemini)
+  LLM_API_KEY           API key provider (Gemini: key dari Google AI Studio)
+  LLM_BASE_URL          base URL. Kosongkan untuk default Gemini
+                        (https://generativelanguage.googleapis.com/v1beta); isi untuk openai_compatible.
+  LLM_MODEL             nama model persis seperti di dokumentasi provider (mis. gemini-3.5-flash-lite)
   LLM_TEMPERATURE       default 0.2
   LLM_TOP_P             default 0.9
   LLM_MAX_TOKENS        default 600
@@ -43,10 +44,10 @@ def _bool(v: str | None, default: bool) -> bool:
 
 @dataclass
 class LLMConfig:
-    provider: str = "mock"
+    provider: str = "gemini"
     api_key: str = ""
     base_url: str = ""
-    model: str = "mock-nutriva"
+    model: str = "gemini-3.5-flash-lite"
     temperature: float = 0.2
     top_p: float = 0.9
     max_tokens: int = 600
@@ -64,10 +65,10 @@ class LLMConfig:
         _load_dotenv()
         e = os.environ.get
         return cls(
-            provider=e("LLM_PROVIDER", "mock").strip().lower(),
+            provider=e("LLM_PROVIDER", "gemini").strip().lower(),
             api_key=e("LLM_API_KEY", ""),
             base_url=e("LLM_BASE_URL", "").rstrip("/"),
-            model=e("LLM_MODEL", "mock-nutriva"),
+            model=e("LLM_MODEL", "gemini-3.5-flash-lite"),
             temperature=float(e("LLM_TEMPERATURE", "0.2")),
             top_p=float(e("LLM_TOP_P", "0.9")),
             max_tokens=int(e("LLM_MAX_TOKENS", "600")),
