@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .env
 update_confirm.sql
+confirm_siti.sql
 
 
 # Editor directories and files

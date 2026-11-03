@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import AuthLayout from "../layouts/AuthLayout";
 import OnboardingLayout from "../layouts/OnboardingLayout";
@@ -43,7 +43,8 @@ export default function AppRoutes() {
         <Route path="/nutrition" element={<NutritionPage />} />
         <Route path="/nutrition/recipes" element={<RecipeListPage />} />
         <Route path="/nutrition/recipeId" element={<RecipeDetailPage />} />
-        <Route path="/nutrition/MealPlan" element={<CreateMealPlanPage/>} />
+        <Route path="/nutrition/:recipeId" element={<RecipeDetailPage />} />
+        <Route path="/nutrition/MealPlan" element={<CreateMealPlanPage />} />
         <Route path="/growth" element={<GrowthPage />} />
         <Route path="/growth/measurement" element={<AddMeasurementPage />} />
         <Route path="/assistant" element={<AssistantPage />} />

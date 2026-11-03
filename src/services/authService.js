@@ -3,7 +3,6 @@ import { supabase } from "./supabase";
 export const authService = {
   /**
    * Mendaftar pengguna baru ke Supabase Auth
-   * Trigger di Supabase otomatis membuatkan entri di tabel public.profiles
    */
   async register({ name, email, password }) {
     const { data, error } = await supabase.auth.signUp({
@@ -42,13 +41,14 @@ export const authService = {
       throw new Error(error.message);
     }
 
-    // Ambil data profil pelengkap dari public.profiles
     const profile = await this.getProfile(data.user.id);
     return {
       ...data.user,
       name: profile?.full_name || data.user.user_metadata?.full_name || email.split("@")[0],
-      role: profile?.user_segment || "parent",
+      role: profile?.user_segment || "Ibu",
       avatar_url: profile?.avatar_url || null,
+      phone: profile?.phone || "",
+      city: profile?.city || "",
     };
   },
 
@@ -73,8 +73,10 @@ export const authService = {
     return {
       ...user,
       name: profile?.full_name || user.user_metadata?.full_name || user.email.split("@")[0],
-      role: profile?.user_segment || "parent",
+      role: profile?.user_segment || "Ibu",
       avatar_url: profile?.avatar_url || null,
+      phone: profile?.phone || "",
+      city: profile?.city || "",
     };
   },
 
@@ -96,15 +98,17 @@ export const authService = {
   },
 
   /**
-   * Memperbarui profil pengguna
+   * Memperbarui profil pengguna (Orang Tua)
    */
-  async updateProfile(userId, { name, role, avatar_url }) {
+  async updateProfile(userId, { name, role, avatar_url, phone, city }) {
     const updates = {
       updated_at: new Date().toISOString(),
     };
     if (name) updates.full_name = name;
     if (role) updates.user_segment = role;
     if (avatar_url !== undefined) updates.avatar_url = avatar_url;
+    if (phone !== undefined) updates.phone = phone;
+    if (city !== undefined) updates.city = city;
 
     const { data, error } = await supabase
       .from("profiles")

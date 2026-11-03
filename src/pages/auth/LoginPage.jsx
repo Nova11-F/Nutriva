@@ -7,7 +7,6 @@ import Card from "../../components/ui/Card";
 import { useToast } from "../../hooks/useToast";
 import { useAuth } from "../../hooks/useAuth";
 import { childService } from "../../services/childService";
-import { users } from "../../data/users";
 
 export default function LoginPage() {
   const navigate = useNavigate();

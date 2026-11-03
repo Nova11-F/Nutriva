@@ -14,7 +14,7 @@ export function ChildProvider({ children }) {
 
   const [record, setRecord] = useState({ userId: null, list: EMPTY });
   const [activeId, setActiveId] = useState(
-    () => Number(localStorage.getItem(ACTIVE_KEY)) || null
+    () => localStorage.getItem(ACTIVE_KEY) || null
   );
 
   const childList = record.userId === userId ? record.list : EMPTY;

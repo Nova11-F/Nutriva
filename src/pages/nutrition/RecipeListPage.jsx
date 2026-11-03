@@ -1,20 +1,20 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
   Award,
-  Bookmark,
   ChevronLeft,
   ChevronRight,
   Search,
   Sparkles,
-  Star,
 } from "lucide-react";
 import Header from "../../components/navigation/Header";
 import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
 import buburWortel from "../../assets/images/bubur-wortel.png";
+import { recipeService } from "../../services/recipeService";
+import { useChild } from "../../hooks/useChild";
 
 const ageFilters = ["Semua Usia", "6-8 Bulan", "9-11 Bulan", "12+ Bulan"];
 const categoryFilters = [
@@ -25,29 +25,10 @@ const categoryFilters = [
   "Camilan",
 ];
 
-const featured = {
-  id: 1,
-  image: buburWortel,
-  badge: "Menu Pilihan Konselor Gizi Pekan Ini • Cocok 100% untuk Rayyan",
-  title: "Nasi Gurih Semur Ayam Kampung & Telur Puyuh",
-  desc: "Kombinasi protein hewani ganda unggulan (ayam kampung + telur puyuh) kaya zat besi dan kolin, dimasak dengan kaldu cekernya alami berlemak gurih tanpa MSG untuk anak.",
-  stage: "Tahapan: 12-24 Bulan",
-  ribbon: "Rasio Emas 4 Bintang",
-  stats: [
-    { label: "Energi Total", value: "285 kkal" },
-    {
-      label: "Protein Hewani",
-      value: "11.2g Prohe",
-      accent: "text-emerald-300",
-    },
-    { label: "Waktu Masak", value: "25 Menit" },
-    { label: "Estimasi Modal", value: "Rp 22.000", accent: "text-yellow-300" },
-  ],
-};
-
-const recipes = [
+const fallbackRecipes = [
   {
     id: 1,
+    slug: "bubur-ayam-wortel",
     image: buburWortel,
     age: "6-8 Bulan",
     cat: "Protein Hewani",
@@ -60,6 +41,7 @@ const recipes = [
   },
   {
     id: 2,
+    slug: "salmon-chowder-jagung",
     image: buburWortel,
     age: "9-11 Bulan",
     cat: "Protein Hewani",
@@ -72,6 +54,7 @@ const recipes = [
   },
   {
     id: 3,
+    slug: "bakso-daging-pisang",
     image: buburWortel,
     age: "12+ Bulan",
     cat: "Finger Food",
@@ -84,6 +67,7 @@ const recipes = [
   },
   {
     id: 4,
+    slug: "pudding-ubi-ungu",
     image: buburWortel,
     age: "6-8 Bulan",
     cat: "Sayur & Buah",
@@ -96,6 +80,7 @@ const recipes = [
   },
   {
     id: 5,
+    slug: "bubur-saring-hati-ayam",
     image: buburWortel,
     age: "9-11 Bulan",
     cat: "Protein Hewani",
@@ -108,6 +93,7 @@ const recipes = [
   },
   {
     id: 6,
+    slug: "smoothie-alpukat-pisang",
     image: buburWortel,
     age: "12+ Bulan",
     cat: "Camilan",
@@ -117,54 +103,6 @@ const recipes = [
     kcal: "120 kkal",
     protein: "2g Protein",
     time: "10 Menit",
-  },
-  {
-    id: 7,
-    image: buburWortel,
-    age: "9-11 Bulan",
-    cat: "Finger Food",
-    category: "Finger Food: Tahu + Ikan",
-    title: "Nugget Tahu Ikan Kembung",
-    desc: "Finger food protein tinggi dengan omega-3 untuk perkembangan otak.",
-    kcal: "150 kkal",
-    protein: "9g Protein",
-    time: "30 Menit",
-  },
-  {
-    id: 8,
-    image: buburWortel,
-    age: "6-8 Bulan",
-    cat: "Sayur & Buah",
-    category: "Sayur: Labu + Kentang",
-    title: "Puree Labu Kuning Kentang",
-    desc: "Tekstur halus yang cocok untuk pengenalan MPASI pertama.",
-    kcal: "90 kkal",
-    protein: "2g Protein",
-    time: "15 Menit",
-  },
-  {
-    id: 9,
-    image: buburWortel,
-    age: "12+ Bulan",
-    cat: "Protein Hewani",
-    category: "Protein Hewani: Telur + Sayur",
-    title: "Omelet Sayur Keju",
-    desc: "Sarapan praktis kaya protein, kalsium, dan vitamin.",
-    kcal: "190 kkal",
-    protein: "10g Protein",
-    time: "10 Menit",
-  },
-  {
-    id: 10,
-    image: buburWortel,
-    age: "9-11 Bulan",
-    cat: "Camilan",
-    category: "Camilan: Pepaya + Yoghurt",
-    title: "Pepaya Yoghurt Plain",
-    desc: "Camilan probiotik dan vitamin C untuk menjaga pencernaan.",
-    kcal: "110 kkal",
-    protein: "4g Protein",
-    time: "5 Menit",
   },
 ];
 
@@ -191,14 +129,79 @@ const PER_PAGE = 8;
 
 export default function RecipeListPage() {
   const navigate = useNavigate();
+  const { child } = useChild();
+
+  const [recipesList, setRecipesList] = useState(fallbackRecipes);
   const [query, setQuery] = useState("");
   const [age, setAge] = useState("Semua Usia");
   const [cat, setCat] = useState("Semua");
   const [page, setPage] = useState(1);
 
+  // Ambil resep langsung dari Supabase
+  useEffect(() => {
+    let ignore = false;
+    async function fetchRecipes() {
+      try {
+        const data = await recipeService.getAllRecipes();
+        if (!ignore && data && data.length > 0) {
+          const mapped = data.map((r) => {
+            let ageLabel = "6-8 Bulan";
+            if (r.min_age_months >= 12) ageLabel = "12+ Bulan";
+            else if (r.min_age_months >= 9) ageLabel = "9-11 Bulan";
+
+            return {
+              id: r.id,
+              slug: r.slug,
+              image: r.image_url || buburWortel,
+              age: ageLabel,
+              cat: "Protein Hewani",
+              category: `${r.portion_size || "Porsi MPASI"} · ${r.meal_frequency || "Utama"}`,
+              title: r.title,
+              desc: r.instructions?.[0]?.text || `Menu bergizi seimbang untuk balita usia ${r.min_age_months}-${r.max_age_months} bulan.`,
+              kcal: `${r.main_nutrients?.calories || 200} kkal`,
+              protein: `${r.main_nutrients?.protein_g || 8}g Protein`,
+              time: "25 Menit",
+            };
+          });
+
+          // Gabungkan dengan fallback agar katalog selalu lengkap
+          const uniqueIds = new Set(mapped.map((m) => m.slug || m.title));
+          const restFallback = fallbackRecipes.filter((fb) => !uniqueIds.has(fb.slug || fb.title));
+          setRecipesList([...mapped, ...restFallback]);
+        }
+      } catch (err) {
+        console.error("Gagal ambil resep:", err);
+      }
+    }
+    fetchRecipes();
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  const featured = useMemo(() => {
+    const primary = recipesList[0] || fallbackRecipes[0];
+    return {
+      id: primary.id,
+      slug: primary.slug,
+      image: primary.image,
+      badge: `Menu Pilihan Gizi Pekan Ini • Cocok untuk ${child?.name || "Si Kecil"}`,
+      title: primary.title,
+      desc: primary.desc,
+      stage: `Tahapan: ${primary.age}`,
+      ribbon: "Rasio Emas 4 Bintang",
+      stats: [
+        { label: "Energi Total", value: primary.kcal },
+        { label: "Protein Hewani", value: primary.protein, accent: "text-emerald-300" },
+        { label: "Waktu Masak", value: primary.time },
+        { label: "Rekomendasi", value: "Kemenkes RI", accent: "text-yellow-300" },
+      ],
+    };
+  }, [recipesList, child]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return recipes.filter(
+    return recipesList.filter(
       (r) =>
         (age === "Semua Usia" || r.age === age) &&
         (cat === "Semua" || r.cat === cat) &&
@@ -206,7 +209,7 @@ export default function RecipeListPage() {
           r.title.toLowerCase().includes(q) ||
           r.desc.toLowerCase().includes(q)),
     );
-  }, [query, age, cat]);
+  }, [recipesList, query, age, cat]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
   const current = Math.min(page, totalPages);
@@ -218,7 +221,7 @@ export default function RecipeListPage() {
   };
 
   const chip = (active) =>
-    `rounded-full px-3 py-1 text-xs font-medium transition ${
+    `rounded-full px-3 py-1 text-xs font-medium transition cursor-pointer ${
       active
         ? "bg-primary text-surface"
         : "bg-gray-100 text-gray-600 hover:bg-soft hover:text-primary"
@@ -230,7 +233,7 @@ export default function RecipeListPage() {
       <div className="flex flex-col gap-5 px-4 pb-6 md:px-6">
         <button
           onClick={() => navigate("/nutrition")}
-          className="flex w-fit items-center gap-1 text-sm font-medium text-primary hover:underline"
+          className="flex w-fit items-center gap-1 text-sm font-medium text-primary hover:underline cursor-pointer"
         >
           <ArrowLeft size={16} /> Kembali ke Nutrisi
         </button>
@@ -250,66 +253,76 @@ export default function RecipeListPage() {
                 className="w-full rounded-lg border border-gray-200 bg-gray-50 py-2.5 pl-9 pr-3 text-sm outline-none focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/20"
               />
             </div>
-            <Button className="shrink-0">Cari Resep</Button>
+            <button
+              onClick={() => navigate("/nutrition/MealPlan")}
+              className="hidden sm:flex items-center gap-1.5 rounded-lg bg-emerald-50 px-4 py-2 text-xs font-semibold text-primary transition hover:bg-emerald-100 cursor-pointer"
+            >
+              <Sparkles size={14} /> Susun Meal Plan
+            </button>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="w-20 text-[11px] font-semibold uppercase text-gray-400">
-                Usia
+              <span className="text-xs font-semibold text-gray-500">
+                Usia Balita:
               </span>
-              {ageFilters.map((f) => (
+              {ageFilters.map((a) => (
                 <button
-                  key={f}
-                  onClick={() => changeFilter(setAge)(f)}
-                  className={chip(age === f)}
+                  key={a}
+                  onClick={() => changeFilter(setAge)(a)}
+                  className={chip(age === a)}
                 >
-                  {f}
+                  {a}
                 </button>
               ))}
             </div>
+
             <div className="flex flex-wrap items-center gap-2">
-              <span className="w-20 text-[11px] font-semibold uppercase text-gray-400">
-                Kategori
+              <span className="text-xs font-semibold text-gray-500">
+                Kategori:
               </span>
-              {categoryFilters.map((f) => (
+              {categoryFilters.map((c) => (
                 <button
-                  key={f}
-                  onClick={() => changeFilter(setCat)(f)}
-                  className={chip(cat === f)}
+                  key={c}
+                  onClick={() => changeFilter(setCat)(c)}
+                  className={chip(cat === c)}
                 >
-                  {f}
+                  {c}
                 </button>
               ))}
             </div>
           </div>
         </Card>
 
-        <section className="overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 text-white shadow-lg">
-          <div className="grid items-center gap-6 p-6 md:grid-cols-[1.1fr_1fr] md:p-10">
-            <div className="flex flex-col gap-5">
-              <span className="flex w-fit max-w-full items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-semibold">
-                <Star size={12} className="shrink-0 fill-current" />
-                <span className="truncate">{featured.badge}</span>
+        {/* Featured Hero Recipe */}
+        <section className="relative overflow-hidden rounded-3xl bg-linear-to-br from-slate-900 via-emerald-950 to-slate-900 p-6 text-white shadow-xl md:p-8">
+          <div className="grid items-center gap-8 lg:grid-cols-2">
+            <div className="flex flex-col gap-4">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-emerald-500/20 px-3.5 py-1 text-xs font-medium text-emerald-300 ring-1 ring-inset ring-emerald-500/30">
+                <Sparkles size={14} /> {featured.badge}
               </span>
 
-              <h2 className="text-3xl font-extrabold leading-tight tracking-tight md:text-4xl">
+              <h1 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
                 {featured.title}
-              </h2>
+              </h1>
 
-              <p className="line-clamp-3 text-sm leading-relaxed text-emerald-50/90">
+              <p className="line-clamp-3 text-sm leading-relaxed text-slate-300">
                 {featured.desc}
               </p>
 
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {featured.stats.map((s) => (
                   <div
                     key={s.label}
-                    className="rounded-xl bg-white/10 px-3 py-3 backdrop-blur-sm"
+                    className="rounded-xl bg-white/5 p-3 backdrop-blur-xs ring-1 ring-white/10"
                   >
-                    <p className="text-[11px] text-emerald-100/80">{s.label}</p>
+                    <p className="text-[11px] font-medium text-slate-400">
+                      {s.label}
+                    </p>
                     <p
-                      className={`mt-0.5 text-sm font-bold md:text-base ${s.accent ?? "text-white"}`}
+                      className={`text-sm font-bold ${
+                        s.accent ?? "text-white"
+                      }`}
                     >
                       {s.value}
                     </p>
@@ -319,13 +332,10 @@ export default function RecipeListPage() {
 
               <div className="flex flex-wrap items-center gap-3">
                 <button
-                  onClick={() => navigate(`/nutrition/recipeId`)}
-                  className="flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
+                  onClick={() => navigate(featured.slug ? `/nutrition/${featured.slug}` : `/nutrition/${featured.id}`)}
+                  className="flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400 cursor-pointer"
                 >
                   Lihat Detail Resep & Takaran <ArrowRight size={16} />
-                </button>
-                <button className="flex items-center gap-2 rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20">
-                  <Bookmark size={16} /> Simpan
                 </button>
               </div>
             </div>
@@ -350,6 +360,7 @@ export default function RecipeListPage() {
           </div>
         </section>
 
+        {/* Katalog Resep Terverifikasi */}
         <section className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-bold text-text">
@@ -368,7 +379,7 @@ export default function RecipeListPage() {
             <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {shown.map((m) => (
                 <Card
-                  key={m.id}
+                  key={m.id || m.slug}
                   padding="none"
                   variant="default"
                   className="group flex flex-col overflow-hidden transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-soft"
@@ -403,9 +414,9 @@ export default function RecipeListPage() {
                         {m.kcal} • {m.protein}
                       </span>
                       <Button
-                      variant="noborder"
-                      size="sm"
-                        onClick={() => navigate(`/nutrition/recipeId`)}
+                        variant="noborder"
+                        size="sm"
+                        onClick={() => navigate(m.slug ? `/nutrition/${m.slug}` : `/nutrition/${m.id}`)}
                         className="flex cursor-pointer items-center gap-1 text-sm font-semibold text-secondary hover:text-primary hover:underline"
                       >
                         Lihat Resep <span aria-hidden="true">&rarr;</span>
@@ -416,91 +427,50 @@ export default function RecipeListPage() {
               ))}
             </div>
           )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={current === 1}
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+              >
+                <ChevronLeft size={16} /> Sebelumnya
+              </Button>
+              <span className="text-xs text-gray-500">
+                Halaman {current} dari {totalPages}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={current === totalPages}
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              >
+                Selanjutnya <ChevronRight size={16} />
+              </Button>
+            </div>
+          )}
         </section>
 
-        {totalPages > 1 && (
-          <nav
-            className="flex items-center justify-between"
-            aria-label="Halaman resep"
-          >
-            <span className="text-xs text-gray-500">
-              Halaman {current} dari {totalPages}
-            </span>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => setPage(current - 1)}
-                disabled={current === 1}
-                aria-label="Halaman sebelumnya"
-                className="flex size-8 items-center justify-center rounded-lg border border-gray-200 disabled:opacity-40"
-              >
-                <ChevronLeft size={16} />
-              </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-                <button
-                  key={n}
-                  onClick={() => setPage(n)}
-                  aria-current={n === current ? "page" : undefined}
-                  className={`size-8 rounded-lg text-sm font-medium ${
-                    n === current
-                      ? "bg-primary text-surface"
-                      : "border border-gray-200 text-gray-600 hover:bg-soft"
-                  }`}
-                >
-                  {n}
-                </button>
-              ))}
-              <button
-                onClick={() => setPage(current + 1)}
-                disabled={current === totalPages}
-                aria-label="Halaman berikutnya"
-                className="flex size-8 items-center justify-center rounded-lg border border-gray-200 disabled:opacity-40"
-              >
-                <ChevronRight size={16} />
-              </button>
-            </div>
-          </nav>
-        )}
-
-        <Card variant="soft" className="flex flex-col gap-4">
-          <h2 className="text-center text-lg font-bold text-text">
-            Prinsip Emas Pemberian Makan Nutriva
+        {/* 4 Pilar MPASI Sehat */}
+        <section className="flex flex-col gap-3">
+          <h2 className="text-lg font-bold text-text">
+            4 Kaidah Emas MPASI Kemenkes RI
           </h2>
-          <div className="grid gap-4 md:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {goldenRules.map((r, i) => (
-              <div
-                key={r.title}
-                className="flex flex-col items-center gap-2 text-center"
-              >
-                <span className="flex size-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-surface">
+              <Card key={r.title} variant="soft" className="flex flex-col gap-1.5">
+                <span className="flex size-7 items-center justify-center rounded-full bg-primary text-xs font-bold text-surface">
                   {i + 1}
                 </span>
-                <p className="text-sm font-semibold text-text">{r.title}</p>
-                <p className="text-xs text-gray-600">{r.desc}</p>
-              </div>
+                <h3 className="font-bold text-text">{r.title}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">{r.desc}</p>
+              </Card>
             ))}
           </div>
-        </Card>
-
-        <Card
-          variant="success"
-          className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
-        >
-          <div>
-            <p className="font-bold text-text">
-              Punya bahan makanan tertentu di kulkas?
-            </p>
-            <p className="text-sm text-gray-600">
-              Beri tahu Asisten AI bahan yang Anda punya, dan dapatkan ide menu
-              yang aman untuk anak.
-            </p>
-          </div>
-          <Button
-            onClick={() => navigate("/assistant")}
-            className="flex w-full items-center justify-center gap-2 md:w-fit"
-          >
-            <Sparkles size={16} /> Tanya Asisten AI
-          </Button>
-        </Card>
+        </section>
       </div>
     </>
   );
