@@ -1,6 +1,6 @@
 # Data Nutrisi Nutriva (foods & recipes)
 
-Seed tabel `foods` dan `recipes` untuk fitur Plan Meal, Log Food, dan rekomendasi menu. Setiap angka bisa ditelusuri ke sumbernya. Laporan QA lengkap ada di `REPORT.md`, dibuat ulang setiap build.
+Seed tabel `foods` (1.063 bahan) dan `recipes` (30 resep) untuk fitur Plan Meal, Log Food, dan rekomendasi menu. Setiap angka bisa ditelusuri ke sumbernya. Laporan QA lengkap ada di `REPORT.md`, dibuat ulang setiap build.
 
 **Status: belum divalidasi ahli gizi.** Sesuai PRD (peran *Researcher / Health Expert*), ahli gizi wajib mereview sebelum rilis publik. Setiap resep menyimpan `validated_by = 'Belum divalidasi ahli gizi Nutriva'`; ubah kolom ini hanya setelah review benar-benar dilakukan.
 
@@ -8,21 +8,32 @@ Seed tabel `foods` dan `recipes` untuk fitur Plan Meal, Log Food, dan rekomendas
 
 | Data | Sumber | Catatan |
 |---|---|---|
-| Komposisi gizi 79 bahan (per 100 g) | USDA National Nutrient Database for Standard Reference, Release 28 (2015), domain publik | Snapshot baris yang dipakai ada di `sources/sr28_subset.csv`, lengkap dengan sha256 file `ABBREV.txt` asli (8.789 bahan). Integritas dicek dengan nilai telur ayam mentah (NDB 01123: 143 kkal; 12,56 g protein; 9,51 g lemak; 1,75 mg besi). |
-| 19 resep balita | Kemenkes RI (2023). *Makanan Lokal Bayi, Balita dan Ibu Hamil: Buku Resep*. Jakarta: Kementerian Kesehatan RI | Semua resep untuk 3 porsi. Nilai energi, protein, dan lemak per porsi dicetak di buku. |
-| 11 resep balita | Kemenkes RI, Ditjen Kesmas, Direktorat Gizi dan KIA (2022). *Buku Resep Makanan Lokal Balita dan Ibu Hamil*. Jakarta | Hanya resep yang tidak ada padanannya di edisi 2023. |
-| Porsi, frekuensi, dan tekstur per usia | Kedua buku di atas (K2023 hlm. 7, 26, 34; K2022 hlm. 3) | 6–8, 9–11, 12–23, dan 24–59 bulan. |
+| Komposisi gizi (utama) | Kemenkes RI (2018). *Tabel Komposisi Pangan Indonesia 2017*. ISBN 978-602-416-407-2 | 1.146 bahan diekstrak dari PDF resmi ke `sources/tkpi2017.csv` (`tools/extract_tkpi.py`, sha256 PDF tercatat di header CSV). |
+| Komposisi gizi (pelengkap) | USDA National Nutrient Database for Standard Reference, Release 28 (2015), domain publik | Dipakai hanya bila bahan tidak ada di TKPI atau baris TKPI gagal uji konsistensi. Snapshot di `sources/sr28_subset.csv` + sha256 `ABBREV.txt`. |
+| 19 resep balita | Kemenkes RI (2023). *Makanan Lokal Bayi, Balita dan Ibu Hamil: Buku Resep* | Semua resep "untuk 3 porsi"; energi/protein/lemak per porsi tercetak. |
+| 11 resep balita | Kemenkes RI (2022). *Buku Resep Makanan Lokal Balita dan Ibu Hamil* | Hanya resep yang tidak ada padanannya di edisi 2023. |
+| Porsi, frekuensi, tekstur per usia | Kedua buku resep (K2023 hlm. 7, 26, 34; K2022 hlm. 3) | 6–8, 9–11, 12–23, 24–59 bulan. |
 | Ukuran rumah tangga (sdm, butir, centong) | Padanan gram yang tercetak di kedua buku resep | Ukuran yang tidak tercetak tidak dikarang; bahan itu hanya punya opsi "100 gram". |
 
-Tautan salinan PDF buku ada di `recipes_kemenkes.py` (`SOURCES`).
+### Ekstraksi TKPI dan verifikasinya
 
-## Kenapa USDA, bukan TKPI?
+- Kolom ditentukan dari posisi token satuan di header setiap halaman (21 kolom gizi + BDD). Sel kosong tetap kosong, tidak diisi 0. Angka yang terbungkus dua baris digabung.
+- Hasil: 1.146 baris dengan 1.146 kode unik, sama dengan jumlah bahan TKPI 2017.
+- Verifikasi visual baris demi baris terhadap gambar halaman PDF (AR001–AR017, AP021–AP024, NR016–NR018, GR050, DR008, HR011, CP061) cocok 100%, termasuk sel kosong.
+- Uji internal: 96,7% baris punya jumlah air + protein + lemak + KH + abu = 100 ± 3 g. Baris yang menyimpang sudah dicek ke gambar dan memang tercetak begitu di sumber (misalnya Mi kering, KH 6,3 g), jadi bukan kesalahan ekstraksi.
 
-Untuk Indonesia, acuan utama komposisi gizi seharusnya **Tabel Komposisi Pangan Indonesia (TKPI)** Kemenkes. Situs dan PDF TKPI (panganku.org dan Google Drive Kemenkes) tidak bisa diakses dari lingkungan build ini, jadi angkanya tidak bisa diverifikasi. Mirror pihak ketiga juga sengaja tidak dipakai. Sebagai gantinya dipakai SR28 yang resmi dan bisa diverifikasi, dengan mitigasi berikut:
+### Aturan pemilihan sumber per bahan
 
-- Setiap bahan diberi `match_quality`: `exact` (bahan dan kondisinya sama), `close` (varietas atau olahan sedikit berbeda), atau `proxy` (spesies atau produk lokal tidak ada di SR28). Ada 7 proxy: ikan kembung, lele, mujair, tongkol, tenggiri, tahu, dan seledri.
-- Bayam dipetakan ke *Amaranthus* (amaranth leaves), bukan *Spinacia*. Kangkung dipetakan ke *Ipomoea aquatica* (swamp cabbage). Beras dipakai versi tanpa fortifikasi. Terigu dipakai versi *enriched* karena terigu di Indonesia wajib difortifikasi besi.
-- **Rekomendasi:** unduh TKPI dari panganku.org, tambahkan kolom `tkpi_code` di `foods_catalog.csv`, lalu prioritaskan angka TKPI di `build_seed.py`. Mulailah dari 7 bahan `proxy`.
+1. TKPI dipakai bila ada padanan bahan yang sama **dan** lolos uji konsistensi: |E − (4P + 9L + 4KH)|/E ≤ 20% serta jumlah proksimat 100 ± 3 g. Dari 1.146 baris, 95 ditolak; daftarnya ada di `REPORT.md`.
+2. Bila tidak lolos, dipakai USDA SR28 dan alasannya dicatat di `data_notes`. Contoh: pepaya, kangkung, tauge, buncis, jahe, mi kering.
+3. Pengecualian yang disengaja:
+   - **Terigu** memakai USDA *enriched*, karena data TKPI (1990) mendahului fortifikasi besi wajib (SNI).
+   - **Daging ayam tanpa kulit** memakai USDA, karena TKPI hanya memuat ayam dengan kulit (lemak 25 g/100 g).
+4. **Penjaga besi:** bila besi TKPI dan USDA berbeda lebih dari 5 kali, dipakai USDA dan dicatat. Contoh: susu sapi 1,7 vs 0,03 mg, udang 8,0 vs 0,52 mg. Nilai TKPI aslinya tetap tersimpan di CSV sumber untuk diverifikasi ahli gizi.
+5. Hasilnya, dari 89 bahan kurasi, 71 memakai TKPI dan 18 memakai USDA. Proksi tinggal 2 (lele dan tenggiri, karena tidak ada di TKPI maupun USDA).
+6. Seluruh baris TKPI lain yang lolos uji (974 bahan) ikut di-seed dengan kode `TKPI_<kode>`, supaya fitur pencarian makanan di Log Food punya database lokal yang lengkap.
+
+Validasi silang: setelah memakai TKPI, selisih median energi estimasi-dari-bahan terhadap angka tercetak di buku Kemenkes turun dari 21% (USDA saja) ke 17%, dan ke 13% untuk resep dengan cakupan bahan ≥ 95%. Ini konsisten dengan dugaan bahwa buku resep Kemenkes menghitung gizinya dengan basis data lokal.
 
 ## Cara angka resep diturunkan
 
@@ -42,7 +53,9 @@ Untuk Indonesia, acuan utama komposisi gizi seharusnya **Tabel Komposisi Pangan 
 
 ```
 nutrition_data/
-  foods_catalog.csv      79 bahan: kode, nama, kategori, NDB SR28, match_quality, ukuran rumah tangga, catatan
+  foods_catalog.csv      89 bahan kurasi: kode, nama, kategori, kode TKPI, NDB SR28, match_quality, ukuran rumah tangga, catatan
+  sources/tkpi2017.csv   1.146 baris TKPI 2017 hasil ekstraksi (+ kolom QA proximate_sum, atwater_dev_pct)
+  tools/extract_tkpi.py  ekstraktor PDF TKPI -> CSV
   recipes_kemenkes.py    30 resep: transkripsi bahan (gram), langkah, nilai tercetak, halaman sumber
   sources/sr28_subset.csv  snapshot nilai SR28 yang dipakai (+ checksum file asli)
   build_seed.py          -> ../../supabase/seed/nutrition_seed.sql dan REPORT.md
@@ -57,7 +70,7 @@ Seed bersifat idempoten (upsert berdasarkan `foods.code` dan `recipes.slug`) dan
 
 ## Batasan
 
-- Komposisi gizi bahan lokal belum memakai TKPI (lihat di atas).
+- Sebagian besar nilai TKPI berasal dari data lama (1964–2001; lihat kolom `sumber`). Nilai yang bertentangan antarsumber sudah ditandai, tetapi tetap perlu verifikasi ahli gizi.
 - Transkripsi buku dilakukan dari teks PDF, termasuk dua kali pembacaan silang untuk nilai gizi. Ahli gizi tetap perlu mencocokkannya dengan buku cetak, terutama resep yang punya `data_notes`.
 - `image_url` dibiarkan kosong karena tidak ada foto berlisensi jelas; UI memakai gambar default.
 - Resep untuk 24–59 bulan memakai porsi "1 porsi resep", karena buku tidak memberi ukuran mangkok untuk usia ini.

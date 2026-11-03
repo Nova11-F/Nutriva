@@ -10,7 +10,7 @@ Aturan transkripsi
 - Nilai energi/protein/lemak = angka TERCETAK per porsi (K2023 semua resep "untuk 3 porsi").
 - Bahan: (teks seperti tercetak, kode foods_catalog atau None, gram atau None).
   gram None = jumlah tidak tercetak dalam gram ("secukupnya", "1 siung", "1 ekor") -> tidak ikut estimasi.
-  kode None = bahan tidak ada di katalog (kaldu, bumbu, buah naga, rabuk ikan, kecap manis, ikan tanpa jenis).
+  kode None = bahan tidak ada di katalog (kaldu, bumbu, kecap manis, bawang goreng, ikan tanpa jenis).
 - Langkah memasak diparafrasekan singkat dari buku.
 - Resep yang sama di kedua edisi memakai versi K2023 (lebih baru); 11 resep K2022 yang tidak ada di K2023 ikut dimasukkan.
 """
@@ -165,7 +165,7 @@ add(slug="tim-bubur-manado-daging-udang", title="Tim Bubur Manado Daging dan Uda
                  ("5 ml (1 sdt) minyak goreng", "MINYAK_SAWIT", 5), ("Garam secukupnya", None, None),
                  ("10 g (1 batang) daun bawang, iris", "DAUN_BAWANG", 10), ("100 ml kaldu daging", None, None),
                  ("Bumbu halus: 1 siung bawang merah, 1 siung bawang putih", None, None),
-                 ("180 g (1 potong) buah naga", None, 180)],
+                 ("180 g (1 potong) buah naga", "BUAH_NAGA", 180)],
     steps=["Tumis bumbu halus hingga harum, masukkan daging dan udang hingga berubah warna.",
            "Tambahkan kaldu, didihkan, lalu masukkan nasi, labu kuning, jagung, dan bayam.",
            "Tambahkan daun bawang, masak hingga menyusut, beri sedikit garam, sajikan dengan buah naga."])
@@ -285,11 +285,11 @@ add(slug="bola-bola-nasi-rabuk-ikan", title="Bola-bola Nasi Rabuk Ikan", src="K2
     ingredients=[("150 g beras, dimasak menjadi nasi", "BERAS_PUTIH", 150), ("40 g (4 sdm) minyak sayur", "MINYAK_SAWIT", 40),
                  ("18 g (2 sdm) buncis, iris", "BUNCIS", 18), ("10 g (1 sdm) wortel, cincang", "WORTEL", 10),
                  ("45 g (4,5 sdm) jagung pipil, cincang kasar", "JAGUNG_MANIS", 45), ("50 g (5 sdm) tepung terigu", "TEPUNG_TERIGU", 50),
-                 ("30 g (1/2 butir) telur ayam", "TELUR_AYAM", 30), ("50 g (5 sdm) rabuk ikan", None, 50),
+                 ("30 g (1/2 butir) telur ayam", "TELUR_AYAM", 30), ("50 g (5 sdm) rabuk ikan", "ABON_IKAN", 50),
                  ("10 g (2 sdm) bawang bombay iris", "BAWANG_BOMBAY", 10), ("5 g bawang putih goreng, 5 g bawang merah goreng", None, 10),
                  ("Daun bawang, lada, garam, kaldu jamur secukupnya", None, None),
                  ("Pelapis: 50 g (1 butir) telur ayam, tepung roti secukupnya", "TELUR_AYAM", 50),
-                 ("300 g buah naga", None, 300)],
+                 ("300 g buah naga", "BUAH_NAGA", 300)],
     steps=["Tumis bawang bombay lalu sayuran hingga setengah matang.",
            "Campur dengan nasi, terigu, telur, bawang goreng, dan bumbu hingga kalis.",
            "Pipihkan adonan, isi dengan rabuk ikan, bentuk bulat; lapisi terigu, telur kocok, dan tepung roti.",

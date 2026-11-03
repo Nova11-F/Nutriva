@@ -18,29 +18,58 @@ def test_sr28_snapshot_values():
     assert (egg["energy_kcal"], egg["protein_g"], egg["fat_g"], egg["iron_mg"]) == (143, 12.56, 9.51, 1.75)
 
 
+def test_tkpi_extraction_matches_printed_table():
+    tk = bs.load_tkpi()
+    assert len(tk) == 1146                      # jumlah bahan TKPI 2017
+    # dicocokkan manual dengan gambar halaman PDF (hlm. 9 dan 68 buku)
+    a = tk["AR001"]
+    assert (a["energi_kal"], a["protein_g"], a["lemak_g"], a["kh_g"], a["besi_mg"], a["bdd_pct"]) == \
+        ("357", "8.4", "1.7", "77.1", "1.8", "100")
+    assert tk["AR003"]["retinol_mcg"] == "" and tk["AR003"]["kartotal_mcg"] == "80"   # sel kosong tetap kosong
+    assert tk["NR018"]["air_g"] == "55.0" and tk["DR035"]["vitc_mg"] == "164"          # angka terbungkus digabung
+    ok = sum(1 for r in tk.values() if r["proximate_sum"] and abs(float(r["proximate_sum"]) - 100) <= 3)
+    assert ok / len(tk) > 0.95
+
+
+def comps():
+    cat = bs.load_catalog()
+    sr, tk = bs.load_subset(), bs.load_tkpi()
+    return {c["code"]: bs.composition(c, tk, sr) for c in cat}
+
+
 def test_catalog_integrity():
     cat = bs.load_catalog()
-    sr = bs.load_subset()
+    sr, tk = bs.load_subset(), bs.load_tkpi()
     codes = [c["code"] for c in cat]
     assert len(codes) == len(set(codes))
+    comp = comps()
     for c in cat:
-        assert c["ndb_no"] in sr and c["match_quality"] in {"exact", "close", "proxy"}
+        assert (c["ndb_no"] in sr or c["tkpi_code"] in tk) and c["match_quality"] in {"exact", "close", "proxy"}
+        cp = comp[c["code"]]
+        assert cp["energy_kcal"] > 0 and cp["source"]
         if c["match_quality"] == "proxy":
             assert c["note"].startswith("PROKSI"), c["code"]
-        for s in bs.servings(c["servings"]):
-            assert 0 < s["grams"] <= 1000
+        for sv in bs.servings(c["servings"]):
+            assert 0 < sv["grams"] <= 1000
+
+
+def test_tkpi_priority_and_iron_guard():
+    comp = comps()
+    assert comp["IKAN_KEMBUNG"]["source"].startswith("TKPI 2017 GR050")
+    assert comp["TEPUNG_TERIGU"]["source"].startswith("USDA")          # sengaja: fortifikasi besi
+    assert comp["MIE_TELUR"]["source"].startswith("USDA")              # TKPI AP022 gagal uji Atwater
+    assert comp["SUSU_SAPI"]["iron_mg"] < 0.1                          # besi TKPI 1,7 mg ditolak (>5x USDA)
 
 
 def test_recipes_integrity():
-    cat = {c["code"]: c for c in bs.load_catalog()}
-    sr = bs.load_subset()
+    comp = comps()
     slugs = [r["slug"] for r in RECIPES]
     assert len(slugs) == len(set(slugs)) == 30
     flagged = []
     for r in RECIPES:
         assert r["age"] in AGE_GUIDE and r["kind"] in {"utama", "selingan", "lauk"} and r["portions"] >= 1
         assert r["src"] in bs.SOURCES and r["steps"]
-        rec, qa = bs.recipe_record(r, cat, sr)
+        rec, qa = bs.recipe_record(r, comp)
         assert rec["budget_tier"] in {"ekonomis", "sedang", "premium"}
         assert 0 < rec["main_nutrients"]["calories"] < 1000
         if not qa["printed_ok"]:
@@ -50,12 +79,11 @@ def test_recipes_integrity():
 
 
 def test_allergen_detection():
-    cat = {c["code"]: c for c in bs.load_catalog()}
-    sr = bs.load_subset()
+    comp = comps()
     by = {r["slug"]: r for r in RECIPES}
-    rec, _ = bs.recipe_record(by["nasi-sup-tabas-udang-sayur"], cat, sr)
+    rec, _ = bs.recipe_record(by["nasi-sup-tabas-udang-sayur"], comp)
     assert {"ikan", "udang/krustasea", "telur", "wijen", "kedelai"} <= set(rec["allergen_tags"])
-    rec, _ = bs.recipe_record(by["mie-kukus-telur-puyuh"], cat, sr)
+    rec, _ = bs.recipe_record(by["mie-kukus-telur-puyuh"], comp)
     assert {"telur", "susu", "gandum"} <= set(rec["allergen_tags"])
 
 

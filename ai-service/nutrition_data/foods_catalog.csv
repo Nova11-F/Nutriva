@@ -1,80 +1,90 @@
-code,name,preparation_type,category,ndb_no,match_quality,servings,note
-NASI_PUTIH,Nasi putih,matang (ditanak),makanan pokok,20445,exact,1 sdm=10|1 centong=100,Beras putih tanpa fortifikasi; USDA long-grain unenriched cooked
-BERAS_PUTIH,Beras putih,mentah,makanan pokok,20444,exact,1 sdm=10,Beras giling tanpa fortifikasi
-KENTANG,Kentang,mentah,makanan pokok,11354,exact,1 sdm dadu=10,Daging dan kulit
-UBI_JALAR,Ubi jalar,mentah,makanan pokok,11507,close,,USDA tidak membedakan varietas merah/kuning/ungu
-SINGKONG,Singkong,mentah,makanan pokok,11134,exact,,
-JAGUNG_MANIS,Jagung manis pipil,mentah,makanan pokok,11167,exact,1 sdm=10,
-TEPUNG_TERIGU,Tepung terigu,mentah,tepung,20081,close,1 sdm=10,Terigu diperkaya (enriched); terigu di Indonesia wajib fortifikasi besi (SNI) sehingga dipilih versi enriched
-TEPUNG_TAPIOKA,Tepung tapioka,mentah,tepung,20068,close,1 sdm=10,USDA tapioca pearl dry sebagai proksi tepung tapioka
-TEPUNG_MAIZENA,Tepung maizena,mentah,tepung,20027,exact,1 sdm=10,Pati jagung (cornstarch)
-TEPUNG_JAGUNG,Tepung jagung,mentah,tepung,20020,close,1 sdm=10,Cornmeal whole-grain kuning
-ROTI_TAWAR,Roti tawar putih,siap makan,makanan pokok,18069,close,,
-TEPUNG_ROTI,Tepung roti (panir),kering,tepung,18079,exact,1 sdm=10,
-MIE_TELUR,Mie telur kering,mentah,makanan pokok,20409,close,,Unenriched
-SOUN,Soun (bihun kacang hijau),kering,makanan pokok,16082,exact,1 sdm=10,
-TELUR_AYAM,Telur ayam ras,mentah,lauk hewani,01123,exact,1 butir=50,
-TELUR_PUYUH,Telur puyuh,mentah,lauk hewani,01140,exact,1 butir=10,
-DAGING_AYAM,Daging ayam tanpa kulit,mentah,lauk hewani,05011,exact,1 sdm cincang=10,
-DADA_AYAM,Dada ayam fillet tanpa kulit,mentah,lauk hewani,05062,exact,1 sdm cincang=10,
-AYAM_GILING,Daging ayam giling,mentah,lauk hewani,05332,exact,,
-HATI_AYAM,Hati ayam,mentah,lauk hewani,05027,exact,1 porsi lauk=55,Porsi lauk 55 g mengikuti contoh Buku Resep Kemenkes 2023 usia 12-23 bulan
-DAGING_SAPI,Daging sapi giling (lemak 10%),mentah,lauk hewani,23562,close,1 sdm=10,Kadar lemak daging giling di Indonesia bervariasi
-HATI_SAPI,Hati sapi,mentah,lauk hewani,13325,exact,,
-IKAN_KEMBUNG,Ikan kembung,mentah,lauk hewani,15050,proxy,1 sdm=10,PROKSI: USDA tidak memuat Rastrelliger spp.; memakai Pacific/jack mackerel (Scomber/Trachurus)
-IKAN_LELE,Ikan lele,mentah,lauk hewani,15234,proxy,1 sdm=10,PROKSI: USDA tidak memuat Clarias spp.; memakai channel catfish farmed
-IKAN_NILA,Ikan nila,mentah,lauk hewani,15261,close,1 sdm=10,Tilapia (Oreochromis spp.)
-IKAN_MUJAIR,Ikan mujair,mentah,lauk hewani,15261,proxy,,PROKSI: Oreochromis mossambicus memakai data tilapia umum
-IKAN_TUNA,Ikan tuna,mentah,lauk hewani,15127,close,1 potong kecil=30,Yellowfin tuna
-IKAN_TONGKOL,Ikan tongkol,mentah,lauk hewani,15123,proxy,,PROKSI: Euthynnus affinis memakai skipjack tuna (cakalang)
-IKAN_TENGGIRI,Ikan tenggiri,mentah,lauk hewani,15051,proxy,1 sdm=10,PROKSI: Scomberomorus commerson memakai Spanish mackerel (S. maculatus)
-IKAN_KAKAP,Ikan kakap,mentah,lauk hewani,15101,close,,Snapper mixed species
-UDANG,Udang,mentah,lauk hewani,15270,close,1 ekor=10,
-SUSU_SAPI,Susu sapi segar full cream,cair,susu,01211,close,,Tanpa fortifikasi vitamin A/D
-KEJU_CHEDDAR,Keju cheddar,siap makan,susu,01009,close,1 sdm parut=10,Keju olahan lokal umumnya berbeda komposisinya
-YOGURT,Yogurt tawar susu penuh,siap makan,susu,01116,exact,,
-ASI,ASI (air susu ibu),cair,susu,01107,exact,,Nilai per 100 g
-TEMPE,Tempe kedelai,mentah,lauk nabati,16114,exact,1 sdm=10,
-TAHU,Tahu putih,mentah,lauk nabati,16427,proxy,1 buah kecil=30|1 buah besar=75,PROKSI: tofu USDA dibuat dengan kalsium sulfat; tahu lokal sering memakai cuka sehingga kalsium dan besi bisa lebih rendah
-KACANG_MERAH,Kacang merah kering,mentah,lauk nabati,16032,exact,1 sdt=5,
-KACANG_HIJAU,Kacang hijau kering,mentah,lauk nabati,16080,exact,,
-KACANG_TANAH,Kacang tanah,mentah,lauk nabati,16087,exact,,
-KACANG_POLONG,Kacang polong hijau,mentah,sayuran,11304,exact,,
-BAYAM,Bayam (Amaranthus),mentah,sayuran,11003,close,1 sdm=10,Bayam Indonesia adalah Amaranthus sehingga dipakai amaranth leaves; bukan Spinacia oleracea
-KANGKUNG,Kangkung,mentah,sayuran,11503,exact,1 sdm=10,USDA swamp cabbage = Ipomoea aquatica
-WORTEL,Wortel,mentah,sayuran,11124,exact,1 sdm=10,
-LABU_KUNING,Labu kuning,mentah,sayuran,11422,close,1 sdm=10,
-LABU_SIAM,Labu siam,mentah,sayuran,11149,exact,1 sdm=10,
-TOMAT,Tomat merah,mentah,sayuran,11529,exact,1 sdm=10,
-BROKOLI,Brokoli,mentah,sayuran,11090,exact,1 sdm=10,
-BUNCIS,Buncis,mentah,sayuran,11052,exact,1 sdm=9,
-SAWI_HIJAU,Sawi hijau,mentah,sayuran,11270,close,1 sdm=10,Mustard greens
-PAKCOY,Pakcoy,mentah,sayuran,11116,exact,1 sdm=10,
-TAUGE,Tauge kacang hijau,mentah,sayuran,11043,exact,1 sdm=10,
-DAUN_KELOR,Daun kelor,mentah,sayuran,11222,exact,,Moringa oleifera
-TIMUN,Mentimun,mentah,sayuran,11205,exact,,
-TERONG,Terong,mentah,sayuran,11209,exact,,
-DAUN_BAWANG,Daun bawang,mentah,bumbu,11291,exact,1 batang=10,
-BAWANG_MERAH,Bawang merah,mentah,bumbu,11677,close,,Shallot
-BAWANG_PUTIH,Bawang putih,mentah,bumbu,11215,exact,,
-BAWANG_BOMBAY,Bawang bombay,mentah,bumbu,11282,exact,,
-SELEDRI,Seledri,mentah,bumbu,11143,proxy,1 batang=10,PROKSI: USDA celery (batang besar); seledri daun lokal berbeda
-JAHE,Jahe,mentah,bumbu,11216,exact,,
-PEPAYA,Pepaya,mentah,buah,09226,exact,,
-PISANG,Pisang,mentah,buah,09040,close,,USDA pisang umum (Cavendish); pisang ambon/kepok berbeda
-JERUK_MANIS,Jeruk manis,mentah,buah,09200,close,1 buah kecil=50,
-JERUK_NIPIS,Jeruk nipis,mentah,buah,09159,close,,
-SEMANGKA,Semangka,mentah,buah,09326,exact,1 potong besar=180,
-MELON,Melon,mentah,buah,09181,close,1 potong=45,Cantaloupe
-ALPUKAT,Alpukat,mentah,buah,09037,exact,,
-JAMBU_BIJI,Jambu biji,mentah,buah,09139,exact,,
-MANGGA,Mangga,mentah,buah,09176,exact,,
-APEL,Apel,mentah,buah,09003,exact,,
-NANAS,Nanas,mentah,buah,09266,exact,,
-MINYAK_KELAPA,Minyak kelapa,minyak,lemak,04047,exact,1 sdt=5|1 sdm=10,
-MINYAK_SAWIT,Minyak goreng sawit,minyak,lemak,04055,exact,1 sdt=5|1 sdm=10,
-SANTAN,Santan,cair,lemak,12117,close,1 sdm=10,Santan segar dari kelapa parut + air; kekentalan rumah tangga bervariasi
-MARGARIN,Margarin,padat,lemak,04617,close,1 sdm=10,
-MENTEGA,Mentega tawar,padat,lemak,01145,exact,,
-GULA_PASIR,Gula pasir,kering,lainnya,19335,exact,,
-KECAP_ASIN,Kecap asin,cair,lainnya,16123,close,,Shoyu (kedelai dan gandum)
+code,name,preparation_type,category,tkpi_code,ndb_no,match_quality,servings,note
+NASI_PUTIH,Nasi putih,matang (ditanak),makanan pokok,AP001,20445,exact,1 sdm=10|1 centong=100,Beras putih tanpa fortifikasi; USDA long-grain unenriched cooked
+BERAS_PUTIH,Beras putih,mentah,makanan pokok,AR001,20444,exact,1 sdm=10,Beras giling tanpa fortifikasi
+KENTANG,Kentang,mentah,makanan pokok,BR013,11354,exact,1 sdm dadu=10,Daging dan kulit
+UBI_JALAR,Ubi jalar,mentah,makanan pokok,BR030,11507,close,,TKPI: Ubi jalar merah
+SINGKONG,Singkong,mentah,makanan pokok,BR016,11134,exact,,
+JAGUNG_MANIS,Jagung manis pipil,mentah,makanan pokok,AR015,11167,close,1 sdm=10,TKPI: Jagung muda kuning mentah
+TEPUNG_TERIGU,Tepung terigu,mentah,tepung,,20081,close,1 sdm=10,"Sengaja memakai USDA enriched: nilai besi TKPI (1990) mendahului fortifikasi wajib terigu (SNI), sehingga tidak mewakili terigu saat ini"
+TEPUNG_TAPIOKA,Tepung tapioka,mentah,tepung,BP070,20068,close,1 sdm=10,USDA tapioca pearl dry sebagai proksi tepung tapioka
+TEPUNG_MAIZENA,Tepung maizena,mentah,tepung,AP019,20027,exact,1 sdm=10,Pati jagung (cornstarch)
+TEPUNG_JAGUNG,Tepung jagung,mentah,tepung,AP011,20020,close,1 sdm=10,Cornmeal whole-grain kuning
+ROTI_TAWAR,Roti tawar putih,siap makan,makanan pokok,AP024,18069,close,,
+TEPUNG_ROTI,Tepung roti (panir),kering,tepung,,18079,exact,1 sdm=10,
+MIE_TELUR,Mie telur kering,mentah,makanan pokok,AP022,20409,close,,"TKPI Mi kering (AP022) gagal uji konsistensi (KH 6,3 g tercetak); memakai USDA"
+SOUN,Soun (bihun kacang hijau),kering,makanan pokok,,16082,exact,1 sdm=10,
+TELUR_AYAM,Telur ayam ras,mentah,lauk hewani,HR002,01123,exact,1 butir=50,
+TELUR_PUYUH,Telur puyuh,mentah,lauk hewani,HR011,01140,exact,1 butir=10,
+DAGING_AYAM,Daging ayam tanpa kulit,mentah,lauk hewani,,05011,exact,1 sdm cincang=10,"TKPI hanya memuat ""Ayam, daging"" dengan kulit (BDD 58%, lemak 25 g); untuk daging tanpa kulit dipakai USDA"
+DADA_AYAM,Dada ayam fillet tanpa kulit,mentah,lauk hewani,,05062,exact,1 sdm cincang=10,
+AYAM_GILING,Daging ayam giling,mentah,lauk hewani,,05332,exact,,
+HATI_AYAM,Hati ayam,mentah,lauk hewani,FR007,05027,exact,1 porsi lauk=55,Porsi lauk 55 g mengikuti contoh Buku Resep Kemenkes 2023 usia 12-23 bulan
+DAGING_SAPI,Daging sapi giling (lemak 10%),mentah,lauk hewani,FR026,23562,close,1 sdm=10,Kadar lemak daging giling di Indonesia bervariasi
+HATI_SAPI,Hati sapi,mentah,lauk hewani,FR031,13325,exact,,
+IKAN_KEMBUNG,Ikan kembung,mentah,lauk hewani,GR050,15050,exact,1 sdm=10,TKPI: Ikan oci/kembung (Rastrelliger spp.)
+IKAN_LELE,Ikan lele,mentah,lauk hewani,,15234,proxy,1 sdm=10,PROKSI: USDA tidak memuat Clarias spp.; memakai channel catfish farmed
+IKAN_NILA,Ikan nila,mentah,lauk hewani,,15261,close,1 sdm=10,Tilapia (Oreochromis spp.)
+IKAN_MUJAIR,Ikan mujair,mentah,lauk hewani,GR048,15261,exact,,TKPI: Ikan mujahir
+IKAN_TUNA,Ikan tuna,mentah,lauk hewani,,15127,close,1 potong kecil=30,Yellowfin tuna
+IKAN_TONGKOL,Ikan tongkol,mentah,lauk hewani,GR070,15123,exact,,TKPI: Ikan tongkol; KH 8 g/100 g tercetak di TKPI (tidak lazim untuk ikan)
+IKAN_TENGGIRI,Ikan tenggiri,mentah,lauk hewani,,15051,proxy,1 sdm=10,PROKSI: Scomberomorus commerson memakai Spanish mackerel (S. maculatus)
+IKAN_KAKAP,Ikan kakap,mentah,lauk hewani,GR030,15101,close,,Snapper mixed species
+UDANG,Udang,mentah,lauk hewani,GR084,15270,close,1 ekor=10,
+SUSU_SAPI,Susu sapi segar full cream,cair,susu,JR006,01211,close,,Tanpa fortifikasi vitamin A/D
+KEJU_CHEDDAR,Keju cheddar,siap makan,susu,JP003,01009,close,1 sdm parut=10,Keju olahan lokal umumnya berbeda komposisinya
+YOGURT,Yogurt tawar susu penuh,siap makan,susu,JP011,01116,exact,,
+ASI,ASI (air susu ibu),cair,susu,JR002,01107,exact,,Nilai per 100 g
+TEMPE,Tempe kedelai,mentah,lauk nabati,CP077,16114,exact,1 sdm=10,
+TAHU,Tahu putih,mentah,lauk nabati,CP061,16427,exact,1 buah kecil=30|1 buah besar=75,"TKPI: Tahu, mentah"
+KACANG_MERAH,Kacang merah kering,mentah,lauk nabati,CR026,16032,exact,1 sdt=5,
+KACANG_HIJAU,Kacang hijau kering,mentah,lauk nabati,CR014,16080,exact,,
+KACANG_TANAH,Kacang tanah,mentah,lauk nabati,CR032,16087,exact,,
+KACANG_POLONG,Kacang polong hijau,mentah,sayuran,CR016,11304,exact,,
+BAYAM,Bayam (Amaranthus),mentah,sayuran,DR008,11003,close,1 sdm=10,Bayam Indonesia adalah Amaranthus sehingga dipakai amaranth leaves; bukan Spinacia oleracea
+KANGKUNG,Kangkung,mentah,sayuran,DR100,11503,exact,1 sdm=10,USDA swamp cabbage = Ipomoea aquatica
+WORTEL,Wortel,mentah,sayuran,DR166,11124,exact,1 sdm=10,
+LABU_KUNING,Labu kuning,mentah,sayuran,DR122,11422,close,1 sdm=10,
+LABU_SIAM,Labu siam,mentah,sayuran,DR123,11149,exact,1 sdm=10,
+TOMAT,Tomat merah,mentah,sayuran,DR161,11529,exact,1 sdm=10,
+BROKOLI,Brokoli,mentah,sayuran,,11090,exact,1 sdm=10,
+BUNCIS,Buncis,mentah,sayuran,DR013,11052,exact,1 sdm=9,
+SAWI_HIJAU,Sawi hijau,mentah,sayuran,DR141,11270,close,1 sdm=10,Mustard greens
+PAKCOY,Pakcoy,mentah,sayuran,,11116,exact,1 sdm=10,
+TAUGE,Tauge kacang hijau,mentah,sayuran,DR148,11043,exact,1 sdm=10,
+DAUN_KELOR,Daun kelor,mentah,sayuran,DR038,11222,exact,,Moringa oleifera
+TIMUN,Mentimun,mentah,sayuran,DR109,11205,exact,,
+TERONG,Terong,mentah,sayuran,DR154,11209,exact,,
+DAUN_BAWANG,Daun bawang,mentah,bumbu,DR018,11291,close,1 batang=10,TKPI: Daun bawang merah
+BAWANG_MERAH,Bawang merah,mentah,bumbu,NR007,11677,close,,Shallot
+BAWANG_PUTIH,Bawang putih,mentah,bumbu,NR008,11215,exact,,
+BAWANG_BOMBAY,Bawang bombay,mentah,bumbu,DR007,11282,exact,,
+SELEDRI,Seledri,mentah,bumbu,DR147,11143,exact,1 batang=10,"TKPI: Seledri, segar"
+JAHE,Jahe,mentah,bumbu,NR018,11216,exact,,
+PEPAYA,Pepaya,mentah,buah,ER073,09226,exact,,
+PISANG,Pisang,mentah,buah,ER074,09040,close,,"TKPI: Pisang ambon; pisang lain (kepok, dll.) berbeda"
+JERUK_MANIS,Jeruk manis,mentah,buah,ER039,09200,close,1 buah kecil=50,
+JERUK_NIPIS,Jeruk nipis,mentah,buah,ER040,09159,close,,
+SEMANGKA,Semangka,mentah,buah,ER105,09326,exact,1 potong besar=180,
+MELON,Melon,mentah,buah,ER067,09181,close,1 potong=45,Cantaloupe
+ALPUKAT,Alpukat,mentah,buah,ER001,09037,exact,,
+JAMBU_BIJI,Jambu biji,mentah,buah,ER031,09139,exact,,
+MANGGA,Mangga,mentah,buah,ER054,09176,exact,,
+APEL,Apel,mentah,buah,ER004,09003,exact,,
+NANAS,Nanas,mentah,buah,ER070,09266,exact,,
+MINYAK_KELAPA,Minyak kelapa,minyak,lemak,KR011,04047,exact,1 sdt=5|1 sdm=10,
+MINYAK_SAWIT,Minyak goreng sawit,minyak,lemak,KR012,04055,exact,1 sdt=5|1 sdm=10,
+SANTAN,Santan,cair,lemak,KP003,12117,close,1 sdm=10,TKPI: Santan dengan air; santan kental lebih tinggi lemak
+MARGARIN,Margarin,padat,lemak,KP001,04617,close,1 sdm=10,
+MENTEGA,Mentega tawar,padat,lemak,KP002,01145,exact,,
+GULA_PASIR,Gula pasir,kering,lainnya,MP007,19335,exact,,
+KECAP_ASIN,Kecap asin,cair,lainnya,NP005,16123,close,,TKPI: Kecap (jenis tidak dirinci); fallback USDA shoyu
+BUAH_NAGA,Buah naga merah,mentah,buah,ER012,,exact,1 potong=180,
+ABON_IKAN,Abon ikan (rabuk ikan),kering,lauk hewani,GP054,,close,1 sdm=10,Rabuk ikan dipetakan ke abon ikan TKPI; besi tidak tercantum di TKPI
+IKAN_TERI,Ikan teri segar,mentah,lauk hewani,GR068,,exact,,
+IKAN_MAS,Ikan mas,mentah,lauk hewani,GR046,,exact,,
+IKAN_BANDENG,Ikan bandeng,mentah,lauk hewani,GR007,,exact,,
+IKAN_PATIN,Ikan patin,mentah,lauk hewani,GR053,,exact,,
+IKAN_GABUS,Ikan gabus,mentah,lauk hewani,GR025,,exact,,
+IKAN_CAKALANG,Ikan cakalang,mentah,lauk hewani,GR019,,exact,,
+BAYAM_MERAH,Bayam merah,mentah,sayuran,DR009,,exact,,
+KACANG_PANJANG,Kacang panjang,mentah,sayuran,DR097,,exact,,

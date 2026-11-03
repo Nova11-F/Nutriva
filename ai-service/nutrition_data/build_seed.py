@@ -1,10 +1,13 @@
 """
 Bangun seed Supabase `foods` dan `recipes` Nutriva dari sumber yang dapat ditelusuri.
 
-Sumber
-  foods   : USDA National Nutrient Database for Standard Reference, Release 28 (SR28, 2015; domain publik).
-            Snapshot baris yang dipakai disimpan di sources/sr28_subset.csv (+ checksum file asli).
+Sumber (prioritas)
+  1. TKPI 2017 (Kemenkes RI, 2018; ISBN 978-602-416-407-2) -> sources/tkpi2017.csv (tools/extract_tkpi.py)
+  2. USDA SR28 (2015, domain publik) -> sources/sr28_subset.csv, dipakai bila bahan tidak ada di TKPI
+     atau baris TKPI gagal uji konsistensi (Atwater > 20% / proksimat di luar 100 +/- 3 g).
+  Besi: bila TKPI dan USDA berbeda > 5x, dipakai USDA dan dicatat (nilai TKPI perlu verifikasi).
   recipes : Buku resep resmi Kemenkes RI 2022 & 2023 (lihat recipes_kemenkes.py).
+  Seluruh baris TKPI lain yang lolos uji ikut di-seed sebagai bahan yang bisa dicari (kode TKPI_<kode>).
 
 Pemakaian
   python build_seed.py                          # pakai sources/sr28_subset.csv
@@ -28,6 +31,12 @@ from recipes_kemenkes import AGE_GUIDE, RECIPES, SOURCES
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
 SUBSET = HERE / "sources/sr28_subset.csv"
+TKPI = HERE / "sources/tkpi2017.csv"
+TKPI_CITATION = "Kemenkes RI (2018). Tabel Komposisi Pangan Indonesia 2017. ISBN 978-602-416-407-2."
+TKPI_GROUP = {"A": "makanan pokok", "B": "makanan pokok", "C": "lauk nabati", "D": "sayuran", "E": "buah",
+              "F": "lauk hewani", "G": "lauk hewani", "H": "lauk hewani", "J": "susu", "K": "lemak",
+              "M": "gula & konfeksioneri", "N": "bumbu", "Q": "minuman"}
+IRON_RATIO_LIMIT = 5.0
 SQL_OUT = REPO / "supabase/seed/nutrition_seed.sql"
 REPORT = HERE / "REPORT.md"
 
@@ -89,6 +98,66 @@ def load_subset() -> dict[str, dict]:
     return out
 
 
+def load_tkpi() -> dict[str, dict]:
+    with TKPI.open(encoding="utf-8") as fh:
+        rows = list(csv.DictReader(l for l in fh if not l.startswith("#")))
+    return {r["kode"]: r for r in rows}
+
+
+def _f(x):
+    try:
+        return float(x)
+    except (TypeError, ValueError):
+        return None
+
+
+def tkpi_ok(r: dict) -> tuple[bool, str]:
+    if any(_f(r.get(k)) is None for k in ("energi_kal", "protein_g", "lemak_g", "kh_g")):
+        return False, "makronutrien tidak lengkap"
+    if _f(r["atwater_dev_pct"]) is not None and _f(r["atwater_dev_pct"]) > 20:
+        return False, f"energi tidak konsisten dengan P/L/KH (selisih {r['atwater_dev_pct']}%)"
+    if _f(r["proximate_sum"]) is not None and abs(_f(r["proximate_sum"]) - 100) > 3:
+        return False, f"jumlah proksimat {r['proximate_sum']} g (bukan ~100 g)"
+    return True, ""
+
+
+def composition(c: dict, tk: dict, sr: dict) -> dict:
+    """Komposisi per 100 g BDD untuk satu bahan katalog, dengan jejak sumber per nilai."""
+    notes = []
+    row = tk.get(c.get("tkpi_code") or "")
+    usda = sr.get(c.get("ndb_no") or "")
+    if row:
+        ok, why = tkpi_ok(row)
+        if not ok:
+            notes.append(f"TKPI {row['kode']} tidak dipakai: {why}")
+            row = None
+    if row:
+        out = {"energy_kcal": _f(row["energi_kal"]), "protein_g": _f(row["protein_g"]), "fat_g": _f(row["lemak_g"]),
+               "carbs_g": _f(row["kh_g"]), "iron_mg": _f(row["besi_mg"]),
+               "extra": {"fiber_g": _f(row["serat_g"]), "calcium_mg": _f(row["kalsium_mg"]), "zinc_mg": _f(row["seng_mg"]),
+                         "retinol_mcg": _f(row["retinol_mcg"]), "beta_carotene_mcg": _f(row["bkar_mcg"]),
+                         "vit_c_mg": _f(row["vitc_mg"]), "edible_portion_pct": _f(row["bdd_pct"])},
+               "source": f"TKPI 2017 {row['kode']} ({row['nama']}; data asal {row['sumber']})"}
+        fe_u = usda["iron_mg"] if usda else None
+        fe_t = out["iron_mg"]
+        if fe_u and fe_t is not None and fe_t > 0 and max(fe_t / fe_u, fe_u / fe_t) > IRON_RATIO_LIMIT:
+            notes.append(f"Besi TKPI {fe_t:g} mg berbeda >{IRON_RATIO_LIMIT:g}x dari USDA {fe_u:g} mg; dipakai USDA "
+                         "sampai diverifikasi ahli gizi")
+            out["iron_mg"] = fe_u
+            out["extra"]["iron_source"] = f"USDA SR28 {c['ndb_no']}"
+        elif fe_t is None and fe_u is not None:
+            out["iron_mg"] = fe_u
+            out["extra"]["iron_source"] = f"USDA SR28 {c['ndb_no']} (TKPI kosong)"
+    elif usda:
+        out = {k: usda[k] for k in ("energy_kcal", "protein_g", "fat_g", "carbs_g", "iron_mg")}
+        out["extra"] = {k: usda[k] for k in ("fiber_g", "calcium_mg", "zinc_mg", "vit_a_rae_mcg")}
+        out["source"] = f"USDA SR28 NDB {c['ndb_no']} ({usda['description']})"
+    else:
+        raise SystemExit(f"Tidak ada sumber komposisi untuk {c['code']}")
+    out["notes"] = notes
+    return out
+
+
 def load_catalog() -> list[dict]:
     with (HERE / "foods_catalog.csv").open(encoding="utf-8") as fh:
         return list(csv.DictReader(fh))
@@ -108,10 +177,10 @@ def plausible(e: float, p: float, f: float) -> bool:
     return 4 * p + 9 * f <= e * 1.05
 
 
-def recipe_record(r: dict, cat: dict, sr: dict) -> tuple[dict, dict]:
+def recipe_record(r: dict, comp: dict) -> tuple[dict, dict]:
     n = r["portions"]
     tot = {"energy_kcal": 0.0, "protein_g": 0.0, "fat_g": 0.0, "carbs_g": 0.0, "iron_mg": 0.0}
-    g_mapped = g_known = 0.0
+    g_mapped = g_known = g_iron = 0.0
     unmapped = []
     for text, code, grams in r["ingredients"]:
         if grams is None:
@@ -122,10 +191,12 @@ def recipe_record(r: dict, cat: dict, sr: dict) -> tuple[dict, dict]:
         if code is None:
             unmapped.append(text)
             continue
-        comp = sr[cat[code]["ndb_no"]]
+        cp = comp[code]
         for k in tot:
-            tot[k] += (comp[k] or 0) * grams / 100
+            tot[k] += (cp[k] or 0) * grams / 100
         g_mapped += grams
+        if cp["iron_mg"] is not None:
+            g_iron += grams
     est = {k: v / n for k, v in tot.items()}
 
     e, p, f = r["printed"]
@@ -136,12 +207,13 @@ def recipe_record(r: dict, cat: dict, sr: dict) -> tuple[dict, dict]:
         basis = {"energy_protein_fat": "tercetak (Kemenkes)", "carbs": "turunan Atwater dari nilai tercetak"}
     else:
         energy, protein, fat, carbs = est["energy_kcal"], est["protein_g"], est["fat_g"], est["carbs_g"]
-        basis = {"energy_protein_fat": "estimasi dari bahan (USDA SR28); nilai tercetak tidak plausibel",
-                 "carbs": "estimasi dari bahan (USDA SR28)"}
+        basis = {"energy_protein_fat": "estimasi dari bahan (TKPI/USDA); nilai tercetak tidak plausibel",
+                 "carbs": "estimasi dari bahan (TKPI/USDA)"}
     coverage = round(100 * g_mapped / g_known, 1) if g_known else 0.0
+    iron_cov = round(100 * g_iron / g_known, 1) if g_known else 0.0
     # Besi hanya ditampilkan bila >= 80% berat bahan bergramasi punya data komposisi (selain itu terlalu bias rendah)
-    iron = round(est["iron_mg"], 1) if coverage >= 80 else None
-    basis["iron"] = ("estimasi dari bahan bergramasi (USDA SR28), batas bawah" if iron is not None
+    iron = round(est["iron_mg"], 1) if iron_cov >= 80 else None
+    basis["iron"] = ("estimasi dari bahan bergramasi (TKPI/USDA), batas bawah" if iron is not None
                      else "tidak dihitung: cakupan data bahan < 80%")
     notes = [r.get("note")] if r.get("note") else []
     ratio = est["energy_kcal"] / e if e else 0
@@ -181,7 +253,7 @@ def recipe_record(r: dict, cat: dict, sr: dict) -> tuple[dict, dict]:
             "per": "1 porsi",
             "calories": round(energy), "calories_kcal": round(energy, 1), "protein_g": round(protein, 1),
             "fat_g": round(fat, 1), "carbs_g": round(carbs, 1), "iron_mg": iron,
-            "iron_coverage_pct": coverage, "texture": g["texture"], "basis": basis,
+            "iron_coverage_pct": iron_cov, "texture": g["texture"], "basis": basis,
         },
         "ingredients": [t for t, _, _ in r["ingredients"]],
         "allergen_tags": sorted(allergens),
@@ -221,31 +293,53 @@ def main() -> None:
     args = ap.parse_args()
     catalog = load_catalog()
     if args.abbrev:
-        build_subset(args.abbrev, {c["ndb_no"] for c in catalog})
+        build_subset(args.abbrev, {c["ndb_no"] for c in catalog if c["ndb_no"]})
     sr = load_subset()
+    tk = load_tkpi()
     cat = {c["code"]: c for c in catalog}
 
     # validasi katalog
     for c in catalog:
-        assert c["ndb_no"] in sr, c
+        assert c["ndb_no"] in sr or c["tkpi_code"] in tk, c
+        assert not c["ndb_no"] or c["ndb_no"] in sr, c
+        assert not c["tkpi_code"] or c["tkpi_code"] in tk, c
         assert c["match_quality"] in {"exact", "close", "proxy"}, c
     for r in RECIPES:
         for _, code, _ in r["ingredients"]:
             assert code is None or code in cat, (r["slug"], code)
 
+    comp = {c["code"]: composition(c, tk, sr) for c in catalog}
+
+    def food_row(code, name, prep, category, serv, cp, mq, note):
+        return "(" + ", ".join([
+            q(code), q(name), q(prep), q(category), qjson(serv), q(cp["energy_kcal"]), q(cp["protein_g"]),
+            q(cp["fat_g"]), q(cp["carbs_g"]), q(cp["iron_mg"]), qjson(cp["extra"]), q(cp["source"]), q(mq),
+            q(" ".join(x for x in [note, *cp["notes"]] if x) or None),
+        ]) + ")"
+
     foods_sql, recipes_sql = [], []
     for c in catalog:
-        s = sr[c["ndb_no"]]
-        foods_sql.append("(" + ", ".join([
-            q(c["code"]), q(c["name"]), q(c["preparation_type"]), q(c["category"]), qjson(servings(c["servings"])),
-            q(s["energy_kcal"]), q(s["protein_g"]), q(s["fat_g"]), q(s["carbs_g"]), q(s["iron_mg"] or 0.0),
-            qjson({k: s[k] for k in ("fiber_g", "calcium_mg", "zinc_mg", "vit_a_rae_mcg")}),
-            q(f"USDA SR28 NDB {c['ndb_no']} ({s['description']})"), q(c["match_quality"]), q(c["note"] or None),
-        ]) + ")")
+        foods_sql.append(food_row(c["code"], c["name"], c["preparation_type"], c["category"], servings(c["servings"]),
+                                  comp[c["code"]], c["match_quality"], c["note"] or None))
+    used = {c["tkpi_code"] for c in catalog if c["tkpi_code"]}
+    tkpi_extra, tkpi_rejected = 0, []
+    for kode, row in tk.items():
+        if kode in used:
+            continue
+        ok, why = tkpi_ok(row)
+        if not ok:
+            tkpi_rejected.append((kode, row["nama"], why))
+            continue
+        pseudo = {"code": f"TKPI_{kode}", "tkpi_code": kode, "ndb_no": ""}
+        cp = composition(pseudo, tk, sr)
+        prep = "mentah/segar" if kode[1] == "R" else "olahan"
+        foods_sql.append(food_row(f"TKPI_{kode}", row["nama"], prep, TKPI_GROUP.get(kode[0], "lainnya"),
+                                  servings(""), cp, "exact", None))
+        tkpi_extra += 1
 
     qas = []
     for r in RECIPES:
-        rec, qa = recipe_record(r, cat, sr)
+        rec, qa = recipe_record(r, comp)
         qas.append(qa)
         recipes_sql.append("(" + ", ".join([
             q(rec["title"]), q(rec["slug"]), q(rec["image_url"]), q(rec["min_age_months"]), q(rec["max_age_months"]),
@@ -258,7 +352,8 @@ def main() -> None:
     SQL_OUT.write_text(f"""-- =============================================================================
 -- Nutriva nutrition seed (DIHASILKAN OTOMATIS oleh ai-service/nutrition_data/build_seed.py — jangan edit manual)
 -- Prasyarat: supabase_schema.sql + supabase/migrations/20261103b_nutrition_data.sql
--- foods   : {len(foods_sql)} bahan, komposisi per 100 g dari {SR28_CITATION}
+-- foods   : {len(foods_sql)} bahan per 100 g BDD: {len(catalog)} bahan kurasi (dengan ukuran rumah tangga) + {tkpi_extra} bahan TKPI lain
+--           Sumber utama {TKPI_CITATION} Pelengkap: {SR28_CITATION}
 -- recipes : {len(recipes_sql)} resep balita dari buku resep resmi Kemenkes RI 2022 dan 2023
 -- Status  : BELUM divalidasi ahli gizi Nutriva (lihat kolom validated_by).
 -- Idempotent: upsert berdasarkan foods.code dan recipes.slug.
@@ -289,39 +384,41 @@ ON CONFLICT (slug) DO UPDATE SET
   validated_by = EXCLUDED.validated_by, source_reference = EXCLUDED.source_reference, data_notes = EXCLUDED.data_notes;
 """, encoding="utf-8")
 
-    write_report(catalog, sr, qas)
+    write_report(catalog, comp, qas, tkpi_extra, tkpi_rejected)
     print(f"foods={len(foods_sql)} recipes={len(recipes_sql)} -> {SQL_OUT.relative_to(REPO)}")
 
 
-def write_report(catalog, sr, qas) -> None:
+def write_report(catalog, comp, qas, tkpi_extra, tkpi_rejected) -> None:
     mq = {k: sum(1 for c in catalog if c["match_quality"] == k) for k in ("exact", "close", "proxy")}
+    src_t = sum(1 for c in catalog if comp[c["code"]]["source"].startswith("TKPI"))
     ok = [x for x in qas if x["printed_ok"]]
-    ape = [abs(x["est"]["energy_kcal"] - x["printed"][0]) / x["printed"][0] * 100 for x in ok]
-    ape_sorted = sorted(ape)
-    med = ape_sorted[len(ape_sorted) // 2] if ape_sorted else float("nan")
+    ape = sorted(abs(x["est"]["energy_kcal"] - x["printed"][0]) / x["printed"][0] * 100 for x in ok)
+    med = ape[len(ape) // 2] if ape else float("nan")
+    full = sorted(abs(x["est"]["energy_kcal"] - x["printed"][0]) / x["printed"][0] * 100
+                  for x in ok if x["coverage"] >= 95)
+    med_full = full[len(full) // 2] if full else float("nan")
     lines = [
         "# Laporan QA seed nutrisi Nutriva", "",
         "Dihasilkan otomatis oleh `build_seed.py`. Angka di bawah dihitung ulang setiap build.", "",
         "## Foods", "",
-        f"- {len(catalog)} bahan. Kecocokan dengan SR28: exact {mq['exact']}, close {mq['close']}, proxy {mq['proxy']}.",
-        "- `proxy` = spesies/produk lokal tidak ada di SR28 sehingga dipakai padanan terdekat; ganti dengan TKPI bila tersedia.",
-        "- Cek konsistensi Atwater per bahan (|E - (4P + 9L + 4KH)| / E):", "",
-        "| kode | E (kkal) | 4P+9L+4KH | selisih % |", "|---|---|---|---|",
+        f"- {len(catalog)} bahan kurasi: sumber TKPI 2017 {src_t}, USDA SR28 {len(catalog) - src_t}. "
+        f"Kecocokan nama/jenis: exact {mq['exact']}, close {mq['close']}, proxy {mq['proxy']}.",
+        f"- {tkpi_extra} bahan TKPI lain lolos uji dan ikut di-seed untuk pencarian (kode `TKPI_<kode>`, ukuran 100 g).",
+        f"- {len(tkpi_rejected)} baris TKPI ditolak uji konsistensi (Atwater > 20% atau proksimat di luar 100 +/- 3 g). "
+        "Nilai sumber tidak diubah; baris ini hanya tidak di-seed.", "",
+        "### Catatan per bahan kurasi", "", "| kode | sumber | catatan |", "|---|---|---|",
     ]
     for c in catalog:
-        s = sr[c["ndb_no"]]
-        e = s["energy_kcal"] or 0
-        calc = 4 * (s["protein_g"] or 0) + 9 * (s["fat_g"] or 0) + 4 * (s["carbs_g"] or 0)
-        d = abs(e - calc) / e * 100 if e else 0
-        if d > 15:
-            lines.append(f"| {c['code']} | {e:.0f} | {calc:.0f} | {d:.0f} |")
-    lines += ["", "Hanya bahan dengan selisih > 15% yang ditampilkan. Selisih wajar terjadi karena SR28 memakai faktor "
-              "Atwater spesifik per bahan (bukan 4/9/4) dan karbohidrat 'by difference' termasuk serat.", "",
-              "## Recipes", "",
+        cp = comp[c["code"]]
+        if cp["notes"] or not cp["source"].startswith("TKPI"):
+            lines.append(f"| {c['code']} | {cp['source']} | {' '.join(cp['notes']) or c['note']} |")
+    lines += ["", "### Baris TKPI yang ditolak", "", "| kode | nama | alasan |", "|---|---|---|"]
+    lines += [f"| {k} | {n} | {w} |" for k, n, w in tkpi_rejected]
+    lines += ["", "## Recipes", "",
               f"- {len(qas)} resep; nilai tercetak plausibel: {len(ok)}; diganti estimasi bahan: {len(qas) - len(ok)}.",
-              f"- Energi estimasi-dari-bahan vs tercetak (resep plausibel): median selisih absolut {med:.0f}% "
-              f"(n = {len(ape)}). Selisih besar terutama karena bahan tanpa gram (minyak goreng, kaldu, bumbu) "
-              "tidak ikut estimasi, sehingga estimasi cenderung lebih rendah.", "",
+              f"- Energi estimasi-dari-bahan vs tercetak: median selisih absolut {med:.0f}% (n = {len(ape)}); "
+              f"untuk resep dengan cakupan gram >= 95%: {med_full:.0f}% (n = {len(full)}). Estimasi cenderung lebih rendah "
+              "karena minyak goreng, kaldu, dan bumbu tanpa gram tidak ikut dihitung.", "",
               "| resep | sumber | E/P/L tercetak | E/P/L estimasi | plausibel | cakupan gram (%) | cek porsi |",
               "|---|---|---|---|---|---|---|"]
     for x in qas:
