@@ -1,4 +1,14 @@
 import { supabase } from "./supabase";
+import { cleanRiskFactors } from "../constants/riskFactorOptions";
+
+/** Faktor risiko awal dari data onboarding (hanya yang benar-benar diisi orang tua). */
+function riskFactorsFromOnboarding(data) {
+  return cleanRiskFactors({
+    birth_weight_kg: data.birthWeight,
+    birth_length_cm: data.birthLength,
+    exclusive_breastfeeding: data.feedingType === "asi_exclusive" ? "Yes" : undefined,
+  });
+}
 
 export const childService = {
   /**
@@ -24,6 +34,7 @@ export const childService = {
       initialHeight: c.initial_height_cm,
       allergies: c.avoided_foods || [],
       favoriteFoods: c.dietary_preferences || [],
+      riskFactors: c.risk_factors || {},
     }));
   },
 
@@ -43,12 +54,15 @@ export const childService = {
       avoided_foods: data.allergies || [],
       photo_url: data.photo || null,
     };
+    const rf = riskFactorsFromOnboarding(data);
+    if (Object.keys(rf).length) payload.risk_factors = rf;
 
-    const { data: created, error } = await supabase
-      .from("children")
-      .insert(payload)
-      .select()
-      .single();
+    let { data: created, error } = await supabase.from("children").insert(payload).select().single();
+    if (error && /risk_factors/.test(error.message || "")) {
+      // migrasi AI belum dijalankan: simpan profil tanpa faktor risiko
+      delete payload.risk_factors;
+      ({ data: created, error } = await supabase.from("children").insert(payload).select().single());
+    }
 
     if (error) {
       console.error("Gagal membuat profil anak:", error.message);
@@ -62,6 +76,7 @@ export const childService = {
       initialHeight: created.initial_height_cm,
       allergies: created.avoided_foods || [],
       favoriteFoods: created.dietary_preferences || [],
+      riskFactors: created.risk_factors || {},
     };
   },
 
@@ -78,6 +93,7 @@ export const childService = {
     if (data.allergies) updates.avoided_foods = data.allergies;
     if (data.favoriteFoods) updates.dietary_preferences = data.favoriteFoods;
     if (data.photo !== undefined) updates.photo_url = data.photo;
+    if (data.riskFactors) updates.risk_factors = cleanRiskFactors(data.riskFactors);
 
     const { data: updated, error } = await supabase
       .from("children")
@@ -98,6 +114,7 @@ export const childService = {
       initialHeight: updated.initial_height_cm,
       allergies: updated.avoided_foods || [],
       favoriteFoods: updated.dietary_preferences || [],
+      riskFactors: updated.risk_factors || {},
     };
   },
 

@@ -1,0 +1,15 @@
+flowchart LR
+  A["Nutriva Web (React)<br/>Child Profile + Add Measurement"] -->|POST /v1/growth/assess| B["FastAPI<br/>Nutriva AI API"]
+  B --> C["WHO z-score engine<br/>HAZ · WAZ · WHZ<br/>(deterministik)"]
+  B --> D["ML Early-Awareness<br/>Random Forest v1.0.0<br/>(faktor non-antropometri)"]
+  C --> E{"Ada data<br/>tinggi/berat?"}
+  D --> E
+  E -->|Ya| F["Level = kategori WHO"]
+  E -->|Tidak| G["Level = profil risiko ML"]
+  F --> H["Action layer<br/>alert · pesan · faktor yang bisa diubah<br/>+ disclaimer non-diagnosis"]
+  G --> H
+  H -->|JSON| A
+  H -.->|konteks anak| I["AI Nutrition Assistant<br/>(LLM + knowledge base)"]
+  classDef g fill:#E6F7EE,stroke:#00B964,color:#1d3b2a;
+  classDef y fill:#FFF4DC,stroke:#F2B544,color:#3b2f12;
+  class A,I y; class B,C,D,E,F,G,H g;

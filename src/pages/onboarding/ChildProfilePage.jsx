@@ -231,6 +231,8 @@ function OnboardingWizard({ editing, parentOnly = false }) {
           weight: Number(values.weight),
           height: Number(values.height),
           headCircumference: Number(values.headCircumference),
+          birthDate: saved.current.child.birthDate || values.birthDate,
+          gender: saved.current.child.gender || values.gender,
         });
         saved.current.growth = true;
       }

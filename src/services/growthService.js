@@ -1,61 +1,85 @@
 import { supabase } from "./supabase";
+import { ageInMonthsAt, assessMeasurement } from "../lib/whoGrowth";
 
 /**
- * Menghitung perkiraan Z-score berdasarkan standar WHO sederhana
- * @param {number} ageMonths Usia dalam bulan
- * @param {number} weightKg Berat badan (kg)
- * @param {number} heightCm Tinggi / Panjang badan (cm)
- * @param {string} gender 'Laki-laki' / 'Perempuan' / 'male' / 'female'
+ * Z-score memakai tabel LMS resmi WHO Child Growth Standards 2006 (src/lib/whoGrowth.js),
+ * identik dengan engine Python di AI service. Rumus aproksimasi lama sudah dihapus.
  */
+export const ZSCORE_METHOD = "who_lms_2006";
+
+/** Dipertahankan untuk kompatibilitas pemanggil lama. */
 export function calculateZScores(ageMonths, weightKg, heightCm, gender = "Perempuan") {
-  const isMale = gender === "Laki-laki" || gender === "male";
-  
-  // Median estimasi WHO sederhana
-  // BB lahir: 3.3 kg (L) / 3.2 kg (P), naik bertahap
-  const medianWeight = isMale 
-    ? 3.3 + (ageMonths * (ageMonths <= 6 ? 0.8 : ageMonths <= 12 ? 0.4 : 0.2))
-    : 3.2 + (ageMonths * (ageMonths <= 6 ? 0.75 : ageMonths <= 12 ? 0.38 : 0.2));
-  const sdWeight = medianWeight * 0.12;
-  const zWaz = Number(((weightKg - medianWeight) / sdWeight).toFixed(2));
-
-  // TB lahir: 50 cm (L) / 49 cm (P)
-  const medianHeight = isMale
-    ? 50 + (ageMonths * (ageMonths <= 6 ? 2.5 : ageMonths <= 12 ? 1.5 : 0.9))
-    : 49 + (ageMonths * (ageMonths <= 6 ? 2.4 : ageMonths <= 12 ? 1.4 : 0.9));
-  const sdHeight = medianHeight * 0.045;
-  const zHaz = Number(((heightCm - medianHeight) / sdHeight).toFixed(2));
-
-  // BB/TB (WHZ)
-  const expectedWeightForHeight = Math.pow(heightCm / 100, 2) * (isMale ? 16.5 : 16.0);
-  const sdWhz = expectedWeightForHeight * 0.11;
-  const zWhz = Number(((weightKg - expectedWeightForHeight) / sdWhz).toFixed(2));
-
-  const needsAttention = zHaz < -2 || zWaz < -2 || zWhz < -2;
-  const insightStatus = needsAttention ? "early_awareness" : "normal_routine";
-  const insightMessage = needsAttention
-    ? "Pertumbuhan si kecil di bawah kurva standar WHO. Disarankan berkonsultasi dengan posyandu atau dokter anak."
-    : "Pertumbuhan dan status gizi si kecil berada pada kurva normal standar WHO.";
-
+  const r = assessMeasurement({ ageMonths, gender, weightKg, heightCm });
   return {
-    z_score_waz: zWaz,
-    z_score_haz: zHaz,
-    z_score_whz: zWhz,
-    needs_attention: needsAttention,
-    insight_status: insightStatus,
-    insight_message: insightMessage,
+    z_score_waz: r.zWaz,
+    z_score_haz: r.zHaz,
+    z_score_whz: r.zWhz,
+    needs_attention: r.needsAttention,
+    insight_status: r.insightStatus,
+    insight_message: r.insightMessage,
   };
 }
 
+function mapRow(row) {
+  const base = {
+    id: row.id,
+    childId: row.child_id,
+    date: row.measurement_date,
+    ageInMonths: Number(row.age_in_months) || 0,
+    weight: Number(row.weight_kg) || 0,
+    height: Number(row.height_cm) || 0,
+    headCircumference: row.head_circumference_cm ? Number(row.head_circumference_cm) : null,
+    zScoreWaz: row.z_score_waz,
+    zScoreHaz: row.z_score_haz,
+    zScoreWhz: row.z_score_whz,
+    needsAttention: row.needs_attention,
+    insightStatus: row.insight_status,
+    insightMessage: row.insight_message,
+    createdAt: row.created_at,
+  };
+  // Baris lama (rumus aproksimasi) atau baris awal dari trigger (tanpa z-score): hitung ulang untuk tampilan.
+  const gender = row.children?.gender;
+  if (row.zscore_method !== ZSCORE_METHOD && gender && base.weight > 0 && base.height > 0) {
+    try {
+      const r = assessMeasurement({
+        ageMonths: Math.floor(base.ageInMonths),
+        gender,
+        weightKg: base.weight,
+        heightCm: base.height,
+      });
+      Object.assign(base, {
+        zScoreWaz: r.zWaz,
+        zScoreHaz: r.zHaz,
+        zScoreWhz: r.zWhz,
+        needsAttention: r.needsAttention,
+        insightStatus: r.insightStatus,
+        insightMessage: r.insightMessage,
+      });
+    } catch (err) {
+      console.warn("Gagal menghitung ulang z-score:", err.message);
+    }
+  }
+  return base;
+}
+
+async function insertRecord(payload) {
+  let res = await supabase.from("growth_records").insert([payload]).select("*, children(gender)").single();
+  // Migrasi 20261103 belum dijalankan -> kolom zscore_method belum ada; simpan tanpa kolom itu.
+  if (res.error && /zscore_method/.test(res.error.message || "")) {
+    const rest = { ...payload };
+    delete rest.zscore_method;
+    res = await supabase.from("growth_records").insert([rest]).select("*, children(gender)").single();
+  }
+  return res;
+}
+
 export const growthService = {
-  /**
-   * Mengambil semua riwayat pertumbuhan anak dari Supabase
-   */
+  /** Semua riwayat pertumbuhan anak (urut tanggal naik). */
   async getByChild(childId) {
     if (!childId) return [];
-
     const { data, error } = await supabase
       .from("growth_records")
-      .select("*")
+      .select("*, children(gender)")
       .eq("child_id", childId)
       .order("measurement_date", { ascending: true });
 
@@ -63,34 +87,15 @@ export const growthService = {
       console.error("Gagal mengambil data pertumbuhan:", error.message);
       return [];
     }
-
-    return (data || []).map((row) => ({
-      id: row.id,
-      childId: row.child_id,
-      date: row.measurement_date,
-      ageInMonths: Number(row.age_in_months) || 0,
-      weight: Number(row.weight_kg) || 0,
-      height: Number(row.height_cm) || 0,
-      headCircumference: row.head_circumference_cm ? Number(row.head_circumference_cm) : null,
-      zScoreWaz: row.z_score_waz,
-      zScoreHaz: row.z_score_haz,
-      zScoreWhz: row.z_score_whz,
-      needsAttention: row.needs_attention,
-      insightStatus: row.insight_status,
-      insightMessage: row.insight_message,
-      createdAt: row.created_at,
-    }));
+    return (data || []).map(mapRow);
   },
 
-  /**
-   * Mengambil pengukuran pertumbuhan terakhir
-   */
+  /** Pengukuran terakhir. */
   async getLatest(childId) {
     if (!childId) return null;
-
     const { data, error } = await supabase
       .from("growth_records")
-      .select("*")
+      .select("*, children(gender)")
       .eq("child_id", childId)
       .order("measurement_date", { ascending: false })
       .limit(1)
@@ -100,101 +105,58 @@ export const growthService = {
       console.error("Gagal mengambil pengukuran terakhir:", error.message);
       return null;
     }
-
-    if (!data) return null;
-
-    return {
-      id: data.id,
-      childId: data.child_id,
-      date: data.measurement_date,
-      ageInMonths: Number(data.age_in_months) || 0,
-      weight: Number(data.weight_kg) || 0,
-      height: Number(data.height_cm) || 0,
-      headCircumference: data.head_circumference_cm ? Number(data.head_circumference_cm) : null,
-      zScoreWaz: data.z_score_waz,
-      zScoreHaz: data.z_score_haz,
-      zScoreWhz: data.z_score_whz,
-      needsAttention: data.needs_attention,
-      insightStatus: data.insight_status,
-      insightMessage: data.insight_message,
-      createdAt: data.created_at,
-    };
+    return data ? mapRow(data) : null;
   },
 
   /**
-   * Menambahkan data pengukuran baru ke Supabase
+   * Menambahkan pengukuran baru.
+   * Usia dihitung dari tanggal lahir pada tanggal pengukuran bila `birthDate` diberikan.
    */
-  async add({ childId, date, weight, height, headCircumference: _headCircumference, ageInMonths, gender = "Perempuan" }) {
+  async add({ childId, date, weight, height, ageInMonths, birthDate, gender }) {
     if (!childId) throw new Error("ID anak wajib diisi");
     if (!date) throw new Error("Tanggal pengukuran wajib diisi");
     if (!weight) throw new Error("Berat badan wajib diisi");
     if (!height) throw new Error("Tinggi badan wajib diisi");
+    if (!gender) throw new Error("Jenis kelamin anak wajib diketahui untuk menghitung z-score");
 
-    const calculatedAge = Number(ageInMonths) || 0;
-    const zScores = calculateZScores(calculatedAge, Number(weight), Number(height), gender);
+    const age = birthDate ? ageInMonthsAt(birthDate, date) : Math.floor(Number(ageInMonths));
+    if (!Number.isFinite(age) || age < 0) throw new Error("Usia anak pada tanggal pengukuran tidak valid");
 
+    const r = assessMeasurement({ ageMonths: age, gender, weightKg: Number(weight), heightCm: Number(height) });
     const payload = {
       child_id: childId,
       measurement_date: date,
-      age_in_months: calculatedAge,
+      age_in_months: age,
       weight_kg: Number(weight),
       height_cm: Number(height),
-      z_score_waz: zScores.z_score_waz,
-      z_score_haz: zScores.z_score_haz,
-      z_score_whz: zScores.z_score_whz,
-      needs_attention: zScores.needs_attention,
-      insight_status: zScores.insight_status,
-      insight_message: zScores.insight_message,
+      z_score_waz: r.zWaz,
+      z_score_haz: r.zHaz,
+      z_score_whz: r.zWhz,
+      needs_attention: r.needsAttention,
+      insight_status: r.insightStatus,
+      insight_message: r.insightMessage,
+      zscore_method: ZSCORE_METHOD,
     };
 
-    const { data, error } = await supabase
-      .from("growth_records")
-      .insert([payload])
-      .select()
-      .single();
-
+    const { data, error } = await insertRecord(payload);
     if (error) {
-      if (error.code === "23505") {
-        throw new Error("Pengukuran pada tanggal ini sudah pernah dicatat.");
-      }
+      if (error.code === "23505") throw new Error("Pengukuran pada tanggal ini sudah pernah dicatat.");
       throw new Error(error.message || "Gagal menyimpan data pertumbuhan.");
     }
-
-    return {
-      id: data.id,
-      childId: data.child_id,
-      date: data.measurement_date,
-      ageInMonths: Number(data.age_in_months),
-      weight: Number(data.weight_kg),
-      height: Number(data.height_cm),
-      zScoreWaz: data.z_score_waz,
-      zScoreHaz: data.z_score_haz,
-      zScoreWhz: data.z_score_whz,
-      needsAttention: data.needs_attention,
-      insightStatus: data.insight_status,
-      insightMessage: data.insight_message,
-    };
+    return mapRow(data);
   },
 
-  /**
-   * Menghapus record pengukuran
-   */
+  /** Menghapus satu pengukuran. */
   async remove(id) {
     if (!id) return;
     const { error } = await supabase.from("growth_records").delete().eq("id", id);
-    if (error) {
-      throw new Error(error.message || "Gagal menghapus data pengukuran.");
-    }
+    if (error) throw new Error(error.message || "Gagal menghapus data pengukuran.");
   },
 
-  /**
-   * Menghapus semua riwayat pengukuran anak
-   */
+  /** Menghapus semua riwayat pengukuran anak. */
   async removeByChild(childId) {
     if (!childId) return;
     const { error } = await supabase.from("growth_records").delete().eq("child_id", childId);
-    if (error) {
-      throw new Error(error.message || "Gagal menghapus riwayat pertumbuhan.");
-    }
+    if (error) throw new Error(error.message || "Gagal menghapus riwayat pertumbuhan.");
   },
 };
