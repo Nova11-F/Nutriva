@@ -1,50 +1,30 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { ArrowLeft, BellRing, CheckCheck } from "lucide-react";
-
-const defaultNotifications = [
-  {
-    id: 1,
-    title: "Pengingat makan siang",
-    message: "Waktunya mencatat menu makan siang hari ini.",
-    detail:
-      "Catat menu makan siang agar asupan harian tetap terpantau. Pencatatan yang rutin membantu AI Nutriva memberi saran yang lebih akurat untuk kebutuhan gizi anak.",
-    time: "2026-10-20T11:30:00",
-    read: false,
-  },
-  {
-    id: 2,
-    title: "Data pertumbuhan diperbarui",
-    message: "Tinggi dan berat badan terbaru sudah tersimpan.",
-    detail:
-      "Data pengukuran terbaru berhasil disimpan. Buka halaman Growth untuk melihat grafik pertumbuhan dan membandingkannya dengan standar usia.",
-    time: "2026-10-20T08:15:00",
-    read: false,
-  },
-  {
-    id: 3,
-    title: "Saran baru dari AI Nutriva",
-    message: "Ada rekomendasi menu untuk minggu ini.",
-    detail:
-      "Berdasarkan catatan nutrisi 7 hari terakhir, tersedia rekomendasi menu untuk menambah asupan protein dan zat besi. Buka halaman AI Nutriva untuk melihat daftar lengkapnya.",
-    time: "2026-10-19T19:00:00",
-    read: true,
-  },
-];
+import { useAuth } from "../../hooks/useAuth";
+import { useChild } from "../../hooks/useChild";
 
 function formatTime(iso) {
-  return new Intl.DateTimeFormat("id-ID", {
-    day: "numeric",
-    month: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(new Date(iso));
+  try {
+    return new Intl.DateTimeFormat("id-ID", {
+      day: "numeric",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(new Date(iso));
+  } catch {
+    return "Baru saja";
+  }
 }
 
 function formatFullTime(iso) {
-  return new Intl.DateTimeFormat("id-ID", {
-    dateStyle: "full",
-    timeStyle: "short",
-  }).format(new Date(iso));
+  try {
+    return new Intl.DateTimeFormat("id-ID", {
+      dateStyle: "full",
+      timeStyle: "short",
+    }).format(new Date(iso));
+  } catch {
+    return "Baru saja";
+  }
 }
 
 function NotificationItem({ item, onSelect }) {
@@ -81,14 +61,69 @@ function NotificationItem({ item, onSelect }) {
   );
 }
 
-export default function NotificationItems({
-  notifications = defaultNotifications,
-  className = "",
-}) {
-  const [items, setItems] = useState(notifications);
+export default function NotificationItems({ className = "" }) {
+  const { user } = useAuth();
+  const { child } = useChild();
+
+  // Susun notifikasi dinamis berdasarkan konteks user & anak aktif
+  const dynamicNotifications = useMemo(() => {
+    const list = [];
+    const now = new Date();
+
+    // 1. Notifikasi Akun Berhasil Dibuat
+    if (user) {
+      list.push({
+        id: "notif-welcome",
+        title: `Selamat datang, ${user.name || "Bunda/Ayah"}!`,
+        message: "Akun Nutriva Anda telah aktif dan siap digunakan.",
+        detail:
+          "Terima kasih telah bergabung bersama Nutriva. Anda dapat memantau tumbuh kembang, merencanakan menu MPASI bergizi, dan berkonsultasi langsung dengan AI Nutriva.",
+        time: user.created_at || now.toISOString(),
+        read: false,
+      });
+    }
+
+    // 2. Notifikasi Profil Anak
+    if (child) {
+      list.push({
+        id: "notif-child-created",
+        title: `Profil ${child.name} Aktif`,
+        message: `Data awal BB (${child.initialWeight || child.initial_weight_kg || "-"} kg) & TB (${child.initialHeight || child.initial_height_cm || "-"} cm) tersimpan.`,
+        detail: `Profil anak atas nama ${child.name} berhasil terdaftar. Grafik pemantauan pertumbuhan dan kurva standar WHO kini telah aktif untuk si kecil.`,
+        time: child.created_at || now.toISOString(),
+        read: false,
+      });
+
+      // 3. Notifikasi Pengingat Jadwal Makan Balita
+      list.push({
+        id: "notif-meal-reminder",
+        title: `Waktunya Menu MPASI ${child.name}`,
+        message: "Cek rekomendasi menu dan jadwal makan seimbang hari ini.",
+        detail: `Kebutuhan gizi ${child.name} dapat dipantau setiap hari. Buka halaman Nutrisi untuk melihat ide menu atau mencatat porsi asupan makanan si kecil.`,
+        time: new Date(Date.now() - 3600000 * 2).toISOString(), // 2 jam lalu
+        read: false,
+      });
+    }
+
+    return list;
+  }, [user, child]);
+
+  const [items, setItems] = useState([]);
   const [open, setOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const wrapperRef = useRef(null);
+
+  // Inisialisasi & sinkronisasi notifikasi dinamis
+  useEffect(() => {
+    setItems((prev) => {
+      // Pertahankan status 'read' yang sudah ditandai pengguna
+      const readMap = new Map(prev.map((i) => [i.id, i.read]));
+      return dynamicNotifications.map((n) => ({
+        ...n,
+        read: readMap.get(n.id) ?? n.read,
+      }));
+    });
+  }, [dynamicNotifications]);
 
   const unreadCount = items.filter((n) => !n.read).length;
   const selected = items.find((n) => n.id === selectedId) || null;
@@ -161,57 +196,60 @@ export default function NotificationItems({
       {open && (
         <div
           role="dialog"
-          aria-label="Notifikasi"
-          className="absolute right-0 top-full z-50 mt-2 w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-lg border border-gray-200 bg-surface shadow-lg"
+          aria-label="Panel notifikasi"
+          className="absolute right-0 top-full z-30 mt-2 w-80 rounded-xl border border-gray-200 bg-surface shadow-xl sm:w-96"
         >
           {selected ? (
             <div>
-              <div className="flex items-center gap-2 border-b border-gray-100 px-3 py-2.5">
+              <div className="flex items-center gap-2 border-b border-gray-100 px-4 py-3">
                 <button
                   type="button"
                   onClick={() => setSelectedId(null)}
                   aria-label="Kembali ke daftar notifikasi"
-                  className="rounded-md p-1 text-gray-500 hover:bg-gray-100"
+                  className="rounded p-1 text-gray-500 transition-colors hover:bg-gray-100 hover:text-text"
                 >
                   <ArrowLeft className="size-4" />
                 </button>
-                <h2 className="text-sm font-bold text-text">
-                  Detail notifikasi
-                </h2>
+                <h2 className="text-sm font-semibold text-text">Detail</h2>
               </div>
-
-              <div className="max-h-80 overflow-y-auto px-4 py-4">
+              <div className="space-y-2 p-4">
+                <span className="block text-xs font-semibold uppercase tracking-wider text-primary">
+                  {formatFullTime(selected.time)}
+                </span>
                 <h3 className="text-base font-bold text-text">
                   {selected.title}
                 </h3>
-                <p className="mt-1 text-xs text-gray-400">
-                  {formatFullTime(selected.time)}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                <p className="text-xs leading-relaxed text-gray-600">
                   {selected.detail}
                 </p>
               </div>
             </div>
           ) : (
             <div>
-              <div className="flex items-center justify-between border-b border-gray-100 px-4 py-2.5">
-                <h2 className="text-sm font-bold text-text">Notifikasi</h2>
+              <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <h2 className="text-sm font-semibold text-text">Notifikasi</h2>
+                  {unreadCount > 0 && (
+                    <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary">
+                      {unreadCount} baru
+                    </span>
+                  )}
+                </div>
                 {unreadCount > 0 && (
                   <button
                     type="button"
                     onClick={markAllAsRead}
-                    className="flex items-center gap-1 text-xs font-medium text-gray-500 hover:text-text"
+                    className="inline-flex items-center gap-1 text-xs font-medium text-gray-500 transition-colors hover:text-primary"
                   >
                     <CheckCheck className="size-3.5" />
                     Tandai semua dibaca
                   </button>
                 )}
               </div>
-
               {items.length === 0 ? (
-                <p className="px-4 py-8 text-center text-sm text-gray-500">
-                  Belum ada notifikasi.
-                </p>
+                <div className="p-8 text-center text-xs text-gray-400">
+                  Tidak ada notifikasi saat ini
+                </div>
               ) : (
                 <ul className="max-h-80 divide-y divide-gray-100 overflow-y-auto">
                   {items.map((item) => (

@@ -91,8 +91,6 @@ export default function ProfilePage() {
     navigate("/");
   };
 
-  const comingSoon = () => showToast("Fitur ini belum tersedia", "info");
-
   const goEditParent = () =>
     navigate("/onboarding?mode=parent", { state: { from: "/profile" } });
   const goChangePassword = () => navigate("/profile/changepass");

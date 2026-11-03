@@ -46,10 +46,10 @@ export default function RecipeCard({ recipe: m, saved = false, onToggleSave }) {
             {m.kcal} • {m.protein}
           </span>
           <Button
-          variant="noborder"
-          size="sm"
+            variant="noborder"
+            size="sm"
             type="button"
-            onClick={() => navigate(`/nutrition/recipeId`)}
+            onClick={() => navigate(m.slug ? `/nutrition/${m.slug}` : (m.id ? `/nutrition/${m.id}` : "/nutrition/recipeId"))}
             className="flex cursor-pointer items-center gap-1 text-sm font-semibold text-secondary hover:text-primary hover:underline"
           >
             Lihat Resep <span aria-hidden="true">&rarr;</span>
