@@ -100,7 +100,7 @@ export default function NotificationItems({ className = "" }) {
         title: `Waktunya Menu MPASI ${child.name}`,
         message: "Cek rekomendasi menu dan jadwal makan seimbang hari ini.",
         detail: `Kebutuhan gizi ${child.name} dapat dipantau setiap hari. Buka halaman Nutrisi untuk melihat ide menu atau mencatat porsi asupan makanan si kecil.`,
-        time: new Date(Date.now() - 3600000 * 2).toISOString(), // 2 jam lalu
+        time: new Date(now.getTime() - 3600000 * 2).toISOString(), // 2 jam lalu
         read: false,
       });
     }
@@ -108,22 +108,17 @@ export default function NotificationItems({ className = "" }) {
     return list;
   }, [user, child]);
 
-  const [items, setItems] = useState([]);
+  const [readIds, setReadIds] = useState(() => new Set());
   const [open, setOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const wrapperRef = useRef(null);
 
-  // Inisialisasi & sinkronisasi notifikasi dinamis
-  useEffect(() => {
-    setItems((prev) => {
-      // Pertahankan status 'read' yang sudah ditandai pengguna
-      const readMap = new Map(prev.map((i) => [i.id, i.read]));
-      return dynamicNotifications.map((n) => ({
-        ...n,
-        read: readMap.get(n.id) ?? n.read,
-      }));
-    });
-  }, [dynamicNotifications]);
+  const items = useMemo(() => {
+    return dynamicNotifications.map((n) => ({
+      ...n,
+      read: readIds.has(n.id) || n.read,
+    }));
+  }, [dynamicNotifications, readIds]);
 
   const unreadCount = items.filter((n) => !n.read).length;
   const selected = items.find((n) => n.id === selectedId) || null;
@@ -162,13 +157,11 @@ export default function NotificationItems({ className = "" }) {
 
   const handleSelect = (id) => {
     setSelectedId(id);
-    setItems((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n)),
-    );
+    setReadIds((prev) => new Set([...prev, id]));
   };
 
   const markAllAsRead = () => {
-    setItems((prev) => prev.map((n) => ({ ...n, read: true })));
+    setReadIds(new Set(dynamicNotifications.map((n) => n.id)));
   };
 
   return (

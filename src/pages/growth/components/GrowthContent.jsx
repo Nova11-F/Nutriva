@@ -109,10 +109,18 @@ export default function GrowthContent() {
   // Data pengukuran terakhir dan delta
   const latestMetric = useMemo(() => {
     if (records.length === 0) {
+      const initW =
+        currentChild?.initialWeight ??
+        currentChild?.initial_weight_kg ??
+        currentChild?.birthWeight;
+      const initH =
+        currentChild?.initialHeight ??
+        currentChild?.initial_height_cm ??
+        currentChild?.birthLength;
       return {
         date: "Belum ada pengukuran",
-        weight: currentChild?.initialWeightKg ? `${currentChild.initialWeightKg}` : "-",
-        height: currentChild?.initialHeightCm ? `${currentChild.initialHeightCm}` : "-",
+        weight: initW ? `${initW}` : "-",
+        height: initH ? `${initH}` : "-",
         head: "-",
         deltaWeight: "Data awal saat registrasi",
         deltaHeight: "Data awal saat registrasi",
@@ -281,6 +289,7 @@ export default function GrowthContent() {
               const active = p.id === currentChild?.id;
               const ageMonths = getDiffMonths(p.birthDate);
               const initial = p.name ? p.name.slice(0, 2).toUpperCase() : "AN";
+              const weightVal = p.initialWeight ?? p.initial_weight_kg ?? p.birthWeight;
 
               return (
                 <Card
@@ -311,7 +320,7 @@ export default function GrowthContent() {
                         {p.name}
                       </p>
                       <p className="text-xs text-gray-500">
-                        {ageMonths} Bln · {p.initialWeightKg || "-"} kg
+                        {ageMonths} Bln · {weightVal ? `${weightVal} kg` : "-"}
                       </p>
                     </div>
                     {active && (

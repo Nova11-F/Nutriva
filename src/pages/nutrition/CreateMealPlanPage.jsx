@@ -150,18 +150,16 @@ export default function CreateMealPlanPage() {
       // Temukan recipe_id pertama yang cocok atau gunakan default
       const matchedRecipe = availableRecipes.find((r) => r.title === filledSessions[0].menu) || availableRecipes[0];
 
-      if (matchedRecipe?.id) {
-        await recipeService.saveMealPlan({
-          childId: currentChild.id,
-          recipeId: matchedRecipe.id,
-          plannedDate: new Date().toISOString().split("T")[0],
-          preferences: {
-            period,
-            activeDays,
-            sessions: filledSessions,
-          },
-        });
-      }
+      await recipeService.saveMealPlan({
+        childId: currentChild.id,
+        recipeId: matchedRecipe?.id || "default-plan",
+        plannedDate: new Date().toISOString().split("T")[0],
+        preferences: {
+          period,
+          activeDays,
+          sessions: filledSessions,
+        },
+      });
 
       showSuccess(`Jadwal makan untuk ${currentChild.name} berhasil disimpan!`);
       navigate("/nutrition");

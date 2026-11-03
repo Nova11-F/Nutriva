@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { useChild } from "../../../hooks/useChild";
 import { recipeService } from "../../../services/recipeService";
+import { recipes as dataRecipes } from "../../../data/recipe";
+import { todayISO } from "../../../utils/formatDate";
 
 function getDiffMonths(birthDateStr, targetDateStr = new Date()) {
   if (!birthDateStr) return 0;
@@ -62,52 +64,17 @@ function getScheduleForChild(ageMonths) {
   ];
 }
 
-const fallbackInspirations = [
-  {
-    id: 1,
-    slug: "bubur-ayam-wortel",
-    image: buburWortel,
-    category: "Protein & Sayur: Ayam + Wortel",
-    title: "Bubur Ayam Wortel",
-    desc: "Kaya protein hewani dan vitamin A untuk mendukung tumbuh kembang serta daya tahan tubuh balita usia 6-12 bulan.",
-    kcal: "180 kkal",
-    protein: "8g Protein",
-    time: "20 Menit",
-  },
-  {
-    id: 2,
-    slug: "salmon-chowder-jagung",
-    image: buburWortel,
-    category: "Protein Hewani: Salmon + Jagung",
-    title: "Creamy Salmon Chowder Jagung Manis",
-    desc: "Sumber omega-3 untuk perkembangan otak, dengan tekstur lembut yang mudah ditelan.",
-    kcal: "205 kkal",
-    protein: "11g Protein",
-    time: "20 Menit",
-  },
-  {
-    id: 3,
-    slug: "bakso-daging-pisang",
-    image: buburWortel,
-    category: "Finger Food: Daging + Pisang",
-    title: "Bakso Daging Pisang Santan",
-    desc: "Finger food kaya zat besi untuk melatih anak makan sendiri dan mencegah anemia.",
-    kcal: "170 kkal",
-    protein: "8g Protein",
-    time: "25 Menit",
-  },
-  {
-    id: 4,
-    slug: "pudding-ubi-ungu",
-    image: buburWortel,
-    category: "Karbohidrat & Sayur: Ubi + Bayam",
-    title: "Pudding Ubi Ungu Bayam",
-    desc: "Camilan sehat berserat dengan vitamin dan mineral untuk menjaga pencernaan anak.",
-    kcal: "160 kkal",
-    protein: "4g Protein",
-    time: "15 Menit",
-  },
-];
+const fallbackInspirations = dataRecipes.map((r) => ({
+  id: r.id,
+  slug: r.slug,
+  image: r.image || buburWortel,
+  category: r.category || "Menu Bergizi",
+  title: r.title,
+  desc: r.desc || "Menu bergizi seimbang untuk tumbuh kembang optimal anak.",
+  kcal: r.kcal || `${r.mainNutrients?.calories_kcal || 180} kkal`,
+  protein: r.protein || `${r.mainNutrients?.protein_g || 8}g Protein`,
+  time: r.time || "20 Menit",
+}));
 
 export default function NutritionContent() {
   const navigate = useNavigate();
@@ -118,14 +85,26 @@ export default function NutritionContent() {
 
   const currentChild = activeChild || childList[0] || null;
   const childName = currentChild?.name ?? "Si Kecil";
+  const today = todayISO();
 
   const ageMonths = useMemo(() => {
     return getDiffMonths(currentChild?.birthDate);
   }, [currentChild?.birthDate]);
 
   useEffect(() => {
-    setScheduleList(getScheduleForChild(ageMonths));
-  }, [ageMonths]);
+    const base = getScheduleForChild(ageMonths);
+    const storageKey = `nutriva_nutrition_done_${currentChild?.id || "default"}_${today}`;
+    try {
+      const savedDone = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      const mapped = base.map((s, idx) => ({
+        ...s,
+        done: savedDone[idx] !== undefined ? !!savedDone[idx] : s.done,
+      }));
+      setScheduleList(mapped);
+    } catch {
+      setScheduleList(base);
+    }
+  }, [ageMonths, currentChild?.id, today]);
 
   useEffect(() => {
     let ignore = false;
@@ -136,13 +115,13 @@ export default function NutritionContent() {
           const mapped = data.slice(0, 4).map((r) => ({
             id: r.id,
             slug: r.slug,
-            image: r.image_url || buburWortel,
-            category: `${r.portion_size || "Porsi MPASI"}`,
+            image: r.image_url || r.image || buburWortel,
+            category: r.category || `${r.portion_size || r.portionSize || "Porsi MPASI"}`,
             title: r.title,
-            desc: r.instructions?.[0]?.text || `Menu bergizi seimbang untuk balita usia ${r.min_age_months}-${r.max_age_months} bulan.`,
-            kcal: `${r.main_nutrients?.calories || 190} kkal`,
-            protein: `${r.main_nutrients?.protein_g || 8}g Protein`,
-            time: "25 Menit",
+            desc: r.desc || r.instructions?.[0]?.text || `Menu bergizi seimbang untuk balita usia ${r.min_age_months || r.minAgeMonths || 6}-${r.max_age_months || r.maxAgeMonths || 12} bulan.`,
+            kcal: r.kcal || `${r.main_nutrients?.calories_kcal || r.main_nutrients?.calories || 190} kkal`,
+            protein: r.protein || `${r.main_nutrients?.protein_g || 8}g Protein`,
+            time: r.time || "25 Menit",
           }));
           setInspirations(mapped);
         }
@@ -157,9 +136,16 @@ export default function NutritionContent() {
   }, [ageMonths]);
 
   const toggleConfirm = (index) => {
-    setScheduleList((prev) =>
-      prev.map((s, idx) => (idx === index ? { ...s, done: !s.done, next: false } : s))
-    );
+    setScheduleList((prev) => {
+      const nextList = prev.map((s, idx) => (idx === index ? { ...s, done: !s.done, next: false } : s));
+      const storageKey = `nutriva_nutrition_done_${currentChild?.id || "default"}_${today}`;
+      const doneMap = {};
+      nextList.forEach((s, i) => {
+        doneMap[i] = s.done;
+      });
+      localStorage.setItem(storageKey, JSON.stringify(doneMap));
+      return nextList;
+    });
   };
 
   return (
@@ -220,10 +206,12 @@ export default function NutritionContent() {
               const active = p.id === currentChild?.id;
               const pAge = getDiffMonths(p.birthDate);
               const initial = p.name ? p.name.slice(0, 2).toUpperCase() : "AN";
-              const allergies = Array.isArray(p.avoidedFoods) && p.avoidedFoods.length > 0
-                ? `Alergi: ${p.avoidedFoods.join(", ")}`
+              const allergiesList = p.allergies || p.avoided_foods || p.avoidedFoods || [];
+              const allergies = Array.isArray(allergiesList) && allergiesList.length > 0
+                ? `Alergi: ${allergiesList.join(", ")}`
                 : "Bebas Alergi";
               const phase = getMpasiPhase(pAge);
+              const weightVal = p.initialWeight ?? p.initial_weight_kg ?? p.birthWeight;
 
               return (
                 <Card
@@ -250,7 +238,7 @@ export default function NutritionContent() {
                         {p.name}
                       </p>
                       <p className="text-xs text-gray-500">
-                        {pAge} Bln · {p.initialWeightKg || "-"} kg
+                        {pAge} Bln · {weightVal ? `${weightVal} kg` : "-"}
                       </p>
                     </div>
                     {active && (

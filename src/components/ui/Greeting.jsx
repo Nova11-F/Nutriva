@@ -1,4 +1,4 @@
-export function getGreeting(date = new Date()) {
+function getGreeting(date = new Date()) {
   const hour = date.getHours();
   if (hour >= 4 && hour < 11) return "Selamat pagi";
   if (hour >= 11 && hour < 15) return "Selamat siang";

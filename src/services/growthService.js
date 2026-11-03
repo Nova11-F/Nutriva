@@ -1,4 +1,40 @@
 import { supabase } from "./supabase";
+import { growthRecords as initialRecords } from "../data/growthRecords";
+
+const LOCAL_GROWTH_KEY = "nutriva_growth_records";
+
+function getLocalRecords(childId) {
+  try {
+    const raw = localStorage.getItem(LOCAL_GROWTH_KEY);
+    const list = raw ? JSON.parse(raw) : [];
+    if (list.length === 0 && (String(childId) === "1" || !childId)) {
+      const seeded = initialRecords.map((r) => {
+        const z = calculateZScores(18, r.weight, r.height, "Perempuan");
+        return {
+          id: r.id,
+          childId: r.childId,
+          date: r.date,
+          ageInMonths: 18,
+          weight: r.weight,
+          height: r.height,
+          headCircumference: r.headCircumference || 47.5,
+          zScoreWaz: z.z_score_waz,
+          zScoreHaz: z.z_score_haz,
+          zScoreWhz: z.z_score_whz,
+          needsAttention: z.needs_attention,
+          insightStatus: z.insight_status,
+          insightMessage: z.insight_message,
+          createdAt: new Date(r.date).toISOString(),
+        };
+      });
+      localStorage.setItem(LOCAL_GROWTH_KEY, JSON.stringify(seeded));
+      return seeded;
+    }
+    return String(childId) ? list.filter((r) => String(r.childId) === String(childId)) : list;
+  } catch {
+    return [];
+  }
+}
 
 /**
  * Menghitung perkiraan Z-score berdasarkan standar WHO sederhana
@@ -53,33 +89,46 @@ export const growthService = {
   async getByChild(childId) {
     if (!childId) return [];
 
-    const { data, error } = await supabase
-      .from("growth_records")
-      .select("*")
-      .eq("child_id", childId)
-      .order("measurement_date", { ascending: true });
+    let dbRecords = [];
+    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(childId);
 
-    if (error) {
-      console.error("Gagal mengambil data pertumbuhan:", error.message);
-      return [];
+    if (isUUID) {
+      try {
+        const { data, error } = await supabase
+          .from("growth_records")
+          .select("*")
+          .eq("child_id", childId)
+          .order("measurement_date", { ascending: true });
+
+        if (!error && data) {
+          dbRecords = data.map((row) => ({
+            id: row.id,
+            childId: row.child_id,
+            date: row.measurement_date,
+            ageInMonths: Number(row.age_in_months) || 0,
+            weight: Number(row.weight_kg) || 0,
+            height: Number(row.height_cm) || 0,
+            headCircumference: row.head_circumference_cm ? Number(row.head_circumference_cm) : null,
+            zScoreWaz: row.z_score_waz,
+            zScoreHaz: row.z_score_haz,
+            zScoreWhz: row.z_score_whz,
+            needsAttention: row.needs_attention,
+            insightStatus: row.insight_status,
+            insightMessage: row.insight_message,
+            createdAt: row.created_at,
+          }));
+        }
+      } catch (err) {
+        console.warn("Supabase growth query notice:", err.message);
+      }
     }
 
-    return (data || []).map((row) => ({
-      id: row.id,
-      childId: row.child_id,
-      date: row.measurement_date,
-      ageInMonths: Number(row.age_in_months) || 0,
-      weight: Number(row.weight_kg) || 0,
-      height: Number(row.height_cm) || 0,
-      headCircumference: row.head_circumference_cm ? Number(row.head_circumference_cm) : null,
-      zScoreWaz: row.z_score_waz,
-      zScoreHaz: row.z_score_haz,
-      zScoreWhz: row.z_score_whz,
-      needsAttention: row.needs_attention,
-      insightStatus: row.insight_status,
-      insightMessage: row.insight_message,
-      createdAt: row.created_at,
-    }));
+    const localList = getLocalRecords(childId);
+    const map = new Map();
+    dbRecords.forEach((r) => map.set(r.id, r));
+    localList.forEach((r) => map.set(r.id, r));
+    const merged = Array.from(map.values()).sort((a, b) => new Date(a.date) - new Date(b.date));
+    return merged;
   },
 
   /**
@@ -87,44 +136,15 @@ export const growthService = {
    */
   async getLatest(childId) {
     if (!childId) return null;
-
-    const { data, error } = await supabase
-      .from("growth_records")
-      .select("*")
-      .eq("child_id", childId)
-      .order("measurement_date", { ascending: false })
-      .limit(1)
-      .maybeSingle();
-
-    if (error) {
-      console.error("Gagal mengambil pengukuran terakhir:", error.message);
-      return null;
-    }
-
-    if (!data) return null;
-
-    return {
-      id: data.id,
-      childId: data.child_id,
-      date: data.measurement_date,
-      ageInMonths: Number(data.age_in_months) || 0,
-      weight: Number(data.weight_kg) || 0,
-      height: Number(data.height_cm) || 0,
-      headCircumference: data.head_circumference_cm ? Number(data.head_circumference_cm) : null,
-      zScoreWaz: data.z_score_waz,
-      zScoreHaz: data.z_score_haz,
-      zScoreWhz: data.z_score_whz,
-      needsAttention: data.needs_attention,
-      insightStatus: data.insight_status,
-      insightMessage: data.insight_message,
-      createdAt: data.created_at,
-    };
+    const all = await this.getByChild(childId);
+    if (all.length === 0) return null;
+    return all[all.length - 1];
   },
 
   /**
    * Menambahkan data pengukuran baru ke Supabase
    */
-  async add({ childId, date, weight, height, headCircumference: _headCircumference, ageInMonths, gender = "Perempuan" }) {
+  async add({ childId, date, weight, height, headCircumference, ageInMonths, gender = "Perempuan" }) {
     if (!childId) throw new Error("ID anak wajib diisi");
     if (!date) throw new Error("Tanggal pengukuran wajib diisi");
     if (!weight) throw new Error("Berat badan wajib diisi");
@@ -132,48 +152,80 @@ export const growthService = {
 
     const calculatedAge = Number(ageInMonths) || 0;
     const zScores = calculateZScores(calculatedAge, Number(weight), Number(height), gender);
+    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(childId);
 
-    const payload = {
-      child_id: childId,
-      measurement_date: date,
-      age_in_months: calculatedAge,
-      weight_kg: Number(weight),
-      height_cm: Number(height),
-      z_score_waz: zScores.z_score_waz,
-      z_score_haz: zScores.z_score_haz,
-      z_score_whz: zScores.z_score_whz,
-      needs_attention: zScores.needs_attention,
-      insight_status: zScores.insight_status,
-      insight_message: zScores.insight_message,
-    };
+    if (isUUID) {
+      const payload = {
+        child_id: childId,
+        measurement_date: date,
+        age_in_months: calculatedAge,
+        weight_kg: Number(weight),
+        height_cm: Number(height),
+        z_score_waz: zScores.z_score_waz,
+        z_score_haz: zScores.z_score_haz,
+        z_score_whz: zScores.z_score_whz,
+        needs_attention: zScores.needs_attention,
+        insight_status: zScores.insight_status,
+        insight_message: zScores.insight_message,
+      };
 
-    const { data, error } = await supabase
-      .from("growth_records")
-      .insert([payload])
-      .select()
-      .single();
+      try {
+        const { data, error } = await supabase
+          .from("growth_records")
+          .insert([payload])
+          .select()
+          .single();
 
-    if (error) {
-      if (error.code === "23505") {
-        throw new Error("Pengukuran pada tanggal ini sudah pernah dicatat.");
+        if (!error && data) {
+          return {
+            id: data.id,
+            childId: data.child_id,
+            date: data.measurement_date,
+            ageInMonths: Number(data.age_in_months),
+            weight: Number(data.weight_kg),
+            height: Number(data.height_cm),
+            headCircumference: headCircumference ? Number(headCircumference) : null,
+            zScoreWaz: data.z_score_waz,
+            zScoreHaz: data.z_score_haz,
+            zScoreWhz: data.z_score_whz,
+            needsAttention: data.needs_attention,
+            insightStatus: data.insight_status,
+            insightMessage: data.insight_message,
+          };
+        }
+      } catch (err) {
+        console.warn("Gagal simpan ke Supabase, simpan ke lokal:", err.message);
       }
-      throw new Error(error.message || "Gagal menyimpan data pertumbuhan.");
     }
 
-    return {
-      id: data.id,
-      childId: data.child_id,
-      date: data.measurement_date,
-      ageInMonths: Number(data.age_in_months),
-      weight: Number(data.weight_kg),
-      height: Number(data.height_cm),
-      zScoreWaz: data.z_score_waz,
-      zScoreHaz: data.z_score_haz,
-      zScoreWhz: data.z_score_whz,
-      needsAttention: data.needs_attention,
-      insightStatus: data.insight_status,
-      insightMessage: data.insight_message,
+    // Simpan ke localStorage
+    const localRecord = {
+      id: "local-" + Date.now(),
+      childId: childId,
+      date: date,
+      ageInMonths: calculatedAge,
+      weight: Number(weight),
+      height: Number(height),
+      headCircumference: headCircumference ? Number(headCircumference) : null,
+      zScoreWaz: zScores.z_score_waz,
+      zScoreHaz: zScores.z_score_haz,
+      zScoreWhz: zScores.z_score_whz,
+      needsAttention: zScores.needs_attention,
+      insightStatus: zScores.insight_status,
+      insightMessage: zScores.insight_message,
+      createdAt: new Date().toISOString(),
     };
+
+    try {
+      const raw = localStorage.getItem(LOCAL_GROWTH_KEY);
+      const list = raw ? JSON.parse(raw) : [];
+      list.push(localRecord);
+      localStorage.setItem(LOCAL_GROWTH_KEY, JSON.stringify(list));
+    } catch (e) {
+      console.warn("Gagal simpan ke localStorage:", e);
+    }
+
+    return localRecord;
   },
 
   /**
@@ -181,9 +233,22 @@ export const growthService = {
    */
   async remove(id) {
     if (!id) return;
-    const { error } = await supabase.from("growth_records").delete().eq("id", id);
-    if (error) {
-      throw new Error(error.message || "Gagal menghapus data pengukuran.");
+    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+    if (isUUID) {
+      try {
+        await supabase.from("growth_records").delete().eq("id", id);
+      } catch (err) {
+        console.warn("Supabase growth remove notice:", err.message);
+      }
+    }
+    try {
+      const raw = localStorage.getItem(LOCAL_GROWTH_KEY);
+      if (raw) {
+        const list = JSON.parse(raw);
+        localStorage.setItem(LOCAL_GROWTH_KEY, JSON.stringify(list.filter((r) => r.id !== id)));
+      }
+    } catch {
+      //
     }
   },
 
