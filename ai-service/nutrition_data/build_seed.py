@@ -98,6 +98,13 @@ def load_subset() -> dict[str, dict]:
     return out
 
 
+def load_tkpi_index() -> dict[str, dict]:
+    """Bab 5 Indeks TKPI: nama Latin & nama Inggris (dicetak apa adanya, termasuk salah ketik sumber)."""
+    p = HERE / "sources/tkpi2017_index.csv"
+    with p.open(encoding="utf-8") as fh:
+        return {r["kode"]: r for r in csv.DictReader(l for l in fh if not l.startswith("#"))}
+
+
 def load_tkpi() -> dict[str, dict]:
     with TKPI.open(encoding="utf-8") as fh:
         rows = list(csv.DictReader(l for l in fh if not l.startswith("#")))
@@ -296,6 +303,7 @@ def main() -> None:
         build_subset(args.abbrev, {c["ndb_no"] for c in catalog if c["ndb_no"]})
     sr = load_subset()
     tk = load_tkpi()
+    tidx = load_tkpi_index()
     cat = {c["code"]: c for c in catalog}
 
     # validasi katalog
@@ -310,8 +318,9 @@ def main() -> None:
 
     comp = {c["code"]: composition(c, tk, sr) for c in catalog}
 
-    def food_row(code, name, prep, category, serv, cp, mq, note):
-        return "(" + ", ".join([
+    def food_row(code, name, prep, category, serv, cp, mq, note, tkpi_code=""):
+        ix = tidx.get(tkpi_code or "", {})
+        return "(" + ", ".join([q(ix.get("spesies") or None), q(ix.get("nama_inggris") or None),
             q(code), q(name), q(prep), q(category), qjson(serv), q(cp["energy_kcal"]), q(cp["protein_g"]),
             q(cp["fat_g"]), q(cp["carbs_g"]), q(cp["iron_mg"]), qjson(cp["extra"]), q(cp["source"]), q(mq),
             q(" ".join(x for x in [note, *cp["notes"]] if x) or None),
@@ -320,7 +329,7 @@ def main() -> None:
     foods_sql, recipes_sql = [], []
     for c in catalog:
         foods_sql.append(food_row(c["code"], c["name"], c["preparation_type"], c["category"], servings(c["servings"]),
-                                  comp[c["code"]], c["match_quality"], c["note"] or None))
+                                  comp[c["code"]], c["match_quality"], c["note"] or None, c["tkpi_code"]))
     used = {c["tkpi_code"] for c in catalog if c["tkpi_code"]}
     tkpi_extra, tkpi_rejected = 0, []
     for kode, row in tk.items():
@@ -334,7 +343,7 @@ def main() -> None:
         cp = composition(pseudo, tk, sr)
         prep = "mentah/segar" if kode[1] == "R" else "olahan"
         foods_sql.append(food_row(f"TKPI_{kode}", row["nama"], prep, TKPI_GROUP.get(kode[0], "lainnya"),
-                                  servings(""), cp, "exact", None))
+                                  servings(""), cp, "exact", None, kode))
         tkpi_extra += 1
 
     qas = []
@@ -359,12 +368,12 @@ def main() -> None:
 -- Idempotent: upsert berdasarkan foods.code dan recipes.slug.
 -- =============================================================================
 
-INSERT INTO public.foods (code, name, preparation_type, category, serving_options, calories_per_100g, protein_per_100g,
+INSERT INTO public.foods (scientific_name, name_en, code, name, preparation_type, category, serving_options, calories_per_100g, protein_per_100g,
   fat_per_100g, carbs_per_100g, iron_mg_per_100g, extra_nutrients_per_100g, source, match_quality, data_notes)
 VALUES
 {(","+chr(10)).join(foods_sql)}
 ON CONFLICT (code) DO UPDATE SET
-  name = EXCLUDED.name, preparation_type = EXCLUDED.preparation_type, category = EXCLUDED.category,
+  scientific_name = EXCLUDED.scientific_name, name_en = EXCLUDED.name_en, name = EXCLUDED.name, preparation_type = EXCLUDED.preparation_type, category = EXCLUDED.category,
   serving_options = EXCLUDED.serving_options, calories_per_100g = EXCLUDED.calories_per_100g,
   protein_per_100g = EXCLUDED.protein_per_100g, fat_per_100g = EXCLUDED.fat_per_100g,
   carbs_per_100g = EXCLUDED.carbs_per_100g, iron_mg_per_100g = EXCLUDED.iron_mg_per_100g,

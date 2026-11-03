@@ -91,3 +91,30 @@ def test_committed_seed_is_up_to_date():
     before = SEED.read_text(encoding="utf-8")
     subprocess.run([sys.executable, str(ND / "build_seed.py")], check=True, cwd=ND, capture_output=True)
     assert SEED.read_text(encoding="utf-8") == before, "seed SQL tidak sinkron; jalankan build_seed.py lalu commit"
+
+
+def _csv(name):
+    import csv
+    with (ND / "sources" / name).open(encoding="utf-8") as fh:
+        return list(csv.DictReader(l for l in fh if not l.startswith("#")))
+
+
+def test_tkpi_appendix_complete_and_consistent():
+    comp = bs.load_tkpi()
+    idx, glo, cm = _csv("tkpi2017_index.csv"), _csv("tkpi2017_glossary.csv"), _csv("tkpi2017_code_map.csv")
+    # jumlah = jumlah kode yang muncul di teks halaman masing-masing bab
+    assert (len(idx), len(glo), len(cm)) == (623, 238, 1149)
+    assert {r["kode"] for r in idx} <= set(comp) and {r["kode"] for r in glo} <= set(comp)
+    # setiap bahan mentah (R) punya entri indeks
+    assert {k for k in comp if k[1] == "R"} <= {r["kode"] for r in idx}
+    # semua kode komposisi muncul di peta kode (termasuk 2 baris yang diambil dari teks)
+    assert set(comp) <= {r["kode_baru"] for r in cm}
+    # inkonsistensi yang tercetak di buku sumber, sengaja dipertahankan apa adanya
+    by_new = {}
+    for r in cm:
+        by_new.setdefault(r["kode_baru"], []).append(r)
+    assert len(by_new["AR001"]) == 2                                      # baris dobel tercetak di hlm. 116
+    assert by_new["HR010"][0]["nama"].startswith("Telur burung puyuh")   # Bab 7 tertukar dengan Bab 4/5
+    assert comp["HR011"]["nama"].startswith("Telur burung puyuh")
+    assert "HP008" in by_new and "HP008" not in comp                      # tidak punya data komposisi
+    assert {r["kode"]: r for r in idx}["DR008"]["spesies"] == "Amaranthus tricolor"

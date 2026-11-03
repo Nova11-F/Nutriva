@@ -22,6 +22,34 @@ Seed tabel `foods` (1.063 bahan) dan `recipes` (30 resep) untuk fitur Plan Meal,
 - Verifikasi visual baris demi baris terhadap gambar halaman PDF (AR001–AR017, AP021–AP024, NR016–NR018, GR050, DR008, HR011, CP061) cocok 100%, termasuk sel kosong.
 - Uji internal: 96,7% baris punya jumlah air + protein + lemak + KH + abu = 100 ± 3 g. Baris yang menyimpang sudah dicek ke gambar dan memang tercetak begitu di sumber (misalnya Mi kering, KH 6,3 g), jadi bukan kesalahan ekstraksi.
 
+### Lampiran TKPI (Bab 5–7) juga diekstrak
+
+Semua tabel di halaman PDF 16–134 sudah menjadi CSV. Halaman 135 kosong.
+
+| Bab (hlm. PDF) | File | Baris | Isi |
+|---|---|---|---|
+| 4 Tabel komposisi (16–70) | `sources/tkpi2017.csv` | 1.146 | 22 zat gizi + BDD per 100 g |
+| 5 Indeks (71–99) | `sources/tkpi2017_index.csv` | 623 | nama Latin (spesies, genus, famili) dan nama Inggris; semua 558 bahan mentah tercakup |
+| 6 Glosari (100–115) | `sources/tkpi2017_glossary.csv` | 238 | nama daerah/lokal dan deskripsi masakan |
+| 7 Kode (116–134) | `sources/tkpi2017_code_map.csv` | 1.149 | kode lama TKPI 2009 → kode baru, nama, kelompok, jenis |
+
+Extractor: `tools/extract_tkpi_appendix.py`. Tabel di bab ini bergaris, jadi dibaca dengan `pdfplumber.extract_tables()`. Dua baris di Bab 7 (DR077, FP036) selnya tergabung di PDF, sehingga diambil dari lapisan teks.
+
+Kelengkapan dicek dengan dua cara:
+- Jumlah baris tiap CSV sama dengan jumlah kode unik yang muncul di teks halaman bab tersebut.
+- Beberapa baris dicocokkan langsung dengan gambar halaman.
+
+`foods.scientific_name` dan `foods.name_en` diisi dari Bab 5. Indeks ini juga mengonfirmasi bahwa "Bayam" di TKPI adalah *Amaranthus tricolor* dan "Ikan kembung" adalah *Rastrelliger kanagurta*.
+
+**Inkonsistensi yang tercetak di buku TKPI 2017.** Semuanya dipertahankan apa adanya di CSV, tidak "dibetulkan":
+
+- Bab 7 menukar HR010 dan HR011 (puyuh ↔ penyu). Bab 4 dan Bab 5 sepakat bahwa HR011 = telur burung puyuh. Nutriva mengikuti Bab 4.
+- Bab 7 memuat HP008 "Kalio telur" dan HP007 "Gulai telur ikan", sedangkan tabel komposisi hanya sampai HP007 = "Kalio telur". Jadi "Gulai telur ikan" tidak punya data gizi.
+- Baris IDA001→AR001 dan IDA002→AR002 tercetak dua kali di hlm. 116.
+- 7 nama di Bab 5 dan 23 nama di Bab 7 berbeda ejaan dari Bab 4 (mis. "Ikan bilih" vs "Ikan bili").
+- Ada salah ketik nama Latin/Inggris, misalnya "Cotumix", "fress", "Rastrellliger".
+- Ada isian yang tertukar atau keliru: Kentang "Yam, fresh"; Margarin "Butter" dan Mentega "Margarine"; bawang merah *Allium fistulosum*.
+
 ### Aturan pemilihan sumber per bahan
 
 1. TKPI dipakai bila ada padanan bahan yang sama **dan** lolos uji konsistensi: |E − (4P + 9L + 4KH)|/E ≤ 20% serta jumlah proksimat 100 ± 3 g. Dari 1.146 baris, 95 ditolak; daftarnya ada di `REPORT.md`.

@@ -10,6 +10,8 @@ ALTER TABLE public.foods ADD COLUMN IF NOT EXISTS extra_nutrients_per_100g JSONB
 ALTER TABLE public.foods ADD COLUMN IF NOT EXISTS source TEXT;
 ALTER TABLE public.foods ADD COLUMN IF NOT EXISTS match_quality TEXT;
 ALTER TABLE public.foods ADD COLUMN IF NOT EXISTS data_notes TEXT;
+ALTER TABLE public.foods ADD COLUMN IF NOT EXISTS scientific_name TEXT;   -- dari Indeks TKPI 2017 (Bab 5)
+ALTER TABLE public.foods ADD COLUMN IF NOT EXISTS name_en TEXT;
 CREATE UNIQUE INDEX IF NOT EXISTS foods_code_key ON public.foods(code);
 DO $$
 BEGIN
