@@ -1,4 +1,5 @@
 import { supabase } from "./supabase";
+import { fakeReplies, fallbackReply } from "../data/chatMessages";
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const MODEL_NAME = "gemini-3.5-flash-lite";
@@ -111,9 +112,18 @@ Berikan jawaban terstruktur:`;
       const candidate = json.candidates?.[0];
       botReplyText = candidate?.content?.parts?.[0]?.text || "Maaf, asisten AI sedang tidak dapat memberikan jawaban.";
     } catch (err) {
-      console.error("Gemini API Error:", err);
-      botReplyText =
-        "Maaf, koneksi ke asisten gizi AI sedang bermasalah. Silakan coba kembali beberapa saat lagi.";
+      console.warn("Gemini API Offline / Fallback:", err.message);
+      // Fallback cerdas ke kumpulan panduan gizi terpercaya di chatMessages.js
+      const lowerQ = questionText.toLowerCase();
+      const matchedReply = fakeReplies.find((item) =>
+        item.keywords.some((k) => lowerQ.includes(k.toLowerCase()))
+      );
+
+      if (matchedReply) {
+        botReplyText = `${matchedReply.reply}\n\n*(Informasi berbasis panduan resmi Kemenkes RI)*`;
+      } else {
+        botReplyText = fallbackReply;
+      }
     }
 
     // Deteksi apakah jawaban menyarankan rujukan medis darurat
@@ -125,19 +135,23 @@ Berikan jawaban terstruktur:`;
     // 4. Simpan jawaban AI ke Supabase
     let botMsgId = Date.now() + 1;
     if (userId && childId) {
-      const { data } = await supabase
-        .from("chat_messages")
-        .insert({
-          user_id: userId,
-          child_id: childId,
-          sender: "assistant",
-          message_text: botReplyText,
-          requires_medical_referral: requiresReferral,
-          trusted_sources: [{ authority: "Kemenkes RI & WHO", title: "Pedoman Gizi Balita & PMBA" }],
-        })
-        .select()
-        .single();
-      if (data) botMsgId = data.id;
+      try {
+        const { data } = await supabase
+          .from("chat_messages")
+          .insert({
+            user_id: userId,
+            child_id: childId,
+            sender: "assistant",
+            message_text: botReplyText,
+            requires_medical_referral: requiresReferral,
+            trusted_sources: [{ authority: "Kemenkes RI & WHO", title: "Pedoman Gizi Balita & PMBA" }],
+          })
+          .select()
+          .single();
+        if (data) botMsgId = data.id;
+      } catch (dbErr) {
+        console.warn("Gagal simpan pesan AI ke database:", dbErr.message);
+      }
     }
 
     return {
