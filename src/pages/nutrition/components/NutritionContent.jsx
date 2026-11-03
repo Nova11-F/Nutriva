@@ -140,8 +140,8 @@ export default function NutritionContent() {
             category: `${r.portion_size || "Porsi MPASI"}`,
             title: r.title,
             desc: r.instructions?.[0]?.text || `Menu bergizi seimbang untuk balita usia ${r.min_age_months}-${r.max_age_months} bulan.`,
-            kcal: `${r.main_nutrients?.calories || 190} kkal`,
-            protein: `${r.main_nutrients?.protein_g || 8}g Protein`,
+            kcal: `${r.main_nutrients?.calories ?? "–"} kkal`,
+            protein: `${r.main_nutrients?.protein_g ?? "–"}g Protein`,
             time: "25 Menit",
           }));
           setInspirations(mapped);

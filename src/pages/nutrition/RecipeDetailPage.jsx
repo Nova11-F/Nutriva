@@ -126,13 +126,13 @@ export default function RecipeDetailPage() {
             rating: 4.9,
             reviews: 128,
             validator: `Divalidasi oleh ${res.validated_by || "Ahli Gizi"} (${res.source_authority || "Kemenkes RI"})`,
-            kcal: `${res.main_nutrients?.calories || 200} kkal / porsi`,
+            kcal: `${res.main_nutrients?.calories ?? "–"} kkal / porsi`,
             info: [
               { label: "Usia Min", value: `${res.min_age_months} Bulan` },
               { label: "Frekuensi", value: res.meal_frequency || "3x sehari" },
-              { label: "Protein", value: `${res.main_nutrients?.protein_g || 8} g` },
+              { label: "Protein", value: `${res.main_nutrients?.protein_g ?? "–"} g` },
               { label: "Budget", value: res.budget_tier ? res.budget_tier.toUpperCase() : "EKONOMIS" },
-              { label: "Zat Besi", value: `${res.main_nutrients?.iron_mg || 2.5} mg` },
+              { label: "Zat Besi", value: `${res.main_nutrients?.iron_mg ?? "–"} mg` },
             ],
             ingredients: ingList,
             steps: stepList,
@@ -153,8 +153,8 @@ export default function RecipeDetailPage() {
               category: `${item.portion_size || "Porsi MPASI"}`,
               title: item.title,
               desc: `Untuk balita ${item.min_age_months}-${item.max_age_months} bulan.`,
-              kcal: `${item.main_nutrients?.calories || 180} kkal`,
-              protein: `${item.main_nutrients?.protein_g || 7}g Protein`,
+              kcal: `${item.main_nutrients?.calories ?? "–"} kkal`,
+              protein: `${item.main_nutrients?.protein_g ?? "–"}g Protein`,
               time: "20 Menit",
             }));
           setOthers(otherItems);

@@ -1,3 +1,5 @@
+-- DEPRECATED: data dummy tanpa sumber yang dapat ditelusuri. Pakai supabase/seed/nutrition_seed.sql
+-- (dihasilkan ai-service/nutrition_data/build_seed.py). File ini dipertahankan hanya untuk kompatibilitas.
 -- ============================================================================
 -- SEED DATA DUMMY: RECIPES & FOODS (NUTRIVA)
 -- Jalankan di SQL Editor Supabase setelah supabase_schema.sql
