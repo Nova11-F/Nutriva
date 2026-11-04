@@ -18,6 +18,8 @@ import Spinner from "../../../components/ui/Spinner";
 import { useChild } from "../../../hooks/useChild";
 import { useToast } from "../../../hooks/useToast";
 import { growthService } from "../../../services/growthService";
+import { classifyHaz, classifyWaz, classifyWhz } from "../../../lib/whoGrowth";
+import RiskProfileCard from "./RiskProfileCard";
 
 const chartTabs = [
   { key: "weight", title: "Berat Badan", unit: "kg", color: "#15803d" },
@@ -109,18 +111,10 @@ export default function GrowthContent() {
   // Data pengukuran terakhir dan delta
   const latestMetric = useMemo(() => {
     if (records.length === 0) {
-      const initW =
-        currentChild?.initialWeight ??
-        currentChild?.initial_weight_kg ??
-        currentChild?.birthWeight;
-      const initH =
-        currentChild?.initialHeight ??
-        currentChild?.initial_height_cm ??
-        currentChild?.birthLength;
       return {
         date: "Belum ada pengukuran",
-        weight: initW ? `${initW}` : "-",
-        height: initH ? `${initH}` : "-",
+        weight: currentChild?.initialWeightKg ? `${currentChild.initialWeightKg}` : "-",
+        height: currentChild?.initialHeightCm ? `${currentChild.initialHeightCm}` : "-",
         head: "-",
         deltaWeight: "Data awal saat registrasi",
         deltaHeight: "Data awal saat registrasi",
@@ -164,73 +158,21 @@ export default function GrowthContent() {
     };
   }, [records, currentChild]);
 
-  // Deteksi stunting dinamis
+  // Status per indikator (kategori Permenkes RI No. 2/2020, z-score WHO 2006)
   const detections = useMemo(() => {
-    const haz = Number(latestMetric.zScoreHaz ?? 0);
-    const waz = Number(latestMetric.zScoreWaz ?? 0);
-    const whz = Number(latestMetric.zScoreWhz ?? 0);
-
-    // TB/U
-    let tbStatus = "Normal";
-    let tbTone = "ok";
-    if (haz < -3) {
-      tbStatus = "Sangat Pendek (Severely Stunted)";
-      tbTone = "bad";
-    } else if (haz < -2) {
-      tbStatus = "Pendek (Stunted)";
-      tbTone = "warn";
-    } else if (haz > 3) {
-      tbStatus = "Tinggi";
-      tbTone = "ok";
-    }
-
-    // BB/U
-    let bbStatus = "Berat badan normal";
-    let bbTone = "ok";
-    if (waz < -3) {
-      bbStatus = "Sangat Kurang (Severely Underweight)";
-      bbTone = "bad";
-    } else if (waz < -2) {
-      bbStatus = "Berat Badan Kurang";
-      bbTone = "warn";
-    } else if (waz > 2) {
-      bbStatus = "Risiko Berat Lebih";
-      bbTone = "warn";
-    }
-
-    // BB/TB
-    let giziStatus = "Gizi Baik (Normal)";
-    let giziTone = "ok";
-    if (whz < -3) {
-      giziStatus = "Gizi Buruk (Severely Wasted)";
-      giziTone = "bad";
-    } else if (whz < -2) {
-      giziStatus = "Gizi Kurang (Wasted)";
-      giziTone = "warn";
-    } else if (whz > 2) {
-      giziStatus = "Gizi Lebih / Obesitas";
-      giziTone = "warn";
-    }
+    const toNum = (z) => (z === null || z === undefined || z === "" ? null : Number(z));
+    const fmt = (z) => (z === null || Number.isNaN(z) ? "–" : `${z >= 0 ? "+" : ""}${z.toFixed(2)} SD`);
+    const tone = (z, lowBad, high = Infinity) =>
+      z === null || Number.isNaN(z) ? "ok" : z < -3 ? "bad" : z < lowBad ? "warn" : z > high ? "warn" : "ok";
+    const haz = toNum(latestMetric.zScoreHaz);
+    const waz = toNum(latestMetric.zScoreWaz);
+    const whz = toNum(latestMetric.zScoreWhz);
+    const label = (fn, z) => (z === null ? "Belum dapat dihitung" : fn(z));
 
     return [
-      {
-        label: "Tinggi menurut Umur (TB/U)",
-        status: tbStatus,
-        tone: tbTone,
-        zscore: `${haz >= 0 ? "+" : ""}${haz} SD`,
-      },
-      {
-        label: "Berat menurut Umur (BB/U)",
-        status: bbStatus,
-        tone: bbTone,
-        zscore: `${waz >= 0 ? "+" : ""}${waz} SD`,
-      },
-      {
-        label: "Berat menurut Tinggi (BB/TB)",
-        status: giziStatus,
-        tone: giziTone,
-        zscore: `${whz >= 0 ? "+" : ""}${whz} SD`,
-      },
+      { label: "Tinggi menurut Umur (TB/U)", status: label(classifyHaz, haz), tone: tone(haz, -2), zscore: fmt(haz) },
+      { label: "Berat menurut Umur (BB/U)", status: label(classifyWaz, waz), tone: tone(waz, -2, 1), zscore: fmt(waz) },
+      { label: "Berat menurut Tinggi (BB/TB)", status: label(classifyWhz, whz), tone: tone(whz, -2, 1), zscore: fmt(whz) },
     ];
   }, [latestMetric]);
 
@@ -289,7 +231,6 @@ export default function GrowthContent() {
               const active = p.id === currentChild?.id;
               const ageMonths = getDiffMonths(p.birthDate);
               const initial = p.name ? p.name.slice(0, 2).toUpperCase() : "AN";
-              const weightVal = p.initialWeight ?? p.initial_weight_kg ?? p.birthWeight;
 
               return (
                 <Card
@@ -320,7 +261,7 @@ export default function GrowthContent() {
                         {p.name}
                       </p>
                       <p className="text-xs text-gray-500">
-                        {ageMonths} Bln · {weightVal ? `${weightVal} kg` : "-"}
+                        {ageMonths} Bln · {p.initialWeightKg || "-"} kg
                       </p>
                     </div>
                     {active && (
@@ -351,6 +292,8 @@ export default function GrowthContent() {
             </Card>
           </div>
         </section>
+
+        {currentChild && <RiskProfileCard child={currentChild} latestRecord={records[records.length - 1]} />}
 
         {loadingRecords ? (
           <Spinner size="lg" center label="Memuat riwayat pertumbuhan..." />

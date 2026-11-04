@@ -85,7 +85,8 @@ export default function AddMeasurementPage() {
         height: Number(height),
         headCircumference: headCircumference ? Number(headCircumference) : null,
         ageInMonths: currentAgeMonths,
-        gender: selectedChild.gender || "Perempuan",
+        birthDate: selectedChild.birthDate,
+        gender: selectedChild.gender,
       });
 
       showSuccess("Data pengukuran pertumbuhan berhasil disimpan!");

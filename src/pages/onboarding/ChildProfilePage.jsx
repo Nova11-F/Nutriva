@@ -225,18 +225,14 @@ function OnboardingWizard({ editing, parentOnly = false }) {
       }
 
       if (!saved.current.growth) {
-        const bDate = values.birthDate ? new Date(values.birthDate) : new Date();
-        const mDate = values.measuredAt ? new Date(values.measuredAt) : new Date();
-        const diffMonths = Math.max(0, Math.floor((mDate - bDate) / (1000 * 60 * 60 * 24 * 30.4375)));
-
         await growthService.add({
           childId: saved.current.child.id,
           date: values.measuredAt,
           weight: Number(values.weight),
           height: Number(values.height),
           headCircumference: Number(values.headCircumference),
-          ageInMonths: diffMonths,
-          gender: values.gender || "Perempuan",
+          birthDate: saved.current.child.birthDate || values.birthDate,
+          gender: saved.current.child.gender || values.gender,
         });
         saved.current.growth = true;
       }
