@@ -91,20 +91,14 @@ export default function RecipeDetailPage() {
     async function fetchDetail() {
       setLoading(true);
       try {
-        const targetId = recipeId && recipeId !== "recipeId" ? recipeId : "bubur-daging-sapi-wortel";
+        const targetId = recipeId && recipeId !== "recipeId" ? recipeId : "bubur-ayam-wortel";
         const res = await recipeService.getRecipeDetail(targetId);
 
         if (!ignore && res) {
           // Parse ingredients
           const ingList = Array.isArray(res.ingredients)
             ? res.ingredients.map((ing) => {
-                if (typeof ing === "object" && ing !== null) {
-                  return {
-                    name: ing.name || "Bahan makanan",
-                    qty: ing.qty || ing.amount || "Secukupnya",
-                  };
-                }
-                const parts = typeof ing === "string" ? ing.split(":") : [String(ing)];
+                const parts = typeof ing === "string" ? ing.split(":") : [ing.name, ing.qty];
                 return {
                   name: parts[0]?.trim() || "Bahan makanan",
                   qty: parts[1]?.trim() || "Secukupnya",
@@ -115,37 +109,30 @@ export default function RecipeDetailPage() {
           // Parse instructions
           const stepList = Array.isArray(res.instructions)
             ? res.instructions.map((ins, i) => ({
-                title: ins.title || (typeof ins.step === "number" ? `Langkah ${ins.step}` : ins.step) || `Langkah ${i + 1}`,
-                time: ins.time || "5-10 menit",
+                title: ins.step || `Langkah ${i + 1}`,
+                time: ins.time || "5 menit",
                 text: typeof ins === "string" ? ins : (ins.text || ins.description || ""),
               }))
             : defaultRecipeFallback.steps;
 
-          const calories = res.main_nutrients?.calories_kcal ?? res.main_nutrients?.calories ?? 180;
-          const protein = res.main_nutrients?.protein_g ?? 8;
-          const iron = res.main_nutrients?.iron_mg ?? 2.5;
-
-          const minAge = res.min_age_months ?? res.minAgeMonths ?? 6;
-          const maxAge = res.max_age_months ?? res.maxAgeMonths ?? 12;
-
           setRecipeData({
             id: res.id,
             title: res.title,
-            desc: res.desc || `Menu gizi seimbang yang divalidasi oleh ${res.validated_by || res.validatedBy || "Konselor MPASI"} berdasarkan standar ${res.source_authority || res.sourceAuthority || "Kemenkes RI"}.`,
-            image: res.image_url || res.image || buburWortel,
+            desc: `Menu gizi seimbang yang divalidasi oleh ${res.validated_by || "Konselor MPASI"} berdasarkan standar ${res.source_authority || "Kemenkes RI"}.`,
+            image: res.image_url || buburWortel,
             tags: res.allergen_tags && res.allergen_tags.length > 0
-              ? [`${minAge}-${maxAge} Bulan`, `Porsi: ${res.portion_size || res.portionSize || "1 Mangkok"}`, ...res.allergen_tags]
-              : [`${minAge}-${maxAge} Bulan`, `Porsi: ${res.portion_size || res.portionSize || "1 Mangkok"}`, "Cegah Stunting", "Bebas MSG"],
+              ? [`${res.min_age_months}-${res.max_age_months} Bulan`, `Porsi: ${res.portion_size || "1 Mangkok"}`, ...res.allergen_tags]
+              : [`${res.min_age_months}-${res.max_age_months} Bulan`, `Porsi: ${res.portion_size || "1 Mangkok"}`, "Cegah Stunting", "Bebas MSG"],
             rating: 4.9,
             reviews: 128,
-            validator: `Divalidasi oleh ${res.validated_by || res.validatedBy || "Ahli Gizi"} (${res.source_authority || res.sourceAuthority || "Kemenkes RI"})`,
-            kcal: res.kcal || `${calories} kkal / porsi`,
+            validator: `Divalidasi oleh ${res.validated_by || "Ahli Gizi"} (${res.source_authority || "Kemenkes RI"})`,
+            kcal: `${res.main_nutrients?.calories ?? "–"} kkal / porsi`,
             info: [
-              { label: "Usia Min", value: `${minAge} Bulan` },
-              { label: "Frekuensi", value: res.meal_frequency || res.mealFrequency || "3x sehari" },
-              { label: "Protein", value: `${protein} g` },
-              { label: "Budget", value: (res.budget_tier || res.budgetTier || "sedang").toUpperCase() },
-              { label: "Zat Besi", value: `${iron} mg` },
+              { label: "Usia Min", value: `${res.min_age_months} Bulan` },
+              { label: "Frekuensi", value: res.meal_frequency || "3x sehari" },
+              { label: "Protein", value: `${res.main_nutrients?.protein_g ?? "–"} g` },
+              { label: "Budget", value: res.budget_tier ? res.budget_tier.toUpperCase() : "EKONOMIS" },
+              { label: "Zat Besi", value: `${res.main_nutrients?.iron_mg ?? "–"} mg` },
             ],
             ingredients: ingList,
             steps: stepList,
@@ -157,18 +144,18 @@ export default function RecipeDetailPage() {
         const all = await recipeService.getAllRecipes();
         if (!ignore && all && all.length > 0) {
           const otherItems = all
-            .filter((item) => (res?.id ? item.id !== res.id : true) && (res?.slug ? item.slug !== res.slug : true))
+            .filter((item) => item.id !== res?.id)
             .slice(0, 4)
             .map((item) => ({
               id: item.id,
               slug: item.slug,
-              image: item.image_url || item.image || buburWortel,
-              category: `${item.portion_size || item.portionSize || "Porsi MPASI"}`,
+              image: item.image_url || buburWortel,
+              category: `${item.portion_size || "Porsi MPASI"}`,
               title: item.title,
-              desc: item.desc || `Untuk balita ${item.min_age_months || item.minAgeMonths || 6}-${item.max_age_months || item.maxAgeMonths || 12} bulan.`,
-              kcal: item.kcal || `${item.main_nutrients?.calories_kcal || item.main_nutrients?.calories || 180} kkal`,
-              protein: item.protein || `${item.main_nutrients?.protein_g || 7}g Protein`,
-              time: item.time || "20 Menit",
+              desc: `Untuk balita ${item.min_age_months}-${item.max_age_months} bulan.`,
+              kcal: `${item.main_nutrients?.calories ?? "–"} kkal`,
+              protein: `${item.main_nutrients?.protein_g ?? "–"}g Protein`,
+              time: "20 Menit",
             }));
           setOthers(otherItems);
         }

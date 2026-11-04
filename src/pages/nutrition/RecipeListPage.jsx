@@ -15,7 +15,6 @@ import Button from "../../components/ui/Button";
 import buburWortel from "../../assets/images/bubur-wortel.png";
 import { recipeService } from "../../services/recipeService";
 import { useChild } from "../../hooks/useChild";
-import { recipes as dataRecipes } from "../../data/recipe";
 
 const ageFilters = ["Semua Usia", "6-8 Bulan", "9-11 Bulan", "12+ Bulan"];
 const categoryFilters = [
@@ -26,19 +25,86 @@ const categoryFilters = [
   "Camilan",
 ];
 
-const fallbackRecipes = dataRecipes.map((r) => ({
-  id: r.id,
-  slug: r.slug,
-  image: r.image || buburWortel,
-  age: r.age || "6-8 Bulan",
-  cat: r.cat || "Protein Hewani",
-  category: r.category || "Protein Hewani",
-  title: r.title,
-  desc: r.desc || "Menu bergizi seimbang untuk tumbuh kembang optimal anak.",
-  kcal: r.kcal || `${r.mainNutrients?.calories_kcal || 180} kkal`,
-  protein: r.protein || `${r.mainNutrients?.protein_g || 8}g Protein`,
-  time: r.time || "20 Menit",
-}));
+const fallbackRecipes = [
+  {
+    id: 1,
+    slug: "bubur-ayam-wortel",
+    image: buburWortel,
+    age: "6-8 Bulan",
+    cat: "Protein Hewani",
+    category: "Protein & Sayur: Ayam + Wortel",
+    title: "Bubur Ayam Wortel",
+    desc: "Kaya protein hewani dan vitamin A untuk mendukung tumbuh kembang serta daya tahan tubuh balita.",
+    kcal: "180 kkal",
+    protein: "8g Protein",
+    time: "20 Menit",
+  },
+  {
+    id: 2,
+    slug: "salmon-chowder-jagung",
+    image: buburWortel,
+    age: "9-11 Bulan",
+    cat: "Protein Hewani",
+    category: "Protein Hewani: Salmon + Jagung",
+    title: "Creamy Salmon Chowder Jagung Manis",
+    desc: "Sumber omega-3 untuk perkembangan otak dengan tekstur lembut yang mudah ditelan.",
+    kcal: "205 kkal",
+    protein: "11g Protein",
+    time: "20 Menit",
+  },
+  {
+    id: 3,
+    slug: "bakso-daging-pisang",
+    image: buburWortel,
+    age: "12+ Bulan",
+    cat: "Finger Food",
+    category: "Finger Food: Daging + Pisang",
+    title: "Bakso Daging Pisang Santan",
+    desc: "Finger food kaya zat besi untuk melatih anak makan sendiri dan mencegah anemia.",
+    kcal: "170 kkal",
+    protein: "8g Protein",
+    time: "25 Menit",
+  },
+  {
+    id: 4,
+    slug: "pudding-ubi-ungu",
+    image: buburWortel,
+    age: "6-8 Bulan",
+    cat: "Sayur & Buah",
+    category: "Karbohidrat & Sayur: Ubi + Bayam",
+    title: "Pudding Ubi Ungu Bayam",
+    desc: "Camilan sehat berserat dengan vitamin dan mineral untuk menjaga pencernaan anak.",
+    kcal: "160 kkal",
+    protein: "4g Protein",
+    time: "15 Menit",
+  },
+  {
+    id: 5,
+    slug: "bubur-saring-hati-ayam",
+    image: buburWortel,
+    age: "9-11 Bulan",
+    cat: "Protein Hewani",
+    category: "Protein Hewani: Hati Ayam + Brokoli",
+    title: "Bubur Saring Hati Ayam Brokoli",
+    desc: "Hati ayam kaya zat besi, dipadukan brokoli untuk membantu penyerapan.",
+    kcal: "160 kkal",
+    protein: "7g Protein",
+    time: "25 Menit",
+  },
+  {
+    id: 6,
+    slug: "smoothie-alpukat-pisang",
+    image: buburWortel,
+    age: "12+ Bulan",
+    cat: "Camilan",
+    category: "Camilan: Alpukat + Pisang",
+    title: "Smoothie Alpukat Pisang",
+    desc: "Lemak sehat untuk energi tambahan, cocok untuk camilan sore.",
+    kcal: "120 kkal",
+    protein: "2g Protein",
+    time: "10 Menit",
+  },
+];
 
 const goldenRules = [
   {
@@ -71,7 +137,7 @@ export default function RecipeListPage() {
   const [cat, setCat] = useState("Semua");
   const [page, setPage] = useState(1);
 
-  // Ambil resep langsung dari Supabase atau service
+  // Ambil resep langsung dari Supabase
   useEffect(() => {
     let ignore = false;
     async function fetchRecipes() {
@@ -79,28 +145,22 @@ export default function RecipeListPage() {
         const data = await recipeService.getAllRecipes();
         if (!ignore && data && data.length > 0) {
           const mapped = data.map((r) => {
-            let ageLabel = r.age || "6-8 Bulan";
-            const minAge = r.min_age_months ?? r.minAgeMonths ?? 6;
-            const maxAge = r.max_age_months ?? r.maxAgeMonths ?? 12;
-
-            if (minAge >= 12) ageLabel = "12+ Bulan";
-            else if (minAge >= 9) ageLabel = "9-11 Bulan";
-
-            const calories = r.main_nutrients?.calories_kcal ?? r.main_nutrients?.calories ?? r.kcal ?? "180 kkal";
-            const protein = r.main_nutrients?.protein_g ?? r.protein ?? "8g Protein";
+            let ageLabel = "6-8 Bulan";
+            if (r.min_age_months >= 12) ageLabel = "12+ Bulan";
+            else if (r.min_age_months >= 9) ageLabel = "9-11 Bulan";
 
             return {
               id: r.id,
               slug: r.slug,
-              image: r.image_url || r.image || buburWortel,
+              image: r.image_url || buburWortel,
               age: ageLabel,
-              cat: r.cat || (minAge >= 12 ? "Finger Food" : "Protein Hewani"),
-              category: r.category || `${r.portion_size || r.portionSize || "Porsi MPASI"} · ${r.meal_frequency || r.mealFrequency || "Utama"}`,
+              cat: "Protein Hewani",
+              category: `${r.portion_size || "Porsi MPASI"} · ${r.meal_frequency || "Utama"}`,
               title: r.title,
-              desc: r.desc || r.instructions?.[0]?.text || `Menu bergizi seimbang untuk balita usia ${minAge}-${maxAge} bulan.`,
-              kcal: typeof calories === "number" ? `${calories} kkal` : calories,
-              protein: typeof protein === "number" ? `${protein}g Protein` : protein,
-              time: r.time || "25 Menit",
+              desc: r.instructions?.[0]?.text || `Menu bergizi seimbang untuk balita usia ${r.min_age_months}-${r.max_age_months} bulan.`,
+              kcal: `${r.main_nutrients?.calories ?? "–"} kkal`,
+              protein: `${r.main_nutrients?.protein_g ?? "–"}g Protein`,
+              time: "25 Menit",
             };
           });
 
