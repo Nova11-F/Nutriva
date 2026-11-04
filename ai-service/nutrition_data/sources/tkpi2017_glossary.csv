@@ -1,0 +1,240 @@
+# source: Kemenkes RI (2018). Tabel Komposisi Pangan Indonesia 2017, Bab 6 Glosari. PDF sha256=12433fb4803c47ecbc89dc5981e3ee80717313ccf1b756b8189ebffca4e1d382. Diekstrak dengan tools/extract_tkpi_appendix.py
+kode,nama_daerah,deskripsi,kelompok,page
+AP008,"Bihun Jagung, mentah / Jawa Barat","Bihun, produk setengah jadi berbahan dasar tepung jagung",Serealia,100
+AP009,Nasi Jagung / Jawa Tengah,Nasi yang berasal dari beras berbahan dasar jagung pipil,Serealia,100
+AP023,Misoa,"Seperti mie, bentuk pipih",Serealia,100
+AP003,"Beras, tapai",Nasi yang difermentasi 2-3 hari dengan ragi dibungkus daun pisang,Serealia,100
+AP016,"Ketan hitam, tapai",Ketan hitam matang yang difermentasi 2-3 hari dengan ragi dibungkus daun pisang,Serealia,100
+AP018,"Ketan putih, tapai",Ketan putih matang yang difermentasi 2-3 hari dengan ragi dibungkus daun pisang,Serealia,100
+AP026,Amparan tatak / Kalimantan Selatan,"Seperti kue talam. Berbahan dasar tepung beras, santan, dan pisang",Serealia,100
+AP027,"Apang kukus, kue","Seperti kue mangkok. Berbahan dasar tepung beras, santan dan gula merah yang diolah dengan cara di kukus",Serealia,100
+AP028,"Apem, kue","Seperti kue mangkok. Berbahan dasar tepung beras, santan dan gula merah yang diolah dengan cara di kukus",Serealia,100
+AP031,Bakwan,Di Jawa Barat disebut bala-bala; di Jawa Timur disebut ote-ote. Berbahan dasar campuran tepung terigu dan sayuran yang diolah dengan cara di goreng,Serealia,100
+AP032,Bantal / NTB,Jajanan dari ketan dan kacang tolo dibungkus daun kelapa diolah dengan cara dikukus. (Lontong ketan dan kacang),Serealia,100
+AP033,Baruasa / Makasar,"Kue kering berbahan dasar tepung beras, gula pasir, telur, kelapa parut diolah dengan cara dipanggang",Serealia,100
+AP034,Batar daan / Timor Leste,"Semacam bubur jagung yang dilengkapi dengan campuran daging, kacang tanah, sayuran, dan belimbing",Serealia,100
+AP035,Bika ambon / Medan,"Kue basah berbahan dasar tepung terigu, tepung tapioka, ragi, gula pasir, telur, santan diolah dengan cara dipanggang",Serealia,100
+AP036,"Bingka / Banjarmasin, Kalimantan Selatan","Seperti kue lumpur. Berbahan dasar tepung terigu, kentang, telur, santan, gula, garam",Serealia,100
+AP037,Bobengka / Sulawesi Utara,"Berbahan dasar tepung terigu, gula merah/gula kelapa, kenari yang diolah dengan cara dipanggang",Serealia,100
+AP038,Bolu peca / Makasar,Berbahan dasar tepung terigu atau tepung ketan dengan gula merah yang diolah dengan cara dikukus,Serealia,100
+AP039,Brem / Madiun,Sari dari fermentasi ketan hitam atau ketan putih,Serealia,100
+AP040,Bubur tinotuan / Manado,"Bubur berisi beras, singkong, jagung, labu kuning, kangkung, daun gedi, daun leilem, daun kemangi.",Serealia,100
+AP042,Cangkuning,Seperti kue bugis. Berbahan dasar tepung ketan hitam,Serealia,100
+AP043,Dodol bali,"Bahan dasar: tepung beras ketan, kacang tanah, gula merah, gula pasir, santan, dengan kemasan daun jagung",Serealia,100
+AP044,Dodol galamai / Sumatera Barat,"Bahan dasar: Tepung beras ketan, gula, dan santan",Serealia,100
+AP045,Dodol kedondong,"Bahan dasar: Tepung beras ketan, gula, santan, kedondong",Serealia,101
+AP046,Dodol manado,"Nama lain: Dodol amuran. Bahan dasar: Tepung ketan putih, gula, santan, kenari atau kacang lainnya",Serealia,101
+AP047,Emping beras / Ketapang,Beras disangrai kemudian ditumbuk dengan alu di dalam lesung kayu. Makanan ini dihidangkan dengan cara digoreng dicampur kelapa dan gula merah,Serealia,101
+AP048,Gemblong,"Bahan dasar: beras ketan, kelapa, gula merah",Serealia,101
+AP049,Gendar goreng,Kerupuk dari nasi/beras,Serealia,101
+AP050,Intip goreng,Nasi kering dengan gula merah,Serealia,101
+AP051,Jagung gerontol,"Pipil jagung kering direbus disajikan dengan kelapa parut, gula pasir, dan garam",Serealia,101
+AP052,Jagung titi / NTT,Jagung pipil disangrai kemudian dipipihkan,Serealia,101
+AP054,Kikicak / Banjarmasin,"nama lain hintakungkaruang, seperti candil berbahan dasar tepung ketan, terigu dan gula merah",Serealia,101
+AP055,Kambose / Sulawesi Tenggara,Jagung pipil direbus,Serealia,101
+AP056,Kapuasa,Jagung pipil direbus dengan santan bersama kacang merah,Serealia,101
+AP058,"Kelepon, kue","Bahan dasar: Tepung beras/ketan, parutan kelapa, gula merah (bentuk bulat hijau isi cairan gula merah)",Serealia,101
+AP060,Ketoprak / Jakarta,"Bahan utama ketupat, tahu goreng, bihun dan tauge yang diseduh, saus kacang",Serealia,101
+AP061,Ketupat kandangan / Banjarmasin,Ketupat dengan kuah santan dan ayam,Serealia,101
+AP062,Koya,Kue kering. Bahan dasar: kacang kedelai sangrai diihaluskan dan dicampur gula halus kemudian dipanggang.,Serealia,101
+AP064,Koyabu / Manado,"Bahan dasar: tepung ketan putih, kelapa, dan gula merah. Dibungkus dengan daun pandan segitiga dan dikukus",Serealia,101
+AP065,Kue ali,Bentuk seperti donat kecil (kue cincin). Bahan dasar: tepung beras dan gula merah,Serealia,101
+AP067,Kue gelang / Minahasa utara,"Bahan dasar: Terigu, kacang tanah, gula jawa, santan, kuning telur, bentuk seperti donat",Serealia,101
+AP068,Kue jahe,"Kukis dari terigu, gula merah, jahe",Serealia,101
+AP069,Kue kelapa,"Kue kering berbahan dasar kelapa parut sangrai dicampur telur, gula halus, mentega dan terigu kemudian dipanggang",Serealia,101
+AP071,Kue ku temu / Tionghoa,"Kue basah. Bahan dasar kue: tepung ketan, gula halus, dan pewarna merah. Bahan isi kue: kacang hijau kupas dan gula halus. Diolah dengan cara dikukus",Serealia,101
+AP072,Kue lumpur,"Bahan dasar: Terigu, kentang, telur, santan diolah dengan cara panggang",Serealia,101
+AP073,Kue pelita / Makasar,"Bahan dasar: Tepung beras, nangka, santan, dan garam seperti talam",Serealia,101
+AP074,Kue putu cangkir / Makasar,"Bahan dasar: Tepung beras, kelapa, gula merah",Serealia,101
+AP076,Kue timphan / Aceh,"Bahan dasar: tepung ketan, santan, isi angka/unti, dll. Dibungkus dengan daun pisang memanjang dan dikukus",Serealia,101
+AP078,Lapis legit,"Nama lain: Spekkoek. Sejenis kue berbahan dasar tepung terigu, kuning telur, gula, dan mentega atau margarin. Umumnya berwarna kuning dan coklat.",Serealia,101
+AP079,Lupis ketan,"Bahan dasar: Ketan, gula jawa, kelapa",Serealia,101
+AP080,Manan samin / Palembang,Bolu ubi,Serealia,102
+AP081,Martabak india,"Martabak telur, kuah kari",Serealia,102
+AP082,Martabak mesir,Martabak telur,Serealia,102
+AP083,Masekat / Aceh,"Meuseukat / seperti dodol. Bahan dasar: gula, tepung terigu, anans, jeruk peras, mentega.",Serealia,102
+AP084,Mie aceh rebus,"Sama dengan mie rebus, tapi berempah (bumbu aceh)",Serealia,102
+AP088,Mie pangsit basah,Mie ayam dengan pangsit basah,Serealia,102
+AP089,Nasi gemuk / Jambi,Nasi berbumbu mirip nasi uduk (beras dan santan),Serealia,102
+AP090,Nasi gurih / Medan,Beras yang dimasak dengan santan,Serealia,102
+AP091,Nasi minyak,Palembang: Nasi dengan minyak samin. Jambi: nasi minyak dimakan dengan kuah kari,Serealia,102
+AP092,Nasi rames / Padang,Nasi lengkap dengan sayur dan lauknya,Serealia,102
+AP093,Nopia spesial,Kue kering. Bahan dasar: Tepung terigu dibentuk bulat diisi gula merah dan dipanggang,Serealia,102
+AP094,Onde-onde,"Kue dari tepung ketan, tepung beras, gula pasir, garam, dibentuk bulat diisi kacang hijau, gula pasir, di lumuri biji wijen, dan digoreng",Serealia,102
+AP095,Padamaran / Jambi,"Kue basah berbahan dasar tepung beras, santan, gula merah, air daun suji, dikukus dalam daun pisang",Serealia,102
+AP096,Pastel,"Kue dengan kulit tepung terigu, diisi sayuran atau soun atau ayam, dan digoreng. Di Makasar dikenal dengan Jalangkote",Serealia,102
+AP097,Pulut,Bahan dasar: Beras ketan putih dengan santan dimasak dengan cara dikukus,Serealia,102
+AP098,Pundut nasi / Banjarmasin,"Nasi yang dimasak dengan santan dan kelapa parut, sedikit gula pasir",Serealia,102
+AP099,Putri hijau (lebih ke seralia),"Kue basah. Bahan dasar: beras ketan putih, santan. Bahan lapisan: telur, gula pasir dan santan. Dikukus",Serealia,102
+AP100,Putri selat / Sumatera,"Kue berbahan dasar tepung beras dan sagu, santan, gula pasir, dikukus seperti kue lapis/talam dengan tampilan berwarna- warni",Serealia,102
+AP101,Putu sopa / Bugis,"(Putu soppa). Bahan dasar: Beras ketan, tepung beras diolah dengan cara dikukus dan diberi kelapa parut",Serealia,102
+AP102,Renggi goreng / Jawa,"Kerupuk ketan. Nama lain rengginang. Bahan dasar: nasi ketan dibentuk bulat tipis yang dikukus, lalu dijemur, dan setelah itu digoreng",Serealia,102
+AP103,Roti boong / Medan,"Kue seperti donat berbetuk bulat lonjong dengan proses digoreng berbahan dasar tepung terigu, gula pasir, telur ayam, mentega, air soda dan ragi",Serealia,102
+AP105,Sarimuka / Kalimantan Selatan,"Kue basah. Bahan dasar: beras ketan, gula merah, gula pasir, santan, telur ayam diolah dengan cara dikukus",Serealia,102
+AP106,Spaghetti /Italia,Salah satu jenis pasta. Berbentuk panjang seperti lidi berbahan dasar terigu dan air.,Serealia,102
+AP107,Srikaya ketan,"Nama lain: srikaya pulut. Kue kue basah terdiri dari 2 lapisan. Lapisan bawah: Beras ketan dan santan. Lapisan atas srikaya: telur ayam, terigu, gula pasir, dan santan. Diolah dengan cara dikukus",Serealia,102
+AP108,Sunduk lawang / Pontianak,"Kue basah berbahan dasar tepung beras, kanji, gula merah, santan dibungkus daun pisang. Diolah dengan cara dikukus",Serealia,102
+AP110,Tipa-tipa / Sumatera Utara,Seperti emping beras. Bahan dasar: beras dari padi muda disangrai lalu ditumbuk kemudian ditambah kelapa parut dan gula putih,Serealia,103
+AP111,Wajit camilan / Jawa Barat,"Seperti dodol. Bahan dasar: Tepung ketan, gula merah, kelapa dibungkus kulit jagung berbentuk segitiga",Serealia,103
+AP112,Widaran,"Kue kering dengan rasa manis dan gurih. Bahan dasar: tepung ketan putih, santan, dan telur ayam. Untuk jenis manis ditambah gula. Diolah dengan cara digoreng",Serealia,103
+AP113,Wingko babat / Jawa,"Kue basah berbahan dasar: tepung ketan, gula pasir, tepung kanji, santan, parutan kelapa muda. Diolah dengan cara dipanggang",Serealia,103
+AP114,Yangko / Yogyakarta,"Bahan dasar: Tepung ketan, tepung maizena, santan, pewarna makanan. Bahan isi: kacang tanah, gula pasir. Diolah dengan cara dikukus lalu dibalut tepung gula. Berbentuk kotak dan kenyal",Serealia,103
+BP013,Bagea kelapa asin / Ambon,"Kue berbahan dasar sagu, kelapa, dan garam.",Umbi berpati,104
+BP014,Bagea kelapa manis / Ambon,"Kue berbahan dasar sagu, kelapa, dan gula",Umbi berpati,104
+BP015,Bagea kenari asin / Sulawesi dan Ambon,"Kue berbahan dasar sagu, kelapa, garam, dan kenari",Umbi berpati,104
+BP016,Bagea kenari manis / Sulawesi dan Ambon,"Kue berbahan dasar sagu, kelapa, gula, dan kenari",Umbi berpati,104
+BP019,Beras Cerdas / Jawa Timur,Bahan dasar: Tepung jagung dan tepung mocaf dengan perbandingan 40 : 60,Umbi berpati,104
+BP020,Beras Ganyong / Bengkulu,Pangan tunggal terolah/ produk yang berbahan baku ganyong dan jagung,Umbi berpati,104
+BP021,Beras Siger / Lampung,Bahan dasar singkong,Umbi berpati,104
+BP022,Biji nangka/Biji salak,"Nama lain: candil. Bahan dasar: ubi, tapioka, berkuah air gula jawa dan santan",Umbi berpati,104
+BP023,Bubur sagu / Ambon,"Bubur dari sagu lempang, gula merah dan santan",Umbi berpati,104
+BP024,Cassavastick,Singkong di potong panjang-panjang diberi garam. Diolah dengan cara digoreng,Umbi berpati,104
+BP026,Gatot / Jawa Timur,"Bahan dasar gaplek (singkong dijemur), direndam air kapur sirih, dikukus, biasanya ditaburi parutan kelapa yang ditambah gula pasir dan serutan gula merah.",Umbi berpati,104
+BP027,Geblek / Yogyakarta,Makanan ringan berbentuk angka 8. Bahan dasar tepung tapioka /pati singkong,Umbi berpati,104
+BP028,"Getuk goreng / Sokaraja, Purwokerto",Bahan dasar: Singkong dan dibumbui gula kelapa,Umbi berpati,104
+BP029,Getuk singkong,Singkong rebus yang ditumbuk dicampur kelapa dan gula merah,Umbi berpati,104
+BP030,Gurandil / Bandung,"Bahan dasar: tepung tapioka dan parutan kelapa. Berbentuk lonjong kecil atau bulat kecil warna-warni, ditaburi gula pasir. Diolah dengan cara direbus",Umbi berpati,104
+BP031,Kabuto,"Singkong dijemur (ujan-panas), sampai berwarna hitam (gatot) lalu dikukus dan setelah itu ditaburi dengan kelapa parut",Umbi berpati,104
+BP032,Kapurung / Sulawesi Selatan,"Bahan dasar: Tepung sagu seperti papeda. Campuran ikan atau daging ayam atau udang dan aneka sayuran (bayam, kacang panjang, daun kacang, jantung)",Umbi berpati,104
+BP033,Kecimpring singkong goreng / Bandung,"Seperti kerupuk singkong. Singkong diparut dicampur dengan bumbu, dipipihkan, dikukus, dijemur dan digoreng",Umbi berpati,104
+BP041,Kerupuk kemplang (ikan) mentah / Palembang,"Bahan dasar: Tepung sagu dan ikan, di olah dengan cara dibakar",Umbi berpati,104
+BP046,Kue bangket / Bangka,"Kue kering berbahan dasar: Tepung sagu, santan, gula merah, gula pasir, wijen, dan telur. Diolah dengan cara dipanggang",Umbi berpati,104
+BP047,Kue putu singkong,"Kue basah berbahan dasar telur, singkong, terigu, gula merah, kelapa parut. Diolah dengan cara dikukus",Umbi berpati,104
+BP048,Lanting getuk / Kebumen,"Kue kering berbahan dasar singkong yang dikukus lalu dihaluskan dengan bumbu, dijemur dan digoreng. Biasanya berbentuk angka 8",Umbi berpati,104
+BP049,Mi golosor,"Mie sagu, dibuat seperti mie goreng dengan sambal kacang",Umbi berpati,104
+BP050,Mie Bendo / Yogyakarta,Mie berbahan dasar singkong dan gaplek,Umbi berpati,105
+BP051,Mie Sagu / Riau,Mie berbahan dasar sagu,Umbi berpati,105
+BP052,Ongol-ongol sagu,Kue basah berbahan dasar sagu direbus dengan gula merah dan ditaburi kelapa parut kukus,Umbi berpati,105
+BP053,Oyek / Jawa Tengah,Seperti beras yang berasal dari gaplek (singkong yang dijemur),Umbi berpati,105
+BP054,Papeda/ Tawaro / Papua,"Tepung sagu, dibubur",Umbi berpati,105
+BP055,Rasbi (Beras Ubi) / Sumatera Selatan,Bahan dasar ubi jalar,Umbi berpati,105
+BP056,Rasi (Beras Singkong) /Jawa Barat,Bahan dasar singkong/ubi kayu,Umbi berpati,105
+BP057,Sagu forno / Papua,"Kue kering. Nama lain sagu forna (nama balok cetakan) atau sagu lempeng (bentuk lempengan). Tepung sagu dihaluskan, dimasukkan ke dalam cetakan, dibakar, bagian tengah dilubangi diberi gula merah",Umbi berpati,105
+BP058,Sagu Lemak (Kue Sagon) / Riau,"Bahan dasar: Sagu, Kelapa, Telur",Umbi berpati,105
+BP059,Sagu manis,Sagu dipanggang + kelapa parut + gula (seperti kue bandros),Umbi berpati,105
+BP060,Sagu Rendang / Riau,Suatu produk sagu,Umbi berpati,105
+BP061,Sagu sinole / Ambon,"Nama lain karu-karu. Seperti dadar gulung. Sagu yang dicampur parutan kelapa, pala bubuk, kenari, dan gula aren",Umbi berpati,105
+BP063,Tapai singkong,Fermentasi singkong,Umbi berpati,105
+BP064,Tepung Arrowroot,Tepung dari arrowroot (umbi),Umbi berpati,105
+BP065,Tepung Ganyong / Bengkulu,Bahan dasar ganyong,Umbi berpati,105
+BP066,Tepung Gaplek / Sumatera Selatan,Bahan dasar dari gaplek (singkong dijemur),Umbi berpati,105
+BP068,Tepung Mocaf / Jawa Timur,Bahan dasar dari singkong,Umbi berpati,105
+BP069,Tepung Sente / Banten,Bahan dasar dari talas,Umbi berpati,105
+BP071,Tepung Tales Beneng / Sumatera Selatan,Bahan dasar dari gaplek (singkong dijemur)/ talas beneng,Umbi berpati,105
+BP072,Tepung Ubi Ungu / Banten,Bahan dasar ubi jalar ungu,Umbi berpati,105
+BP073,Tiwul / Yogyakarta,Berbahan dasar dari gaplek (singkong dijemur) ditambah tepung kacang hijau dan gula merah,Umbi berpati,105
+CP023,Dodol banjarmasin,"Nama lain: Dodol kandangan. Bahan dasar: Gula pasir, agar-agar, susu kental manis, santan, kacang tanah","Kacang, biji, bean",106
+CP024,Emping (kerupuk melinjo),"Bahan dasar: biji melinjo dihaluskan, dicetak, dijemur dan digoreng","Kacang, biji, bean",106
+CP025,Emping komak / Lombok,Seperti emping melinjo namun berbahan dasar kacang komak. Khas lombok.,"Kacang, biji, bean",106
+CP027,Enting-enting gepuk kacang tanah / Salatiga,"Kacang tanah yang telah dipanaskan dalam cairan gula kental, digepuk di atas landasan batu. Berbentuk empat persegi panjang setebal 15 cm","Kacang, biji, bean",106
+CP029,Geplak / Yogyakarta,Parutan kelapa kasar dengan gula pasir,"Kacang, biji, bean",106
+CP030,Geplak jahe / Yogyakarta,Parutan kelapa kasar dengan gula pasir dan jahe,"Kacang, biji, bean",106
+CP031,Kacang atom,Bahan dasar: kacang tanah kupas yang dibalur telur dan terigu kemudian digoreng,"Kacang, biji, bean",106
+CP032,Kacang goyang / Manado,Bahan dasar: Kacang tanah digoyang di bawah lelehan gula yang telah di beri pewarna untuk membuat kacang goyang menjadi berwarna warni.,"Kacang, biji, bean",106
+CP034,Kacang sukro,"Kacang atom dengan merk dagang ""sukro""","Kacang, biji, bean",106
+CP036,Keju kacang tanah (peanut butter),Nama lain: selai kacang atau pindakaas. Bahan dasar kacang tanah yang dihaluskan dicampur dengan gula,"Kacang, biji, bean",106
+CP037,Kembang tahu,Produk sampingan proses perebusan kedelai yang diambil dari endapan yang terkumpul di permukaan air perebusan kedelai,"Kacang, biji, bean",106
+CP050,Moon tahu / Tionghoa,"Tumisan terdiri dari campuran tahu, telur, ayam, kaldu dan bahan-bahan lainnya dikentalkan dengan tepung sagu.","Kacang, biji, bean",106
+CP055,Rempeyek kacang tanah,Nama lain: peyek. Gorengan tipis renyah yang terdiri dari campuran tepung beras dan kacang tanah,"Kacang, biji, bean",106
+CP056,Rempeyek kacang tolo,Nama lain: peyek. Gorengan tipis renyah yang terdiri dari campuran tepung beras dan kacang tolo,"Kacang, biji, bean",106
+CP057,Rempeyek kacang uci,Nama lain: peyek. Gorengan tipis renyah yang terdiri dari campuran tepung beras dan kacang uci,"Kacang, biji, bean",106
+CP058,Sayur lebui / Lombok,"Bahan dasar kedelai hitam yang direbus bersama labu kuning, belimbing wuluh, tomat, cabai dan santan.","Kacang, biji, bean",106
+CP065,Tauco,"Biji kedelai yang telah direbus, dihaluskan dan diaduk dengan tepung terigu kemudian difermentasi","Kacang, biji, bean",106
+CP070,Tempe bongkrek,Bahan dasar kacang kedelai dan ampas kelapa yang difermentasi,"Kacang, biji, bean",106
+CP071,Tempe gembus P3G,Bahan dasar ampas tahu difermentasi oleh kapang tempe,"Kacang, biji, bean",106
+CP085,Tepung Jalejo / Jakarta,"Bahan dasar: jagung, kedelai, kacang hijau. Khas Jakarta","Kacang, biji, bean",106
+DR129,Mostarda metan-sawi,"Sawi: pinggiran daun beregi-regi, tidak lebar, agak panjang / mirip selada",Sayuran,107
+DP023,"Anyang, sayur/ Medan","Seperti urap sayuran, biasanya terdiri dari daun pakis, tauge, daun pepaya, kacang panjang, kangkung dan kelapa parut",Sayuran,107
+DP024,Ares / NTB,Masakan dari umbut / hati batang pisang dimasak dengan santan dan bumbu (gulai),Sayuran,107
+DP025,Arwan sirsir / Maluku Tenggara,"Bahan dasar: daun kasbi, daun pepaya, bunga pepaya dimasak dengan santan",Sayuran,107
+DP026,Beberuk/ NTB,"Sayuran mentah (kacang panjang dan terong ungu kecil diiris halus), ditambah bumbu / saos: cabe merah, cabe rawit merah, tomat, terasi, dan garam",Sayuran,107
+DP027,Botok lamtoro,"Bahan dasar: lamtoro dan kelapa parut, dikukus dengan dibungkus daun pisang.",Sayuran,107
+DP028,Buntil daun talas / Jawa,"Bahan dasar: daun talas, kelapa parut, dan ikan teri. Direbus dengan santan.",Sayuran,107
+DP029,Cammetutu,"Sayur daun singkong ditumbuk dan dimasak bersama kacang panjang, terong, dan labu siam.",Sayuran,107
+DP032,"Gudeg, sayur / Jogja",Bahan dasar: nangka muda dan santan. Direbus dalam waktu yang lama,Sayuran,107
+DP034,Gulai pliek / Aceh,"Bahan dasar: nangka muda, daun melinjo, buah melinjo, jantung pisang, kacang panjang. Direbus dengan santan.",Sayuran,107
+DP036,"Kaparende, sayur / Parende",sayur bening daun kelor + pepaya muda + ikan teri,Sayuran,107
+DP039,Kotiu hinela tawang nggole,Sayur campur jantung pisang + daun singkong dan tekokak bumbu garam dan terasi,Sayuran,107
+DP040,Lema/ Rebung asam /Bengkulu (Suku Rejang),"Bahan dasar: rebung dan ikan, diolah dengan cara direbus dan difermentasi, dengan rasa asam pedas",Sayuran,107
+DP042,Olah-olah,"Masakan sayur: Kacang panjang dan toge direbus diberi saos santan kental yang dimasak dengan bumb bawang merah + bawang putih, cabe merah, terasi dan garam.",Sayuran,107
+DP043,Paku hinela wulele nggapaya,Sayur paku dan bunga papaya,Sayuran,107
+DP044,Pelecing kangkung,"Kangkung dan toge direbus ditaburi kelapa parut (disangan) dan sambal (garam, cabe, terasi, dan tomat) disiram air jeruk.",Sayuran,107
+DP045,Purundawa,Sayur bening bayam + terong kecil bumbu garam + terasi,Sayuran,107
+DP046,Rujak cingur / Jawa Timur,"Seperti gado-gado, ditambah cingur sapi.",Sayuran,107
+DP049,Sayur garu / Ternate,"Bahan dasar: jantung pisang, daun ubi, daun pepaya. Ditumis",Sayuran,107
+DP050,Sayur kohu-kohu / Maluku,"Seperti urap. Bahan dasar: bayam, ketimun, daun kemangi, kacang panjang, taoge, dan kelapa.",Sayuran,107
+DP051,Sayur lilin-terubuk / Maluku Utara,Bahan dasar: lilin/terubuk. Direbus dengan santan.,Sayuran,107
+DP054,Sayur umbut kelapa,"Bahan dasar: umbut kelapa, labu kuning, dan iga sapi. Direbus dengan santan",Sayuran,107
+DP055,Sayur umbut rotan,Umbut rotan masak tumis,Sayuran,107
+DP058,Tinira ninahu nggaluku,Bahan dasar: daun melinjo,Sayuran,107
+EP001,Barongko / Bugis,Bahan dasar: pisang dihaluskan ditambah santan dan gula pasir kemudian dibungkus daun pisang dan dikukus,Buah,108
+EP005,Ledre pisang / Bojonegoro,"Bahan dasar: tepung terigu, gula, tepung beras, pidang raja",Buah,108
+EP006,Lempog durian,Dodol duren,Buah,108
+EP007,Loka anjoro (Majene),Pisang kepok/raja direbus dengan santan sampai kental,Buah,108
+EP008,Rica-rica taipa,"Mangga muda diiris dicampur dengan cabai, udang kering dan terasi (Acar mangga muda)",Buah,108
+EP009,Rujak aceh,"Seperti Asinan. Bahan dasar: buah batok, mangga, ketimun dan bengkuang.",Buah,108
+EP013,Sanggara Belanda (Pinrang),"Snack: Pisang raja dicelupkan kedalam kocokan telur, digoreng, dibelah diisi mentega, keju, dan gula yang telah dikocok bersama.",Buah,108
+EP014,Tepung Pisang / Lampung,Pangan tunggal terolah/ produk yang berbahan baku pisang,Buah,108
+EP015,Tepung Sukun / Jawa Tengah,Pangan tunggal terolah/ produk yang berbahan baku sukun,Buah,108
+FP037,"Beef teriyaki, masakan/ Jepang",Daging sapi bumbu teriyaki (rasa manis).,"Daging, unggas",109
+FP038,"Beef yakiniku, masakan/ Jepang",Daging sapi panggang (rasa gurih),"Daging, unggas",109
+FP039,Brongkos / Yogyakarta,Masakan daging sapi berkuah hitam yang berasal dari kluwek dan ditambah santan,"Daging, unggas",109
+FP040,"Bulgogi, masakan/ Korea",Daging sapi (sirloin) ditambah kecap asin dan gula.,"Daging, unggas",109
+FP041,"Chicken teriyaki, masakan/ Jepang",Daging ayam bumbu teriyaki (rasa lebih manis).,"Daging, unggas",109
+FP045,"Djibokum, masakan/ Korea",Ji-Bo-Kum. Gurita/seafood goreng pedas dengan sayuran.,"Daging, unggas",109
+FP048,"Jangang bintatoeng, masakan",Masakan ayam dengan kacang hitam,"Daging, unggas",109
+FP053,"Lawar babi, masakan/ Bali",Seperti urap. Daging babi dicampur dengan kelapa parut yang sudah berbumbu.,"Daging, unggas",109
+FP054,"Lawar penyu, masakan/ Bali",Seperti urap. Daging penyu dicampur dengan kelapa parut yang sudah berbumbu.,"Daging, unggas",109
+FP057,"Nasu likku, masakan (Bone/ Bugis)","Ayam dengan irisan lengkuas yang halus, irisan serai yang halus (1/2 kg ayam dan 1/2 kg lengkuas dan serai). Dimasak dalam santan","Daging, unggas",109
+FP058,"Oramu ninahu ndawa olaho, masakan",Sup iga dengan daun kedondong,"Daging, unggas",109
+FP059,"Paniki masak santan, masakan",Masakan kelelawar dimasak didalam santan,"Daging, unggas",109
+FP060,"Pelolah manuk, masakan / NTB","Masakan ayam: Ayam dimasak dengan bumbu (bwang merah + bawang putih, cabe merah dan terasi yang digiling halus dan santan)","Daging, unggas",109
+FP061,"Rawon, masakan / Jawa Timur",Masakan daging sapi berkuah hitam yang berasal dari kluwek,"Daging, unggas",109
+FP063,"RW, anjing, masakan",Masakan daging anjing,"Daging, unggas",109
+FP065,"Sate pusut, masakan","Daging diling (sapi, babi), kelapa parut diberi bumbu (bawang, cabai, terasi, dan garam) dibentuk bulat panjang (lonjong) ditusuk lalu dibakar.","Daging, unggas",109
+FP067,"Sie reuboh, masakan/ Aceh",Daging Sapi/Kerbau direbus dengan bumbu pedas,"Daging, unggas",109
+FP072,"Sop konro, masakan/ Makassar",Bahan dasar: iga sapi bumbu kluwek.,"Daging, unggas",109
+FP073,"Sop saudara, masakan/ Makassar",Bahan dasar: daging sapi tanpa kluwek.,"Daging, unggas",109
+FP074,"Soto bandung, masakan","Kuah bening. Bahan dasar: Daging sapi, lobak, dan kacang kedelai goreng. Biasa ditambahkan kecap manis.","Daging, unggas",109
+FP075,"Soto banjar, masakan","Kuah bening. Bahan dasar: Ayam dan rempah-rempah (kayu manis, biji pali dan cengkeh)","Daging, unggas",109
+FP076,"Soto betawi, masakan",Kuah bening/ santan. Bahan dasar: daging sapi dan atau jeroan ditambah emping,"Daging, unggas",109
+FP078,"Soto kudus, masakan",Kuah bening. Bahan dasar: ayam dan taoge,"Daging, unggas",109
+FP079,"Soto madura, masakan",Kuah bening. Bahan dasar: ayam atau daging,"Daging, unggas",109
+FP080,"Soto padang, masakan","Kuah bening. Bahan dasar: daging sapi, bumbu pekak dan kapulaga","Daging, unggas",109
+FP081,"Soto pekalongan, masakan",Kuah bening. Bahan dasar: daging sapi dan tauco,"Daging, unggas",110
+FP082,"Soto pemalang, masakan","Kuah bening. Bahan dasar: daging sapi, tauco, kelapa parut sangrai, dan kluwek","Daging, unggas",110
+FP083,"Soto sukaraja, masakan / Banyumas","Kuah bening. Bahan dasar: daging sapi, soun, taoge, dan sambal kacang","Daging, unggas",110
+FP084,"Soto sulung, masakan/ Jawa Timur","Kuah bening. Bahan dasar: daging sapi, ayam, jeroan, dan telur","Daging, unggas",110
+FP085,"Sukiyaki, masakan/ Jepang",Irisan tipis daging sapi dicelupkan ke dalam kocokan telur ayam,"Daging, unggas",110
+FP086,"Tedong pallu basa, masakan",Hidangan berkuah kental dari campuran daging dan jeroan (organ bagian dalam) kerbau,"Daging, unggas",110
+FP087,"Tikus rica, masakan",Tikus sawah masak cabai,"Daging, unggas",110
+FP088,"Tinoransa, masakan",Masakan daging babi,"Daging, unggas",110
+GP053,Abon haruwan /Kalimantan Selatan,Abon dari ikan gabus,"Ikan, kerang, udang",111
+GP055,"Betok wadi, masakan/ Banjar (Kalimantan Tengah)","Ikan betok yang dibersihkan lalu difermentasi dengan garam dalam wadah beling, setalah itu dimasak sesuai selera, digoreng atau disayur.","Ikan, kerang, udang",111
+GP056,"Bau ninahu ndamate, masakan",Ikan gabus segar dimasak dengan tomat (Sup gabus),"Ikan, kerang, udang",111
+GP057,"Borku ninahu nggaluku, masakan",Keong sawah / tutut dimasak dengan santan,"Ikan, kerang, udang",111
+GP063,"Gulai asam keueung, masakan/ Aceh","Ikan yang dimasak dengan asam kanti, biasanya ikan kakap, ikan bandeng, tongkol, patin, dan kembung","Ikan, kerang, udang",111
+GP066,"Gulai keumamah, masakan / Aceh","Keumamah atau katshibushi atau ikan kayu (jenis ikan: tongkol/tuna/cakalang). Ikan direbus, dikeringkan beberapa hari hingga mengeras, lalu diiris kecil-kecil. Keumamah dimasak dengan santan","Ikan, kerang, udang",111
+GP071,"Jukku pallu kalao, masakan","Masakan ikan cangkalang dengan bumbu lengkuas, serai, cabai merah, kecap, dan garam","Ikan, kerang, udang",111
+GP072,"Kaholeo, masakan / Katumesi No. kaholeo",Sambal goreng kering teri,"Ikan, kerang, udang",111
+GP073,Lawara penjah,Ikan penja dimasak dan dicampur dengan kelapa parut yang sudah berbumbu (seperti urap),"Ikan, kerang, udang",111
+GP074,"Model, masakan/ Palembang","Dibuat dari adonan yang sama dengan pempek kapal selam. Bedanya, model diisi dengan tahu dan digoreng sebelum disaji. Dihidangkan dengan kuah model yang terbuat dari kaldu udang. Lalu dicampur dengan bihun, timun, dan ebi","Ikan, kerang, udang",111
+GP076,"Parede baleh, masakan (Kabupaten. Luwu)",Masakan ikan dengan mangga,"Ikan, kerang, udang",111
+GP085,Pinda/ Kapinda,Ikan boto - boto dimasak asam,"Ikan, kerang, udang",111
+GP086,"Pindang kenari, masakan/ Maluku","Ikan tongkol dimasak dengan terong, lalu ditambahkan kacang kenari sebagai bumbunya dan daun kemangi","Ikan, kerang, udang",111
+GP090,Sate Bandeng / Banten,Pangan tunggal terolah/ produk yang berbahan baku ikan bandeng,"Ikan, kerang, udang",111
+GP095,Tumis keumamah / Aceh,"Keumamah atau katshibushi atau ikan kayu (jenis ikan: tongkol/tuna/cakalang). Ikan direbus, dikeingkan beberapa hari hingga mengeras, lalu diiris kecil-kecil. Keumamah dimasak tumis","Ikan, kerang, udang",111
+GP087,"Saboko gurita, masakan/ Timor Leste","Gurita dibumbui dengan cabe, bawang, daun asam muda yang kemudian dibungkus dengan daun lontar dan dibakar","Ikan, kerang, udang",111
+GP088,"Saboko saltan, masakan/ Timor Leste","Ikan saltan dibumbui dengan cabe, bawang, daun asam muda yang kemudian dibungkus dengan daun lontar dan dibakar","Ikan, kerang, udang",111
+GP089,"Saboko sardin, masakan/ Timor Leste","Ikan sarden dibumbui dengan cabe, bawang, daun asam muda yang kemudian dibungkus dengan daun lontar dan dibakar","Ikan, kerang, udang",111
+GP091,"Sepi, masakan/ Bima",Makanan yang terbuat dari udang rebon (anak udang yang sangat kecil yang di Bima disebut Sepi Bou),"Ikan, kerang, udang",111
+HP005,"Bayau mi balu, masakan",Kuning telur dibuat seperti kue dadar kemudian dimasak dengan sirup gula putih,Telur,112
+HP006,"Cucuru bayau, masakan","Snack dari kuning telur yang dikocok dengan sedikit gula, lalu dikukus dalam cetakan kecil - kecil bersama sirup gula putih",Telur,112
+JP002,Hangop / Belanda,Sejenis yoghurt,Susu,113
+JP004,Kwark (Quark) / Jerman,Produk susu segar yang dibuat dengan pemanasan asam susu sampai tingkat kekentalan yang diinginkan tercapai,Susu,113
+MP013,Melase,"Bagian dari gula yang tidak mengering setelah dimasak dengan banyaknya campuran yang ditambahkan, dimanfaatkan dalam pembuatan sirop, arak, spiritus, atau sebagai campuran pakan ternak","Gula, sirup, konfeksioneri",114
+NP001,Balichong,Udang kecil yang difermentasi,Bumbu,115
+NP002,Bekasam,Udang kecil yang difermentasi,Bumbu,115
+NP003,Bekasang,Ikan yang difermentasi,Bumbu,115
+NP010,Tempoya / Lampung dan Palembang,Daging durian yang difermentasi,Bumbu,115
+NP012,"Terasi dobo / Dobo, ada di Kepualauan Aru (Maluku)",Udang yang difermentasi,Bumbu,115

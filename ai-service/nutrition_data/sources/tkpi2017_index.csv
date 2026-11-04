@@ -1,0 +1,625 @@
+# source: Kemenkes RI (2018). Tabel Komposisi Pangan Indonesia 2017, Bab 5 Indeks. PDF sha256=12433fb4803c47ecbc89dc5981e3ee80717313ccf1b756b8189ebffca4e1d382. Diekstrak dengan tools/extract_tkpi_appendix.py
+kode,nama,spesies,genus,famili,nama_inggris,kelompok,page
+AR001,"Beras giling, mentah",Oryza sativa,Oryza,Graminae,"Rice, raw",Serealia,71
+AR002,"Beras giling var pelita, mentah",Oryza sativa,Oryza,Graminae,"Rice, raw",Serealia,71
+AR003,"Beras giling var rojolele, mentah",Oryza sativa,Oryza,Graminae,Rice. Raw,Serealia,71
+AR004,"Beras hitam, mentah",Oryza sativa,Oryza,Graminae,"Rice, raw",Serealia,71
+AR005,"Beras jagung kuning, kering, mentah",Zea mays,Zea,Graminae,"Corn, yellow, died, crushed, raw",Serealia,71
+AR006,"Beras jagung putih, kering, mentah",Zea mays,Zea,Graminae,"Corn, white, died, crushed, raw",Serealia,71
+AR007,"Beras ketan hitam tumbuk, mentah",Oryza sativa var. glutinosa,Oryza,Graminae,"Glutinous rice, black, husk, raw",Serealia,71
+AR008,"Beras ketan putih tumbuk, mentah",Oryza sativa var. glutinosa,Oryza,Graminae,"Glutinous rice, white, husk, raw",Serealia,71
+AR009,"Beras ladang, mentah",Oryza sativa,Oryza,Graminae,"Rice, raw",Serealia,71
+AR010,"Beras menir, mentah",Oryza sativa,Oryza,Graminae,"Rice, crushed, raw",Serealia,71
+AR011,Beras parboiled,Oryza sativa,Oryza,Graminae,"Rice, parboiled",Serealia,71
+AR012,"Beras tumbuk, mentah",Oryza sativa,Oryza,Graminae,"Rice with husk, raw",Serealia,71
+AR013,"Beras tumbuk merah, mentah",Oryza sativa,Oryza,Graminae,"Rice, brown with husk, raw",Serealia,71
+AR014,"Cantel, mentah",Sorghum bicolor,Sorghum,Graminae,"Sorghum, raw",Serealia,71
+AR015,"Jagung muda, kuning, mentah",Zea mays,Zea,Graminae,"Corn, baby, yellow, raw",Serealia,71
+AR016,"Jagung kuning pipil, kering, mentah",Zea mays,Zea,Graminae,"Corn, yellow, raw",Serealia,71
+AR017,"Jagung pipil var. harapan, kering",Zea mays,Zea,Graminae,"Corn, dried, raw",Serealia,71
+AR018,"Jagung pipil var. metro, kering",Zea mays,Zea,Graminae,"Corn, dried, raw",Serealia,71
+AR019,"Jali, mentah",Coix lacryma-jobi,Coix,Graminae,"Job's tear/adlay, raw",Serealia,71
+AR020,"Jawawut, mentah",Setaria italica cv. group Foxtail Millet,Setaria,Graminae,"Italian millet, raw",Serealia,71
+AR021,"Jampang huma, mentah",Eleusine indica,Eleusine,Graminae,"Ragi millet, raw",Serealia,71
+BR001,"Arrowroot, segar",Maranta arundinacea,Maranta,Marantaceae,"Arrowroot, fresh",Umbi berpati,72
+BR002,"Batatas gembili, segar",Dioscorea esculenta,Dioscorea,Dioscoreaceae,"Lesser yam, fresh",Umbi berpati,72
+BR003,"Batatas kelapa, ubi, segar",,,,,Umbi berpati,72
+BR004,"Belitung, talas, segar",Xanthosoma sagittifolium,Xanthosoma,Araceae,"Taro, belitung, steamed",Umbi berpati,72
+BR005,"Bengkuang, segar",Pachyrrhizus erosus,Pachyrrhizus,Leguminosae,"Yam bean, fresh",Umbi berpati,72
+BR006,"Bentul (Komba), talas, segar",Colocasia esculenta,Colocasia,Araceae,"Taro, bentul, fresh",Umbi berpati,72
+BR007,"Gadeng/Gadung, kering",Dioscorea hispida,Dioscorea,Dioscoreaceae,"Asiatic bitter yam, fresh",Umbi berpati,72
+BR008,"Gadung, ubi, segar",Dioscorea hispida,Dioscorea,Dioscoreaceae,"Asiatic bitter yam, fresh",Umbi berpati,72
+BR009,"Ganyong, segar",Canna edulis,Canna,Cannaceae,"Canna, fresh",Umbi berpati,72
+BR010,"Gembili, ubi, segar",Dioscorea esculenta,Dioscorea,Dioscoreaceae,"Lesser yam, fresh",Umbi berpati,72
+BR011,"Hofa/Ubi hutan, segar",,,,,Umbi berpati,72
+BR012,"Kaburan, ubi, segar",Dioscorea esculenta,Dioscorea,Dioscoreaceae,"Lesser yam, fresh",Umbi berpati,72
+BR013,"Kentang, segar",Solanum tuberosum,Solanum,Solanaceae,"Yam, fresh",Umbi berpati,72
+BR014,"Kentang hitam, segar",Plectranthus rotundifolius,Plectranthus,Labiatae/ Lamiaceae,"Madagascar potato, fresh",Umbi berpati,72
+BR015,"Keribang, ubi, segar",,,,,Umbi berpati,72
+BR016,"Ketela pohon/ singkong, segar",Manihot esculenta,Manihot,Euphorbiaceae,"Cassava, fresh",Umbi berpati,72
+BR017,Lepok/Ubi rumput,,,,,Umbi berpati,72
+BR018,"Sagu aren, kering",Arenga pinnata,Arenga,Arecaceae,"Sugar palm, dried",Umbi berpati,72
+BR019,"Sagu aren, segar",Arenga pinnata,Arenga,Arecaceae,"Sugar palm, fresh",Umbi berpati,72
+BR020,Sagu kasbi segar,Manihot esculenta,Manihot,Euphorbiaceae,"Cassava starch, fresh",Umbi berpati,72
+BR021,Sagu lempeng,Metroxylon sagu,Metroxylon,Arecaceae,Sago palm,Umbi berpati,72
+BR022,"Sagu singkong, kering",Manihot esculenta,Manihot,Euphorbiaceae,"Cassava, starch, dried",Umbi berpati,72
+BR023,"Sente, talas, segar",Alocasia macrorrhiza,Alocasia,Araceae,"Giant taro, fresh",Umbi berpati,72
+BR024,"Suweg, talas, segar",Amorphophallus paeoniifolius,Amorphophallus,Araceae,Elephant yam,Umbi berpati,72
+BR025,"Talas bogor, segar",Colocasia esculenta,Colocasia,Araceae,"Taro, bogor, fresh",Umbi berpati,72
+BR026,"Talas pontianak, segar",Colocasia esculenta,Colocasia,Araceae,"Taro, pontianak, fresh",Umbi berpati,72
+BR027,"Talas viqueque, segar",,,,,Umbi berpati,72
+BR028,"Ubi jalar, kuning, segar",Ipomoea batatas,Ipomoea,Convolvulaceae,"Sweet potato, yellowish, fresh",Umbi berpati,73
+BR029,"Ubi jalar manis, segar",Ipomoea batatas,Ipomoea,Convolvulaceae,"Sweet potato, fresh",Umbi berpati,73
+BR030,"Ubi jalar merah, segar",Ipomoea batatas,Ipomoea,Convolvulaceae,"Sweet potato, redish, fresh",Umbi berpati,73
+BR031,"Ubi jalar putih, segar",Ipomoea batatas,Ipomoea,Convolvulaceae,"Sweet potato, whitish, fresh",Umbi berpati,73
+BR032,Ubi jalar tinta/ kemayung,,,,,Umbi berpati,73
+BR033,"Umbi Uwi, segar",,,,,Umbi berpati,73
+CR001,"Kacang arab, segar",Cicer arietinum,Cicer,Leguminosae,"Chick pea, raw","Kacang, biji, bean",74
+CR002,"Kacang babi, kering",Vicia vaba,Vicia,Leguminosae,"Broad bean, raw","Kacang, biji, bean",74
+CR003,"Kacang belimbing (kecipir), kering",Psophocarpus tetragonolobus,Psophocarpus,Leguminosae,"Winged bean, seed, raw","Kacang, biji, bean",74
+CR004,"Kacang beracun, segar",,,,,"Kacang, biji, bean",74
+CR005,"Kacang bogor, kering",Vigna subterranea,Vigna,Leguminosae,"Bambara groundnut, dried","Kacang, biji, bean",74
+CR006,"Kacang bogor, segar",Vigna subterranea,Vigna,Leguminosae,"Bambara groundnut, fresh","Kacang, biji, bean",74
+CR007,"Kacang endel, biji, kering",Phaseolus calcarus,Phaseolus,Leguminosae,,"Kacang, biji, bean",74
+CR008,"Kacang ercis, segar",Pisum sativum,Pisum,Leguminosae,Pea,"Kacang, biji, bean",74
+CR009,"kacang galing, segar",,,,,"Kacang, biji, bean",74
+CR010,"Kacang gude, biji, kering",Cajanus cajan,Cajanus,Leguminosae,"Pigeon pea, fresh","Kacang, biji, bean",74
+CR011,"Kacang gude, biji, segar",Cajanus cajan,Cajanus,Leguminosae,"Pigeon pea, raw","Kacang, biji, bean",74
+CR012,"Kacang hijau var. bakti, kering",Vigna radiata,Vigna,Leguminosae,"Mung bean, raw","Kacang, biji, bean",74
+CR013,"Kacang hijau var. siwalik, kering",Vigna radiata,Vigna,Leguminosae,"Mung bean, raw","Kacang, biji, bean",74
+CR014,"Kacang hijau, kering",Vigna radiata,Vigna,Leguminosae,"Mung bean, raw","Kacang, biji, bean",74
+CR015,"Kacang hitam, kering",Phaseolus vulgaris 'Black Turtle,Phaseolus,Leguminosae,"Black turtle bean, raw","Kacang, biji, bean",74
+CR016,"Kacang kapri, segar",Pisum sativum,Pisum,Leguminosae,Pea,"Kacang, biji, bean",74
+CR017,"Kacang kedelai, kering",Glycine max,Glycine,Leguminosae,"Soya bean, dried","Kacang, biji, bean",74
+CR018,"Kacang kedelai, segar",Glycine max,Glycine,Leguminosae,"Soya bean, fresh","Kacang, biji, bean",74
+CR019,"Kacang kincai, kering",,,,,"Kacang, biji, bean",74
+CR020,"Kacang komak, segar",Lablab purpureus,Lablab,Leguminosae,"Hyacinth bean, fresh","Kacang, biji, bean",74
+CR021,"Kacang kuning, kering",Glycine max,Glycine,Leguminosae,Soya bean,"Kacang, biji, bean",74
+CR022,"Kacang lebui /iris, kering",Cajanus cajan,Cajanus,Leguminosae,"Pigeon pea, raw","Kacang, biji, bean",74
+CR023,"Kacang mentega, kering",Bunchosia armeniaca,Bunchosia,Malpighiaceae,"Peanut butter fruit, fresh","Kacang, biji, bean",74
+CR024,"Kacang merah /banda, kering",Phaseolus vulgaris,Phaseolus,Leguminosae,"Kidney bean, dried","Kacang, biji, bean",74
+CR025,"Kacang merah tua, kering",Phaseolus vulgaris,Phaseolus,Leguminosae,"Dark red kidney bean, dried","Kacang, biji, bean",74
+CR026,"Kacang merah, kering",Phaseolus vulgaris,Phaseolus,Leguminosae,"Kidney bean, kering","Kacang, biji, bean",74
+CR027,"Kacang merah, segar",Phaseolus vulgaris,Phaseolus,Leguminosae,"Kidney bean, fresh","Kacang, biji, bean",74
+CR028,"Kacang mete/biji jambu monyet, segar",Anacardium occidentale,Anacardium,Anacardiaceae,"Cashew nut, mentah","Kacang, biji, bean",75
+CR029,"Kacang panjang, biji, kering",Vigna unguiculata cv. group Sesquipedalis,vigna unguiculata,Leguminosae,"Yardlong bean, seeded, dried","Kacang, biji, bean",75
+CR030,Kacang tanah sangan,Arachis hypogaea,Arachis,Leguminosae,"Groundnut, baked","Kacang, biji, bean",75
+CR031,Kacang tanah sangan tanpa selaput,Arachis hypogaea,Arachis,Leguminosae,"Groundnut, baked without husk","Kacang, biji, bean",75
+CR032,"Kacang tanah, kering",Arachis hypogaea,Arachis,Leguminosae,"Groundnut, dried","Kacang, biji, bean",75
+CR033,"Kacang tolo / tunggak, kering",Vigna unguiculata,Vigna,Leguminosae,"Cowpea, dried","Kacang, biji, bean",75
+CR034,"Kacang tunis, kering",Cajanus cajan,Cajanus,Leguminosae,,"Kacang, biji, bean",75
+CR035,"Kacang uci, kering",Vigna umbellata,Vigna,Leguminosae,,"Kacang, biji, bean",75
+CR036,"Kacang urei, kering",Vigna umbellata,Vigna,Leguminosae,Rice bean,"Kacang, biji, bean",75
+CR037,"Kenari banda, kering",Canarium communie,Canarium,Burseraceae,"Walnut, banda, dried","Kacang, biji, bean",75
+CR038,"Kenari, kering",Canarium vulgare,Canarium,Burseraceae,"Walnut, dried","Kacang, biji, bean",75
+CR039,"Komak polong, segar",Lablab purpureus,Lablab,Leguminosae,Hyacinth bean,"Kacang, biji, bean",75
+CR040,"Koro andong, kering",Canavalia ensiformis,Canavalia,Leguminosae,"Jack bean, dried","Kacang, biji, bean",75
+CR041,"Koro benguk, biji, kering",Mucuna pruriens,Mucuna,Leguminosae,"Hyacinth bean, seaded, dried","Kacang, biji, bean",75
+CR042,"Koro kerupuk, biji, segar",Lablab purpureus,Lablab,Leguminosae,"Hyacinth bean, seeded, fresh","Kacang, biji, bean",75
+CR043,"Koro loke, biji, segar",,,,,"Kacang, biji, bean",75
+CR044,"Koro roay, kering",Phaseolus lunatus,Phaseolus,Leguminosae,"Lima bean, dried","Kacang, biji, bean",75
+CR045,"Koro wedus, biji, kering",Lablab purpureus,Mucuna/Lablab,Leguminosae,Hyacinth bean,"Kacang, biji, bean",75
+CR046,"Lamtoro biji, muda, segar",Leucaena leucocephala,Leucaena,Leguminosae,"White leadtree, inmature, fresh","Kacang, biji, bean",75
+CR047,"Lamtoro biji, tua, segar",Leucaena leucocephala,Leucaena,Leguminosae,"White leadtree, mature, fresh","Kacang, biji, bean",75
+CR048,Lamtoro var. gung tanpa kulit,Leucaena leucocephala,Leucaena,Leguminosae,White leadtree,"Kacang, biji, bean",75
+CR049,Lamtoro var. lokal dengan kulit,Leucaena leucocephala,Leucaena,Leguminosae,White leadtree,"Kacang, biji, bean",75
+CR050,"Nangka, biji, segar",Artocarpus heterophyllus,Artocarpus,Moraceae,"Jackfruit, seed, fresh","Kacang, biji, bean",75
+CR051,"Saga merah terkupas, mentah",Adenanthera pavonina,Adenanthera,Leguminosae,"Red sandalwood, peeled","Kacang, biji, bean",75
+CR052,"Wijen, mentah",Sesamum orientale,Sesamum,Pedaliaceae,Sesame seed,"Kacang, biji, bean",75
+DR001,"Akar tonjong, segar",Nelumbo nucifera,Nelumbo,Nelumbonaceae,"Lotus root, fresh",Sayuran,76
+DR002,"Ale, toge, segar",Acacia leucophloea,,,,Sayuran,76
+DR003,"Andaliman, segar",Zanthoxylum acanthopodium,Zanthoxylum,Rutaceae,,Sayuran,76
+DR004,"Andewi, segar",Cichorium endivia,Cichorium,Compositae,"Endive, fresh",Sayuran,76
+DR005,"Bakung, segar",Allium fistulosum,Allium,Amaryllidaceae,"Welsh onion, fresh",Sayuran,76
+DR006,"Baligo, segar",Benincasa pruriens forma hispida,Benincasa,Cucurbitaceae,Wax gourd,Sayuran,76
+DR007,"Bawang bombay, segar",Allium cepa cv. Group Common Onion,Allium,Amaryllidaceae,"Onion, fresh",Sayuran,76
+DR008,"Bayam, segar",Amaranthus tricolor,Amaranthus,Amaranthaceae,"Spinach, fresh",Sayuran,76
+DR009,"Bayam merah, segar",Amaranthus tricolor,Amaranthus,Amaranthaceae,"Spinach, red, fresh",Sayuran,76
+DR010,"Bit, segar",Beta vulgaris,Beta,Amarantaceae,"Beet, fresh",Sayuran,76
+DR011,Buah kelor,Moringa oleifera,Moringa,Moringaceae,"West Indian bean, fruit",Sayuran,76
+DR012,Buah merah,Pandanus conoideus,Pandanus,Pandanaceae,Red fruit,Sayuran,76
+DR013,"Buncis, segar",Phaseolus vulgaris,Phaseolus,Leguminosae,"Green bean, fresh",Sayuran,76
+DR014,"Bunga pepaya, segar",Carica papaya,Carica,Caricaceae,"Papaya, flower, fresh",Sayuran,76
+DR015,"Bunga turi, segar",Sesbania grandiflora,Sesbania,Fabaceae,Hummingbird tree,Sayuran,76
+DR016,"Caisin, segar",Brassica rapa cv. group Caisin,Brassica,Cruciferae,"Caisin, fresh",Sayuran,76
+DR017,"Daun bangun-bangun, segar",Plectranthus amboinicus,Plectranthus,Lamiaceae,,Sayuran,76
+DR018,"Daun bawang merah, segar",Allium cepa,Allium,Amaryllidaceae,"Shallot, leaf, fresh",Sayuran,76
+DR019,"Daun bebuas, segar",Premna feotida,Premna,Lamiaceae,,Sayuran,76
+DR020,"Daun belem, segar",,,,,Sayuran,76
+DR021,"Daun bluntas, segar",Pluchia indica,Pluchia,Compositae,,Sayuran,76
+DR022,"Daun gandaria, segar",Bouea macrophyla,Bouea,Anacardiaceae,"Gandaria, leaf, fresh",Sayuran,76
+DR023,"Daun gedi besar, segar",Abelmoschus manihot,Abelmoschus,Malvaceae,"Aibika, sunset hibiscus, big, fresh",Sayuran,76
+DR024,"Daun gedi kecil, segar",Abelmoschus manihot,Abelmoschus,Malvaceae,"Aibika, sunset hibiscus, small, fresh",Sayuran,76
+DR025,"Daun gelang, segar",Portulaca oleracea,Portulaca,Portulacaceae,"Purslane, leaf, fresh",Sayuran,76
+DR026,"Daun gunda bali, segar",Sphenoclea zeylanica,Sphenoclea,Sphenocleaceae,,Sayuran,76
+DR027,"Daun gunda serang, segar",Sphenoclea zeylanica,Spenoclea,Sphenocleaceae,,Sayuran,77
+DR028,"Daun jambu mete muda, segar",Anacardium occidentale,Anacardium,Anacardiaceae,"Cashew Leaf, young, fresh",Sayuran,77
+DR029,"Daun jampang, segar",,,,,Sayuran,77
+DR030,"Daun jawaw seluang, segar",,,,,Sayuran,77
+DR031,"Daun jonghe, segar",Emilia sonchifolia,Emilia,Compositae,"Sow thistle, fresh",Sayuran,77
+DR032,"Daun kacang ma, segar",,,,,Sayuran,77
+DR033,"Daun kacang panjang, segar",Vigna unguiculata cv. Group Sesquipedalis,Vigna,Leguminosae,"Yard-long bean, leaf, fresh",Sayuran,77
+DR034,"Daun kasbi/singkong karet, segar",Manihot esculenta,Manihot,Euphorbiaceae,"Ceara rubber tree, fresh",Sayuran,77
+DR035,"Daun katuk, segar",Sauropus androgynus,Sauropus,Phyllanthaceae,"Star goose berry, leaf, fresh",Sayuran,77
+DR036,"Daun kecipir, segar",Psophocarpus tetragonolobus,Psophocarpus,Leguminosae,"Winged bean, leaf, fresh",Sayuran,77
+DR037,"Daun kedondong, segar",Spondias cytherea,Spondias,Anacardiaceae,"Ambarella, leaf, fresh",Sayuran,77
+DR038,"Daun kelor, segar",Moringa oleifera,Moringa,Moringaceae,"Drumstick tree, leaf, fresh",Sayuran,77
+DR039,"Daun kemang, segar",Mangifera kemanga,Mangifera,Anacardiaceae,"Kemang, leaf, fresh",Sayuran,77
+DR040,"Daun kenikir, segar",Cosmos caudatus,Cosmos,Compositae,"Cosmos, leaf, fresh",Sayuran,77
+DR041,"Daun kesum, segar",Allium sativum,Allium,Amaryllidaceae,"Garlic, leaf, fresh",Sayuran,77
+DR042,"Daun kol sawi, segar",Brassica juncea,Brassica,Cruciferae,"Indian mustard, fresh",Sayuran,77
+DR043,"Daun koro, segar",,,,,Sayuran,77
+DR044,"Daun kubis, segar",Brassica oleracea cv. groups White Headed Cabbage,Brassica,Cruciferae,"Cabbage, fresh",Sayuran,77
+DR045,"Daun kumak, segar",Lablab purpureus,Lablab,Leguminosae,"hyacinthbean, leaf, fresh",Sayuran,77
+DR046,"Daun labu siam, segar",Sechium edule,Sechium,Cucurbitaceae,"Chayote, fresh",Sayuran,77
+DR047,"Daun labu waluh/kuning, segar",Cucurbita moschata,Cucurbita,Cucurbitaceae,"Pumkin, fresh",Sayuran,77
+DR048,"Daun lamtoro, segar",Leucaena leucocephala,Leucaena,Leguminosae,"Leucaena, leaf, fresh",Sayuran,77
+DR049,"Daun leilem, segar",Clerodendrum minahassae,Clerodendrum,Lamiaceae,,Sayuran,77
+DR050,"Daun leunca, segar",Solanum americanum,Solanum,Solanaceae,"Glossy nightshde, fresh",Sayuran,77
+DR051,"Daun lobak, segar",Raphanus raphanistrum subsp. sativus,Raphanus,Cruciferae,"Radish, leaf, fresh",Sayuran,77
+DR052,"Daun lompong talas, segar",Colocasia esculenta,Colocasia,Araceae,"Taro, leaf, fresh",Sayuran,77
+DR053,"Daun mangkokan, segar",Polyscias scutellaria,Nothopanax,Araliaceae,,Sayuran,77
+DR054,"Daun matel ambon, segar",,,,,Sayuran,78
+DR055,"Daun melinjo, segar",Gnetum gnemon,Gnetum,Gnetaceae,"Spanish joint fir, leaf, fresh",Sayuran,78
+DR056,"Daun mengkudu, segar",Morinda citrifolia,Morinda,Rubiaceae,"Noni, leaf, fresh",Sayuran,78
+DR057,"Daun ndusuk, segar",,,,,Sayuran,78
+DR058,"Daun oyong, segar",Luffa acutangula,Luffa,Cucurbitaceae,"Angled loofah, leaf, fresh",Sayuran,78
+DR059,"Daun pakis, segar",Diplazium sp.,Diplazium,Athyriaceae,"Fern, leaf, fresh",Sayuran,78
+DR060,"Daun pakis longgiho, segar",Diplazium sp.,Diplazium,Athyriaceae,"Fern, longiho, leaf, fresh",Sayuran,78
+DR061,"Daun pakis wambateu, segar",Diplazium sp.,Diplazium,Athyriaceae,"Fern, wambateu, leaf fresh",Sayuran,78
+DR062,"Daun paku, segar",Diplazium sp.,Diplazium,Athyriaceae,"Fern, paku, leaf fresh",Sayuran,78
+DR063,"Daun pangi, segar",Pangium edule,Pangium,Achariaceae,"Kepayang (Malay), leaf, fresh",Sayuran,78
+DR064,"Daun pare, segar",Momordica charantia,Momordica,Cucurbitaceae,"Bitter guard, leaf, fresh",Sayuran,78
+DR065,"Daun pepaya, segar",Carica papaya,Carica,Caricaceae,"Papaya, leaf, fresh",Sayuran,78
+DR066,"Daun pohpohan, segar",Pilea melastomoides,Pilea,Urticaceae,"Pilea, leaf, fresh",Sayuran,78
+DR067,"Daun selasih, segar",Ocimum basilicum,Ocimum,Lamiaceae,"Hoary basil, leaf, fresh",Sayuran,78
+DR068,"Daun semanggi, segar",Oxalis corniculata,Oxalis,Oxalidaceae,,Sayuran,78
+DR069,"Daun simpur, segar",Dillenia indica,Dillenia,Dilleniaceae,,Sayuran,78
+DR070,"Daun singkil, segar",Premna feotida,Premna,Lamiaceae,,Sayuran,78
+DR071,"Daun singkong, segar",Manihot esculenta,Manihot,Euphorbiaceae,"Casava, leaf, fresh",Sayuran,78
+DR072,"Daun singkong ambon, segar",Manihot esculenta,Manihot,Euphorbiaceae,"Casava, ambon, leaf, fresh",Sayuran,78
+DR073,"Daun singkong ampenan, segar",Manihot esculenta,Manihot,Euphorbiaceae,"Casava, ampenan, leaf, fresh",Sayuran,78
+DR074,"Daun singkong kopang, segar",Manihot esculenta,Manihot,Euphorbiaceae,"Casava, kopang, leaf, fresh",Sayuran,78
+DR075,"Daun sintrong, segar",Erechtites valerianaefolia,Erechtites,Compositae,,Sayuran,78
+DR076,"Daun talas, segar",Colocasia esculenta,Colocasia,Araceae,"Taro, leaf, fresh",Sayuran,78
+DR077,"Daun tespong, segar",Oenanthe javanica,Oenanthe,Umbelliferae,"Water dropwort, fresh",Sayuran,78
+DR078,"Daun ubi kuning, segar",Ipomoea batatas,Ipomoea,Convolvulaceae,"Sweet potato, yeallowish, leaf, fresh",Sayuran,78
+DR079,"Daun ubi merah, segar",Ipomoea batatas,Ipomoea,Convolvulaceae,"Sweet potato, redish, leaf, freah",Sayuran,78
+DR080,"Daun ubi putih, segar",Ipomoea batatas,Ipomoea,Convolvulaceae,"Sweet potato, whitish, leaf, fresh",Sayuran,78
+DR081,"Daun ubi tinta, segar",Ipomoea batatas,Ipomoea,Convolvulaceae,"Sweet potato, purpleish, leaf, fresh",Sayuran,78
+DR082,"Eceng, segar",Limnocharis flava,Limnocharis,Alismataceae,,Sayuran,78
+DR083,"Gambas (oyong), segar",Luffa acutangula,Luffa,Cucurbitaceae,"Angled loofah, fresh",Sayuran,79
+DR084,"Genjer, segar",Limnocharis flava,Limnocharis,Alismataceae,"Sawah lettuce, fresh",Sayuran,79
+DR085,"Jagung muda / semi, segar",Zea mays,Zea,Graminae,"Baby corn, fresh",Sayuran,79
+DR086,Jamur encik,,,,,Sayuran,79
+DR087,"Jamur kuping, kering",Auricularia auricula-judae,Auricularia,Auriculariaceae,"fungus, earwood, dried",Sayuran,79
+DR088,"Jamur kuping, segar",Auricularia auricula-judae,Auricularia,Auriculariaceae,"fungus, earwod, fresh",Sayuran,79
+DR089,"Jamur merang, segar",Volvariella udaacea,Volvariella,Pluteaceae,Straw mushroom,Sayuran,79
+DR090,"Jamur tiram, segar",Pleuratus ostreatus,Pleuratus,Pluteaceae,Oyster mushroom,Sayuran,79
+DR091,Jamur sagu,Volvariella volvacea,Volvariella,Pluteaceae,,Sayuran,79
+DR092,"Jantung pisang, segar",Musa spp.,Musa,Musaceae,"Banana, flower, fresh",Sayuran,79
+DR093,"Jengkol, segar",Archidendron jiringa,Archidendron,Leguminosae,"Dogfruit, fresh",Sayuran,79
+DR094,"Jotang, segar",Spilanthes iabadicensis,Spilanthes,Compositae,,Sayuran,79
+DR095,"Kabau, segar",Pithecellobium bubalinum,Pithecelebium,Leguminosae,,Sayuran,79
+DR096,"Kacang mekah, polong, segar",Canavalis ensiformis DC.,Canavalia,Leguminosae,"Sword bean, fresh",Sayuran,79
+DR097,"Kacang panjang, segar",Vigna unguiculata cv. group Sesquipedalis,Vigna,Leguminosae,"Yard-long bean, fresh",Sayuran,79
+DR098,Kacang ranti polong,,,,,Sayuran,79
+DR099,"Kalakai, segar",,,,,Sayuran,79
+DR100,"Kangkung, segar",Ipomoea aquatica,Ipomoea,Convolvulaceae,"Kangkong, fresh",Sayuran,79
+DR101,Kangkung tondano,,,,"Kangkong, (tondano), fresh",Sayuran,79
+DR102,"Kapri muda, segar",Pisum sativum,Pisum,Leguminosae,"Pease, fresh",Sayuran,79
+DR103,Karawila,,,,,Sayuran,79
+DR104,"Kecipir muda, segar",Psophocarpus tetragonolobus,Psopocarpus,Leguminosae,"Winged bean, fresh",Sayuran,79
+DR105,"Kecombrang, segar",Etlingera elatior,Etlingera,Zingiberaceae,"Red ginger lily, fresh",Sayuran,79
+DR106,"Kelawi, kluwih, segar",Artocarpus altilis,Artocarpus,Moraceae,"Breadfruit, fresh",Sayuran,79
+DR107,"Kembang turi, segar",Sesbania grandiflora,Sesbania,Leguminosae,,Sayuran,79
+DR108,"Kerokot, segar",Portulaca oleracea,Portulaca,Portulacaceae,,Sayuran,79
+DR109,"Ketimun, segar",Cucumis sativus,Cucumis,Cucurbitaceae,"Cucumber, fresh",Sayuran,79
+DR110,"Ketimun krai, segar",Cucumis melo forma melo,Cucumis,Cucurbitaceae,"Cucumber (krai), fresh",Sayuran,79
+DR111,"Ketimun madura, segar",Cucumis sativus,Cucumis,Cucurbitaceae,"Cucumber (madura), fresh",Sayuran,80
+DR112,"Komak, segar",Lablab purpureus,Lablab,Leguminosae,"Hyacinth bean, fresh",Sayuran,80
+DR113,Kool kembang,Brassica oleracea,Brassica,Cruciferae,"Cauliflower, fresh/white headed cabbage, fresh",Sayuran,80
+DR114,"Kool merah, kool putih",Brassica oleracea cv. groups White Headed Cabbage (putih) Brassica oleracea cv. groups Red Headed Cabbage (merah),Brassica,Cruciferae,"Cabbage, fresh",Sayuran,80
+DR115,"Koro kerupuk, polong",Lablab purpureus,Lablab,Leguminosae,"Lablab, hyacinth bean",Sayuran,80
+DR116,"Koro wedus, polong",Lablab purpureus,Lablab,Leguminosae,,Sayuran,80
+DR117,"Kucai, segar",Allium tuberosum,Allium,Amaryllidaceae,"Chinese chives, fresh",Sayuran,80
+DR118,"Kucai muda (Lokio), segar",Allium chinense,Allium,Amaryllidaceae,"Rakkyo, fresh",Sayuran,80
+DR119,Kulit melinjo,Gnetum gnemon,Gnetum,Gnetaceae,"spanish joint fir, peel, fresh",Sayuran,80
+DR120,"Kundur, segar",Benincasa pruriens forma hispida,Benincasa,Cucurbitaceae,"Wax gourd, fresh",Sayuran,80
+DR121,"Labu air, segar",Lagenaria siceraria,Lagenaria,Cucurbitaceae,"Bottle gourd, fresh",Sayuran,80
+DR122,"Labu kuning, segar",Cucurbita moschata,Cucurbita,Cucurbitaceae,"Pumpkin, fresh",Sayuran,80
+DR123,"Labu siam, segar",Sechium edule,Sechium,Cucurbitaceae,"Chayote, fresh",Sayuran,80
+DR124,"Labu waluh, segar",Cucurbita moschata,Cucurbita,Cucurbitaceae,"Pumpkin, fresh",Sayuran,80
+DR125,"Lantar, segar",,,,,Sayuran,80
+DR126,"Lobak, segar",Raphanus raphanistrum subsp. sativus,Raphanus,Crusiferae,"Turnip, fresh",Sayuran,80
+DR127,"Lumai/Leunca, segar",Solanum americanum,Solanum,Solanaceae,"Glossy nightshade, fresh",Sayuran,80
+DR128,"Melinjo, segar",Gnetum gnemon,Gnetum,Gnetaceae,"spanish joint fir, fresh",Sayuran,80
+DR129,Mostarda metan -sawi,Brassica Juncea,Brassica,Cruciferae,"Indian mustard, fresh",Sayuran,80
+DR130,"Nangka muda, segar",Artocarpus heterophyllus,Artocarpus,Moraceae,"Jackfruit, young, fresh",Sayuran,80
+DR131,"Paria putih, segar",Momordica charantia,Momordica,Cucurbitaceae,"Bitter guard, fresh",Sayuran,80
+DR132,"Pepare ular, segar",Trichosanthes cucumerina var. anguina,Trichosanthes,Cucurbitaceae,"Snake gourd, fresh",Sayuran,80
+DR133,"Pepaya muda, segar",Carica papaya,Carica,Caricaceae,"Papaya, unripe, fresh",Sayuran,80
+DR134,"Petai, segar",Parkia speciosa,Parkia,Leguminosae,"Stinky bean, fresh",Sayuran,80
+DR135,"Peterseli, segar",Petroselinum crispum,Petroselinum,Umbelliferae,"Parsley, fresh",Sayuran,80
+DR136,"Pucuk lumai/daun leunca, segar",Solanum americanum,Solanum,Solanaceae,"Glossy nightshade, fresh",Sayuran,81
+DR137,"Putri malu, segar",Mimusa pudica,Mimusa,Leguminosae,,Sayuran,81
+DR138,"Rebung, segar",Dendrocalamus asper,Dendrocalamus,Graminae,"Bamboo shoot, fresh",Sayuran,81
+DR139,"Rimbang, segar",Solanum torvum Swartz,Solanum,Solanaceae,"Devil’ss fig, plate brush",Sayuran,81
+DR140,Rumput laut,Euchema sp. (merah) Sargassum sp. (coklat) Caulerpa sp. (hijau),Euchema (merah); Sargassum (coklat) Caulerpa (hijau),"Solieraciae (merah), Sargassaceae (coklat) Caulerpaceae (hijau)",Seaweed,Sayuran,81
+DR141,"Sawi, segar",Brassica Juncea,Brassica,Cruciferae,"Chinese mustard, fresh",Sayuran,81
+DR142,"Sawi putih / pecai, segar",Brassica rapa cv. group chinese Cabbage,Brassica,Cruciferae,"Pak choi, fresh",Sayuran,81
+DR143,"Sawi taiwan, segar",,,,,Sayuran,81
+DR144,"Sawi tanah, segar",Rorippa dubia,Roripa,Cruciferae,,Sayuran,81
+DR145,"Selada, segar",Lactuca sativa,Lactuca,Compositae,Lettuce,Sayuran,81
+DR146,"Selada air, segar",Nasturtium officinale,Nastartium,Cruciferae,"Watercress, fresh",Sayuran,81
+DR147,"Seledri, segar",Apium graveolens,Apium,Umbelliferae,"Celery, fresh",Sayuran,81
+DR148,"Taoge, segar",Vigna radiata,Vigna,Leguminosae,"Mung bean, sprout, fresh",Sayuran,81
+DR149,"Taoge kacang kedelai, segar",Glycine max,Glysine,Leguminosae,"Soya bean, sprout, fresh",Sayuran,81
+DR150,"Taoge kacang tunggak, segar",Vigna unguiculata,Vigna,Leguminosae,"southern pea, fresh",Sayuran,81
+DR151,"Tebu terubuk (lilin), segar",Saccharum spontaneum var. edulis,Saccharum,Graminae,,Sayuran,81
+DR152,"Tekokak, segar",Solanum torvum,Solanum,Solanaceae,"Devil’s fig, fresh",Sayuran,81
+DR153,"Tekokak, kering",Solanum torvum,Solanum,Solanaceae,"Devil’s fig, dried",Sayuran,81
+DR154,"Terong, segar",Solanum melongena,Solanum,Solanaceae,"Eggplant, fresh",Sayuran,81
+DR155,"Terong asam, segar",Solanum quitoense,Solanum,Solanaceae,,Sayuran,81
+DR156,"Terung belanda, segar",Cyphomandra betacea,Cyphomandra,Solanaceae,"Tamarillo, fresh",Sayuran,81
+DR157,"Terung bengkulu, segar",,,,,Sayuran,81
+DR158,"Terong hintalo, segar",,,,,Sayuran,81
+DR159,Terung panjang,Solanum melongena,Solanum,Solanaceae,"Eggplant, fresh",Sayuran,81
+DR160,"Tomat, air (sari), segar",Lycopersicon esculentum,Lycopersicon,Solanaceae,"Tomato, juice, fresh",Sayuran,81
+DR161,"Tomat merah, segar",Lycopersicon esculentum,Lycopersicon,Solanaceae,"Tomato, red, fresh",Sayuran,81
+DR162,"Tomat muda, segar",Lycopersicon esculentum,Lycopersicon,Solanaceae,"Tomato, green, fresh",Sayuran,81
+DR163,"Uceng/ bunga melinjo, segar",Gnetum gnemon,Gnetum,Gnetaceae,"Spanish joint fir, flower, fresh",Sayuran,82
+DR164,"Umbut kelapa, segar",Cocos nucifera,cocos,Arecaceae,,Sayuran,82
+DR165,Umbut rotan,"Daemonorops mogeana, Daemonorops macroptera",Daemonorops,Arecaceae,"Rattan, young shoot",Sayuran,82
+DR166,"Wortel, segar",Daucus carota L.,Daucus,Umbelliferae,"Carrot, fresh",Sayuran,82
+ER001,"Alpukat, segar",Persea americana,Persea,Lauraceae,"Avocado, fresh",Buah,83
+ER002,"Anggur hutan, segar",,,,,Buah,83
+ER003,"Apel malang, segar",Malus domestica,Malus,Rosaceae,"Apel, green, fresh",Buah,83
+ER004,"Apel, segar",Malus domestica,Malus,Rosaceae,,Buah,83
+ER005,"Arbai, segar",Rubus rosifolius,Rubus,Rosaceae,"Arbein, fresh",Buah,83
+ER006,"Belimbing, segar",Averrhoa carambola,Averrhoa,Oxalidaceae,"Starfruit, fresh",Buah,83
+ER007,"Biwah, segar",Eriobotrya japonica,Eriobotrya,Rosaceae,"Loquat, fresh",Buah,83
+ER008,"Buah atung, segar",,,,,Buah,83
+ER009,"Buah kelenting, segar",,,,,Buah,83
+ER010,"Buah kom, segar",,,,,Buah,83
+ER011,"Buah mentega (Bisbul), segar",Diospyros discolor,Diospyros,Ebenaceae,"Persimmons, japanese, fresh",Buah,83
+ER012,"Buah Naga Merah, segar",Hyclocereus costaricensis,Hyclocereus,Cactaceae,"Dragon fruit, red, fresh",Buah,83
+ER013,"Buah Naga Putih, segar",Hyclocereus undatus,Hyclocereus,Cactaceae,"Dragon fruit, white, fresh",Buah,83
+ER014,"Buah negri, segar",Passiflora edulis,Passiflora,Passifloraceae,"Passion-fruit (granadilla), fresh",Buah,83
+ER015,"Buah nona, segar",Annona squamosa,Annona,Annonaceae,"Sugarapple, fresh",Buah,83
+ER016,"Buah rotan, segar",Eleiodoxa conferta,Eleidoxa,Araceae,,Buah,83
+ER017,"Buah rukam, segar",Flacourtia rukam,Flacourtia,Flacourtiaceae,"Rukam, fresh",Buah,83
+ER018,"Buah ruruhi, segar",,,,,Buah,83
+ER019,"Buah tuppa, segar",,,,,Buah,83
+ER020,"Carica papaya, segar",Carica papaya,carica,Caricaceae,Papaya,Buah,83
+ER021,"Cempedak, segar",Artocarpus integer,Artocarpus,Moraceae,Chempedak,Buah,83
+ER022,"Duku, segar",,,,,Buah,83
+ER023,"Durian, segar",Durio zibethinus,Durio,Malvaceae,"Durian, fresh",Buah,83
+ER024,"Duwet, segar",Syzygium cumini,Syzygium,Myrtaceae,"Jambolan, fresh",Buah,83
+ER025,"Embacang, segar",Mangifera odorata,Mangifera,Anacardiaceae,"Kuwini, fresh",Buah,83
+ER026,"Encung asam, segar",Solanum involucratum,Solanum,Solonaceae,"Tamarillo, fresh",Buah,83
+ER027,"Erbis, segar",Passiflora quadrangularis,Passiflora,Passifloraceae,"Passion-fruit (granadilla), fresh",Buah,83
+ER028,Gandaria masak,Bouea macrophylla,Bouea,Anacardiacea,Kundang,Buah,84
+ER029,"Gatep, segar",Inocarpus fagifer,Inocarpus,Leguminosae,"Chestnut, fresh",Buah,84
+ER030,"Jambu air, segar",Syzygium aqueum,Syzygium,Myrtaceae,"Roseapple, fresh",Buah,84
+ER031,Jambu biji,Psidium guajava,Psidium,Myrtaceae,"Guava, fresh",Buah,84
+ER032,Jambu bj putih tdk brbj,Psidium guajava,Psidium,Myrtaceae,"Guava, white, seedles, fresh",Buah,84
+ER033,"Jambu bol, segar",Syzygium malaccensis,Fugenia,Myrtaceae,"Malay Apple, fresh",Buah,84
+ER034,"Jambu monyet, segar",Anacardium occidentale,Anacardium,Anacardiaceae,"Cashew apple, fresh",Buah,84
+ER035,"Jeruk bali, segar",Citrus maxima,Citrus,Rutaceae,"Pummelo, fresh",Buah,84
+ER036,"Jeruk banjar, segar",Citrus reticulata blanco,Citrus,Rutaceae,"Orange (banjar), fresh",Buah,84
+ER037,Jeruk garut-keprok,Citrus reticulata blanco,Citrus,Rutaceae,Mandarin,Buah,84
+ER038,"Jeruk Kalamansi, segar",Citrus x microcarpa,Citrus,Rutaceae,,Buah,84
+ER039,"Jeruk manis, segar",Citrus sinensis,Citrus,Rutaceae,"orange, fresh",Buah,84
+ER040,"Jeruk nipis, segar",Citrus aurantifolia,Citrus,Rutaceae,"Lime, fresh",Buah,84
+ER041,"Jeruk ragi, segar",,,,,Buah,84
+ER042,"Kawista, segar",Limonia acidissima,Limonia,Rutaceae,"Wood apple, fresh",Buah,84
+ER043,"Kedondong masak, segar",Spondias cytherea,Spondias,Anacardiaceae,"Ambarella, fresh",Buah,84
+ER044,"Kedondong, segar",Spondias cytherea,Spondias,Anacardiaceae,"Ambarella, fresh",Buah,84
+ER045,"Kelapa hutan, kering",,,,,Buah,84
+ER046,"Kelapa muda, daging, segar",Cocos nucifera,Cocos,Arecaceae,"Coconut, flesh, Young, fresh",Buah,84
+ER047,"Kemang, segar",Mangifera kemanga,Mangifera,Anacardiaceae,"Kemang, fresh",Buah,84
+ER048,"Kesemek, segar",Diospyros kaki,Diospyros,Ebenaceae,"Persimmons, fresh",Buah,84
+ER049,"Kokosan, segar",Lansium domesticum,Lansium,Meliaceae,"Langsat, fresh",Buah,84
+ER050,"Kranji, segar",Pithecellobium,Pithecellobium,Leguminosae,"Sweet inga, fresh",Buah,84
+ER051,"Langsat, segar",Lansium domesticum,Lansium,Meliaceae,"Langsat, fresh",Buah,84
+ER052,"Lemon, segar",Citrus x limon,Citrus,Rutaceae,"Lemon, fresh",Buah,84
+ER053,"Lontar, segar",Borassus fiabellifer,Borassus,Arecaceae,"Palmyra palm, fresh",Buah,84
+ER054,"Mangga, segar",Mangifera indica,Mangifera,Anacardiaceae,"Mango, fresh",Buah,84
+ER055,"Mangga benggala, segar",Mangifera indica,Mangifera,Anacardiaceae,"Mango, benggala, fresh",Buah,84
+ER056,"Mangga gedung, segar",Mangifera indica,Mangifera,Anacardiaceae,"Mango, gedung, fresh",Buah,84
+ER057,"Mangga golek, segar",Mangifera indica,Mangifera,Anacardiaceae,"Mango, golek, fresh",Buah,85
+ER058,"Mangga harumanis, segar",Mangifera indica,Mangifera,Anacardiaceae,"Mango, harumanis, fresh",Buah,85
+ER059,"Mangga indramayu, segar",Mangifera indica,Mangifera,Anacardiaceae,"Mango, indramayu, fresh",Buah,85
+ER060,"Mangga kopek, segar",Mangifera indica,Mangifera,Anacardiaceae,"Mango, kopek, fresh",Buah,85
+ER061,"Mangga kwini, segar",Mangifera odorata,Mangifera,Anacardiaceae,"Mango, kwini, fresh",Buah,85
+ER062,"Mangga manalagi, segar",Mangifera indica,Mangifera,Anacardiaceae,"Mango, manalagi, fresh",Buah,85
+ER063,"Mangga muda, segar",Mangifera indica,Mangifera,Anacardiaceae,"Mango, unripe, fresh",Buah,85
+ER064,"Manggis, segar",Garcinia mangostana,Garcinia,Guttiferae,"Mangosteen, fresh",Buah,85
+ER065,"Markisa, segar",Passiflora quadrangularis,Passiflora,Passifloraceae,"Giant Granadilla, fresh",Buah,85
+ER066,"Matoa, segar",Pometia pinnata,Pometia,Sapindaceae,"Matoa, fresh",Buah,85
+ER067,"Melon, segar",Cucumis melo,Cucumis,Cucurbitaceae,Melon,Buah,85
+ER068,"Menteng, segar",Baccaurea racemosa,Baccaurea,Euphorbiaceae,"Kepundung, fresh",Buah,85
+ER069,"Nanas palembang, segar",Ananas comosus,Ananas,Bromeliaceae,"Pineapple,palembang, fresh",Buah,85
+ER070,"Nanas, segar",Ananas comosus,Ananas,Bromeliaceae,"Pineapple, fresh",Buah,85
+ER071,"Nangka masak pohon, segar",Artocarpus heterophylus,artocarpus,Moraceae,"Jack fruit, fresh",Buah,85
+ER072,"Pala, daging, segar",Myristica fragrans Houtt.,Myristica,Myristicaceae,"Nutmeg, flesh, fresh",Buah,85
+ER073,"Pepaya, segar",Carica papaya,carica,Caricaceae,"Papaya, fresh",Buah,85
+ER074,"Pisang ambon, segar",Musa paradisiaca forma sapientum,Musa,Musaceae,"Banana, fresh",Buah,85
+ER075,"Pisang angleng (pisang ampyang), segar",Musa acuminata AAA,Musa,Musaceae,"Banana, ampyang, fresh",Buah,85
+ER076,"Pisang ayam, segar",Musa acuminata AA,Musa,Musaceae,"Banana, ayam, fresh",Buah,85
+ER077,"Pisang gapi, segar",Musa acuminata AA,Musa,Musaceae,"Banana, gapi, fresh",Buah,85
+ER078,"Pisang goroho, segar",Musa acuminata AAA,Musa,Musaceae,"Banana, goroho, fresh",Buah,85
+ER079,"Pisang hijau, segar",Musa paradisiaca forma typica,Musa,Musaceae,"Banana, hijau, fresh",Buah,85
+ER080,"Pisang kayu, segar",Musa × paradisiaca,Musa,Musaceae,"Banana, kayu, fresh",Buah,85
+ER081,"Pisang kepok, segar",Musa paradisiaca forma typica,Musa,Musaceae,"Banana, kepok, fresh",Buah,85
+ER082,"Pisang ketip, segar",Musa × paradisiaca ABB,Musa,Musaceae,"Banana, ketip, fresh",Buah,85
+ER083,"Pisang kidang, segar",Musa paradisiaca forma sapientum,Musa,Musaceae,"Banana, kidang, fresh",Buah,85
+ER084,"Pisang lampung, segar",Musa acuminata AAA,Musa,Musaceae,"Banana, lamoung, fresh",Buah,85
+ER085,"Pisang mas bali ampenan, segar",Musa acuminata AAA,Musa,Musaceae,"Banana, mas bali ampenan, fresh",Buah,86
+ER086,"Pisang mas bali kopang, segar",Musa acuminata AA,Musa,Musaceae,"Banana, mas bali, fresh",Buah,86
+ER087,"Pisang mas, segar",Musa acuminata AAA,Musa,Musaceae,"Banana, mas, fresh",Buah,86
+ER088,"Pisang raja sereh, segar",Musa × paradisiaca ABB,Musa,Musaceae,"Banana raja sereh, fresh",Buah,86
+ER089,"Pisang raja, segar",Musa × paradisiaca ABB,Musa,Musaceae,"Banana raja, fresh",Buah,86
+ER090,"Pisang rotan, segar",Musa acuminata AA,Musa,Musaceae,"Banana, rotan, fresh",Buah,86
+ER091,"Pisang talas, segar",Musa acuminata AA,Musa,Musaceae,"Banana, talas, fresh",Buah,86
+ER092,Pisang tujuh bulan,Musa acuminata AA,Musa,Musaceae,Banana,Buah,86
+ER093,"Pisang ua, segar",Musa acuminata AA,Musa,Musaceae,"Banana, ua. Fresh",Buah,86
+ER094,"Pisang uli, segar",Musa × paradisiaca ABB,Musa,Musaceae,"Banana, uli, fresh",Buah,86
+ER095,"Purut, segar",Parartocarpus venenosus,Parartocarpus,Moraceae,"Lime, wild (Purut)",Buah,86
+ER096,"Rambutan binjai, segar",Nephelium lappaceum,Nephelium,Sapindaceae,Rambutan,Buah,86
+ER097,"Rambutan, segar",Nephelium lappaceum,Nephelium,Sapindaceae,Rambutan,Buah,86
+ER098,"Salak bali, segar",Salacca zalacca,Salacca,Arecaceae,"snake fruit, bali, fresh",Buah,86
+ER099,"Salak medan, segar",Salacca sumatrana,Salacca,Arecaceae,"snake fruit, medan, fresh",Buah,86
+ER100,"Salak pondoh, segar",Salacca zalacca,Salacca,Arecaceae,"snake fruit, pondoh, fresh",Buah,86
+ER101,"Salak, segar",Salacca zalacca,Salacca,Arecaceae,"snake fruit, fresh",Buah,86
+ER102,"Sawo duren, segar",Chrysophyllum cainito,Chrysophyllum,Sapotaceae,"Sapodilla, fresh",Buah,86
+ER103,"Sawo kecik, segar",Manilkara kauki,Manikara,Sapotaceae,"Sapodilla, fresh",Buah,86
+ER104,"Sawo Manila, segar",Manilkara zapota,Manikara,Sapotaceae,"Sapodilla, manila, fresh",Buah,86
+ER105,"Semangka, segar",Citrullus lanatus,citrulus,Cucurbitaceae,"Water melon, fresh",Buah,86
+ER106,"Sirsak, segar",Annona muricata,Annona,Annonaceae,"Soursop, fresh",Buah,86
+ER107,"Sowa, segar",Gnetum gneman,Gnetum,Gnetaceae,,Buah,86
+ER108,"Srikaya, segar",Annona squamosa,Annona,Annonaceae,"Sugar apple, fresh",Buah,86
+ER109,"Sukun muda, segar",Artocarpus altilis,Artocarpus,Moraceae,"Breadfruit, young, fresh",Buah,86
+ER110,"Sukun tua, segar",Artocarpus altilis,Artocarpus,Moraceae,"Breadfruit, fresh",Buah,86
+ER111,"Vigus, segar",,,,,Buah,86
+ER112,"Wani, segar",Mangifera caesia,Mangifera,Anacardiacea,,Buah,86
+FR001,"Anak sapi, daging, gemuk, segar",Bos javanicus,Bos,Bovidae,"Veal, meat, high fat, fresh","Daging, unggas",87
+FR002,"Anak sapi, daging, kurus, segar",Bos javanicus,Bos,Bovidae,"Veal, meat, high fat, fresh","Daging, unggas",87
+FR003,"Anak sapi, daging, sedang, segar",Bos javanicus,Bos,Bovidae,"Veal, meat, fresh","Daging, unggas",87
+FR004,"Angsa, daging, segar",Cygnus cygnus dom.,Cygnus,Anatidae,"Goose, meat, fresh","Daging, unggas",87
+FR005,"Ayam, daging, segar",Gallus gallus domesticus,Gallus,Phasianidae,"Chicken, meat, fresh","Daging, unggas",87
+FR006,"Ayam, dideh/darah, segar",Gallus gallus domesticus,Gallus,Phasianidae,"Black puding (chicken blood), fresh","Daging, unggas",87
+FR007,"Ayam, hati, segar",Gallus domesticus,Gallus,Phasianidae,"Chicken liver, raw","Daging, unggas",87
+FR008,"Babi, daging, gemuk, segar",Sus scrofa domesticus,Sus,Suidae,"Pork, medium fat, fresh","Daging, unggas",87
+FR009,"Babi, daging, kurus, segar",Sus scrofa domesticus,Sus,Suidae,"Pork, lean, fresh","Daging, unggas",87
+FR010,"Babi, ginjal, segar",Sus scrofa domesticus,Sus,Suidae,"Kidney, pork, fresh","Daging, unggas",87
+FR011,"Babi, hati, segar",Sus scrofa domesticus,Sus,Suidae,"Liver, pork, fresh","Daging, unggas",87
+FR012,"Bebek (itik), daging, segar",Anas platyrhynchos domesticus,Anas,Anatidae,"Duck, meat, fresh","Daging, unggas",87
+FR013,"Bebek alabio, daging, segar",Anas platyrhynchos domesticus,Anas,Anatidae,"Duck, alabio, meat, fresh","Daging, unggas",87
+FR014,"Belibis, daging, segar",Dendrocygna arcuata,Dendrocygna,Anatidae,"Whistling duck, meat, fresh","Daging, unggas",87
+FR015,"Burung, sarang, segar",,,,"Swallow bird, nest","Daging, unggas",87
+FR016,"Domba, daging, gemuk, segar",Ovis aries,Ovis,Bovidae,"Lamb, meat, high fat, fresh","Daging, unggas",87
+FR017,"Domba, daging, kurus, segar",Ovis aries,Ovis,Bovidae,"Lamb, meat, low fat, fresh","Daging, unggas",87
+FR018,"Domba, ginjal, segar",Ovis aries,Ovis,Bovidae,"Kidney, lamb, fresh","Daging, unggas",87
+FR019,"Kambing, daging, segar",Capra hircus,Capra,Bovidae,"Goat, meat, fresh","Daging, unggas",87
+FR020,"Kelinci, daging, segar",lepus nigricollis,Lepus,Leporidae,"Rabbit, meat, fresh","Daging, unggas",87
+FR021,"Kerbau, daging, segar",Bubalus bubalis,Bubalus,Bovidae,"Buffalo, meat, fresh","Daging, unggas",87
+FR022,"Kuda, daging, segar",Equus caballus,Equus,Equidae,"Horse, meat, fresh","Daging, unggas",87
+FR023,"Sapi, babat, segar",Bos javanicus,Bos,Bovidae,"Tripe, fresh","Daging, unggas",87
+FR024,"Sapi, daging, gemuk, segar",Bos taurus,Bos,Bovidae,"Beef, high fat, fresh","Daging, unggas",87
+FR025,"Sapi, daging, kurus, segar",Bos taurus,Bos,Bovidae,"Beef, low fat, fresh","Daging, unggas",87
+FR026,"Sapi, daging, lemak sedang, segar",Bos taurus,Bos,Bovidae,"Beef, medium fat, fresh","Daging, unggas",87
+FR027,"Sapi, daleman, segar",Bos taurus,Bos,Bovidae,"Offal, beef, fresh","Daging, unggas",87
+FR028,"Sapi, dideh/darah",Bos taurus,Bos,Bovidae,"Black puding (cow's blood), fresh","Daging, unggas",88
+FR029,"Sapi, ginjal, segar",Bos taurus,Bos,Bovidae,"Kidney, beef, fresh","Daging, unggas",88
+FR030,"Sapi, keleponan, segar",Bos taurus,Bos,Bovidae,"Tripe, beef, fresh","Daging, unggas",88
+FR031,"Sapi, liver, segar",Bos taurus,Bos,Bovidae,"Liver, beef, fresh","Daging, unggas",88
+FR032,"Sapi, otak, segar",Bos taurus,Bos,Bovidae,"Brain, beef, fresh","Daging, unggas",88
+FR033,"Sapi, usus, segar",,,,,"Daging, unggas",88
+FR034,Ulat sagu segar,Rhynchophorus ferrugineus,Rhynchophorus,Curculionidae,"Caterpillar, sago palm, fresh","Daging, unggas",88
+GR001,"Belut, segar",Monopterus albus,Monopterus,Synbranchidae,"Asian swamp eel, fresh","Ikan, kerang, udang",89
+GR002,"Belut, laut, segar",Macrotema caligans,Macrotema,Synbranchidae,"Eel, fresh","Ikan, kerang, udang",89
+GR003,"Cumi-cumi, segar",Uroteuthis duvaucelii,Uroteuthis,Loligonidae,"Squid, fresh","Ikan, kerang, udang",89
+GR004,"Ikan bader, segar",Barbonymus gonionotus,Barbonymus,Cyprinidae,"Silver barb, fresh","Ikan, kerang, udang",89
+GR005,"Ikan balong, segar",,,,,"Ikan, kerang, udang",89
+GR006,"Ikan bambangan, segar",Lutjanus sanguineus,Lutjanus,Lutjanidae,"Humphead Snapper, fresh","Ikan, kerang, udang",89
+GR007,"Ikan bandeng, segar",Chanos chanos,Chanos,Chanidae,"Milkfish, raw","Ikan, kerang, udang",89
+GR008,"Ikan banjar, segar",,,,,"Ikan, kerang, udang",89
+GR009,"Ikan baronang, segar",Siganus lineatus,Siganus,Siganidae,"Golden-lined spinefoot, fresh","Ikan, kerang, udang",89
+GR010,"Ikan batung, segar",Anguilla bicolor,Anguilla,Anguillidae,Indonesian-Shortfin Eel,"Ikan, kerang, udang",89
+GR011,"Ikan baung, segar",Hemibagrus nemurus,Hemibagrus,Bagridae,"Asian river catfish, fresh","Ikan, kerang, udang",89
+GR012,"Ikan bawal, segar",Pampus argenteus,Pampus,Stromateidae,"Silver Pomfret, fresh","Ikan, kerang, udang",89
+GR013,"Ikan Belida, segar",Chitala hypselonotus,Chitala,Notopteridae,"Indonesian featherback, fresh","Ikan, kerang, udang",89
+GR014,"Ikan beunteur, segar",Barbodes binotatus,Barbodes,Cyprinidae,"Spotted Barb, fresh","Ikan, kerang, udang",89
+GR015,"Ikan biawan, segar",Helostoma temmincki,Helostoma,Helostomatidae,"Kissing goorami, fresh","Ikan, kerang, udang",89
+GR016,"Ikan bilih, segar",Mystacoleucus padangensis,Mystacoleucus,Cyprinidae,"Minnows, fresh","Ikan, kerang, udang",89
+GR017,"Ikan bubara, segar",,,,,"Ikan, kerang, udang",89
+GR018,"Ikan bulan-bulan, segar",Megalops cyprinoides,Megalops,Megalopidae,"Indo-Pacifik Tarpon, fresh","Ikan, kerang, udang",89
+GR019,"Ikan, cakalang, segar",Katsuwonus pelamis,Katsuwonus,Scombridae,"Scipjack tuna, fresh","Ikan, kerang, udang",89
+GR020,"Ikan cakalang, hati, segar",Katsuwonus pelamis,Katsuwonus,Scombridae,"Scipjack tuna, fresh","Ikan, kerang, udang",89
+GR021,"Ikan cakalang, jantung, segar",Katsuwonus pelamis,Katsuwonus,Scombridae,"Scipjack tuna, fresh","Ikan, kerang, udang",89
+GR022,"Ikan cakalang, perut, segar",Katsuwonus pelamis,Katsuwonus,Scombridae,"Scipjack tuna, fresh","Ikan, kerang, udang",89
+GR023,"Ikan daun, segar",Nandus mercatus,Nandus,Nandidae,"Leaffish, fresh","Ikan, kerang, udang",89
+GR024,"Ikan ekor kuning, segar",Caesio spp.,Caesio,Caseionidae,"Yellowtail, fish, fresh","Ikan, kerang, udang",89
+GR025,"Ikan gabus, segar",Channa striata,Channa,Channidae,"Asian snakehead, fresh","Ikan, kerang, udang",89
+GR026,"Ikan heu, segar",,,,,"Ikan, kerang, udang",89
+GR027,"Ikan hitam, segar",Labeo chrysophekadion,Labeo,Cyprinidae,"Black Sharkminnow, fresh","Ikan, kerang, udang",89
+GR028,"Ikan hiu, segar",Carcharhinus spp.,Carcharhinus,Carcharhinidae,"Fish, shark, fresh","Ikan, kerang, udang",90
+GR029,"Ikan kacangan, segar",,,,,"Ikan, kerang, udang",90
+GR030,"Ikan kakap, segar",,,,,"Ikan, kerang, udang",90
+GR031,"Ikan kakatua, segar",,,,,"Ikan, kerang, udang",90
+GR032,"Ikan kalaban, segar",Osteochilus melanopleura,Osteochilus,Cyprinidae,"Minnows, fresh","Ikan, kerang, udang",90
+GR033,"Ikan kamera (kakap merah), segar",,,,,"Ikan, kerang, udang",90
+GR034,"Ikan kapar, segar",Belontia hasselti,Belontia,Osphronemidae,"Malay Combtail, fresh","Ikan, kerang, udang",90
+GR035,"Ikan kawalinya, segar",Rastrelliger kanagurta,Rastrelliger,Scombridae,"Indian mackerel, fresh","Ikan, kerang, udang",90
+GR036,"Ikan keru-keru, segar",Pao leiurus,Pao,Tetraodontidae,"Puffers, fresh","Ikan, kerang, udang",90
+GR037,"Ikan kima, segar",Tridacna spp,Tridacna,Tridacnidae,"Clam, shell, fresh","Ikan, kerang, udang",90
+GR038,"Ikan lais, segar",Kryptopterus spp.,Kryptopterus,Siluridae,"Sheatfish, fresh","Ikan, kerang, udang",90
+GR039,"Ikan layang, segar",Decapterus russelli,Decapterus,Carangidae,"Indian scad, fresh","Ikan, kerang, udang",90
+GR040,"Ikan layur, segar",Tichiurus leptorus,Tichiurus,Trichiuridae,"Hairtail, fresh","Ikan, kerang, udang",90
+GR041,"Ikan lehoma, segar",Rastrelliger kanagurta,Rastrelliger,Scombridae,"Indian mackerel, fresh","Ikan, kerang, udang",90
+GR042,"Ikan lemuru, segar",Sardinella lemuru,Sardinella,Clupeidae,"Bali sardinella, fresh","Ikan, kerang, udang",90
+GR043,"Ikan lidah, segar",Cynoglossus spp.,Cynoglossus,Cynoglossidae,"Flatfishes, fresh","Ikan, kerang, udang",90
+GR044,"Ikan malalugis, segar",,,,,"Ikan, kerang, udang",90
+GR045,"Ikan mamar merah, segar",,,,,"Ikan, kerang, udang",90
+GR046,"Ikan mas, segar",Cyprinus carpio,Cyprinus,Cyprinidae,"Common carp, fresh","Ikan, kerang, udang",90
+GR047,"Ikan mayong, segar",,,,,"Ikan, kerang, udang",90
+GR048,"Ikan mujahir, segar",Oreochromis mossambicus,Oreochromis,Cichlidae,"Mozambique tilapia, fresh","Ikan, kerang, udang",90
+GR049,"Ikan nasu metti, segar",,,,,"Ikan, kerang, udang",90
+GR050,"Ikan oci, kembung, segar",Rastrellliger kanagurta,Rastellliger,Scombridae,"Indian mackerels, fresh","Ikan, kerang, udang",90
+GR051,"Ikan paling, segar",,,,,"Ikan, kerang, udang",90
+GR052,"Ikan papuyu/ betok, segar",Anabas testudineus,Anabas,Anabantidae,"Climbing perch, fresh","Ikan, kerang, udang",90
+GR053,"Ikan Patin, segar",Pangasianodon hypopthalmus,Pangasianodon,Pangassidae,"Striped catfish, fresh","Ikan, kerang, udang",90
+GR054,"Ikan pomo, segar",,,,,"Ikan, kerang, udang",90
+GR055,"Ikan Puntin, segar",Bagrichthys spp.,Bagrichthys,Bagridae,"Bagrdi catfish, fresh","Ikan, kerang, udang",90
+GR056,"Ikan saluang, segar",Rasbora spp.,Rasbora,Cyprinidae,"Rasboras fish, fresh","Ikan, kerang, udang",90
+GR057,"Ikan sarden, segar",Sardinella spp.,Sardinella,Clupeidae,"Herrings, fresh","Ikan, kerang, udang",91
+GR058,"Ikan selar, segar",Selaroides spp.,Selaroides,Carangidae,"Scadfish, fresh","Ikan, kerang, udang",91
+GR059,"Ikan sepat, segar",Trichopodus pectoralis,Trichopodus,Belontiidae,"Snakeskin gourami, fresh","Ikan, kerang, udang",91
+GR060,"Ikan sidat, segar",Anguilla bicolor,Anguilla,Anguillidae,"Shortfin Eel, fresh","Ikan, kerang, udang",91
+GR061,"Ikan sunu, segar",Plectopromus leopardus,Plectopromus,Serranidae,"Leopard coralgrouper, fresh","Ikan, kerang, udang",91
+GR062,"Ikan tahuman, segar",,,,,"Ikan, kerang, udang",91
+GR063,"Ikan tarmon, segar",,,,,"Ikan, kerang, udang",91
+GR064,"Ikan telan, segar",Mastacembelus unicolor,Mastacembelus,Mastacembelidae,"spiny eel, fresh","Ikan, kerang, udang",91
+GR065,"Ikan tembang, segar",Ethmalosa fimbriata,Ethmalosa,Clupeidae,"Bonga shad, fresh","Ikan, kerang, udang",91
+GR066,"Ikan tempahas, segar",,,,,"Ikan, kerang, udang",91
+GR067,"Ikan terbang, segar",Cypselurus spp.,Cypselurus,Exocoetidae,"Flyingfishes, fresh","Ikan, kerang, udang",91
+GR068,"Ikan teri, segar",Engraulis spp.,Engraulis,Engraullidae,"Anchovies, fresh","Ikan, kerang, udang",91
+GR069,"Ikan titang, segar",Scathopagus argus,Scathopagus,Scatophagidae,"Spotted scat,fresh","Ikan, kerang, udang",91
+GR070,"Ikan tongkol, segar",Euthynnus affinis,Euthynnus,Scombridae,"Tuna, fresh","Ikan, kerang, udang",91
+GR071,"Ikan turi, segar",,,,,"Ikan, kerang, udang",91
+GR072,"Keong, segar",Pila ampullacea,Pila,Ampullariidae,"Snail, fresh","Ikan, kerang, udang",91
+GR073,"Kepiting, segar",Scylla spp.,Scylla,Portunidae,"Crab, fresh","Ikan, kerang, udang",91
+GR074,"Kerang, segar",,,,,"Ikan, kerang, udang",91
+GR075,"Kodok, segar",Fejervarya cancrivora,Fejervarya,Dicroglissidae,"Frog, fresh","Ikan, kerang, udang",91
+GR076,"Kura-kura, segar",Cuora amboinensis,Cuora,Geomydidae,"Turtles, fresh","Ikan, kerang, udang",91
+GR077,"Kuro, segar",Polydactylusplebeius,Polydactylus,Polynemidae,"Threadfin, fresh","Ikan, kerang, udang",91
+GR078,"Lokan, segar",,,,,"Ikan, kerang, udang",91
+GR079,"Rajungan, segar",,,,,"Ikan, kerang, udang",91
+GR080,"Rebon, udang kecil, segar",,,,,"Ikan, kerang, udang",91
+GR081,Rusip,,,,,"Ikan, kerang, udang",91
+GR082,"Udang galah, segar",Macrobrachium rosenbergii,Macrobrachium,Palaemonidae,"Giant river prawn, fresh","Ikan, kerang, udang",91
+GR083,"Udang, besar, segar",Penaeus monodon,Penaeus,Penaidae,"Tiger prawn, fresh","Ikan, kerang, udang",91
+GR084,"Udang, segar",Penaeus merguinensis,Penaeus,Penaidae,"Shrimp, fresh","Ikan, kerang, udang",91
+GP002,Belut goreng,Monopterus albus,Monopterus,Synbranchidae,"Asian swamp eel, fresh","Ikan, kerang, udang",91
+GP003,Cumi-cumi goreng,Loligo indica,Loligo,Longinidae,"Squid, fried","Ikan, kerang, udang",92
+GP006,Ikan baung bakar,Hemibagrus nemurus,Hemibagrus,Bagridae,"Asian river catfish, fresh","Ikan, kerang, udang",92
+GP007,Ikan Belida bakar,Chitala borneensis,Chitala,Notopteridae,"Indonesian featherback, fresh","Ikan, kerang, udang",92
+GP008,"Ikan cakalang asap, mentah",Katsuwonus pelamys,Katsuwonus,Scombridae,"Skipjack tuna, fish,smoked, raw","Ikan, kerang, udang",92
+GP009,"Ikan cakalang asin, mentah",Katsuwonus plelamys,Katsuwonus,Scombridae,"Skipjack tuna,fish, salted, raw","Ikan, kerang, udang",92
+GP011,"Ikan Gabus asap, mentah",Channa striata,Channa,Channidae,"Asian snakehead, fish, smoked","Ikan, kerang, udang",92
+GP012,"Ikan Gabus, kering",Channa striata,Channa,Channidae,"Asian snakehead, fish, dried","Ikan, kerang, udang",92
+GP014,"Ikan hiu, kering",Carcharinus falciformis,Carcharinus,Carcharhinidae,"Shark, fish, dried","Ikan, kerang, udang",92
+GP015,"Ikan katombo, asin",Lethrinus spp.,Lethrinus,Lethrinidae,"Pargy, fish, salted","Ikan, kerang, udang",92
+GP026,"Ikan pepetek, mentah",Leiognathus spp.,Leiognathus,Leiognathidae,"Ponyfish, fresh","Ikan, kerang, udang",92
+GP032,"Ikan sale lais, mentah",Kryptopterus spp.,Kryptopterus,Siluridae,Sheatfish,"Ikan, kerang, udang",92
+GP033,"Ikan saluang, kering, mentah",Rasbora spp.,Rasbora spp.,Cyprinidae,Rasborafish,"Ikan, kerang, udang",92
+GP035,"Ikan selar kuning, cue, mentah",Seriolima nigrofasciata,Seriolina,Carangidae,Black-banded trevally,"Ikan, kerang, udang",92
+GP036,"Ikan selar, kering, mentah",Selaroides spp.,Selaroides,Carangidae,Trevally yellow-banded,"Ikan, kerang, udang",92
+GP037,"Ikan sepat, kering, mentah",Trichopodus pectoralis,Trichopodus,Belontiidae,Siamese gourami,"Ikan, kerang, udang",92
+GP038,"Ikan sunu, asin, mentah",Plectopromus leopardus,Plectopromus,Serranidae,Coral trout,"Ikan, kerang, udang",92
+GP042,"Ikan teri, kering, mentah",Engraulis spp.,Engraulis,Engraullidae,Anchovy,"Ikan, kerang, udang",92
+GP055,"Betok wadi, masakan",Anabas testudineus,Anabas,Anabantidae,Climbing gouramy,"Ikan, kerang, udang",92
+HR001,"Telur ayam kampung, segar",Gallus gallus domesticus,Gallus,Phasianidae,"Feral chicken, egg, fresh",Telur,93
+HR002,"Telur ayam ras, segar",Gallus gallus domesticus,Gallus,Phasianidae,"Domestic chicken, egg, fresh",Telur,93
+HR003,"Telur ayam ras, bagian kuning, segar",Gallus gallus domesticus,Gallus,Phasianidae,"Domestic chicken, egg, yolk, raw",Telur,93
+HR004,"Telur aAyam ras, bagian putih, segar",Gallus gallus domesticus,Gallus,Phasianidae,"Domestic chicken, egg, white, raw",Telur,93
+HR005,"Telur bebek alabio, segar",Anas platyrhynchos domesticus,Anas,Anatidae,"Duck, alabio, egg, fresh",Telur,93
+HR006,"Telur bebek, bagian kuning, segar",Anas platyrhynchos domesticus,Anas,Anatidae,"Duck, egg, yolk, fresh",Telur,93
+HR007,"Telur bebek, bagian putih, segar",Anas platyrhynchos domesticus,Anas,Anatidae,"Duck, egg, white, fresh",Telur,93
+HR008,"Telur bebek tambak, segar",Anas platyrhynchos domesticus,Anas,Anatidae,"Domestic duck, egg, fresh",Telur,93
+HR009,"Telur burung maleo, segar",Macrocepalon maleo,Macrocepalon,Megapodiidae,"Maleo, bird, egg, fresh",Telur,93
+HR010,"Telur penyu, segar",Chelonia mydas,Chelonia,Cheloniidae,"Turtle, egg",Telur,93
+HR011,"Telur burung puyuh, segar",Cotumix communis,Coturnix,Phasianidae,"Quail, egg, fress",Telur,93
+HP002,"Bebek, telur, asin, mentah",Annas boschas domesticus,Anas,Anatidae,"Duck, egg, salted, raw",Telur,93
+HP004,"Ikan, telur, asin, mentah",Moolgarda seheli,Moolgarda,Mugilidae,"Roe, (fish egg), fresh",Telur,93
+JR001,"Kepala susu - krim, segar",,,,"Cream, milk, fresh",Susu,94
+JR002,Susu ibu - ASI,,,,Breast milk,Susu,94
+JR003,"Susu kambing, segar",,,,"Goat milk, fresh",Susu,94
+JR004,"Susu kerbau, segar",,,,"Buffalo milk, fresh",Susu,94
+JR005,"Susu kuda, segar",,,,"Horse milk, fresh",Susu,94
+JR006,"Susu sapi, segar",,,,"Cow milk, fresh",Susu,94
+JP001,Es krim,,,,Ice cream,Susu,94
+JP002,Hangop,,,,,Susu,94
+JP003,Keju,,,,Cheese,Susu,94
+JP004,Kwark (Quark),,,,Quark,Susu,94
+JP005,"Susu asam untuk bayi, bubuk",,,,,Susu,94
+JP006,Susu bubuk,,,,"Milk, powdered",Susu,94
+JP007,Susu kental manis,,,,"Milk condensed, sweetened",Susu,94
+JP008,Susu kental tak manis,,,,"Milk condensed, unsweetened",Susu,94
+JP009,"Susu skim, bubuk",,,,"Milk, low fat, powdered",Susu,94
+JP010,"Susu skim, segar",,,,"Milk, low fat, fresh",Susu,94
+JP011,"Yoghurt, segar",,,,"Yoghurt, fresh",Susu,94
+KR001,"Kelapa setengah tua, daging, segar",Cocos nucifera,Cocos,Arecaceae,"Coconut flesh, half mature, fresh",Lemak dan minyak,95
+KR002,"Kelapa tua, daging, segar",Cocos nucifera,Cocos,Arecaceae,"Coconut, flesh, old, fresh",Lemak dan minyak,95
+KR003,Lemak babi (lard),,,,"pork, fat, lord",Lemak dan minyak,95
+KR004,Lemak babi (bacon),,,,"pork, fat, bacon",Lemak dan minyak,95
+KR005,Lemak ikan,,,,"Fish, fat",Lemak dan minyak,95
+KR006,Lemak kerbau (lemak sapi),,,,"fat, buffalo",Lemak dan minyak,95
+KR007,"Minyak hiu, hati",,,,"shark, fish, liver, oil",Lemak dan minyak,95
+KR008,Minyak ikan,,,,"Fish, oil",Lemak dan minyak,95
+KR009,Minyak kacang tanah,Arachnis hypogaea,Arachnis,Leguminosae,Peanut oil,Lemak dan minyak,95
+KR010,Minyak kedelai,Glycine max,Glycine,Leguminosae,Soybean oil,Lemak dan minyak,95
+KR011,Minyak kelapa,Cocos nucifera,Cocos,Arecaceae,Coconut oil,Lemak dan minyak,95
+KR012,Minyak kelapa sawit,Elaeis guineensis,Elaeis,Arecaceae,Palm oil,Lemak dan minyak,95
+KR013,Minyak wijen,Sesamum orientale,Sesamum,Pedaliaceae,Sesame oil,Lemak dan minyak,95
+KR014,Minyak Zaitun,Olea europaea,Olea,Oleacea,Olive oil,Lemak dan minyak,95
+KP001,Margarin,,,,Butter,Lemak dan minyak,95
+KP002,Mentega,,,,Margarine,Lemak dan minyak,95
+KP003,Santan (dengan air),Cocos nucifera,Cocos,Arecaceae,Coconut milk mixed with water,Lemak dan minyak,95
+KP004,Santan murni,Cocos nucifera,Cocos,Arecaceae,"Coconut milk, pured",Lemak dan minyak,95
+MP001,"Coklat manis, batang",Theobroma cacao,Theobroma,Malvaceae,"Chocolate, bar","Gula, sirup, konfeksioneri",96
+MP002,"Coklat pahit, batang",Theobroma cacao,Theobroma,Malvaceae,"Chocolate, dark, bar","Gula, sirup, konfeksioneri",96
+MP003,"Coklat susu, batang",Theobroma cacao,Theobroma,Malvaceae,"Chocolate, dairy milk, bar","Gula, sirup, konfeksioneri",96
+MP004,Coklat bubuk,Theobroma cacao,Theobroma,Malvaceae,"Cacao, powder","Gula, sirup, konfeksioneri",96
+MP005,Gula aren,Arenga pinnata,Arenga,Arecaceae,"Sugar, palm","Gula, sirup, konfeksioneri",96
+MP006,Gula kelapa,,,,,"Gula, sirup, konfeksioneri",96
+MP007,Gula putih,Saccharum offisinarum,Saccharum,Graminae,Sugar cane,"Gula, sirup, konfeksioneri",96
+MP008,"Jam, selai",,,,Jam,"Gula, sirup, konfeksioneri",96
+MP009,Kopi bubuk instant,Coffea spp.,Coffea,Rubiaceae,"Coffee, instant","Gula, sirup, konfeksioneri",96
+MP010,Madu,,,,Honey,"Gula, sirup, konfeksioneri",96
+MP011,Markisa squash,,,,,"Gula, sirup, konfeksioneri",96
+MP012,"Markisa squash, BD",Passiflora edulis,Passiflora,Passifloraceae,"Squash, markisa","Gula, sirup, konfeksioneri",96
+MP013,Melase,,,,,"Gula, sirup, konfeksioneri",96
+MP014,Sirup,,,,syrup,"Gula, sirup, konfeksioneri",96
+MP015,Sirup pirous,,,,"syrup, pirous","Gula, sirup, konfeksioneri",96
+MP016,Teh hijau daun kering,Camellia sinensis,Camellia,Theaceae,"Tea, leaf, green, dried","Gula, sirup, konfeksioneri",96
+MP017,Teh hitam daun kering,,,,"tea, leaf, black, dried","Gula, sirup, konfeksioneri",96
+MP018,Teh melati daun kering,,,,"Tea, jasmine, black, dried","Gula, sirup, konfeksioneri",96
+NR001,"Asam arang coklat, segar",,,,,Bumbu,97
+NR002,"Asam arang merah, segar",Garcinia xanthochymus,Garcinia,Guttiferae/ Clusiaceae,"Mysore Gamboge, fresh",Bumbu,97
+NR003,"Asan kandis, kering",Garcinia xanthochymus,Garcinia,Guttiferae/ Clusiaceae,"Mysore Gamboge, dry",Bumbu,97
+NR004,"Asam kandis, segar",Garcinia xanthochymus,Garcinia,Guttiferae/ Clusiaceae,"Mysore Gamboge, fresh",Bumbu,97
+NR005,"Asam masak pohon, segar",Tamarindus indica,Tamarindus,Fabaceae,"Tamarind, fresh",Bumbu,97
+NR006,"Asam payak, segar",Eleiodoxa conferta,Eleiodoxa,Arecaceae,Asam paya/ kelubi/ kuwai-kuwai,Bumbu,97
+NR007,"Bawang merah, segar",Allium fistulosum,Allium,Amaryllidaceae,Shallot,Bumbu,97
+NR008,"Bawang putih, segar",Allium sativum,Allium,Amaryllidaceae,Garlic,Bumbu,97
+NR009,"Boros kunci, segar",Boesenbergia rotunda,Boesenbergia,Zingiberaceae,Rhizomes / Kaemper / Chinesedey,Bumbu,97
+NR010,"Boros laja (lengkuas), segar",Alpinia galanga,Alpinia,Zingiberaceae,Rhizomes / Galanga,Bumbu,97
+NR011,"Cabai gembor merah, segar",Capsicum pubescens,Capsicum,Solanaceae,Chili papper,Bumbu,97
+NR012,"Cabai hijau, segar",Capsicum annum,Capsicum,Solanaceae,Chili papper,Bumbu,97
+NR013,"Cabai merah, kering",Capsicum annum,Capsicum,Solanaceae,Chili papper,Bumbu,97
+NR014,"Cabai merah, segar",Capsicum annum,Capsicum,Solanaceae,Chili papper,Bumbu,97
+NR015,"Cabai rawit, segar",Capsicum frutescen,Capsicum,Solanaceae,Chili papper,Bumbu,97
+NR016,"Cengkeh, kering",Syzygium aromaticum,Syzygium,Myrtaceae,"Cloves, dried",Bumbu,97
+NR017,"Daun salam, bubuk",Syzygium polyanthum,Syzygium,Myrtaceae,Bay-leaf,Bumbu,97
+NR018,"Jahe, segar",Zingiber afficinale,Zingiber,Zingiberaceae,"Ginger, root",Bumbu,97
+NR019,Kemiri,Aleurites maluccana,Aleurites,Euphobiaceae,Candle nut,Bumbu,97
+NR020,"Ketumbar, kering",Coriandrum sativum,Coriandrum,Apiaceae,"Coriander, seed",Bumbu,97
+NR021,Kluwek,Pangium edule,Pangium,Achariaceae,Pucungmit,Bumbu,97
+NR022,"Kunyit, segar",Curcuma longa,Curcuma,Zingiberaceae,Turmeric,Bumbu,97
+NR023,"Merica, kering",Piper nigrum,Piper,Piperaceae,Pepper,Bumbu,97
+NR024,"Pala, biji, kering",Myristica fragrant,Myristica,Myristicaceae,Nutmeg,Bumbu,97
+NP001,Balichong,,,,Tiny shrimp fermented,Bumbu,97
+NP002,Bekasam,,,,Tiny shrimp fermented,Bumbu,98
+NP003,Bekasang,,,,Fermented fish,Bumbu,98
+NP004,Cuka,,,,Vinegar,Bumbu,98
+NP005,Kecap,Glycine max Glycine,Glycine,Leguminosae,Soyabean sauce,Bumbu,98
+NP006,Petis ikan,,,,"Fish, fermented, paste (petis)",Bumbu,98
+NP007,Petis udang kering,,,,"Shrimp, fermented, dried (petis)",Bumbu,98
+NP008,Petis udang pasta,,,,"Shrimp, fermented, paste (petis)",Bumbu,98
+NP009,Saos tomat,,,,"Tomato, sauce",Bumbu,98
+NP010,Tempoya,Durio zibethinus,Durio,Malvaceae,"Durian, fermented",Bumbu,98
+NP011,Terasi (udang),,,,"Fish, fermented, paste (terasi)",Bumbu,98
+QR001,"Kelapa muda, air, segar",Cocos nucifera,Cocos,Arecaceae,"Coconut, young, water, fresh",Minuman,99

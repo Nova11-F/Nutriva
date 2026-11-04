@@ -1,0 +1,30 @@
+{
+  "finding": "Label 'Stunting Risk' identik dengan kategori WHO HAZ (TB/U)",
+  "rule": {
+    "Low": "HAZ >= -2",
+    "Medium": "-3 <= HAZ < -2",
+    "High": "HAZ < -3"
+  },
+  "agreement_rate": 1.0,
+  "haz_range_per_label": [
+    {
+      "Stunting Risk": "High",
+      "min": -7.816,
+      "max": -3.002,
+      "count": 420
+    },
+    {
+      "Stunting Risk": "Low",
+      "min": -1.999,
+      "max": 3.209,
+      "count": 1639
+    },
+    {
+      "Stunting Risk": "Medium",
+      "min": -3.0,
+      "max": -2.002,
+      "count": 464
+    }
+  ],
+  "implication": "Model yang memakai Height+Age+Gender hanya mereplikasi rumus WHO. Height & Weight dikeluarkan dari fitur model ML; status aktual dihitung deterministik oleh WHO z-score engine."
+}

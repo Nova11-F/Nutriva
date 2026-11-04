@@ -1,0 +1,64 @@
+{
+  "model_name": "nutriva-stunting-early-awareness",
+  "version": "1.1.0",
+  "created_utc": "2026-11-03T06:48:34+00:00",
+  "algorithm": "Random Forest (class_weight) + kalibrasi isotonic",
+  "best_params": {
+    "class_weight": "balanced_subsample",
+    "max_depth": 4,
+    "max_features": "log2",
+    "min_samples_leaf": 4,
+    "n_estimators": 469
+  },
+  "labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "input_features": [
+    "Child Age",
+    "Birth Length",
+    "Birth Weight",
+    "Mother Age",
+    "Mother Height",
+    "ANC Visits",
+    "Complementary Feeding Start Age",
+    "Diarrhea Frequency",
+    "Gender",
+    "Mother Education",
+    "Exclusive Breastfeeding",
+    "Immunization",
+    "Drinking Water Source",
+    "Sanitation",
+    "Economic Level",
+    "Residence Type",
+    "Deworming Drug Consumption"
+  ],
+  "excluded_features": {
+    "Height": "label leakage (label = kategori WHO HAZ)",
+    "Weight": "berkorelasi kuat dgn Height, dipakai WHO engine"
+  },
+  "test_metrics": {
+    "macro_f1": 0.567,
+    "roc_auc_stunted": 0.8271,
+    "log_loss": 0.6802,
+    "brier_stunted": 0.16,
+    "test_recall_stunted": 0.7966,
+    "test_precision_stunted": 0.5924,
+    "test_alert_rate": 0.4713,
+    "test_prevalence_stunted": 0.3505
+  },
+  "env": {
+    "python": "3.13.17",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "pandas": "3.0.5",
+    "numpy": "2.5.3"
+  },
+  "data_sha256_16": "6507cea398528be3",
+  "balancing": "class_weight",
+  "calibration": "isotonic",
+  "alert_threshold": 0.31,
+  "alert_rule": "P(Medium)+P(High) >= alert_threshold",
+  "file": "nutriva_stunting_risk_v1_1.joblib"
+}

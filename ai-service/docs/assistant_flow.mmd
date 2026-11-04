@@ -1,0 +1,12 @@
+flowchart LR
+  Q["Pertanyaan orang tua<br/>+ profil anak"] --> S{"Safety<br/>pre-check"}
+  S -->|darurat / dosis| T["Jawaban template<br/>rujuk nakes<br/>(LLM tidak dipanggil)"]
+  S -->|normal / diagnosis / di luar topik| G["Growth assessment<br/>WHO + model RF"]
+  G --> R["Retrieve 4 paragraf<br/>knowledge base<br/>(TF-IDF)"]
+  R --> L["LLM<br/>system prompt + konteks<br/>output JSON"]
+  L --> P{"Post-check"}
+  P -->|aman| A["Jawaban · langkah · sumber<br/>· rujuk nakes?"]
+  P -->|diagnosis / dosis / sumber palsu| F["Diganti jawaban aman"]
+  classDef g fill:#E6F7EE,stroke:#0E9F5A,color:#1d3b2a;
+  classDef r fill:#FDF0E3,stroke:#B3541E,color:#4a2508;
+  class Q,G,R,L,A g; class S,P g; class T,F r;

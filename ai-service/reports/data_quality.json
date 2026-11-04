@@ -1,0 +1,27 @@
+{
+  "source": "Kaggle - Childhood Stunting Risk Factors (victoriahayes)",
+  "raw_sha256_16": "6507cea398528be3",
+  "rows_raw": 2523,
+  "full_duplicates_removed": 0,
+  "rows_final": 2523,
+  "bio_anomaly_rows_flagged": 2,
+  "missing_per_column": {
+    "Birth Length": 63,
+    "Birth Weight": 52,
+    "Mother Age": 13,
+    "ANC Visits": 70,
+    "Complementary Feeding Start Age": 41,
+    "Immunization": 14,
+    "Drinking Water Source": 34,
+    "Sanitation": 17,
+    "Deworming Drug Consumption": 15
+  },
+  "class_distribution": {
+    "Low": 1639,
+    "Medium": 464,
+    "High": 420
+  },
+  "imbalance_ratio_low_to_high": 3.9,
+  "missing_strategy": "Median (numerik) / modus (kategorikal), di-fit hanya pada train di dalam Pipeline",
+  "imbalance_strategy": "class_weight='balanced' / sample_weight, dibandingkan dengan tanpa pembobotan"
+}
