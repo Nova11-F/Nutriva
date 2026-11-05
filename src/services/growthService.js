@@ -46,11 +46,13 @@ function getLocalRecords(childId) {
           createdAt: new Date(r.date).toISOString(),
         };
       });
-    } catch (err) {
-      console.warn("Gagal menghitung ulang z-score:", err.message);
+      localStorage.setItem(LOCAL_GROWTH_KEY, JSON.stringify(seeded));
+      return seeded;
     }
+    return String(childId) ? list.filter((r) => String(r.childId) === String(childId)) : list;
+  } catch {
+    return [];
   }
-  return base;
 }
 
 function mapRow(row) {
@@ -213,10 +215,13 @@ export const growthService = {
       createdAt: new Date().toISOString(),
     };
 
-    const { data, error } = await insertRecord(payload);
-    if (error) {
-      if (error.code === "23505") throw new Error("Pengukuran pada tanggal ini sudah pernah dicatat.");
-      throw new Error(error.message || "Gagal menyimpan data pertumbuhan.");
+    try {
+      const raw = localStorage.getItem(LOCAL_GROWTH_KEY);
+      const list = raw ? JSON.parse(raw) : [];
+      list.push(localRecord);
+      localStorage.setItem(LOCAL_GROWTH_KEY, JSON.stringify(list));
+    } catch (e) {
+      console.warn("Gagal simpan ke localStorage:", e);
     }
 
     return savedRow || localRecord;
