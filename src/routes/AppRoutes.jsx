@@ -36,7 +36,7 @@ export default function AppRoutes() {
 
       <Route element={<OnboardingLayout />}>
         <Route path="/onboarding" element={<ChildProfilePage />} />
-        <Route path="/profile/changepass" element={<ChangePasswordPage />} />
+        <Route path="/profile/:changepass" element={<ChangePasswordPage />} />
       </Route>
 
       <Route element={<MainLayout />}>
