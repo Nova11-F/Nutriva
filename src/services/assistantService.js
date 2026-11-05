@@ -149,7 +149,7 @@ export const assistantService = {
     }
 
     const context = await buildContext(child, consent);
-    let res = null;
+    let res;
     let degraded = false;
 
     try {
