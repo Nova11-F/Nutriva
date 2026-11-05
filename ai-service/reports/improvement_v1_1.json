@@ -1,0 +1,170 @@
+{
+  "created_utc": "2026-11-03T06:48:34+00:00",
+  "balancing_cv": {
+    "none": {
+      "macro_f1": [
+        0.5398,
+        0.0305
+      ],
+      "balanced_acc": [
+        0.52,
+        0.0283
+      ],
+      "recall_high": [
+        0.4195,
+        0.0756
+      ]
+    },
+    "class_weight": {
+      "macro_f1": [
+        0.5972,
+        0.0102
+      ],
+      "balanced_acc": [
+        0.6031,
+        0.0171
+      ],
+      "recall_high": [
+        0.5684,
+        0.0862
+      ]
+    },
+    "random_oversample": {
+      "macro_f1": [
+        0.5891,
+        0.0138
+      ],
+      "balanced_acc": [
+        0.6007,
+        0.0176
+      ],
+      "recall_high": [
+        0.5923,
+        0.0778
+      ]
+    },
+    "smotenc": {
+      "macro_f1": [
+        0.5864,
+        0.024
+      ],
+      "balanced_acc": [
+        0.5855,
+        0.0283
+      ],
+      "recall_high": [
+        0.5237,
+        0.0922
+      ]
+    }
+  },
+  "balancing_selected": "class_weight",
+  "calibration_test": {
+    "uncalibrated": {
+      "log_loss": 0.8328,
+      "brier_stunted": 0.2112,
+      "macro_f1": 0.5902,
+      "roc_auc_stunted": 0.8262
+    },
+    "sigmoid": {
+      "log_loss": 0.6934,
+      "brier_stunted": 0.1629,
+      "macro_f1": 0.5721,
+      "roc_auc_stunted": 0.8255
+    },
+    "isotonic": {
+      "log_loss": 0.6802,
+      "brier_stunted": 0.16,
+      "macro_f1": 0.567,
+      "roc_auc_stunted": 0.8271
+    }
+  },
+  "calibration_selected": "isotonic",
+  "alert_threshold": {
+    "rule": "P(Medium)+P(High) >= threshold",
+    "threshold": 0.31,
+    "recall_target_oof": 0.8,
+    "test_recall_stunted": 0.7966,
+    "test_precision_stunted": 0.5924,
+    "test_alert_rate": 0.4713,
+    "test_prevalence_stunted": 0.3505
+  },
+  "literature_consistency": [
+    {
+      "factor": "Berat lahir rendah <2,5 kg",
+      "model_p_stunted_risk_value": 0.4142,
+      "model_p_stunted_reference_value": 0.3476,
+      "delta": 0.0666,
+      "direction_matches_literature": true,
+      "literature": "aOR 2,55 (2,05–3,15) Riskesdas 2013; aOR 2,29 (1,73–3,01) IFLS"
+    },
+    {
+      "factor": "ANC < 4 kali",
+      "model_p_stunted_risk_value": 0.4717,
+      "model_p_stunted_reference_value": 0.2805,
+      "delta": 0.1912,
+      "direction_matches_literature": true,
+      "literature": "aOR 1,22 (1,08–1,39) untuk 1–3 vs ≥4 ANC, Riskesdas 2013"
+    },
+    {
+      "factor": "Laki-laki",
+      "model_p_stunted_risk_value": 0.3667,
+      "model_p_stunted_reference_value": 0.364,
+      "delta": 0.0027,
+      "direction_matches_literature": true,
+      "literature": "aOR 1,33 (1,22–1,45) Riskesdas 2013; 1,17 IFLS"
+    },
+    {
+      "factor": "Diare berulang (3 vs 0 kali)",
+      "model_p_stunted_risk_value": 0.3794,
+      "model_p_stunted_reference_value": 0.349,
+      "delta": 0.0303,
+      "direction_matches_literature": true,
+      "literature": "aOR 1,30 (1,02–1,65) diare akut, IFLS"
+    },
+    {
+      "factor": "Tinggi ibu pendek (145 vs 158 cm)",
+      "model_p_stunted_risk_value": 0.3826,
+      "model_p_stunted_reference_value": 0.3543,
+      "delta": 0.0283,
+      "direction_matches_literature": true,
+      "literature": "tinggi ibu <145 cm: risiko +19% (1,05–1,34), IFLS"
+    },
+    {
+      "factor": "Sanitasi tidak layak",
+      "model_p_stunted_risk_value": 0.4126,
+      "model_p_stunted_reference_value": 0.3262,
+      "delta": 0.0864,
+      "direction_matches_literature": true,
+      "literature": "tanpa akses sanitasi: 1,27 (1,10–1,46), IFLS"
+    },
+    {
+      "factor": "Tinggal di perdesaan",
+      "model_p_stunted_risk_value": 0.3702,
+      "model_p_stunted_reference_value": 0.3592,
+      "delta": 0.011,
+      "direction_matches_literature": true,
+      "literature": "perdesaan +19% (1,02–1,40), IFLS"
+    },
+    {
+      "factor": "Ekonomi rendah vs tinggi",
+      "model_p_stunted_risk_value": 0.4073,
+      "model_p_stunted_reference_value": 0.323,
+      "delta": 0.0843,
+      "direction_matches_literature": true,
+      "literature": "kuintil termiskin aOR 1,74 (1,51–2,01) vs terkaya, Riskesdas 2013"
+    },
+    {
+      "factor": "Pendidikan ibu SD/SMP vs universitas",
+      "model_p_stunted_risk_value": 0.3956,
+      "model_p_stunted_reference_value": 0.3296,
+      "delta": 0.066,
+      "direction_matches_literature": true,
+      "literature": "tiap tahun sekolah ibu protektif, aOR 0,96 (0,94–0,97), IFLS"
+    }
+  ],
+  "literature_sources": [
+    "Determinants of the stunting of children under two years old in Indonesia: a multilevel analysis of the 2013 Indonesia Basic Health Survey. Nutrients (2019) 11(5):1106. https://www.mdpi.com/2072-6643/11/5/1106",
+    "Beyond personal factors: Multilevel determinants of childhood stunting in Indonesia. PLOS ONE (2021). https://doi.org/10.1371/journal.pone.0260265"
+  ]
+}

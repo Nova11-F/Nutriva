@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest==9.1.1
+xgboost==3.4.1
+matplotlib==3.11.2
+pdfplumber==0.11.10
