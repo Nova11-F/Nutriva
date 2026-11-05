@@ -35,6 +35,7 @@ const fallbackRecipes = [
     category: "Protein & Sayur: Ayam + Wortel",
     title: "Bubur Ayam Wortel",
     desc: "Kaya protein hewani dan vitamin A untuk mendukung tumbuh kembang serta daya tahan tubuh balita.",
+    ingredients: ["Beras", "Daging Ayam", "Wortel", "Minyak Kelapa", "Kaldu"],
     kcal: "180 kkal",
     protein: "8g Protein",
     time: "20 Menit",
@@ -48,6 +49,7 @@ const fallbackRecipes = [
     category: "Protein Hewani: Salmon + Jagung",
     title: "Creamy Salmon Chowder Jagung Manis",
     desc: "Sumber omega-3 untuk perkembangan otak dengan tekstur lembut yang mudah ditelan.",
+    ingredients: ["Ikan Salmon", "Jagung Manis", "Susu Balita", "Mentega"],
     kcal: "205 kkal",
     protein: "11g Protein",
     time: "20 Menit",
@@ -61,6 +63,7 @@ const fallbackRecipes = [
     category: "Finger Food: Daging + Pisang",
     title: "Bakso Daging Pisang Santan",
     desc: "Finger food kaya zat besi untuk melatih anak makan sendiri dan mencegah anemia.",
+    ingredients: ["Daging Sapi", "Pisang Kepok", "Santan", "Tepung Tapioka"],
     kcal: "170 kkal",
     protein: "8g Protein",
     time: "25 Menit",
@@ -74,6 +77,7 @@ const fallbackRecipes = [
     category: "Karbohidrat & Sayur: Ubi + Bayam",
     title: "Pudding Ubi Ungu Bayam",
     desc: "Camilan sehat berserat dengan vitamin dan mineral untuk menjaga pencernaan anak.",
+    ingredients: ["Ubi Ungu", "Bayam", "Santan", "Agar-agar"],
     kcal: "160 kkal",
     protein: "4g Protein",
     time: "15 Menit",
@@ -87,6 +91,7 @@ const fallbackRecipes = [
     category: "Protein Hewani: Hati Ayam + Brokoli",
     title: "Bubur Saring Hati Ayam Brokoli",
     desc: "Hati ayam kaya zat besi, dipadukan brokoli untuk membantu penyerapan.",
+    ingredients: ["Beras", "Hati Ayam", "Brokoli", "Minyak Kelapa"],
     kcal: "160 kkal",
     protein: "7g Protein",
     time: "25 Menit",
@@ -100,6 +105,7 @@ const fallbackRecipes = [
     category: "Camilan: Alpukat + Pisang",
     title: "Smoothie Alpukat Pisang",
     desc: "Lemak sehat untuk energi tambahan, cocok untuk camilan sore.",
+    ingredients: ["Alpukat", "Pisang", "Yoghurt Plain"],
     kcal: "120 kkal",
     protein: "2g Protein",
     time: "10 Menit",
@@ -149,15 +155,28 @@ export default function RecipeListPage() {
             if (r.min_age_months >= 12) ageLabel = "12+ Bulan";
             else if (r.min_age_months >= 9) ageLabel = "9-11 Bulan";
 
+            // Deteksi kategori dinamis
+            const ingList = Array.isArray(r.ingredients) ? r.ingredients : [];
+            const fullText = `${r.title} ${r.slug || ""} ${r.portion_size || ""} ${r.meal_frequency || ""} ${ingList.join(" ")}`.toLowerCase();
+            let catLabel = "Protein Hewani";
+            if (fullText.includes("finger food") || fullText.includes("bola-bola") || fullText.includes("bakso") || fullText.includes("nugget")) {
+              catLabel = "Finger Food";
+            } else if (fullText.includes("puding") || fullText.includes("pudding") || fullText.includes("smoothie") || fullText.includes("camilan") || fullText.includes("selingan")) {
+              catLabel = "Camilan";
+            } else if (fullText.includes("sayur") || fullText.includes("buah") || fullText.includes("sup") || fullText.includes("bayam") || fullText.includes("wortel")) {
+              catLabel = "Sayur & Buah";
+            }
+
             return {
               id: r.id,
               slug: r.slug,
               image: r.image_url || buburWortel,
               age: ageLabel,
-              cat: "Protein Hewani",
+              cat: catLabel,
               category: `${r.portion_size || "Porsi MPASI"} · ${r.meal_frequency || "Utama"}`,
               title: r.title,
               desc: r.instructions?.[0]?.text || `Menu bergizi seimbang untuk balita usia ${r.min_age_months}-${r.max_age_months} bulan.`,
+              ingredients: ingList,
               kcal: `${r.main_nutrients?.calories ?? "–"} kkal`,
               protein: `${r.main_nutrients?.protein_g ?? "–"}g Protein`,
               time: "25 Menit",
@@ -201,14 +220,23 @@ export default function RecipeListPage() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return recipesList.filter(
-      (r) =>
-        (age === "Semua Usia" || r.age === age) &&
-        (cat === "Semua" || r.cat === cat) &&
-        (!q ||
-          r.title.toLowerCase().includes(q) ||
-          r.desc.toLowerCase().includes(q)),
-    );
+    return recipesList.filter((r) => {
+      const matchAge = age === "Semua Usia" || r.age === age;
+      const matchCat = cat === "Semua" || r.cat === cat;
+      if (!matchAge || !matchCat) return false;
+      if (!q) return true;
+
+      const titleMatch = r.title?.toLowerCase().includes(q);
+      const descMatch = r.desc?.toLowerCase().includes(q);
+      const catMatch = r.category?.toLowerCase().includes(q) || r.cat?.toLowerCase().includes(q);
+      const ingMatch = Array.isArray(r.ingredients) && r.ingredients.some((ing) => {
+        const text = typeof ing === "string" ? ing : (ing?.name || "");
+        return text.toLowerCase().includes(q);
+      });
+      const nutrientMatch = r.kcal?.toLowerCase().includes(q) || r.protein?.toLowerCase().includes(q);
+
+      return titleMatch || descMatch || catMatch || ingMatch || nutrientMatch;
+    });
   }, [recipesList, query, age, cat]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
