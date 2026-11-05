@@ -32,14 +32,19 @@ export default function AssistantChat({ child }) {
     if (!text || sending) return;
 
     const now = Date.now();
+    const priorMessages = messages;
     setExtra((prev) => [...prev, { id: now, role: "user", text, createdAt: new Date(now).toISOString() }]);
     setDraft("");
     setSending(true);
 
     try {
-      const reply = await assistantService.sendMessage(child, text);
+      const reply = await assistantService.sendMessage(child, text, priorMessages);
       setExtra((prev) => [...prev, reply]);
+      if (reply.degraded) showToast("Asisten sedang terbatas, jawaban yang ditampilkan adalah jawaban aman.", "info");
     } catch (err) {
+      // pesan tidak tersimpan di server: tandai gagal dan kembalikan teks ke input
+      setExtra((prev) => prev.map((m) => (m.id === now ? { ...m, failed: true } : m)));
+      setDraft(text);
       showToast(err.message || "Pesan gagal dikirim", "error");
     } finally {
       setSending(false);
@@ -92,6 +97,11 @@ export default function AssistantChat({ child }) {
 
           {!loading && messages.map((m) => <ChatBubble key={m.id} {...m} />)}
           {sending && <TypingIndicator />}
+          {!loading && messages.length > 0 && (
+            <p className="text-center text-[11px] text-gray-400">
+              Jawaban AI bersifat edukasi, bukan diagnosis. Untuk kondisi darurat segera ke fasilitas kesehatan.
+            </p>
+          )}
           <div ref={bottomRef} />
         </div>
 

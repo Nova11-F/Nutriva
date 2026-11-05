@@ -16,6 +16,7 @@ import RecipeDetailPage from "../pages/nutrition/RecipeDetailPage";
 import CreateMealPlanPage from "../pages/nutrition/CreateMealPlanPage";
 import GrowthPage from "../pages/growth/GrowthPage";
 import AddMeasurementPage from "../pages/growth/AddMeasurementPage";
+import RiskProfilePage from "../pages/growth/RiskProfilePage";
 import AssistantPage from "../pages/assistant/AssistantPage";
 import ProfilePage from "../pages/profile/ProfilePage";
 import ChangePasswordPage from "../pages/profile/ChangePasswordPage";
@@ -47,6 +48,7 @@ export default function AppRoutes() {
         <Route path="/nutrition/MealPlan" element={<CreateMealPlanPage />} />
         <Route path="/growth" element={<GrowthPage />} />
         <Route path="/growth/measurement" element={<AddMeasurementPage />} />
+        <Route path="/growth/risk-profile" element={<RiskProfilePage />} />
         <Route path="/assistant" element={<AssistantPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Route>

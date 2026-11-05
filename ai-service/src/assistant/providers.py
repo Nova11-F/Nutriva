@@ -38,9 +38,26 @@ def _gemini(cfg: LLMConfig, system: str, user: str) -> tuple[str, dict]:
             "contents": [{"role": "user", "parts": [{"text": user}]}],
             "generationConfig": gen}
     headers = {"x-goog-api-key": cfg.api_key, "Content-Type": "application/json", **cfg.extra_headers}
-    r = httpx.post(f"{base}/models/{cfg.model}:generateContent", json=body, headers=headers, timeout=cfg.timeout_s)
-    if r.status_code >= 400:
-        raise LLMError(f"HTTP {r.status_code}: {r.text[:500]}")
+    models_to_try = [cfg.model]
+    for m in ["gemini-3.5-flash", "gemini-flash-lite-latest"]:
+        if m not in models_to_try:
+            models_to_try.append(m)
+
+    last_err = None
+    r = None
+    for i, model_name in enumerate(models_to_try):
+        try:
+            r = httpx.post(f"{base}/models/{model_name}:generateContent", json=body, headers=headers, timeout=cfg.timeout_s)
+            if r.status_code < 400:
+                break
+            last_err = f"HTTP {r.status_code}: {r.text[:500]}"
+            if r.status_code in (429, 503) and i < len(models_to_try) - 1:
+                import time
+                time.sleep(0.5)
+        except Exception as e:
+            last_err = str(e)
+    else:
+        raise LLMError(last_err or "Gagal memanggil Gemini API")
     data = r.json()
     cands = data.get("candidates") or []
     if not cands:
