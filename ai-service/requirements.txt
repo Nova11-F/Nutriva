@@ -1,0 +1,13 @@
+# Runtime (image produksi). scikit-learn & imbalanced-learn WAJIB sama dengan versi saat model dilatih
+# (lihat models/model_metadata.json), karena model disimpan dengan joblib/pickle.
+fastapi==0.162.0
+starlette==1.7.0
+uvicorn==0.54.0
+pydantic==2.13.5
+httpx==0.28.1
+numpy==2.5.3
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.1
+imbalanced-learn==0.14.2
+joblib==1.6.0

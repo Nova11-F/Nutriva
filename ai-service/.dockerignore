@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.pytest_cache/
+data/
+notebooks/
+reports/
+eval/results/
+tests/
+docs/
+nutrition_data/

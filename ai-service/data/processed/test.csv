@@ -1,0 +1,506 @@
+Child Age,Gender,Birth Length,Birth Weight,Height,Weight,Mother Age,Mother Education,Mother Height,ANC Visits,Exclusive Breastfeeding,Complementary Feeding Start Age,Immunization,Diarrhea Frequency,Drinking Water Source,Sanitation,Economic Level,Residence Type,Deworming Drug Consumption,Stunting Risk,flag_bio_anomaly,HAZ,WAZ,WHZ
+22,M,47.6,2.73,90.3,11.31,30.0,High School,152.4,5.0,Yes,5.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,1.4492064258009894,-0.33765277924617965,-1.5656865305497967
+5,M,49.6,3.64,58.2,4.78,26.0,High School,161.4,3.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,High,0,-3.6478946630553772,-3.8637452757846473,-1.653784758857765
+48,F,45.7,2.58,94.2,11.78,26.0,High School,149.5,8.0,No,5.0,Not Immunized,4,Unprotected,Unimproved,Low,Rural,Yes,Low,0,-1.9805367247838164,-2.3575068302732745,-1.7254856791267674
+56,M,47.0,1.91,111.8,19.35,38.0,University,152.7,8.0,Yes,,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,0.8978952930419696,0.6777355055288391,0.10469335258698362
+40,F,46.5,2.96,93.5,13.03,31.0,High School,150.3,3.0,No,4.0,Incomplete,2,Protected,Improved,Middle,Rural,Yes,Low,0,-1.0673069248334879,-0.8777132560627977,-0.41048961120135785
+9,F,46.9,3.81,62.0,5.68,33.0,Elementary/Middle School,158.3,3.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.3710137622552727,-3.112711393196485,-1.2898507574062095
+11,F,49.1,3.3,69.5,7.98,41.0,University,153.6,8.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,No,Low,0,-1.2976104006611535,-0.7293845991522462,-0.11000423969413661
+25,F,52.2,2.77,91.6,13.82,37.0,University,158.2,7.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,1.5281032338324798,1.3176804657254106,0.6415800802190077
+6,M,46.1,2.92,66.3,7.16,30.0,University,152.0,8.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,No,Low,0,-0.6184217523655946,-0.9307169423832022,-0.6907107133757348
+4,F,45.7,2.96,51.8,3.49,22.0,Elementary/Middle School,148.1,2.0,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-4.754039775780599,-4.608961953990861,-0.7864387370524736
+30,M,47.1,2.94,92.33,11.93,33.0,University,150.9,7.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.11667493612879935,-0.9249033356330714,-1.507672353417458
+37,M,49.2,,102.3,14.17,22.0,Elementary/Middle School,158.51,6.0,No,4.0,Complete,2,Unprotected,Improved,High,Urban,Yes,Low,0,1.4834367372527824,-0.1957697427229639,-1.5036254115453336
+49,F,49.7,3.17,109.0,16.17,34.0,High School,151.8,3.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,1.3071302590812441,-0.03584729393236659,-1.2990996349301434
+35,M,47.7,2.18,89.2,11.83,33.0,Elementary/Middle School,159.6,,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.7002284410279653,-1.5072540444761493,-0.8905112551440841
+33,F,48.2,3.03,94.9,13.39,25.0,High School,147.8,3.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.5381019346408457,0.062498444448206125,-0.39199538641049303
+43,M,47.9,3.25,101.2,15.28,25.0,High School,146.0,4.0,No,4.0,Complete,0,Unprotected,Unimproved,Middle,Rural,Yes,Low,0,0.18769306863933732,-0.12281858588101442,-0.32800144619262117
+21,M,47.4,2.91,77.0,9.74,34.0,University,152.5,,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Medium,0,-2.830331611042844,-1.5121307373293682,-0.19201989461084656
+5,M,51.8,,66.7,6.14,32.0,University,154.9,6.0,Yes,5.0,Complete,1,Protected,Improved,High,Urban,No,Low,0,0.3776427705346658,-1.7930710406922779,-2.813218939700142
+54,F,48.5,2.8,105.9,15.37,27.0,High School,168.9,5.0,Yes,6.0,Complete,1,Unprotected,Improved,High,Rural,Yes,Low,0,-0.06058484941495412,-0.7792147015425787,-1.1656652457714107
+9,F,44.6,2.79,65.5,6.31,24.0,High School,151.71,5.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Low,0,-1.9221836317348029,-2.217047063694026,-1.4767771334360622
+40,F,47.0,2.05,88.7,10.5,19.0,Elementary/Middle School,154.85,1.0,No,,Not Immunized,2,Unprotected,Unimproved,Low,Urban,No,Medium,0,-2.2729344962454197,-2.6342964623435003,-1.8544530595101685
+49,F,52.19,3.34,100.12,15.76,28.0,University,153.8,7.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.7363034857282611,-0.22082554437450286,0.3530218666236633
+11,M,46.7,2.77,64.2,7.26,27.0,High School,151.5,4.0,No,,Incomplete,0,Unprotected,Unimproved,Middle,Rural,No,High,0,-4.438515243068036,-2.358170160776965,0.3138307502363274
+57,F,47.6,2.7,101.6,14.69,34.0,High School,154.1,4.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.3390333413578084,-1.315532326463202,-0.7337310347646122
+58,M,50.6,3.8,108.2,17.26,28.0,University,155.9,6.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.14663692273300222,-0.3175426916668823,-0.41571912039708064
+10,M,43.0,2.64,62.5,5.31,37.0,Elementary/Middle School,142.5,3.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-4.718439809477198,-4.6389898493548625,-2.838363688767867
+42,F,50.0,3.58,102.7,16.4,22.0,High School,148.5,3.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.8990136881278031,0.6706440472026555,0.24549938376760191
+15,M,51.4,3.84,79.0,9.7,33.0,High School,160.3,4.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.0576218257020478,-0.554093429172362,-0.6874971635845787
+33,F,49.66,3.46,88.9,11.25,31.0,University,147.9,8.0,Yes,5.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-1.0957281386576074,-1.3394250247582036,-1.088083110527483
+7,F,48.0,2.94,66.6,6.9,34.0,High School,159.5,6.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Low,0,-0.29684420109819754,-0.8433918564931834,-0.840964631930024
+38,F,47.8,2.59,88.0,11.38,37.0,No Education,153.2,3.0,Yes,5.0,Complete,3,Unprotected,Improved,Middle,Rural,No,Medium,0,-2.160702187603003,-1.7726869194559702,-0.7429429347041792
+46,M,50.0,3.56,96.7,11.52,34.0,University,152.1,7.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-1.3335155849137432,-2.652547405662515,-2.9378356836866386
+58,M,48.6,2.5,92.5,11.34,20.0,Elementary/Middle School,164.7,2.0,No,2.0,Complete,1,Unprotected,Unimproved,Low,Rural,No,High,0,-3.5884065249278563,-3.510042228611543,-2.2111770548281697
+45,F,47.1,2.78,87.5,12.28,21.0,Elementary/Middle School,156.6,1.0,Yes,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.2050424205287937,-1.7885853341175248,0.23741364156838388
+35,M,52.9,2.68,83.5,11.2,30.0,Elementary/Middle School,159.9,3.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.257414332450841,-1.9671106435313794,-0.12077663159438087
+27,M,50.3,2.71,89.3,13.22,26.0,University,165.4,6.0,Yes,5.0,Complete,0,Unprotected,Improved,High,Urban,Yes,Low,0,-0.09881706453681777,0.31848143139624957,0.4755032337956075
+27,M,47.9,3.01,84.1,10.83,27.0,Elementary/Middle School,150.4,3.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.7061011921297462,-1.4031049480304203,-0.689897191412035
+15,M,50.6,3.21,77.4,9.33,30.0,University,156.4,6.0,Yes,6.0,Not Immunized,1,Protected,Improved,High,Urban,Yes,Low,0,-0.6899601050112453,-0.9062490816564382,-0.8089119198692225
+30,F,52.0,3.25,82.1,9.27,29.0,Elementary/Middle School,158.7,3.0,Yes,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.43039925886706,-2.6310929388062085,-1.6494323201588694
+36,F,50.3,3.19,99.6,16.01,28.0,University,150.5,6.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,1.1945333500251938,1.0960390101983934,0.6295149833291356
+56,M,49.5,2.72,100.2,13.15,29.0,High School,141.5,5.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.6864248318338055,-2.27723701819394,-1.9831790697224976
+10,M,48.3,2.71,68.4,7.31,27.0,High School,156.3,4.0,Yes,5.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Medium,0,-2.136278744297488,-2.0572392588724404,-1.207579366287463
+52,F,43.8,2.76,98.5,14.4,29.0,High School,146.3,4.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.4683444613982806,-1.1110609603081851,-0.30905777955316543
+6,F,51.03,3.15,60.9,6.06,29.0,High School,148.3,9.0,No,6.0,Complete,2,Protected,,High,Rural,No,Medium,0,-2.131610592987549,-1.532808066405475,-0.07547574439525914
+15,F,45.4,2.7,70.7,7.73,26.0,High School,165.5,3.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.4860909510573124,-1.8085592855600752,-0.8039120612362203
+2,M,50.6,,54.46,3.7,23.0,Elementary/Middle School,152.0,1.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.9819856445473116,-3.159620868478137,-2.0595942370071842
+39,F,46.0,3.02,90.2,12.08,33.0,High School,146.0,5.0,No,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-1.7488471905117677,-1.384138876826254,-0.5630859316320792
+24,M,45.6,2.32,82.8,10.01,36.0,High School,140.0,3.0,No,5.0,Incomplete,1,Unprotected,Unimproved,Middle,Rural,Yes,Low,0,-1.4127239494815798,-1.698982230634534,-1.337747090826728
+45,M,47.2,2.88,98.8,13.03,21.0,Elementary/Middle School,154.8,3.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-0.690663549273532,-1.572238839896816,-1.7890483094478877
+33,M,52.3,3.89,90.2,10.47,22.0,Elementary/Middle School,154.4,1.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.086632932061068,-2.3474293063597673,-2.7315516283403576
+19,F,46.1,2.58,80.6,11.27,33.0,High School,150.9,3.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.3780002834427449,0.6153465040049011,1.0823805453379947
+54,M,46.9,3.19,100.2,14.51,29.0,University,157.5,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-1.464754148762554,-1.3751985538150124,-0.7414620312538323
+55,M,47.5,3.05,102.9,16.42,25.0,High School,153.11,4.0,No,5.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Low,0,-0.9701408805215346,-0.48962871732396546,0.16077034838182913
+35,F,51.3,3.77,81.9,9.7,20.0,High School,152.4,1.0,No,2.0,Complete,3,Protected,Unimproved,Low,Rural,No,High,0,-3.3087451665138254,-2.8149413603181683,-1.0664805950434115
+54,F,42.1,2.33,98.2,13.28,32.0,High School,141.7,3.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.758195258785953,-1.8624327299420051,-1.1653108157800791
+30,M,48.4,2.42,86.6,11.11,22.0,Elementary/Middle School,149.9,7.0,Yes,9.0,Complete,0,Protected,Improved,Middle,Urban,No,Low,0,-1.566051930264389,-1.5331281347604386,-1.033553299429914
+56,F,39.9,2.81,99.6,12.82,30.0,High School,143.6,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Urban,No,Low,0,-1.665378824025604,-2.2682450882289387,-1.8696481955625588
+23,F,49.3,3.26,85.6,11.28,26.0,University,144.3,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.02514451303138686,0.008030219371199611,-0.08795584036836752
+31,M,45.2,3.1,88.4,10.78,24.0,High School,151.2,4.0,Yes,5.0,Complete,1,Unprotected,Improved,Low,Rural,No,Low,0,-1.232425582928749,-1.8979034602354754,-1.8922003536795104
+51,M,53.7,3.36,100.6,14.23,26.0,High School,158.4,3.0,No,4.0,,1,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.0229797995576528,-1.318019072561779,-1.072835469385773
+41,F,46.9,2.68,84.4,9.61,36.0,Elementary/Middle School,147.3,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-3.479811631681261,-3.4283355066318806,-1.8196508734673216
+12,F,47.6,3.55,73.1,9.48,33.0,High School,154.1,5.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.3553423104710457,0.46794082224273453,0.8302239050039943
+5,F,47.4,3.36,61.2,5.48,34.0,University,156.8,7.0,Yes,7.0,Complete,0,Protected,Improved,High,Urban,No,Low,0,-1.2763362665590634,-1.8848132813723921,-1.340283633162463
+45,F,49.9,3.37,96.7,14.17,33.0,Elementary/Middle School,160.2,1.0,No,3.0,Not Immunized,0,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.0084669151678005,-0.6798062797433342,-0.12318268748181746
+41,F,45.0,2.63,87.2,10.56,24.0,Elementary/Middle School,150.1,3.0,No,4.0,Not Immunized,1,Protected,Unimproved,Low,Rural,No,Medium,0,-2.78392386474861,-2.6775730257415447,-1.420309166333261
+37,M,53.0,3.0,84.5,9.84,31.0,Elementary/Middle School,153.0,2.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-3.2603201430985282,-3.2199922799784884,-2.015465624415271
+55,F,50.4,3.34,108.1,16.02,28.0,High School,152.1,8.0,Yes,4.0,Complete,5,Protected,Improved,Low,Rural,Yes,Low,0,0.29967032492413587,-0.5534065417412021,-1.1979650725638773
+3,F,48.6,3.27,58.6,4.96,23.0,High School,155.8,5.0,No,5.0,Not Immunized,1,Unprotected,Improved,Middle,Rural,No,Low,0,-0.5714320786206943,-1.2978540350106118,-1.1744761376858524
+47,M,52.3,3.29,104.9,16.11,29.0,University,152.7,9.0,No,7.0,Complete,1,Unprotected,Improved,High,Urban,Yes,Low,0,0.5142247032645315,-0.035462089514320796,-0.5078400979141188
+20,M,50.7,3.21,79.12,8.89,20.0,Elementary/Middle School,155.7,3.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,Yes,Low,0,-1.805148939798458,-2.1737323323631275,-1.8007840876224972
+52,M,46.0,2.51,95.7,12.1,29.0,Elementary/Middle School,155.1,3.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.2709253106337495,-2.6775724223297312,-2.0663634102579413
+55,F,50.1,2.76,97.67,14.13,32.0,Elementary/Middle School,150.0,,Yes,9.0,Complete,1,Unprotected,Improved,Middle,Rural,No,Low,0,-1.980929083290929,-1.465924403695136,-0.35155865631291
+11,M,50.7,3.69,68.6,7.32,23.0,High School,142.3,5.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Medium,0,-2.5495661320010505,-2.284097136886872,-1.261355850863818
+48,M,46.9,2.86,97.5,15.97,25.0,Elementary/Middle School,152.1,2.0,Yes,6.0,Incomplete,0,Protected,Improved,Middle,Urban,Yes,Low,0,-1.3894190351180786,-0.18402520173193102,1.0183010759348183
+26,M,48.3,2.87,87.2,12.61,33.0,High School,163.6,9.0,No,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.5058694650087009,0.043660192120019245,0.39292951226535167
+5,F,47.0,2.69,52.2,3.34,26.0,No Education,145.2,4.0,Yes,6.0,Complete,2,Unprotected,Unimproved,Low,Rural,No,High,0,-5.335212772347394,-5.347494726908785,-1.573584883293595
+9,F,50.8,2.85,67.8,7.0,28.0,University,151.8,6.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,No,Low,0,-0.9700952602499225,-1.3385819011761397,-1.070407714045156
+36,F,51.7,3.21,87.8,10.29,28.0,University,163.8,8.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-1.9043989420045588,-2.412909882355389,-1.876327182668811
+21,F,47.5,3.4,84.8,11.36,34.0,University,150.1,8.0,Yes,5.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,0.3699171163044098,0.367477432592455,0.18808918195655377
+5,M,47.3,2.24,50.2,3.12,31.0,Elementary/Middle School,154.11,1.0,Yes,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-7.436635777022478,-6.406598258598706,-0.8770375150855079
+52,F,51.0,,99.3,13.91,27.0,Elementary/Middle School,156.8,6.0,Yes,3.0,Complete,0,Protected,Improved,Middle,Urban,No,Low,0,-1.2889882502768608,-1.369297281437705,-0.8643861092753252
+5,M,45.6,2.83,49.4,3.47,30.0,Elementary/Middle School,156.1,2.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Urban,Yes,High,0,-7.815509888419192,-5.8704545574029705,0.8667870044534122
+44,F,47.8,2.46,99.5,13.79,37.0,University,165.4,8.0,No,5.0,Complete,1,Protected,Improved,Middle,Urban,Yes,Low,0,-0.19427893009826688,-0.8009388446754074,-1.0046070375606841
+19,M,47.3,2.66,74.6,7.46,21.0,Elementary/Middle School,154.1,2.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.1364238999754823,-3.534476826832057,-2.934717366472246
+6,M,46.5,2.87,61.3,5.45,26.0,Elementary/Middle School,150.5,2.0,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.9545571118608995,-3.3247956732466015,-1.8772645311170553
+54,M,46.4,3.35,96.2,11.85,23.0,Elementary/Middle School,156.5,2.0,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.370768962124685,-2.975467351702372,-2.451366902990313
+19,M,48.2,2.82,81.3,9.49,20.0,Elementary/Middle School,157.9,1.0,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-0.704749928136775,-1.436601912174871,-1.4712701213119803
+58,M,49.3,2.72,106.9,16.45,32.0,University,147.4,7.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.43162421463448397,-0.6800080508934327,-0.6975179207525964
+31,M,49.2,2.8,85.1,10.5,35.0,High School,150.4,5.0,No,6.0,Not Immunized,1,Unprotected,Improved,Low,Rural,Yes,Medium,0,-2.1864272304774564,-2.1227150913244013,-1.3478758593304627
+54,M,49.7,3.44,99.6,14.0,21.0,Elementary/Middle School,158.1,1.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.6006563707668777,-1.6548297097885019,-1.0545506948203176
+18,F,49.6,3.09,77.4,8.82,30.0,University,159.5,5.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-1.139134921442536,-1.2299392335586925,-0.9481092608107302
+12,F,,3.23,69.5,7.65,29.0,High School,157.2,3.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.7534104172423592,-1.2980775457842364,-0.5810130780392494
+4,F,48.0,2.46,62.0,5.13,31.0,University,160.1,7.0,Yes,5.0,Complete,1,Protected,Improved,High,Urban,No,Low,0,-0.04153472588097662,-1.8143452759573155,-2.478140230688401
+58,M,44.5,2.33,111.9,17.41,30.0,University,155.6,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.6644807542173798,-0.25255760091570345,-1.1202499192144397
+30,M,47.54,2.94,89.0,13.26,31.0,University,145.1,8.0,Yes,6.0,Not Immunized,0,Protected,Improved,High,Urban,Yes,Low,0,-0.8612448658065068,-0.025568678293083822,0.5810482378326238
+27,F,48.9,3.08,82.3,9.9,31.0,High School,158.2,5.0,No,6.0,Incomplete,5,Unprotected,Improved,High,Rural,Yes,Low,0,-1.7694697644700592,-1.6599814784011535,-0.9297842433819872
+35,M,46.8,2.49,87.12,11.24,26.0,High School,159.1,5.0,No,5.0,Complete,0,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.2684646961436794,-1.9371034973511143,-1.021912561680374
+11,M,48.8,3.22,67.25,6.57,22.0,Elementary/Middle School,151.2,3.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.129130063805693,-3.237415708410899,-2.1455460876400254
+29,M,51.8,2.99,89.5,11.95,32.0,High School,151.0,5.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.5023199504226085,-0.7961912472145017,-0.8336977431505258
+32,F,48.9,3.68,88.4,10.87,25.0,High School,145.1,4.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.045435805630486,-1.510767043813156,-1.37202023156509
+11,M,52.2,2.82,70.6,8.12,35.0,High School,150.0,4.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,No,Low,0,-1.6909528996978764,-1.3468128848485141,-0.6441544809607298
+36,M,47.9,2.78,93.9,12.45,28.0,High School,154.1,5.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.5890364341303757,-1.1738756536893606,-1.301977082123085
+14,F,51.1,2.48,78.0,9.79,33.0,University,149.2,6.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.6029314761600307,0.3402886182032581,0.10111721133700222
+56,M,47.4,2.62,107.6,17.31,32.0,University,146.5,5.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.0378068211371923,-0.15835304975435177,-0.2511050646228295
+36,F,48.7,2.32,93.83,11.73,25.0,High School,152.5,3.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.32079201650121625,-1.3209638410470397,-1.6964878871272724
+12,M,48.9,3.4,80.9,10.68,29.0,University,158.32,7.0,Yes,5.0,Complete,1,Protected,Improved,Middle,Urban,Yes,Low,0,2.167794630240394,0.9333261763480174,0.07209198206004988
+35,F,47.3,2.8,94.8,13.38,27.0,High School,150.5,5.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.11868472339714584,-0.16267536122297563,-0.3798936824960441
+9,F,51.0,2.1,61.1,5.29,33.0,University,164.8,8.0,No,6.0,Complete,1,Unprotected,Improved,Middle,Urban,No,High,0,-3.7435700815319644,-3.660011047330504,-1.700605161341713
+40,M,51.7,2.93,98.2,15.13,24.0,Elementary/Middle School,158.1,3.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-0.11099372301653458,0.06244054173103434,0.21430400125748056
+31,F,46.4,3.05,88.1,12.22,27.0,No Education,152.5,,No,6.0,Complete,0,Protected,Improved,Low,Rural,,Low,0,-0.934277872332308,-0.43268211752264346,0.04343539767200372
+26,F,47.8,2.91,87.1,11.37,29.0,High School,156.0,5.0,No,4.0,Incomplete,2,Protected,Improved,Middle,Rural,Yes,Low,0,-0.10396548454503678,-0.36509773921581756,-0.5374364889328465
+38,F,52.3,2.64,82.7,9.91,27.0,Elementary/Middle School,158.6,2.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-3.520974152905948,-2.936832390695532,-1.0186749333315095
+31,M,43.0,2.21,90.3,12.24,22.0,High School,147.3,4.0,No,4.0,Not Immunized,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.6831519070673765,-0.8168332163401023,-0.7159591807669303
+27,F,45.7,3.19,83.1,8.4,29.0,High School,151.2,10.0,Yes,7.0,Complete,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.5328700968156979,-3.0880181430515004,-3.103254544366251
+59,M,50.8,3.39,107.5,17.06,23.0,High School,152.38,4.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.4169473920314731,-0.4716561188523074,-0.3991463022618834
+19,F,49.5,2.82,78.6,9.09,21.0,Elementary/Middle School,158.4,2.0,Yes,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.054087358103352,-1.1451404489184709,-0.8692274480261766
+47,M,44.9,3.05,97.6,15.14,32.0,High School,149.2,4.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.2419579090540998,-0.5263498025421801,0.35303383737464206
+2,M,43.4,1.86,49.2,2.54,24.0,Elementary/Middle School,148.7,3.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-4.611369611436473,-5.33312373167136,-2.5768281472999113
+4,F,52.0,2.81,54.8,3.53,19.0,Elementary/Middle School,160.4,2.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-3.3680088787512985,-4.540456856390963,-2.7854768282810602
+3,F,48.3,2.88,55.1,4.62,35.0,High School,153.9,4.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Medium,0,-2.2340908824883674,-1.8560830579209653,0.10393364380730913
+11,F,47.7,2.48,60.8,5.75,28.0,Elementary/Middle School,154.8,3.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-4.748912903183935,-3.4818642792576817,-0.6113762337122769
+17,F,47.2,2.66,73.6,8.54,22.0,High School,161.2,5.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.1308969827453486,-1.3278854220200227,-0.4397786986308916
+47,M,47.9,3.58,100.4,14.06,35.0,University,144.5,5.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-0.5683536193976366,-1.115739471363071,-1.1787507939631245
+34,F,47.5,3.31,90.5,12.7,41.0,University,143.3,5.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.8455827002303143,-0.4662360633681227,-0.06172149250646642
+54,F,44.2,2.54,106.8,16.68,30.0,University,149.1,5.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,0.1378371464855511,-0.1963761432610036,-0.4603906756995659
+37,F,44.77,2.66,91.0,11.02,30.0,High School,148.6,4.0,No,4.0,Incomplete,2,Unprotected,Unimproved,Middle,Rural,Yes,Low,0,-1.2303204355466955,-1.9384462615633613,-1.8146339644044804
+58,M,50.6,3.54,95.1,12.64,27.0,Elementary/Middle School,161.6,3.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-3.0184319411248874,-2.7121486405806454,-1.3678112175108241
+3,F,44.4,2.27,53.4,3.98,31.0,High School,157.0,4.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,High,0,-3.0416680157955267,-3.0216890754506496,-0.420155704246665
+4,M,48.9,2.9,62.6,6.55,22.0,High School,155.3,3.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Low,0,-0.6180413220890046,-0.5870324429168752,-0.23477686245563853
+5,F,46.1,3.26,58.8,4.77,25.0,Elementary/Middle School,148.2,2.0,No,3.0,Not Immunized,1,Protected,Unimproved,Low,Rural,No,Medium,0,-2.3587033347692885,-3.028076455118324,-1.733279507073792
+26,F,51.6,3.98,84.4,11.1,30.0,Elementary/Middle School,158.6,3.0,No,5.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-0.9147881543069862,-0.5616206470674027,-0.14574946955377766
+12,M,51.3,,68.2,7.01,29.0,Elementary/Middle School,151.8,2.0,No,3.0,Not Immunized,2,Unprotected,,Low,Rural,Yes,High,0,-3.1767836823960733,-2.8937299995040564,-1.6669462214142643
+57,M,45.8,3.06,106.5,15.99,24.0,High School,148.1,5.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.4022085847593932,-0.828956406002395,-0.9483142753245044
+14,F,52.1,3.6,66.1,5.63,22.0,Elementary/Middle School,158.7,1.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-3.8306621506732754,-4.193775984642111,-3.0451797869862727
+14,F,50.9,3.61,78.0,10.17,31.0,University,159.0,8.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,0.6029314761600307,0.6457605351456369,0.5213383324014614
+36,M,46.7,2.8,87.1,11.68,27.0,High School,152.8,4.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.423452624689837,-1.707139643459708,-0.5314513254666251
+34,M,44.2,1.72,84.7,10.16,35.0,Elementary/Middle School,141.7,,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.7832841392042247,-2.69786182740255,-1.658896072689185
+59,F,46.8,3.12,97.4,14.61,31.0,Elementary/Middle School,149.9,6.0,Yes,6.0,Complete,1,Protected,Unimproved,Middle,Rural,Yes,Medium,0,-2.4355966650498795,-1.485918784628052,0.07505175550482572
+42,F,46.8,3.69,86.7,10.33,25.0,Elementary/Middle School,159.6,3.0,Yes,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.036261812541065,-2.951097443761173,-1.5554219463054348
+45,F,51.5,2.77,96.0,15.42,30.0,Elementary/Middle School,154.02,5.0,No,7.0,Complete,1,Protected,Improved,Low,Urban,Yes,Low,0,-1.1755976601409206,-0.04937164997169368,0.9426601895846809
+2,F,54.3,3.5,56.7,4.45,29.0,University,166.2,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,No,Low,0,-0.18038846259084845,-1.0837474057922531,-1.3143541639435827
+25,F,49.25,2.4,81.1,9.68,24.0,High School,157.6,,Yes,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.674764052026886,-1.5606705743269917,-0.892732962066746
+21,F,46.8,2.51,75.31,9.88,26.0,University,154.0,8.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Medium,0,-2.7241366768639765,-0.7719471265233505,0.7738030825590287
+12,F,49.3,3.42,74.8,8.9,32.0,University,146.0,8.0,Yes,7.0,Complete,1,Protected,Improved,High,Rural,Yes,Low,0,0.30485651772652306,-0.0439589467579109,-0.26188294124330236
+4,F,48.3,2.33,57.4,4.9,29.0,University,152.3,5.0,No,6.0,Complete,1,Protected,Unimproved,High,Urban,No,Medium,0,-2.1667821013259063,-2.184667226913595,-0.6381995077627604
+8,F,48.1,2.83,61.9,5.94,32.0,High School,149.4,5.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,,Medium,0,-2.896329778752168,-2.4368518856454973,-0.7387604633008574
+5,F,47.8,3.06,66.5,7.49,29.0,Elementary/Middle School,148.7,7.0,No,5.0,Incomplete,0,Unprotected,Improved,Middle,Urban,Yes,Low,0,1.1138910090718421,0.6690522330194039,0.10455288257928406
+50,F,45.8,2.74,106.2,16.55,29.0,University,145.4,8.0,No,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,0.5240760931210338,0.05077676307800797,-0.4129591572027884
+4,F,50.0,2.99,56.8,4.55,28.0,University,152.9,8.0,Yes,7.0,Complete,0,Protected,Improved,High,Rural,No,Medium,0,-2.4439882807317677,-2.783136162577927,-1.1211925509746592
+25,F,48.2,2.98,85.8,11.89,27.0,University,152.1,6.0,Yes,5.0,,1,Protected,Improved,High,Urban,Yes,Low,0,-0.2410996478803093,0.13877589008397337,0.2819757560700396
+4,M,49.6,3.35,58.1,4.72,34.0,University,152.9,5.0,Yes,7.0,Complete,1,Protected,Improved,High,Urban,No,Medium,0,-2.7807053573926788,-3.3553124510650436,-1.7440345649627025
+4,F,46.2,1.98,57.4,4.76,33.0,High School,152.02,4.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Medium,0,-2.1667821013259063,-2.418733589454068,-0.9646890414125376
+22,F,50.2,3.82,82.3,11.35,31.0,University,162.37,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Rural,Yes,Low,0,-0.7384152644383015,0.2082212307254176,0.7760321155839895
+29,M,54.1,3.71,81.5,9.96,30.0,Elementary/Middle School,149.4,2.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.890339681454742,-2.3610747334411126,-1.0771030652103433
+58,F,44.7,2.99,98.7,13.93,31.0,High School,157.7,6.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.0628925088688144,-1.772717451900577,-0.7235303821336134
+4,M,,1.76,57.2,4.43,32.0,High School,149.9,5.0,No,6.0,Complete,1,Unprotected,Improved,Middle,Rural,No,High,0,-3.2132381644534127,-3.8224524301091507,-1.9087841355390989
+35,F,55.3,3.54,85.1,10.87,24.0,Elementary/Middle School,164.8,1.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.458530000024285,-1.844630192969695,-0.5585801489402681
+53,M,48.5,3.06,102.56,12.95,38.0,No Education,153.5,2.0,Yes,8.0,Not Immunized,0,Protected,Improved,Middle,Rural,Yes,Low,0,-0.8116931711522154,-2.2024208381468093,-2.706114011489616
+44,M,46.8,3.29,93.7,11.74,25.0,Elementary/Middle School,152.8,2.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.8146085344222243,-2.344313525556093,-2.0227438868351966
+59,F,47.1,3.43,104.0,16.12,34.0,Elementary/Middle School,151.3,2.0,No,,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.0371436263428828,-0.7800306882174479,-0.22011215572833426
+5,F,52.5,3.39,58.5,5.39,30.0,University,168.3,6.0,No,6.0,Complete,1,Unprotected,Improved,High,Urban,Yes,Medium,0,-2.4939992182955644,-2.021120948771518,-0.18875001834946983
+9,M,49.1,3.37,68.7,7.04,33.0,High School,154.1,3.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Low,0,-1.4571175963918757,-2.133029445381891,-1.7925306644955448
+2,F,50.2,2.98,53.3,3.4,24.0,Elementary/Middle School,164.2,2.0,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.8501972641396847,-3.0931954240830275,-2.158980931508663
+12,F,45.2,2.76,70.8,7.89,23.0,High School,143.2,4.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.2485524897971618,-1.0389752355464512,-0.5999436500496391
+52,F,42.4,2.49,102.3,16.05,32.0,Elementary/Middle School,151.8,5.0,No,5.0,Incomplete,0,Unprotected,Improved,Low,Urban,Yes,Low,0,-0.6164024585715395,-0.321376411596067,0.09623386665556187
+30,F,48.3,3.41,91.01,12.54,39.0,University,155.7,6.0,Yes,6.0,Complete,0,Unprotected,Improved,High,Urban,Yes,Low,0,0.09356514507544378,-0.10437853455120974,-0.3158467418707034
+2,M,43.2,2.65,46.7,3.19,22.0,Elementary/Middle School,148.2,3.0,No,4.0,Incomplete,3,Unprotected,Unimproved,Low,Rural,No,High,0,-5.861076820033988,-4.115212644537227,1.6875394227195468
+9,F,46.3,2.63,60.4,5.42,21.0,Elementary/Middle School,148.6,1.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-4.03333610763606,-3.477577829285831,-1.0889961116374385
+50,F,,2.84,101.1,15.59,35.0,University,146.4,,No,8.0,Complete,0,Protected,Improved,Middle,Urban,Yes,Low,0,-0.6390676794179292,-0.3778003232267381,0.031512412369149825
+5,M,44.6,3.48,52.8,4.0,20.0,Elementary/Middle School,139.6,1.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-6.205294914983171,-5.058579809878001,0.12609365329713706
+21,F,46.59,2.98,73.5,8.77,35.0,High School,145.6,3.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,High,0,-3.3142565257190673,-1.780831709744251,-0.11812167610146769
+14,M,47.1,2.54,66.1,5.78,23.0,Elementary/Middle School,150.6,3.0,No,4.0,Complete,1,Unprotected,Unimproved,Low,Rural,No,High,0,-4.823683916090439,-4.717133998740368,-3.3436628089898655
+15,F,45.3,2.69,73.7,9.21,40.0,High School,148.6,3.0,No,5.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.3908806171064543,-0.3395651020113328,0.3741618546460808
+36,F,,3.19,94.7,15.4,35.0,University,136.8,7.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.09231141530919135,0.8071866225434071,1.1855241107518237
+55,F,48.3,2.77,103.9,16.57,31.0,University,154.9,6.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.6186918528805874,-0.31471277338429365,0.10095772191367142
+42,M,44.9,3.15,97.7,13.76,41.0,University,155.3,8.0,Yes,5.0,Complete,1,Protected,Improved,High,Rural,Yes,Low,0,-0.5426088464109062,-0.8837778454622233,-0.8521313830310298
+27,M,49.0,2.07,80.4,9.6,22.0,High School,154.5,3.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.849745667532402,-2.4487398988269216,-1.2803660109367871
+35,M,42.4,1.71,88.9,10.48,33.0,Elementary/Middle School,158.6,2.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.782185593208116,-2.527649228049345,-2.392226606025296
+16,M,46.4,2.56,73.77,8.06,34.0,High School,148.53,3.0,Yes,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.4923695429112662,-2.40390595135635,-1.7031462482731035
+32,F,49.3,2.96,83.9,9.52,22.0,Elementary/Middle School,157.6,2.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.2865219464359465,-2.6426096096468155,-1.8006664143189421
+58,M,47.9,3.13,108.7,17.37,31.0,University,149.0,6.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.03702642584781346,-0.2698241109637353,-0.4507726929863554
+16,M,50.3,2.83,66.3,6.18,32.0,Elementary/Middle School,150.2,1.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-5.382779939189527,-4.531034703486738,-2.5667056199227374
+48,M,49.5,2.95,99.2,12.87,25.0,Elementary/Middle School,157.4,5.0,Yes,5.0,Complete,4,Unprotected,Unimproved,Middle,Rural,No,Low,0,-0.9840833977387193,-1.9008406776087385,-2.0374438851423253
+20,M,47.9,2.81,81.5,11.02,31.0,High School,162.6,5.0,No,5.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.9593629572958339,-0.26016752344684574,0.3179663109262127
+40,F,47.8,2.36,88.6,10.79,22.0,Elementary/Middle School,143.2,2.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.2980517373165035,-2.405741645930298,-1.5069023208282462
+43,F,47.6,3.25,108.84,18.8,30.0,University,149.2,7.0,Yes,6.0,Complete,0,Protected,Unimproved,High,Urban,Yes,Low,0,2.230571311149318,1.5446350529877477,0.368568284481483
+16,M,49.5,2.74,80.5,11.06,27.0,University,162.3,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.11170836431131886,0.45134684773262107,0.5746877029789698
+53,M,44.4,2.13,98.8,13.92,34.0,High School,146.1,3.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.6704827269888816,-1.6318177515401586,-0.9492089898250557
+59,F,49.2,3.22,109.53,17.08,23.0,High School,162.3,5.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.1345905106343465,-0.376084803034375,-0.8151249437076872
+46,F,46.8,3.12,96.9,12.47,22.0,High School,145.1,8.0,Yes,6.0,Incomplete,2,Protected,Improved,Middle,Urban,Yes,Low,0,-1.0959909784859172,-1.7487081898965404,-1.625094790501872
+39,F,48.6,3.31,92.4,13.8,31.0,High School,153.5,5.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.190312847893506,-0.3337654080652564,0.4594193279465411
+13,F,45.7,3.19,68.2,7.4,37.0,High School,149.2,,No,5.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.6686874540828796,-1.7869074526193158,-0.5667734430466917
+28,F,46.6,2.53,85.3,9.42,25.0,Elementary/Middle School,151.4,4.0,Yes,5.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,Yes,Low,0,-1.1075826322887643,-2.226640093805611,-2.297607494836436
+48,F,48.2,3.24,103.0,15.93,29.0,High School,145.5,3.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.06240250745755218,-0.06298049205971516,-0.13465335873308343
+19,F,49.3,2.6,78.1,10.09,29.0,High School,159.4,5.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.2231091267685053,-0.27762656235104344,0.4134241994138623
+34,M,51.0,3.47,93.8,14.45,30.0,High School,151.3,5.0,No,5.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.26389870304872864,0.2613740457862059,0.5903171412934901
+21,F,46.72,2.89,75.08,7.56,28.0,No Education,138.7,3.0,Yes,6.0,Complete,0,Unprotected,Improved,Low,Rural,No,Medium,0,-2.799124281967113,-3.079395329931871,-2.2175236792392674
+6,F,,2.45,55.7,3.65,22.0,Elementary/Middle School,142.8,1.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,,High,0,-4.425989737185609,-5.227534514122711,-3.00482942642284
+21,F,53.3,2.37,78.9,8.94,26.0,Elementary/Middle School,151.42,3.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.5536779711237745,-1.6160082990160136,-1.129307977181459
+22,F,48.3,3.03,82.5,11.35,30.0,High School,146.9,3.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.6743167171780309,0.2082212307254176,0.7298710451412123
+10,M,47.2,3.25,65.1,6.48,19.0,Elementary/Middle School,159.9,2.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,High,Rural,No,High,0,-3.5805383231268193,-3.1303018904390885,-1.4632806823881026
+7,F,48.6,2.52,58.3,4.51,39.0,University,149.8,7.0,Yes,,Complete,1,Protected,Improved,High,Urban,No,High,0,-3.881606123279204,-4.23970627840513,-2.1078233588185724
+59,F,47.9,4.07,108.5,17.71,25.0,High School,154.7,5.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.0836529181335636,-0.12729163404876873,-0.1903824146026812
+11,F,49.0,3.6,68.6,8.17,28.0,Elementary/Middle School,151.4,0.0,Yes,8.0,Complete,0,Protected,Improved,High,Urban,No,Low,0,-1.6546416940255815,-0.5344685890424214,0.406282919891265
+15,M,49.5,3.54,79.0,10.5,26.0,High School,149.7,5.0,Yes,7.0,Incomplete,2,Protected,Unimproved,Middle,Urban,Yes,Low,0,-0.0576218257020478,0.16526026070461167,0.27122307250094874
+55,M,49.2,2.74,104.6,15.85,34.0,University,160.4,7.0,Yes,5.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-0.5882664022204787,-0.7603393250572376,-0.6370181121642199
+54,F,49.1,3.41,100.1,15.48,22.0,High School,159.0,5.0,No,5.0,Incomplete,0,Protected,Improved,High,Rural,Yes,Low,0,-1.3393043785515544,-0.7277433891125796,0.16174085925355938
+51,M,49.8,3.9,104.7,17.0,28.0,High School,147.0,3.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.07063603393326195,0.06976582435257948,0.17329072289089711
+52,M,47.3,2.77,97.62,14.57,21.0,Elementary/Middle School,158.7,1.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.828698790651519,-1.2037777440612543,-0.12162946810137783
+50,M,44.7,2.91,97.2,12.74,26.0,Elementary/Middle School,156.1,1.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Urban,No,Low,0,-1.6981680244519732,-2.126773441888587,-1.7248298389773973
+56,F,47.8,3.18,99.9,13.76,19.0,Elementary/Middle School,155.4,2.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.6003147974579486,-1.732061987706101,-1.1138251958378238
+2,F,48.3,2.91,50.5,3.21,24.0,High School,163.9,5.0,Yes,7.0,Complete,1,Unprotected,Improved,Low,Urban,No,High,0,-3.2253339242387256,-3.477089783892577,-0.8245867568681969
+20,M,47.2,2.92,71.38,6.52,22.0,High School,146.5,0.0,Yes,7.0,Not Immunized,1,Unprotected,Unimproved,Low,Urban,Yes,High,0,-4.555730244239769,-4.641291506883617,-3.6695276986522405
+24,M,45.0,2.4,81.5,10.08,23.0,High School,142.9,4.0,Yes,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.8382333524903234,-1.6378333673331806,-0.9280257397279847
+6,F,48.8,2.91,64.6,6.57,25.0,High School,153.0,3.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,No,Low,0,-0.4990715865389292,-0.8633801999195284,-0.6861425169324841
+20,F,49.5,3.17,81.9,11.08,29.0,High School,151.5,5.0,Yes,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.2667204667559804,0.32216672429166976,0.6050101528686226
+4,F,,3.45,51.3,3.86,26.0,Elementary/Middle School,153.0,2.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-4.985044925285485,-3.975289801191794,0.6667903603070509
+48,M,43.2,2.82,100.7,13.84,33.0,University,154.4,8.0,Yes,4.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.6264343059334042,-1.3181056821185673,-1.443885489183245
+18,M,53.7,2.8,82.3,11.89,28.0,High School,162.5,8.0,Yes,6.0,Complete,1,Protected,Improved,High,Rural,No,Low,0,0.015311819231482704,0.7508091983198697,1.042516401470183
+28,F,44.5,2.63,90.8,13.67,31.0,University,162.9,7.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.49532876587674757,0.8272317171851175,0.6903165549149961
+33,M,47.6,3.28,90.9,11.23,36.0,High School,156.8,4.0,No,5.0,Incomplete,1,Protected,Improved,Middle,Rural,Yes,Low,0,-0.8901401903486974,-1.7530746882256898,-1.9696143575957563
+16,F,45.85,2.65,68.9,8.18,31.0,High School,154.6,3.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,Yes,High,0,-3.473164667718243,-1.5127945745878533,0.33308431303802843
+23,F,48.0,2.99,80.0,10.33,27.0,University,147.7,7.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-1.7393827172413738,-0.712209077394552,0.2627545847934757
+27,F,49.8,2.98,75.0,8.49,26.0,Elementary/Middle School,158.3,2.0,No,2.0,Complete,1,Unprotected,Unimproved,Middle,Rural,No,High,0,-3.9284417318161116,-3.000197818668107,-1.0043459434707014
+46,F,52.8,3.4,96.3,13.3,27.0,Elementary/Middle School,156.6,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.2379066370506862,-1.246737497202369,-0.7560337916603617
+38,F,53.2,3.4,86.51,11.81,29.0,High School,150.5,4.0,No,5.0,Incomplete,1,Unprotected,Improved,High,Rural,Yes,Medium,0,-2.543118268414586,-1.4692590267633685,0.03523626812673165
+52,M,47.59,2.48,105.4,17.73,27.0,University,153.0,4.0,No,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-0.036760079473521556,0.3165038645313177,0.5092084263047224
+59,F,48.1,3.12,100.9,15.75,29.0,High School,146.9,8.0,Yes,9.0,Complete,3,Unprotected,Improved,Middle,Urban,No,Low,0,-1.693992780887078,-0.944495112584504,0.18484704648325523
+26,F,47.7,2.51,87.1,11.54,27.0,Elementary/Middle School,151.8,2.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Middle,Rural,No,Low,0,-0.10396548454503678,-0.24444806296011298,-0.3680380204445368
+22,F,48.0,3.16,85.9,11.09,30.0,High School,149.9,5.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.41535858624654853,0.02133992482001679,-0.3547952951415792
+3,F,46.9,2.62,52.9,3.77,28.0,High School,155.3,4.0,Yes,,Not Immunized,1,Protected,Improved,Middle,Rural,No,High,0,-3.2791907020623356,-3.407550881963062,-0.6831108605743869
+16,M,48.1,3.19,70.5,7.22,24.0,Elementary/Middle School,154.6,1.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-3.7576495959005425,-3.3615156860774618,-2.094071260423175
+10,F,50.2,2.69,70.3,8.04,25.0,High School,145.8,4.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Low,0,-0.47893626008253687,-0.4378908916014805,-0.2510693074474069
+7,F,46.3,3.55,58.8,4.49,30.0,Elementary/Middle School,153.3,2.0,No,5.0,Complete,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.665656609894808,-4.269601185336922,-2.444026058888701
+25,M,47.7,3.61,94.6,12.87,41.0,University,143.8,5.0,Yes,7.0,Incomplete,1,Protected,Improved,High,Urban,No,Low,0,2.1271076883633477,0.3588220012923925,-1.0280191213521757
+13,F,50.6,3.09,71.9,8.48,26.0,University,145.5,8.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-1.2616332503513092,-0.6421864710411235,-0.0882352642104939
+31,M,53.0,3.58,99.2,14.97,27.0,High School,156.7,4.0,Yes,8.0,Complete,1,Protected,Improved,High,Rural,No,Low,0,1.8897616272306403,0.8834757093648826,-0.13530882059491176
+40,M,50.6,3.53,95.2,13.98,25.0,High School,150.6,5.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.8835718414610882,-0.5808405335306321,-0.11358816044759713
+6,M,48.0,2.41,61.4,5.96,33.0,High School,150.62,5.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Medium,0,-2.907834404670993,-2.5643726130563866,-0.8094703069765229
+32,M,51.5,3.08,88.2,12.33,31.0,University,151.4,8.0,Yes,5.0,Complete,1,,Improved,High,Urban,Yes,Low,0,-1.4736698092794223,-0.861356313364663,-0.12762844841322782
+13,M,47.4,3.17,79.4,10.36,31.0,No Education,160.3,7.0,Yes,8.0,Complete,1,Unprotected,Improved,Middle,Urban,Yes,Low,0,1.0228306130790337,0.4385866277429403,0.026002516382775346
+54,M,46.6,3.22,95.6,12.11,25.0,High School,155.9,2.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.506671184129009,-2.8018996545776016,-2.0335425408012173
+6,F,48.5,3.44,60.0,4.66,26.0,Elementary/Middle School,150.4,3.0,Yes,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.5287146756372136,-3.6598535129281657,-2.6504060119191375
+35,M,51.2,3.42,98.9,14.92,32.0,High School,159.6,4.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.9497194794635998,0.4247742638090763,-0.11011538235307416
+34,M,46.0,3.36,94.1,12.93,27.0,High School,156.5,3.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.1808420403183311,-0.6655684348833439,-0.8606359145487025
+54,F,46.3,2.56,98.2,13.66,37.0,High School,156.3,3.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.758195258785953,-1.6490775401338462,-0.8424327889665788
+48,F,47.0,3.44,99.4,15.09,28.0,Elementary/Middle School,147.7,2.0,No,4.0,Not Immunized,1,Protected,Unimproved,Low,Rural,No,Low,0,-0.7733453602775517,-0.4578860021242959,0.02564246360443732
+23,F,49.09,2.92,76.0,8.45,20.0,Elementary/Middle School,149.1,3.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.999759310293344,-2.4273762424828487,-1.127507149801072
+21,M,50.3,3.88,82.4,11.44,25.0,High School,151.2,4.0,No,5.0,Complete,1,Protected,Improved,Middle,Rural,Yes,Low,0,-0.9515158196734965,-0.08390109323490988,0.5645180210357875
+56,M,47.6,3.1,107.4,15.76,35.0,University,151.0,7.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-0.08236406466953067,-0.872456405832003,-1.3189404887765883
+15,M,47.0,3.52,76.2,9.89,28.0,High School,150.7,5.0,No,6.0,Incomplete,0,Unprotected,Unimproved,Middle,Rural,Yes,Low,0,-1.1642138144931433,-0.3782312343157579,0.1806707654311782
+51,F,,2.59,103.1,16.85,30.0,University,164.2,6.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-0.31171855991330877,0.09986631849663957,0.45216889462380433
+32,M,49.4,3.02,85.3,9.55,34.0,Elementary/Middle School,152.9,3.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,High,Rural,No,Medium,0,-2.2994465655854017,-3.032761514108134,-2.634217926015999
+4,F,45.5,2.53,57.17,4.96,27.0,University,149.83,5.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,No,Medium,0,-2.27304447009815,-2.086403621094303,-0.3697726191979484
+14,M,50.9,2.4,67.3,6.18,29.0,Elementary/Middle School,160.2,,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-4.3392850860521515,-4.24785027216279,-2.965148990494574
+32,F,48.9,3.43,91.6,12.58,28.0,University,160.05,8.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.16288566105771374,-0.3171268102054289,-0.40726043469004364
+14,F,49.2,2.33,72.4,8.62,33.0,University,159.1,6.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-1.4834655247027,-0.7001272624205758,-0.03526279903187874
+18,M,47.2,3.62,78.9,9.89,26.0,University,148.9,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-1.2452253572106817,-0.9052746379322194,-0.4287605678908644
+17,F,49.8,3.69,68.5,6.66,20.0,Elementary/Middle School,154.1,1.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.920976806827251,-3.4504874051134165,-1.8690819190921661
+31,F,,,82.9,9.9,29.0,Elementary/Middle School,157.4,,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.3875369019847112,-2.184595528740564,-1.0809881149470542
+34,F,46.4,3.14,89.4,12.08,35.0,High School,144.3,5.0,No,4.0,Incomplete,2,Unprotected,Unimproved,Middle,Rural,Yes,Low,0,-1.1413914301162513,-0.8680209587879186,-0.3836437153635501
+51,F,50.9,3.31,105.9,15.93,26.0,High School,148.0,6.0,Yes,5.0,Incomplete,1,Unprotected,Improved,Low,Rural,No,Low,0,0.32139617079702426,-0.2993260697297636,-0.7665636889760674
+24,F,51.5,3.17,86.2,10.92,30.0,High School,158.1,,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.15023290166305853,-0.40483450288322836,-0.780891712981717
+29,M,54.3,3.88,93.8,12.77,33.0,University,160.9,8.0,Yes,3.0,Incomplete,1,Protected,Improved,High,Urban,No,Low,0,0.7812406550071579,-0.2287523572247723,-0.9545874861169378
+11,F,47.7,2.28,73.0,8.35,26.0,University,151.6,7.0,Yes,5.0,Complete,1,Protected,Improved,High,Urban,No,Low,0,0.09084462908939027,-0.35471249739915056,-0.5435338003555078
+49,M,47.6,3.38,106.5,18.74,29.0,University,157.2,6.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.6171505152623767,0.9787443623829776,0.9021077080978784
+53,F,50.4,3.03,99.9,14.76,28.0,Elementary/Middle School,150.7,4.0,Yes,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,No,Low,0,-1.2704822884778169,-1.001976605893911,-0.32238989170426663
+8,F,46.4,2.99,65.1,6.82,23.0,High School,149.9,8.0,Yes,5.0,Complete,0,Unprotected,Improved,Low,Urban,No,Low,0,-1.5432603034380064,-1.2697592808630054,-0.4508947947550543
+27,M,49.2,3.32,86.4,10.72,40.0,University,150.7,8.0,Yes,5.0,Complete,1,Unprotected,Improved,High,Urban,Yes,Low,0,-0.9951870587713317,-1.4915094249461267,-1.436588953296069
+38,M,48.0,3.14,96.0,13.8,29.0,High School,158.4,5.0,No,5.0,Not Immunized,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.3620424375670322,-0.5065711536411842,-0.44633016135552267
+6,F,47.8,2.78,62.6,5.73,26.0,High School,160.65,3.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Low,0,-1.3815251035381804,-1.9991019405951531,-1.4475951591064962
+11,F,46.52,3.66,67.4,7.12,19.0,No Education,152.9,4.0,Yes,4.0,Complete,2,Unprotected,Improved,Low,Urban,No,Medium,0,-2.130683418511478,-1.6862214518820344,-0.7495649656572354
+2,M,52.5,4.0,54.5,4.48,26.0,Elementary/Middle School,157.2,3.0,No,2.0,Not Immunized,2,,Unimproved,Low,Rural,Yes,Low,0,-1.9619903292097491,-1.7176961705591482,0.19106459428421896
+14,M,45.8,2.02,73.8,8.01,33.0,High School,154.36,4.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.7154580900114267,-2.0962142927016965,-1.7906573988461385
+46,M,43.3,2.51,93.9,13.04,26.0,High School,141.1,3.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.0132242550680184,-1.6439789188342115,-0.7098237682825443
+14,F,47.7,3.11,74.5,9.45,32.0,University,156.0,4.0,No,,Complete,0,Protected,Improved,High,Rural,Yes,Low,0,-0.701066649379178,0.05436712673157862,0.46968957874055184
+21,M,51.98,3.41,84.3,10.73,33.0,High School,148.7,3.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.29045100419169023,-0.6528090200443709,-0.6750954822235965
+17,F,49.2,3.24,72.6,7.41,28.0,Elementary/Middle School,143.0,1.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.481893026682976,-2.55162968928907,-1.8145512214119122
+47,F,53.1,4.16,98.0,15.22,25.0,High School,162.7,4.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.9690123531831473,-0.31360049530440054,0.4036753957634106
+20,F,49.7,2.68,79.0,9.85,34.0,High School,164.0,5.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.2292507723711568,-0.6377602082281913,-0.047003315803273
+20,F,43.1,2.56,79.8,9.43,26.0,University,148.2,7.0,Yes,6.0,Complete,1,Protected,Unimproved,High,Urban,Yes,Low,0,-0.9637251708221456,-1.0012288443343658,-0.7198547770608107
+23,F,47.8,3.57,72.0,8.58,35.0,Elementary/Middle School,145.6,2.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-4.260135903345313,-2.2934813352710517,0.015601792882534344
+6,F,51.1,2.78,65.3,6.94,28.0,High School,160.7,5.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Low,0,-0.1902128555891896,-0.4118056553363918,-0.3280607002299301
+2,M,48.3,3.43,50.8,3.95,20.0,Elementary/Middle School,157.0,1.0,Yes,5.0,Not Immunized,0,Protected,Improved,Low,Rural,No,High,0,-3.81155699793407,-2.6797231338588756,1.3545504955003433
+47,F,48.4,3.01,103.3,17.09,28.0,University,150.3,6.0,Yes,5.0,Complete,0,Protected,Improved,Low,Urban,Yes,Low,0,0.2727104398223356,0.5219852041352172,0.560957889790657
+55,M,45.9,3.4,98.9,14.93,25.0,Elementary/Middle School,154.6,3.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.8686690647593187,-1.2214812657293592,-0.10190046084038429
+20,M,42.4,2.81,86.3,10.53,32.0,University,154.1,8.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.7464238981716438,-0.6656883537528547,-1.4482300579915421
+59,F,46.0,3.26,109.2,17.96,28.0,High School,155.5,5.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.06466785869899462,-0.03185333349221039,-0.19693018261964362
+17,M,46.21,2.33,77.3,9.18,29.0,Elementary/Middle School,155.1,0.0,No,2.0,Not Immunized,0,Unprotected,Improved,Middle,Rural,No,Low,0,-1.495389606707081,-1.4067915830856952,-0.9857294516361539
+4,M,45.0,3.81,50.2,4.28,27.0,Elementary/Middle School,152.2,2.0,No,5.0,Not Immunized,4,Unprotected,Improved,Low,Urban,No,High,0,-6.577382219370239,-4.064076557200929,2.5848934266798884
+27,F,49.0,3.76,88.86,11.99,39.0,University,160.5,7.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.1706475102957076,-0.07432203602699705,-0.3458309408388322
+47,M,49.0,3.57,101.1,14.09,26.0,Elementary/Middle School,149.6,3.0,Yes,2.0,Not Immunized,3,Unprotected,Unimproved,Middle,Urban,No,Low,0,-0.39995254698352634,-1.098697594393333,-1.3076921037772569
+51,M,49.1,2.65,96.0,12.16,21.0,Elementary/Middle School,157.8,1.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,High,Rural,No,Medium,0,-2.091463048794771,-2.5701303097006787,-2.067267955939042
+59,F,51.1,2.8,108.9,17.32,27.0,High School,156.4,7.0,Yes,6.0,Incomplete,0,Protected,Unimproved,Middle,Urban,Yes,Low,0,0.0011018114850425665,-0.27986665351944323,-0.5207942935737099
+33,F,45.6,2.1,81.9,9.11,22.0,Elementary/Middle School,148.3,2.0,No,2.0,Incomplete,1,Unprotected,Unimproved,Low,Rural,No,High,0,-3.0018632241724696,-3.1324612421772526,-1.8050592153442397
+52,M,48.9,2.48,100.7,13.84,26.0,Elementary/Middle School,168.7,1.0,Yes,2.0,Not Immunized,2,Unprotected,Improved,Low,Rural,No,Low,0,-1.1192937481800251,-1.6081420786474894,-1.443885489183245
+10,F,50.6,2.89,69.8,7.86,26.0,University,160.1,5.0,No,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.6815662567327877,-0.6251815003097803,-0.36345499908745044
+30,F,49.0,3.27,95.3,12.95,41.0,University,145.2,8.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,1.3088072654922036,0.1509859095327448,-0.8547585252228054
+33,M,43.2,2.26,84.8,8.95,30.0,Elementary/Middle School,142.3,2.0,No,4.0,Complete,2,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.6024340824136205,-3.618139199601486,-3.3284876913819628
+23,M,47.2,2.68,77.2,8.82,31.0,Elementary/Middle School,158.8,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-3.252293161324943,-2.6757847429215063,-1.460606756187439
+2,M,48.1,3.04,51.7,3.54,39.0,University,159.92,8.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,No,High,0,-3.361662402838962,-3.459414366849616,-0.48634202558021555
+49,M,43.3,2.1,95.6,13.85,30.0,University,157.8,5.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-1.9588396112444466,-1.3870055292418806,-0.3154299445126607
+34,F,49.4,2.89,93.3,13.53,24.0,High School,157.6,4.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.09261502415701622,0.03291794973769217,0.054298269491308095
+26,F,46.4,2.96,75.76,8.24,23.0,Elementary/Middle School,150.3,1.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.50942069754524,-3.1100265046697273,-1.5255518884792745
+25,M,48.8,3.55,81.7,10.08,30.0,Elementary/Middle School,161.9,2.0,No,5.0,Not Immunized,3,Unprotected,Unimproved,High,Rural,Yes,Medium,0,-2.0128574866347124,-1.7719579952403464,-0.9762890465166278
+2,F,46.6,2.42,49.3,2.98,29.0,High School,147.9,3.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,No,High,0,-3.814678207138316,-3.94180400892519,-0.844926804831832
+30,F,50.7,2.52,84.2,11.17,27.0,High School,161.9,5.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.8355254936280834,-1.0440158647784668,-0.025497062167325276
+25,M,48.05,2.97,86.0,11.68,29.0,University,159.43,6.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.6328690949686934,-0.4860575366454754,-0.24854741998698587
+5,F,45.8,3.16,54.6,3.8,31.0,Elementary/Middle School,152.1,3.0,No,1.0,Complete,3,,Unimproved,Low,Rural,No,High,0,-4.252845704137173,-4.601388149969196,-1.7724475716293242
+57,M,47.4,2.72,101.8,14.87,28.0,Elementary/Middle School,144.3,3.0,No,9.0,Complete,0,Protected,Improved,Middle,Rural,No,Low,0,-1.4409932580032416,-1.385317724583476,-0.794226761044148
+8,F,47.0,2.35,64.2,6.63,40.0,University,153.2,8.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,No,Low,0,-1.923811093370112,-1.5067680709763684,-0.435234463002914
+48,F,47.9,2.99,100.6,14.29,36.0,University,151.6,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.4947627376991837,-0.8622982863695999,-0.8320816181727141
+57,F,47.6,2.91,107.1,16.81,23.0,High School,151.9,3.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.15551439018421087,-0.3532411916216201,-0.44233901233709366
+7,F,48.2,2.34,60.0,5.46,23.0,High School,141.8,4.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,High,0,-3.147377777772249,-2.8098122815190494,-0.8116837267110085
+14,M,48.6,3.27,79.3,9.1,31.0,High School,161.1,4.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.5047032143307225,-0.9432731577833174,-1.5465197744242267
+35,F,,2.83,89.8,11.48,23.0,Elementary/Middle School,152.7,4.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.2097764742427637,-1.3917573432467598,-1.060452737701613
+27,M,51.5,2.96,87.6,10.8,30.0,Elementary/Middle School,148.3,6.0,Yes,6.0,Complete,0,Unprotected,Improved,Middle,Urban,Yes,Low,0,-0.6242753370191232,-1.4271233124523282,-1.660372710416501
+49,M,46.9,3.14,91.5,10.93,20.0,Elementary/Middle School,137.8,1.0,Yes,2.0,Not Immunized,0,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.9277900258020573,-3.2728749136361,-2.4695561329270057
+9,F,44.2,2.37,63.0,6.21,33.0,University,139.8,8.0,Yes,5.0,Complete,1,Unprotected,Improved,High,Urban,No,Medium,0,-2.9570622963922792,-2.3535001225427354,-0.6993447649361832
+39,F,51.9,3.79,97.94,13.44,22.0,High School,156.6,3.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Low,0,0.21617817851792942,-0.5387467896686786,-0.973885611538518
+51,M,43.9,2.58,87.1,10.85,21.0,Elementary/Middle School,152.7,1.0,No,3.0,Not Immunized,0,Unprotected,Unimproved,Low,Rural,No,High,0,-4.158745857101376,-3.4443699283758393,-1.468832832271634
+25,F,49.6,3.13,84.7,10.94,27.0,Elementary/Middle School,151.3,2.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-0.5766381254465276,-0.5369114856168956,-0.3851368114099209
+56,F,50.7,2.62,99.1,14.56,26.0,University,151.1,6.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-1.7738188683050227,-1.31318299861235,-0.30894794543264936
+15,F,48.4,3.12,79.9,10.06,26.0,High School,162.5,3.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.872554073058651,0.3777665393861087,-0.010136305437679767
+7,M,50.1,3.19,64.0,6.73,26.0,High School,150.4,5.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Medium,0,-2.378776965077217,-1.8973961154998915,-0.5257160071874978
+9,M,49.0,3.51,70.2,7.47,27.0,High School,152.3,4.0,Yes,6.0,Incomplete,2,Unprotected,Improved,High,Rural,No,Low,0,-0.788449197766179,-1.5983080333058908,-1.5574693574547962
+2,M,48.6,3.72,54.8,3.52,32.0,University,150.6,6.0,Yes,5.0,Complete,1,Unprotected,Improved,High,Urban,No,Low,1,-1.8120254641780507,-3.496888554146051,-2.955569548033173
+34,M,49.2,2.75,85.43,10.78,30.0,Elementary/Middle School,148.8,1.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Urban,Yes,Medium,0,-2.5811795932269157,-2.1957904339020637,-1.1031514822237112
+19,F,50.1,3.5,76.8,8.31,26.0,Elementary/Middle School,151.6,1.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,High,Rural,No,Low,0,-1.6625657252978967,-1.9106588279556123,-1.5043447677362245
+32,F,48.4,3.37,82.6,8.78,25.0,Elementary/Middle School,155.5,2.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.6450579426686405,-3.3219571858527313,-2.431746169276675
+34,M,49.4,2.71,90.3,10.75,25.0,Elementary/Middle School,159.7,1.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.2328931015700764,-2.2193712039887874,-2.403514110970513
+38,F,49.1,3.63,93.5,14.47,29.0,University,157.4,5.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.7490992047414561,0.1296017142874406,0.7535396718828492
+36,M,,1.8,83.0,9.8,34.0,Elementary/Middle School,159.7,1.0,No,2.0,Not Immunized,3,,Unimproved,Low,Rural,No,High,0,-3.5294976807624483,-3.171664720822883,-1.6583834527272636
+58,F,47.9,2.54,99.8,14.35,26.0,Elementary/Middle School,155.4,1.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.8280191730076296,-1.5530501293428127,-0.6168045984967517
+3,F,,3.19,49.5,3.73,29.0,Elementary/Middle School,148.2,3.0,No,2.0,Not Immunized,2,Unprotected,,Low,Urban,No,High,0,-4.8943449686766485,-3.4810483689178073,1.4739192765752378
+13,F,47.7,3.5,69.4,7.78,23.0,Elementary/Middle School,150.0,1.0,No,,Not Immunized,4,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.212345550169936,-1.3622079984523843,-0.363276631389205
+12,F,47.0,3.02,74.5,8.86,31.0,Elementary/Middle School,157.8,7.0,Yes,5.0,Complete,0,Protected,Improved,Middle,Urban,No,Low,0,0.18835084216224454,-0.080733361189358,-0.2428282738191099
+7,M,47.1,3.4,66.0,6.71,22.0,High School,151.5,5.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Low,0,-1.4575737643502507,-1.9240507564628795,-1.3875257172084328
+51,F,44.8,2.43,101.6,16.36,19.0,Elementary/Middle School,153.8,2.0,No,5.0,Complete,1,Unprotected,Improved,Middle,Rural,No,Low,0,-0.6508871656509877,-0.10900402210750038,0.4507485039203603
+4,F,45.8,2.35,56.3,4.37,33.0,University,161.24,6.0,Yes,5.0,Complete,0,Protected,Improved,High,Rural,No,Medium,0,-2.6749934302366496,-3.101849806793078,-1.2749176177345276
+56,M,48.9,3.53,101.1,15.18,28.0,University,157.9,6.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-1.4859172359382735,-1.1604984863953325,-0.38582573326269015
+27,F,49.7,,88.7,12.56,34.0,Elementary/Middle School,152.8,5.0,No,8.0,Complete,1,Protected,Improved,Low,Rural,Yes,Low,0,0.12332757676483942,0.2964952127798142,0.21340870568473183
+11,M,50.37,3.9,74.7,8.22,42.0,University,160.7,8.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,No,Low,0,0.06920422652363811,-1.2357343738746904,-1.7128802585882887
+37,M,47.0,2.5,94.7,11.77,25.0,High School,156.9,4.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.5419875487399133,-1.7338902657693793,-2.210103416185828
+30,F,46.7,3.39,81.3,8.3,21.0,Elementary/Middle School,150.4,2.0,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.657017836100954,-3.5462515122043348,-2.775548793154751
+8,F,46.8,2.93,69.0,7.6,27.0,University,157.68,5.0,Yes,5.0,Incomplete,1,Protected,Improved,High,Urban,No,Low,0,0.10579311960113005,-0.36934567463470913,-0.5085285828825137
+40,F,45.4,2.16,90.3,11.46,27.0,Elementary/Middle School,151.8,1.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.87105863910811,-1.9075054348437528,-1.1944072753076902
+21,M,46.2,2.63,74.7,7.49,27.0,Elementary/Middle School,148.5,1.0,Yes,5.0,Incomplete,0,Protected,Improved,Low,Rural,No,High,0,-3.630567966626084,-3.759666064058271,-2.9101264345204245
+12,F,48.5,2.52,62.3,6.18,45.0,Elementary/Middle School,151.0,2.0,Yes,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-4.54954663078499,-3.122757990372375,-0.4658167219675407
+22,M,48.3,3.18,75.6,9.06,22.0,Elementary/Middle School,158.5,6.0,Yes,6.0,Complete,3,Unprotected,Unimproved,Low,Rural,Yes,High,0,-3.56063165224491,-2.2990351662253303,-0.7351199627139622
+44,F,,3.44,104.3,16.08,25.0,High School,151.2,4.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.9630043467342878,0.3446508613665363,-0.31249373256908725
+11,F,50.06,2.68,65.3,6.34,28.0,Elementary/Middle School,151.2,2.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.9637564363618085,-2.6810191062710818,-1.3488690835783719
+41,F,48.0,3.17,95.9,12.71,26.0,University,148.7,8.0,Yes,6.0,Complete,0,,Unimproved,High,Urban,Yes,Low,0,-0.6217011603507223,-1.1674486254751615,-1.1946931366991294
+41,F,46.2,2.39,96.2,13.17,32.0,University,148.3,7.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.5471417567507972,-0.8880512443571008,-0.8476337775588036
+40,M,48.9,2.57,92.9,12.01,24.0,High School,154.8,4.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Low,0,-1.4758817322685787,-1.828963885467241,-1.5479155208037292
+15,M,49.6,3.02,77.6,8.69,21.0,Elementary/Middle School,152.8,1.0,No,4.0,Not Immunized,2,Unprotected,,Low,Rural,No,Low,0,-0.6109178200975991,-1.5482548310450694,-1.7416297517995907
+19,F,46.0,3.14,73.1,7.8,27.0,Elementary/Middle School,151.8,3.0,Yes,2.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.9133268134200203,-2.4623764719488817,-1.3483165730057545
+35,F,48.3,3.4,90.1,11.9,30.0,Elementary/Middle School,149.4,3.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.13006880238437,-1.097991536791674,-0.712866168314161
+2,F,45.9,2.79,48.2,3.08,30.0,Elementary/Middle School,151.4,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-4.354910466462936,-3.739754345867532,0.2531750473487501
+30,M,48.9,2.27,89.2,12.09,30.0,High School,153.1,5.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Low,0,-0.8025109437683505,-0.8113208506571726,-0.6144288343848773
+48,F,51.9,2.73,94.6,12.03,25.0,Elementary/Middle School,161.1,2.0,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.887675850591029,-2.1902023880665866,-1.5632059092453747
+20,M,48.4,3.62,76.9,8.05,21.0,Elementary/Middle School,155.4,1.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.5940753604521642,-3.0535335256992013,-2.5513201597261927
+40,M,46.8,3.3,101.1,15.65,24.0,High School,151.7,5.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.6358317914798672,0.3361069187827793,-0.015501220181106189
+7,F,45.6,3.28,68.4,9.04,38.0,University,155.11,7.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Urban,No,Low,0,0.4805740470856388,1.367353979760046,1.5391776303294802
+47,M,46.3,2.52,91.5,12.52,29.0,No Education,154.1,3.0,Yes,4.0,Not Immunized,0,Protected,Improved,Low,Urban,No,Medium,0,-2.7094529686628177,-2.0493030749288117,-0.7014500587158934
+30,F,47.7,3.48,94.3,14.24,31.0,High School,148.2,7.0,No,6.0,Complete,1,Protected,Improved,Middle,Urban,Yes,Low,0,1.025534043949835,0.8900274047810712,0.4162939716149176
+47,M,48.1,2.34,94.4,11.56,33.0,No Education,146.0,2.0,Yes,6.0,Complete,1,Unprotected,Improved,Low,Rural,Yes,Medium,0,-2.011791382947194,-2.698234364627291,-2.381843347650611
+28,F,51.6,3.48,76.4,8.63,25.0,Elementary/Middle School,157.5,1.0,No,3.0,Not Immunized,3,Unprotected,Improved,Low,Rural,No,High,0,-3.7013847129565867,-2.996916684139509,-1.1323215735989367
+27,F,47.8,2.84,86.2,10.68,31.0,Elementary/Middle School,157.1,3.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-0.6160463846550427,-1.0211182029687744,-1.0384774904994754
+55,F,46.9,2.59,106.86,15.27,33.0,High School,158.3,3.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.028534824810363145,-0.8972724585826323,-1.4549315156731517
+40,M,49.5,2.46,99.0,13.35,31.0,High School,153.7,4.0,No,4.0,Incomplete,0,Unprotected,Improved,High,Rural,Yes,Low,0,0.09502710856868048,-0.958061403323021,-1.5226557632223272
+40,F,45.8,3.16,95.3,12.06,26.0,High School,144.1,8.0,Yes,5.0,Complete,5,Unprotected,Improved,Middle,Urban,Yes,Low,0,-0.6151965855540132,-1.493033129215898,-1.6821812223866288
+32,M,46.1,2.57,88.9,11.78,26.0,University,147.6,7.0,Yes,6.0,Complete,0,Protected,Unimproved,High,Urban,Yes,Low,0,-1.274344385343495,-1.2474503867048368,-0.8720615333559868
+47,M,51.6,2.69,93.0,10.29,28.0,Elementary/Middle School,155.3,1.0,No,1.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.3485935277754257,-3.5853890948158407,-3.5855630181323415
+2,F,47.1,3.08,54.7,4.25,20.0,Elementary/Middle School,151.9,5.0,No,4.0,Complete,1,Protected,Improved,High,Rural,No,Low,0,-1.1626289340901643,-1.4319141269601032,-0.5611937375098744
+2,F,51.5,3.09,53.7,3.86,32.0,University,155.2,6.0,Yes,6.0,Complete,0,Unprotected,Improved,Low,Urban,No,Low,0,-1.653749169839819,-2.155697804689298,-0.9711234723104974
+54,F,,3.1,107.2,16.08,27.0,High School,154.1,5.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.22602470021910956,-0.4553966592140654,-0.9530128007974127
+31,M,48.4,2.94,83.3,9.94,24.0,Elementary/Middle School,161.7,,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.706791765504021,-2.591811126156976,-1.5577534854842825
+38,M,47.9,2.76,95.3,12.61,26.0,High School,155.2,3.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.5463683567589195,-1.250618775892449,-1.441959168339029
+50,F,49.4,3.22,98.7,12.81,32.0,High School,155.9,4.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.1864294547303795,-1.849117867378593,-1.6879282798291135
+33,F,47.0,3.22,84.7,11.65,27.0,High School,147.9,4.0,Yes,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.239409189966526,-1.0519443425583765,0.3223764333859027
+51,F,47.1,3.03,93.2,10.84,38.0,Elementary/Middle School,155.0,1.0,Yes,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.550231357781979,-3.2262784748501594,-2.504291023618359
+39,M,44.5,2.69,89.1,12.15,37.0,University,149.3,6.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Medium,0,-2.3190621687283137,-1.6467578619071246,-0.5281173268216676
+21,M,46.8,2.74,78.9,11.03,30.0,High School,154.7,4.0,No,5.0,Incomplete,2,Protected,Unimproved,Middle,Rural,No,Medium,0,-2.1692667955610347,-0.4079772973250252,0.8743235086809024
+40,F,47.0,2.42,101.1,16.72,27.0,High School,152.1,5.0,No,,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.8416033965687412,1.0033183389232416,0.7878428066905372
+14,M,46.4,2.63,76.9,8.31,24.0,Elementary/Middle School,156.2,1.0,Yes,5.0,Complete,2,Protected,Unimproved,Low,Urban,Yes,Low,0,-0.464094445745846,-1.764677974178023,-2.1426910096992047
+36,F,48.2,3.3,92.5,12.45,29.0,University,138.76,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.6700784528062662,-0.8392708086467885,-0.7185419434298238
+22,M,46.7,2.73,77.94,8.01,33.0,High School,153.7,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.7631472234947436,-3.359152731108023,-2.8675178923845093
+15,M,51.2,3.6,77.2,10.05,25.0,High School,154.7,8.0,Yes,8.0,Incomplete,2,Unprotected,Improved,Low,Urban,No,Low,0,-0.769002389924895,-0.23263111030392047,0.13950064864207712
+26,M,48.0,1.97,85.8,10.14,26.0,High School,141.1,4.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.9467143146894894,-1.8495051547837233,-1.9905278824260744
+10,M,50.7,3.42,72.1,9.18,30.0,High School,163.7,4.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Low,0,-0.5169573983373347,0.015116569585933373,0.38459207718806854
+43,F,49.1,3.04,99.4,14.04,33.0,University,149.1,7.0,Yes,6.0,Complete,1,Protected,Improved,High,Rural,Yes,Low,0,-0.06805793149568641,-0.5761241427864252,-0.7796879382951163
+20,M,49.5,3.18,90.2,12.35,37.0,University,148.4,5.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,2.1323757182389715,0.7564396208388224,-0.41675040687972437
+4,F,46.1,3.09,60.2,5.93,36.0,University,162.5,6.0,Yes,6.0,Complete,2,Protected,Improved,High,Rural,No,Low,0,-0.8731532640985579,-0.6449447897704399,0.009083358309370125
+17,M,49.0,2.75,81.5,8.63,25.0,Elementary/Middle School,148.6,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Low,0,0.0951683865995124,-1.961585893586052,-2.7352634777724423
+7,F,49.7,3.52,64.4,7.09,30.0,High School,157.9,3.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,No,Low,0,-1.2470220599895447,-0.6182719655891269,0.2287511323637387
+37,M,45.5,2.4,90.6,11.93,28.0,High School,153.2,3.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.634650650393869,-1.6212732301500536,-1.113210021782215
+46,F,54.3,3.61,105.8,16.28,24.0,High School,163.4,4.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,1.0090912902247615,0.2599548101137976,-0.5048541612809959
+5,M,44.1,2.78,58.6,4.98,26.0,High School,147.7,4.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,No,High,0,-3.458457607357022,-3.5573774465299417,-1.4082439455587197
+59,M,48.3,3.75,109.7,16.2,34.0,University,166.0,5.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.06155248406098292,-0.8612347117825282,-1.4894960464924316
+50,M,42.7,2.08,93.2,9.45,22.0,Elementary/Middle School,148.3,2.0,No,7.0,Incomplete,1,Protected,Improved,Low,Rural,Yes,Medium,0,-2.635437365835371,-4.313922487481081,-4.623363127139772
+8,F,48.0,2.25,57.8,5.22,29.0,University,147.3,7.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,No,High,0,-4.629950043998435,-3.4941344565912247,-0.16155785042153692
+58,M,46.0,,93.8,11.73,29.0,Elementary/Middle School,152.0,2.0,No,3.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,High,0,-3.303419233026372,-3.275115648643328,-2.056084194510934
+31,F,47.8,3.28,83.71,11.04,27.0,Elementary/Middle School,154.0,,Yes,5.0,Complete,3,Unprotected,Improved,High,Urban,Yes,Medium,0,-2.1611638608273194,-1.2633185109982372,-0.03638385178339642
+38,M,50.0,2.41,88.8,10.7,26.0,Elementary/Middle School,146.2,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.25796617782643,-2.6191176596449792,-2.0920944205535354
+55,F,50.3,3.2,104.3,16.04,30.0,Elementary/Middle School,159.7,2.0,No,5.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-0.5312287883277568,-0.5445345098816127,-0.3398211276663113
+38,F,51.8,3.13,83.9,10.0,37.0,Elementary/Middle School,151.8,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-3.2129880475543366,-2.859139869236796,-1.219487489017906
+43,F,49.1,3.32,89.6,12.97,23.0,Elementary/Middle School,155.3,2.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,High,Rural,No,Medium,0,-2.4543467639025813,-1.1880772949635718,0.37003252533823827
+30,F,51.5,3.33,85.2,11.05,30.0,High School,148.2,5.0,No,4.0,Incomplete,2,Unprotected,Unimproved,Middle,Rural,Yes,Low,0,-1.5522522720857148,-1.1334747041530027,-0.3959867033593133
+9,M,,2.36,66.8,7.06,27.0,High School,151.1,4.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,No,Medium,0,-2.304097567984428,-2.107509135993337,-1.0573515237048734
+49,M,45.4,3.54,102.8,16.4,34.0,University,149.5,8.0,No,5.0,Incomplete,1,Protected,Improved,High,Urban,No,Low,0,-0.2572681515335164,-0.05453287333079275,0.16837738899295426
+18,M,47.9,2.6,78.5,9.78,27.0,University,153.3,8.0,Yes,5.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-1.3935238485568227,-1.0056396880654808,-0.4782619892842249
+7,M,,2.66,65.7,7.03,36.0,High School,150.8,5.0,No,9.0,Incomplete,1,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.5957542444592927,-1.505779528879051,-0.6844341912531047
+19,F,47.7,2.53,70.5,7.59,29.0,University,144.4,5.0,Yes,6.0,Complete,6,Unprotected,Improved,Middle,Rural,Yes,High,0,-3.792240010478806,-2.703045280196703,-0.9558269979245979
+50,F,50.06,3.41,94.0,12.33,26.0,Elementary/Middle School,145.1,1.0,Yes,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.258346264717266,-2.146758782376221,-1.1485361590190089
+20,M,47.0,3.38,75.6,8.64,19.0,Elementary/Middle School,156.8,1.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-3.056059300474612,-2.427594240953821,-1.324048105865519
+8,M,47.3,2.99,67.1,7.12,39.0,Elementary/Middle School,152.3,1.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.5866515200767235,-1.7346626767730333,-1.064395415826834
+48,M,49.5,2.89,97.8,12.49,29.0,High School,160.0,3.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.3178892167570178,-2.142591912511861,-2.114707521807045
+17,M,46.2,2.72,70.0,7.31,30.0,High School,152.6,4.0,Yes,5.0,Incomplete,2,Unprotected,Improved,Middle,Urban,Yes,High,0,-4.259930880787584,-3.413559118119661,-1.7654748962628535
+22,M,47.7,2.42,84.9,10.98,37.0,University,156.8,6.0,No,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.3911422559301535,-0.5994191684211538,-0.5450316284190889
+3,F,47.7,2.48,50.6,2.97,24.0,Elementary/Middle School,149.3,3.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-4.371795058889664,-4.877500621057967,-1.7916344082963997
+52,M,48.3,3.15,108.3,18.44,22.0,High School,162.01,4.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.6311862267496366,0.6161080473570555,0.32460960026536506
+34,M,48.1,3.14,91.2,13.53,27.0,Elementary/Middle School,163.8,2.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Urban,No,Low,0,-0.9837231133788692,-0.28651822263868393,0.3367435168463933
+59,F,,3.23,103.6,15.26,36.0,University,160.3,7.0,Yes,6.0,Complete,1,Protected,Improved,High,Rural,Yes,Low,0,-1.121898355961489,-1.1705100128048793,-0.7393041182001848
+45,M,48.0,2.45,98.6,12.91,34.0,High School,155.5,4.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.7396711097130063,-1.6472816465740259,-1.8636298253674282
+36,M,49.6,3.99,93.1,13.38,38.0,University,149.4,7.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.8048501036079627,-0.574947431042418,-0.21322273718987927
+59,M,54.0,2.93,105.5,15.61,22.0,High School,147.83,4.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.8519472793882524,-1.1424950849709699,-1.0188210509716074
+48,F,48.1,2.91,97.6,11.8,24.0,Elementary/Middle School,159.2,1.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.1912192941451076,-2.343948532450954,-2.427895281397578
+44,F,48.0,2.31,97.8,13.1,28.0,High School,152.7,2.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.60415009064313,-1.1968660801260211,-1.2394240626494633
+27,M,47.2,2.88,89.5,13.53,32.0,High School,152.3,4.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,No,Low,0,-0.036998444244781464,0.5179479838519139,0.7135707599432181
+19,F,47.7,3.41,69.4,6.7,29.0,Elementary/Middle School,162.8,1.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-4.164087901542137,-3.7248201012354727,-2.0795945757692356
+43,F,45.2,2.34,86.9,10.8,23.0,Elementary/Middle School,155.9,3.0,Yes,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,Yes,High,0,-3.1117936871167218,-2.6641388709155036,-1.0826770684340767
+26,F,45.57,2.85,87.28,12.0,23.0,High School,157.2,3.0,No,7.0,Complete,0,Unprotected,Improved,Low,Urban,No,Low,0,-0.049910639894235866,0.07075046733737078,0.03098586491240166
+35,F,45.1,2.54,91.4,10.96,29.0,High School,155.6,3.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.7846688909979906,-1.7757318288174664,-1.9702508734700772
+53,M,52.2,3.13,104.2,17.04,34.0,Elementary/Middle School,150.6,3.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Low,0,-0.4371147478617564,-0.06228565615546453,0.31104633210937477
+5,F,44.8,1.91,50.2,2.77,27.0,Elementary/Middle School,148.0,2.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-6.237185329189247,-6.272018093986101,-2.327309798067215
+31,M,44.4,3.51,86.4,12.27,29.0,High School,165.7,4.0,No,5.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.8106083996249318,-0.7960619789359772,0.2566936021233738
+52,M,38.8,1.32,96.3,13.06,28.0,Elementary/Middle School,154.9,3.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.1327295231393055,-2.067644902193855,-1.2089356760760397
+15,F,49.3,3.08,78.4,9.39,28.0,High School,144.6,4.0,No,5.0,Incomplete,2,Unprotected,Unimproved,Middle,Rural,Yes,Low,0,0.32494890608322197,-0.18099025483471645,-0.45408674139327404
+16,F,45.5,3.32,73.98,8.97,34.0,No Education,142.65,2.0,No,6.0,Complete,2,Protected,Unimproved,Middle,Urban,Yes,Low,0,-1.6552597156798454,-0.7377625815505232,0.017008073840799283
+3,F,48.0,2.99,51.9,3.48,26.0,University,142.32,5.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,No,High,0,-3.754236074595959,-3.9404076623849655,-0.8886521975758456
+48,M,44.1,3.27,84.7,11.64,22.0,Elementary/Middle School,148.5,2.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Middle,Rural,No,High,0,-4.44135795185678,-2.714348462130125,0.04457106294585154
+44,F,43.4,2.85,89.8,12.23,22.0,Elementary/Middle School,144.9,1.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.5329555520307183,-1.7375544242084402,-0.3332610254173947
+50,F,46.0,3.04,100.9,15.74,39.0,University,153.7,8.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.6846811606939637,-0.3085388010007571,0.17792194670001743
+11,M,52.2,3.76,74.4,8.85,37.0,University,154.7,,Yes,6.0,Incomplete,0,Protected,Improved,High,Urban,No,Low,0,-0.05958775832183605,-0.5634606198207746,-0.7093849967763964
+22,F,48.9,3.05,77.6,7.81,29.0,Elementary/Middle School,152.8,1.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.2447311250546247,-2.9629356237696687,-2.4279358346823874
+19,M,47.4,2.98,79.5,9.29,37.0,High School,161.2,5.0,No,5.0,Complete,3,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.3580354728098603,-1.6269114047745308,-1.3317883122238328
+36,M,48.1,2.34,85.8,9.93,22.0,Elementary/Middle School,153.1,3.0,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.774149837590908,-3.0686732111209873,-2.2636811322688626
+20,M,46.6,2.76,77.1,9.16,33.0,High School,152.8,4.0,Yes,6.0,Complete,2,Unprotected,Improved,Low,Urban,Yes,Medium,0,-2.5230009081410234,-1.9073905103051187,-0.966078804173177
+39,F,48.3,3.2,88.9,11.61,35.0,High School,153.1,3.0,No,4.0,Incomplete,1,Protected,Improved,Middle,Urban,No,Medium,0,-2.078890211149832,-1.706146997837516,-0.7233698527446248
+27,M,50.2,2.82,87.6,10.67,22.0,High School,150.3,4.0,No,4.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.6242753370191232,-1.5320022885973394,-1.8177837215218315
+43,F,44.7,2.65,93.0,13.43,31.0,High School,149.7,3.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.626450638373659,-0.9170589361341925,0.03366486442891553
+27,F,47.7,3.77,80.1,10.1,29.0,Elementary/Middle School,154.3,8.0,No,4.0,Incomplete,1,Unprotected,Improved,Middle,Urban,No,Medium,0,-2.4201188505195548,-1.4900661859658129,-0.17039479095743512
+24,M,48.3,2.57,86.9,12.11,28.0,University,150.6,8.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-0.07073275537706833,-0.02994172556310811,-0.030402398506194167
+16,M,46.0,2.94,83.0,11.1,35.0,University,150.3,7.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,1.0790478543642834,0.4841020947086377,0.06402248804280304
+24,F,46.8,2.72,80.7,9.85,30.0,No Education,154.2,3.0,Yes,3.0,Complete,1,Protected,Improved,Low,Rural,Yes,Low,0,-1.5544936490833867,-1.2623715924648184,-0.5961544243726054
+2,F,,2.67,53.5,3.78,33.0,University,153.3,7.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,No,Low,0,-1.7519732169897517,-2.312298178788851,-1.0699813247790333
+29,M,43.4,2.03,83.9,10.76,28.0,High School,150.1,5.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Medium,0,-2.173933762145099,-1.6960080456004925,-0.7182780641148777
+52,M,49.1,2.62,102.4,15.48,32.0,High School,145.1,3.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.7277390169457577,-0.7305319404808777,-0.4362476533567127
+17,F,46.5,3.75,72.4,9.1,36.0,University,155.5,6.0,Yes,5.0,Complete,1,Protected,Improved,High,Urban,Yes,Medium,0,-2.552092235470499,-0.7945118364515505,0.5588371801254047
+19,M,48.4,2.71,79.2,10.33,31.0,High School,163.5,4.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.4669163969220396,-0.6782224902243414,0.03349087409312757
+12,F,49.4,3.21,76.5,9.2,28.0,High School,154.7,6.0,Yes,7.0,Not Immunized,0,Protected,Improved,Middle,Urban,Yes,Low,0,0.9650553459240886,0.2256636083370921,-0.270405130349839
+53,F,46.1,2.66,101.1,16.87,27.0,University,153.0,5.0,Yes,6.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,-1.0037050178518336,-0.043374877596718556,0.8829244309910124
+21,F,45.3,2.56,80.4,8.62,32.0,Elementary/Middle School,159.5,3.0,No,2.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.064628372625085,-1.929701182967369,-1.9118221292544113
+52,F,52.4,3.11,107.9,18.52,26.0,University,152.4,8.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.6390910192783986,0.6768617736620689,0.4186599749657783
+18,M,45.9,2.65,78.0,9.64,,High School,151.8,4.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.5788969627394922,-1.134987378788125,-0.5440823661406552
+13,F,46.4,2.55,64.4,6.16,22.0,High School,155.9,1.0,Yes,4.0,Incomplete,3,Unprotected,Unimproved,Low,Rural,No,High,0,-4.1137701498071895,-3.3468829365001147,-1.342020859236873
+14,M,51.9,3.24,79.5,8.28,28.0,High School,158.2,6.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,0.5854363526704383,-1.7973147281117203,-2.799829894900628
+24,F,49.4,3.17,91.5,13.6,31.0,University,156.1,5.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,1.7929693960187174,1.3358913002656807,0.48621704606978544
+36,F,49.8,,85.9,9.97,25.0,Elementary/Middle School,149.2,1.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.4033795652974828,-2.683213866297594,-1.7724793314066083
+14,M,48.3,3.62,76.3,9.74,26.0,University,150.8,5.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-0.7062938607649935,-0.3261444175284517,-0.026842141678545692
+5,F,44.9,2.67,64.5,6.82,28.0,University,159.6,8.0,No,5.0,Complete,0,Protected,Improved,High,Urban,No,Low,0,0.21191845222999292,-0.09326496074023816,-0.23344146092451568
+11,M,48.1,2.02,68.4,6.97,36.0,University,152.5,5.0,Yes,6.0,Complete,1,Unprotected,Improved,High,Urban,No,Medium,0,-2.6354274552313655,-2.724388951911123,-1.8126162501134695
+38,M,44.4,2.98,86.9,10.77,34.0,Elementary/Middle School,147.9,1.0,No,2.0,Not Immunized,2,Unprotected,Improved,Middle,Rural,No,Medium,0,-2.758279387061544,-2.5644567298597747,-1.5110080455423236
+54,M,47.8,2.81,107.9,15.05,36.0,University,150.5,7.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,Yes,Low,0,0.2793243669595448,-1.090999176002474,-1.9872481855799309
+21,M,45.6,2.87,72.4,7.98,34.0,Elementary/Middle School,146.1,,No,4.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,High,0,-4.430804322209324,-3.2609860820764274,-1.4269914207976597
+26,M,48.6,3.0,94.1,12.97,30.0,University,153.7,7.0,Yes,6.0,Complete,1,Unprotected,Improved,High,Urban,Yes,Low,0,1.6668658655608872,0.28738800203001347,-0.8213252829291373
+52,F,44.33,3.29,110.2,17.12,28.0,No Education,139.1,6.0,No,8.0,Complete,0,Protected,Improved,Middle,Rural,Yes,Low,0,1.154740126252479,0.13474215402418102,-0.9416694501514407
+31,F,49.7,2.58,89.4,12.9,34.0,High School,158.9,4.0,No,5.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.5709631149192036,-0.00036816974384997636,0.3540929282786518
+43,M,47.3,2.83,98.3,13.67,31.0,High School,150.8,5.0,Yes,5.0,Not Immunized,1,Protected,Improved,High,Urban,Yes,Low,0,-0.5366048675603619,-1.0212045786671782,-1.0670119572300083
+41,F,43.0,2.69,85.0,11.34,29.0,High School,148.1,6.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,High,0,-3.3306928244814076,-2.086002640173095,-0.05285717692999861
+14,M,44.9,3.37,75.8,9.46,34.0,High School,158.5,5.0,No,4.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.9081267066142794,-0.591242923554362,-0.25739924555979954
+48,M,47.8,2.58,93.9,11.69,27.0,Elementary/Middle School,156.2,3.0,No,2.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.247776855450839,-2.6794464636803053,-2.12318712933361
+20,M,48.9,2.99,72.0,7.42,24.0,Elementary/Middle School,145.3,3.0,No,3.0,Not Immunized,3,Unprotected,Improved,Low,Rural,No,High,0,-4.335399442075215,-3.7073162238339608,-2.2315020745568255
+41,F,48.9,3.05,92.9,11.64,29.0,High School,149.8,5.0,No,6.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.367295196349995,-1.8726758824640526,-1.5867689445245154
+43,M,47.8,2.43,93.5,10.46,,Elementary/Middle School,149.7,3.0,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.7354428309253764,-3.20310018834862,-3.487569554779594
+23,M,50.1,,86.4,10.16,25.0,High School,155.3,5.0,No,6.0,Incomplete,2,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.18062730728639698,-1.4293207051215893,-1.9369459729268126
+40,F,49.3,2.43,95.8,13.44,40.0,University,149.1,6.0,Yes,6.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-0.4896103801986019,-0.635607035727733,-0.5344860542837964
+51,F,49.8,3.37,95.1,14.09,25.0,Elementary/Middle School,151.0,2.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Urban,No,Medium,0,-2.120617790514258,-1.1989752899923973,0.1374259109204486
+42,F,41.8,2.27,95.3,12.19,24.0,High School,154.8,3.0,No,3.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.9210512309315488,-1.5902445714564288,-1.5561366410421107
+55,M,50.4,2.86,93.16,11.28,25.0,Elementary/Middle School,152.8,2.0,No,3.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-3.1580570091405424,-3.3915047406807695,-2.430789737403052
+24,M,48.8,2.32,78.0,9.2,33.0,University,156.2,5.0,Yes,6.0,Complete,0,Protected,Unimproved,High,Urban,Yes,Medium,0,-2.9838355913600254,-2.439875320481542,-1.2762857887867782
+11,M,48.2,3.35,77.6,9.91,34.0,University,152.7,5.0,Yes,5.0,Complete,0,Protected,Improved,High,Urban,No,Low,0,1.3141934133632418,0.4734522150176235,-0.11936321557019862
+51,M,49.0,3.12,92.1,11.33,24.0,No Education,156.0,4.0,Yes,3.0,Not Immunized,1,Protected,Unimproved,Low,Rural,Yes,Medium,0,-2.997351020974071,-3.1302894407163055,-2.1315446605889683
+5,M,48.7,3.02,65.4,6.28,26.0,High School,151.9,4.0,No,5.0,Incomplete,0,Protected,Unimproved,Middle,Rural,No,Low,0,-0.23802766048498403,-1.5949220459011693,-1.988595730582441
+24,F,42.6,2.7,81.9,9.27,33.0,Elementary/Middle School,160.4,3.0,No,8.0,Incomplete,6,Unprotected,Improved,Low,Rural,No,Low,0,-1.1825533107387074,-1.7793174307825854,-1.598359069295961
+5,F,52.2,3.21,55.6,4.15,26.0,Elementary/Middle School,161.9,3.0,No,4.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,High,0,-3.8018594257162484,-4.033698363167334,-1.4214991793337899
+11,F,51.4,2.61,64.9,6.3,33.0,University,143.4,7.0,Yes,5.0,Complete,1,Protected,Unimproved,High,Urban,No,High,0,-3.122437011190439,-2.735907189809997,-1.2736217319488004
+49,M,49.8,3.58,97.3,12.55,29.0,University,161.2,6.0,Yes,5.0,Complete,1,Protected,Improved,High,Urban,Yes,Low,0,-1.5570796832571414,-2.176349807192974,-1.9415818722073483
+58,M,50.0,3.51,105.0,16.75,29.0,High School,154.0,5.0,No,5.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-0.8481441027981955,-0.5434261013704648,-0.06693802584813725
+55,M,47.1,,98.8,14.28,24.0,Elementary/Middle School,154.9,3.0,No,4.0,Not Immunized,2,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.8911322693652641,-1.5671900472767326,-0.6298554523205003
+40,F,50.3,3.65,91.0,10.09,34.0,Elementary/Middle School,157.9,3.0,No,2.0,Not Immunized,3,Unprotected,Unimproved,Low,Rural,No,Low,0,-1.6952379516105365,-2.9721057502895114,-2.8823166037059877
+7,F,46.48,3.0,62.6,5.57,20.0,Elementary/Middle School,155.3,0.0,No,3.0,Not Immunized,1,Unprotected,Unimproved,Low,Rural,No,Medium,0,-2.024440308173378,-2.640375485174397,-1.7751870894327195
+37,F,46.3,2.27,90.1,11.48,26.0,High School,157.7,3.0,No,6.0,Incomplete,1,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.463930510019157,-1.600316372928763,-1.1287374238889205
+34,M,45.7,2.36,90.6,11.72,22.0,High School,140.3,3.0,No,5.0,Incomplete,0,Unprotected,Improved,Middle,Rural,Yes,Low,0,-1.149836438839676,-1.4902168568514245,-1.3421214143210225

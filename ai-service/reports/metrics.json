@@ -1,0 +1,450 @@
+{
+  "protocol": {
+    "train_n": 2018,
+    "test_n": 505,
+    "cv": "StratifiedKFold(5, seed=42)",
+    "selection_metric": "macro_f1"
+  },
+  "leakage_demo": {
+    "decision_tree_age_height_gender_test_macro_f1": 0.9185,
+    "who_haz_rule_test_macro_f1": 1.0,
+    "note": "Akurasi tinggi di sini adalah ilusi: model hanya mempelajari ulang rumus WHO HAZ."
+  },
+  "cv_baseline": {
+    "Dummy (majority)": {
+      "macro_f1": [
+        0.26254127468993727,
+        0.0002405968976557469
+      ],
+      "balanced_acc": [
+        0.3333333333333333,
+        0.0
+      ],
+      "recall_high": [
+        0.0,
+        0.0
+      ],
+      "accuracy": [
+        0.649653588187603,
+        0.0009820803453984704
+      ]
+    },
+    "Logistic Regression": {
+      "macro_f1": [
+        0.5468263207639824,
+        0.03859792204647444
+      ],
+      "balanced_acc": [
+        0.54228049050837,
+        0.03726239897956944
+      ],
+      "recall_high": [
+        0.5237928007023704,
+        0.0668073981913441
+      ],
+      "accuracy": [
+        0.7145861484411469,
+        0.02426750452290755
+      ]
+    },
+    "Logistic Regression (balanced)": {
+      "macro_f1": [
+        0.5719009025616882,
+        0.02059802614587765
+      ],
+      "balanced_acc": [
+        0.5975358021941413,
+        0.02411864398062221
+      ],
+      "recall_high": [
+        0.6456979806848112,
+        0.08245663092307257
+      ],
+      "accuracy": [
+        0.6645050733361179,
+        0.01515942628075127
+      ]
+    },
+    "Random Forest (balanced)": {
+      "macro_f1": [
+        0.5811999897466438,
+        0.016604908684580182
+      ],
+      "balanced_acc": [
+        0.5906751510605888,
+        0.02244233669381802
+      ],
+      "recall_high": [
+        0.5981123792800702,
+        0.07885873395405776
+      ],
+      "accuracy": [
+        0.6977163845416798,
+        0.01672839888858148
+      ]
+    },
+    "HistGradientBoosting (balanced)": {
+      "macro_f1": [
+        0.5448626362520217,
+        0.02057312390224753
+      ],
+      "balanced_acc": [
+        0.5439259082289418,
+        0.02402601486094718
+      ],
+      "recall_high": [
+        0.5059701492537314,
+        0.07006981847346566
+      ],
+      "accuracy": [
+        0.688800579809842,
+        0.013706415711335228
+      ]
+    },
+    "XGBoost (sample-weighted)": {
+      "macro_f1": [
+        0.5522688875595009,
+        0.022514000714463692
+      ],
+      "balanced_acc": [
+        0.550784955768562,
+        0.023873840500446615
+      ],
+      "recall_high": [
+        0.5177348551360843,
+        0.07234522702659894
+      ],
+      "accuracy": [
+        0.6902857283246935,
+        0.01755982172846739
+      ]
+    }
+  },
+  "final_model": "Random Forest (balanced)",
+  "tuning": {
+    "Random Forest (balanced)": {
+      "best_params": {
+        "class_weight": "balanced_subsample",
+        "max_depth": 4,
+        "max_features": "log2",
+        "min_samples_leaf": 4,
+        "n_estimators": 469
+      },
+      "cv": {
+        "macro_f1": [
+          0.5971721472213666,
+          0.01024960497438067
+        ],
+        "balanced_acc": [
+          0.6030600970688393,
+          0.01713665654966852
+        ],
+        "recall_high": [
+          0.5683933274802457,
+          0.08624726521701835
+        ],
+        "accuracy": [
+          0.7036692627079085,
+          0.007983388383057947
+        ]
+      }
+    },
+    "Logistic Regression (balanced)": {
+      "best_params": {
+        "C": 0.008111941985431923,
+        "l1_ratio": 0.18340450985343382
+      },
+      "cv": {
+        "macro_f1": [
+          0.592181027996028,
+          0.018761890375779383
+        ],
+        "balanced_acc": [
+          0.6147267444279452,
+          0.022896380905293334
+        ],
+        "recall_high": [
+          0.6369622475856014,
+          0.08231811480589518
+        ],
+        "accuracy": [
+          0.6858339680121859,
+          0.019909282097642752
+        ]
+      }
+    }
+  },
+  "test": {
+    "dummy_majority": {
+      "accuracy": 0.6495,
+      "balanced_accuracy": 0.3333,
+      "macro_f1": 0.2625,
+      "weighted_f1": 0.5115,
+      "recall_high": 0.0,
+      "per_class": {
+        "Low": {
+          "precision": 0.6495049504950495,
+          "recall": 1.0,
+          "f1-score": 0.787515006002401,
+          "support": 328.0
+        },
+        "Medium": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 93.0
+        },
+        "High": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 84.0
+        },
+        "accuracy": 0.6495049504950495,
+        "macro avg": {
+          "precision": 0.21650165016501652,
+          "recall": 0.3333333333333333,
+          "f1-score": 0.26250500200080035,
+          "support": 505.0
+        },
+        "weighted avg": {
+          "precision": 0.42185668071757676,
+          "recall": 0.6495049504950495,
+          "f1-score": 0.5114948949876981,
+          "support": 505.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          328,
+          0,
+          0
+        ],
+        [
+          93,
+          0,
+          0
+        ],
+        [
+          84,
+          0,
+          0
+        ]
+      ]
+    },
+    "before_tuning": {
+      "accuracy": 0.6614,
+      "balanced_accuracy": 0.5704,
+      "macro_f1": 0.5568,
+      "weighted_f1": 0.6668,
+      "recall_high": 0.631,
+      "per_class": {
+        "Low": {
+          "precision": 0.8208469055374593,
+          "recall": 0.7682926829268293,
+          "f1-score": 0.7937007874015748,
+          "support": 328.0
+        },
+        "Medium": {
+          "precision": 0.3020833333333333,
+          "recall": 0.3118279569892473,
+          "f1-score": 0.30687830687830686,
+          "support": 93.0
+        },
+        "High": {
+          "precision": 0.5196078431372549,
+          "recall": 0.6309523809523809,
+          "f1-score": 0.5698924731182796,
+          "support": 84.0
+        },
+        "accuracy": 0.6613861386138614,
+        "macro avg": {
+          "precision": 0.5475126940026825,
+          "recall": 0.5703576736228192,
+          "f1-score": 0.5568238557993871,
+          "support": 505.0
+        },
+        "weighted avg": {
+          "precision": 0.6752051363164674,
+          "recall": 0.6613861386138614,
+          "f1-score": 0.6668208090085833,
+          "support": 505.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          252,
+          51,
+          25
+        ],
+        [
+          40,
+          29,
+          24
+        ],
+        [
+          15,
+          16,
+          53
+        ]
+      ],
+      "roc_auc_ovr_macro": 0.8026,
+      "roc_auc_stunted_vs_normal": 0.8313,
+      "macro_f1_bootstrap_95ci": [
+        0.511,
+        0.6036
+      ]
+    },
+    "after_tuning": {
+      "accuracy": 0.6851,
+      "balanced_accuracy": 0.5976,
+      "macro_f1": 0.5902,
+      "weighted_f1": 0.6912,
+      "recall_high": 0.619,
+      "per_class": {
+        "Low": {
+          "precision": 0.8295819935691319,
+          "recall": 0.7865853658536586,
+          "f1-score": 0.8075117370892019,
+          "support": 328.0
+        },
+        "Medium": {
+          "precision": 0.34615384615384615,
+          "recall": 0.3870967741935484,
+          "f1-score": 0.36548223350253806,
+          "support": 93.0
+        },
+        "High": {
+          "precision": 0.5777777777777777,
+          "recall": 0.6190476190476191,
+          "f1-score": 0.5977011494252874,
+          "support": 84.0
+        },
+        "accuracy": 0.6851485148514852,
+        "macro avg": {
+          "precision": 0.5845045391669186,
+          "recall": 0.597576586364942,
+          "f1-score": 0.5902317066723425,
+          "support": 505.0
+        },
+        "weighted avg": {
+          "precision": 0.6986703661709233,
+          "recall": 0.6851485148514852,
+          "f1-score": 0.691209097094492,
+          "support": 505.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          258,
+          48,
+          22
+        ],
+        [
+          41,
+          36,
+          16
+        ],
+        [
+          12,
+          20,
+          52
+        ]
+      ],
+      "roc_auc_ovr_macro": 0.8,
+      "roc_auc_stunted_vs_normal": 0.8262,
+      "macro_f1_bootstrap_95ci": [
+        0.5387,
+        0.6358
+      ]
+    }
+  },
+  "permutation_importance_test": [
+    {
+      "feature": "Child Age",
+      "mean": 0.1169,
+      "std": 0.0127
+    },
+    {
+      "feature": "ANC Visits",
+      "mean": 0.0185,
+      "std": 0.0094
+    },
+    {
+      "feature": "Sanitation",
+      "mean": 0.0168,
+      "std": 0.006
+    },
+    {
+      "feature": "Economic Level",
+      "mean": 0.0126,
+      "std": 0.0062
+    },
+    {
+      "feature": "Immunization",
+      "mean": 0.0093,
+      "std": 0.005
+    },
+    {
+      "feature": "Deworming Drug Consumption",
+      "mean": 0.0075,
+      "std": 0.0053
+    },
+    {
+      "feature": "Birth Weight",
+      "mean": 0.004,
+      "std": 0.0064
+    },
+    {
+      "feature": "Mother Education",
+      "mean": 0.0025,
+      "std": 0.0044
+    },
+    {
+      "feature": "Complementary Feeding Start Age",
+      "mean": 0.0015,
+      "std": 0.0026
+    },
+    {
+      "feature": "Exclusive Breastfeeding",
+      "mean": 0.0,
+      "std": 0.0
+    },
+    {
+      "feature": "Diarrhea Frequency",
+      "mean": -0.0001,
+      "std": 0.0017
+    },
+    {
+      "feature": "Gender",
+      "mean": -0.0009,
+      "std": 0.0009
+    },
+    {
+      "feature": "Mother Age",
+      "mean": -0.0011,
+      "std": 0.0025
+    },
+    {
+      "feature": "Drinking Water Source",
+      "mean": -0.0037,
+      "std": 0.004
+    },
+    {
+      "feature": "Residence Type",
+      "mean": -0.0038,
+      "std": 0.0018
+    },
+    {
+      "feature": "Birth Length",
+      "mean": -0.0046,
+      "std": 0.0053
+    },
+    {
+      "feature": "Mother Height",
+      "mean": -0.0077,
+      "std": 0.0049
+    }
+  ],
+  "runtime_sec": 227.3
+}

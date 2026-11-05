@@ -111,6 +111,16 @@ export default function GrowthContent() {
   // Data pengukuran terakhir dan delta
   const latestMetric = useMemo(() => {
     if (records.length === 0) {
+      const initW =
+        currentChild?.initialWeightKg ??
+        currentChild?.initialWeight ??
+        currentChild?.initial_weight_kg ??
+        currentChild?.birthWeight;
+      const initH =
+        currentChild?.initialHeightCm ??
+        currentChild?.initialHeight ??
+        currentChild?.initial_height_cm ??
+        currentChild?.birthLength;
       return {
         date: "Belum ada pengukuran",
         weight: currentChild?.initialWeightKg ? `${currentChild.initialWeightKg}` : "-",
@@ -261,7 +271,20 @@ export default function GrowthContent() {
                         {p.name}
                       </p>
                       <p className="text-xs text-gray-500">
-                        {ageMonths} Bln · {p.initialWeightKg || "-"} kg
+                        {ageMonths} Bln ·{" "}
+                        {(
+                          p.initialWeightKg ??
+                          p.initialWeight ??
+                          p.initial_weight_kg ??
+                          p.birthWeight
+                        )
+                          ? `${
+                              p.initialWeightKg ??
+                              p.initialWeight ??
+                              p.initial_weight_kg ??
+                              p.birthWeight
+                            } kg`
+                          : "-"}
                       </p>
                     </div>
                     {active && (

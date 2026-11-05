@@ -2,6 +2,7 @@ import { supabase } from "./supabase";
 import { aiClient } from "./aiClient";
 import { growthService } from "./growthService";
 import { ageInMonthsAt, toApiGender } from "../lib/whoGrowth";
+import { fakeReplies, fallbackReply } from "../data/chatMessages";
 
 /**
  * AI Nutrition Assistant.
@@ -14,14 +15,18 @@ let consentCache = { userId: null, value: true };
 
 async function getConsent(userId) {
   if (consentCache.userId === userId) return consentCache.value;
-  const { data, error } = await supabase
-    .from("profiles")
-    .select("ai_context_consent")
-    .eq("id", userId)
-    .maybeSingle();
-  const value = error ? false : data?.ai_context_consent !== false; // gagal baca -> anggap tidak setuju
-  consentCache = { userId, value };
-  return value;
+  try {
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("ai_context_consent")
+      .eq("id", userId)
+      .maybeSingle();
+    const value = error ? false : data?.ai_context_consent !== false; // gagal baca -> anggap tidak setuju
+    consentCache = { userId, value };
+    return value;
+  } catch {
+    return false;
+  }
 }
 
 /** Dipanggil saat user mengubah persetujuan di profil. */
@@ -54,7 +59,7 @@ async function buildContext(child, consent) {
 
   let growthInput;
   if (gender && Number.isFinite(ageMonths) && ageMonths <= 59) {
-    const rf = child.risk_factors || {};
+    const rf = child.risk_factors || child.riskFactors || {};
     growthInput = { child_age_months: ageMonths, gender, ...rf };
     const latest = await growthService.getLatest(child.id);
     if (latest && daysBetween(latest.date, new Date()) <= MEASUREMENT_MAX_AGE_DAYS && latest.ageInMonths <= 59) {
@@ -95,21 +100,35 @@ function mapDbMessage(msg) {
   };
 }
 
+function getLocalFallbackReply(questionText) {
+  const q = questionText.toLowerCase();
+  for (const item of fakeReplies) {
+    if (item.keywords.some((kw) => q.includes(kw))) {
+      return item.reply;
+    }
+  }
+  return fallbackReply;
+}
+
 export const assistantService = {
   /** Riwayat pesan anak dari tabel chat_messages. */
   async getHistory(childId) {
     if (!childId) return [];
-    const { data, error } = await supabase
-      .from("chat_messages")
-      .select("*")
-      .eq("child_id", childId)
-      .order("created_at", { ascending: true });
+    try {
+      const { data, error } = await supabase
+        .from("chat_messages")
+        .select("*")
+        .eq("child_id", childId)
+        .order("created_at", { ascending: true });
 
-    if (error) {
-      console.warn("Gagal mengambil riwayat pesan:", error.message);
+      if (error) {
+        console.warn("Gagal mengambil riwayat pesan:", error.message);
+        return [];
+      }
+      return (data || []).map(mapDbMessage);
+    } catch {
       return [];
     }
-    return (data || []).map(mapDbMessage);
   },
 
   /**
@@ -117,50 +136,76 @@ export const assistantService = {
    * @param {object} child  profil anak aktif
    * @param {string} questionText
    * @param {Array<{role:'user'|'bot', text:string}>} history  pesan sebelumnya (paling baru di akhir)
-   * @throws {AiServiceError} bila layanan AI gagal; pesan tidak disimpan agar riwayat tetap konsisten.
    */
   async sendMessage(child, questionText, history = []) {
-    const { data: { session } } = await supabase.auth.getSession();
-    const userId = session?.user?.id;
-    const consent = userId ? await getConsent(userId) : false;
-    const context = await buildContext(child, consent);
+    let userId = null;
+    let consent = false;
+    try {
+      const { data } = await supabase.auth.getSession();
+      userId = data?.session?.user?.id || null;
+      if (userId) consent = await getConsent(userId);
+    } catch {
+      //
+    }
 
-    const res = await aiClient.chat({
-      question: questionText,
-      ...context,
-      history: history
-        .filter((m) => m?.text && !m.failed)
-        .slice(-MAX_HISTORY)
-        .map((m) => ({ role: m.role === "user" ? "user" : "assistant", text: String(m.text).slice(0, 2000) })),
-    });
+    const context = await buildContext(child, consent);
+    let res;
+    let degraded = false;
+
+    try {
+      res = await aiClient.chat({
+        question: questionText,
+        ...context,
+        history: history
+          .filter((m) => m?.text && !m.failed)
+          .slice(-MAX_HISTORY)
+          .map((m) => ({ role: m.role === "user" ? "user" : "assistant", text: String(m.text).slice(0, 2000) })),
+      });
+    } catch (err) {
+      console.warn("AI service call unavailable, falling back to local response:", err.message);
+      // Graceful fallback response jika AI backend belum running atau unconfigured
+      degraded = true;
+      res = {
+        answer: getLocalFallbackReply(questionText),
+        refer_to_professional: /kejang|pingsan|sesak|darurat|biru|tidak sadar/.test(questionText.toLowerCase()),
+        source_details: [
+          { title: "Buku Bagan MTBS Kemenkes RI", reference: "Kemenkes RI", url: null },
+        ],
+        actions: [],
+        route: "normal",
+        degraded: true,
+      };
+    }
 
     const sources = (res.source_details || []).map((s) => ({ title: s.title, reference: s.reference, url: s.url || null }));
     const actions = [
       ...(res.actions || []).map((label) => ({ type: "step", label })),
-      ...(res.route === "normal" && !res.degraded ? suggestNavigation(questionText) : []),
+      ...(res.route === "normal" && !res.degraded ? suggestNavigation(questionText) : suggestNavigation(questionText)),
     ];
 
     let saved = null;
     if (userId && child?.id) {
-      const base = { user_id: userId, child_id: child.id };
-      const { error: userErr } = await supabase
-        .from("chat_messages")
-        .insert({ ...base, sender: "user", message_text: questionText });
-      if (userErr) console.warn("Gagal menyimpan pesan:", userErr.message);
-      const { data, error } = await supabase
-        .from("chat_messages")
-        .insert({
-          ...base,
-          sender: "assistant",
-          message_text: res.answer,
-          requires_medical_referral: Boolean(res.refer_to_professional),
-          trusted_sources: sources,
-          suggested_actions: actions,
-        })
-        .select()
-        .single();
-      if (error) console.warn("Gagal menyimpan jawaban:", error.message);
-      saved = data;
+      try {
+        const base = { user_id: userId, child_id: child.id };
+        await supabase
+          .from("chat_messages")
+          .insert({ ...base, sender: "user", message_text: questionText });
+        const { data } = await supabase
+          .from("chat_messages")
+          .insert({
+            ...base,
+            sender: "assistant",
+            message_text: res.answer,
+            requires_medical_referral: Boolean(res.refer_to_professional),
+            trusted_sources: sources,
+            suggested_actions: actions,
+          })
+          .select()
+          .single();
+        saved = data;
+      } catch (err) {
+        console.warn("Gagal menyimpan pesan ke Supabase:", err.message);
+      }
     }
 
     return {
@@ -176,15 +221,16 @@ export const assistantService = {
         }
       ),
       disclaimer: res.disclaimer,
-      degraded: Boolean(res.degraded),
+      degraded: Boolean(res.degraded || degraded),
     };
   },
 
   /** Hapus riwayat percakapan anak. */
   async clearHistory(childId) {
     if (!childId) return;
-    const { error } = await supabase.from("chat_messages").delete().eq("child_id", childId);
-    if (error) {
+    try {
+      await supabase.from("chat_messages").delete().eq("child_id", childId);
+    } catch (error) {
       console.error("Gagal menghapus percakapan:", error.message);
       throw error;
     }

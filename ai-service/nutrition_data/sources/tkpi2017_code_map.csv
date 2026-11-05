@@ -1,0 +1,1151 @@
+# source: Kemenkes RI (2018). Tabel Komposisi Pangan Indonesia 2017, Bab 7 Kode. PDF sha256=12433fb4803c47ecbc89dc5981e3ee80717313ccf1b756b8189ebffca4e1d382. Diekstrak dengan tools/extract_tkpi_appendix.py
+kode_lama,kode_baru,nama,jenis,kelompok,page
+IDA001,AR001,"Beras giling, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA002,AR002,"Beras giling var pelita, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA001,AR001,"Beras giling, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA002,AR002,"Beras giling var pelita, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA003,AR003,"Beras giling var rojolele, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA004,AR004,"Beras hitam, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA005,AR005,"Beras jagung kuning, kering, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA006,AR006,"Beras jagung putih, kering, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA007,AR007,"Beras ketan hitam tumbuk, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA008,AR008,"Beras ketan putih tumbuk, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA009,AR009,"Beras ladang, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA010,AR010,"Beras menir, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA011,AR011,Beras parboiled,TUNGGAL/SINGLE,Serealia,116
+IDA012,AR012,"Beras tumbuk, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA013,AR013,"Beras tumbuk merah, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA014,AR014,"Cantel, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA015,AR015,"Jagung muda, kuning, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA017,AR016,"Jagung kuning pipil, kering, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA019,AR017,"Jagung pipil var. harapan, kering",TUNGGAL/SINGLE,Serealia,116
+IDA020,AR018,"Jagung pipil var. metro, kering",TUNGGAL/SINGLE,Serealia,116
+IDA021,AR019,"Jali, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA022,AR020,"Jawawut, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA023,AR021,"Jampang huma, mentah",TUNGGAL/SINGLE,Serealia,116
+IDA025,AP001,Nasi,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA029,AP002,Nasi tim,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA047,AP003,"Beras, tapai",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA050,AP004,"Beras, tepung, mentah",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA026,AP005,"Beras merah, nasi",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA030,AP006,"Bihun, mentah",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA063,AP007,Bihun goreng instan,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+,AP008,"Bihun Jagung, mentah",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+,AP009,"Jagung nasi, mentah",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA016,AP010,"Jagung muda, rebus",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA051,AP011,"Jagung kuning, tepung",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA018,AP012,"Jagung kuning pipil, rebus",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA052,AP013,"Jagung, tepung putih",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA024,AP014,"Ketan, ketupat",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA027,AP015,"Ketan hitam, matang",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA048,AP016,"Ketan hitam, tapai",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA028,AP017,"Ketan putih, matang",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA049,AP018,"Ketan putih, tapai",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA041,AP019,"Maizena, tepung",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA042,AP020,"Makaroni, mentah",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA043,AP021,Mi basah,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA044,AP022,Mi kering,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA045,AP023,Misoa,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA124,AP024,Roti putih,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA053,AP025,Tepung terigu,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA055,AP026,Amparan tatak,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA056,AP027,"Apang kukus, kue",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA057,AP028,"Apem, kue",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA031,AP029,Biskuit,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA058,AP030,"Bakpia, kue",OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA059,AP031,Bakwan,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA060,AP032,Bantal,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA061,AP033,Baruasa,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDC124,AP034,Batar daan,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA064,AP035,Bika ambon,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA065,AP036,Bingka,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA066,AP037,Bobengka,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA067,AP038,Bolu peca,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA068,AP039,Brem,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA069,AP040,Bubur tinotuan (Manado),OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA070,AP041,Cake tape,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA071,AP042,Cangkuning,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA032,AP043,Dodol bali,OLAHAN/PRODUK/KOMPOSIT,Serealia,116
+IDA034,AP044,Dodol galamai,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA035,AP045,Dodol kedondong,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA036,AP046,Dodol manado,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA038,AP047,Emping beras,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA072,AP048,Gemblong,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA073,AP049,Gendar goreng,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA039,AP050,Intip goreng,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA077,AP051,Jagung gerontol,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA040,AP052,Jagung titi,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA078,AP053,Japilus,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA079,AP054,Kakicak,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA080,AP055,Kambose,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA081,AP056,Kapusa,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA082,AP057,Keddo bodong,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA083,AP058,"Kelepon, kue",OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA084,AP059,Kereput,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDD202,AP060,Ketoprak,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA085,AP061,Ketupat kandangan,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA086,AP062,Koya,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA087,AP063,Koya mirasa,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA088,AP064,Koyabu,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA089,AP065,Kue ali,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA090,AP066,Kue bangen,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA091,AP067,Kue gelang,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA092,AP068,Kue jahe,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDC135,AP069,Kue kelapa,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDC136,AP070,Kue koa,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA093,AP071,Kue ku temu,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA094,AP072,Kue lumpur,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA095,AP073,Kue pelita,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA097,AP074,Kue putu cangkir,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA096,AP075,Kue sus,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA098,AP076,Kue timphan,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA099,AP077,Laksa/Putu mayang,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA100,AP078,Lapis legit,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA101,AP079,Lupis ketan,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA102,AP080,Manan samin,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA103,AP081,Martabak india,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA104,AP082,Martabak mesir,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA105,AP083,Masekat,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA106,AP084,Mie aceh rebus,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA107,AP085,Mie ayam,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA108,AP086,Mie bakso,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA109,AP087,Mie celon,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA110,AP088,Mie pangsit basah,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA111,AP089,Nasi gemuk,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA112,AP090,Nasi gurih,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA113,AP091,Nasi minyak,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA114,AP092,Nasi rames,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA115,AP093,Nopia spesial,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA116,AP094,Onde-onde,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA117,AP095,Padamaran,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA118,AP096,Pastel,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA119,AP097,Pulut,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA120,AP098,Pundut nasi,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDH019,AP099,Putri hijau,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA121,AP100,Putri selat,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA122,AP101,Putu sopa,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA046,AP102,Renggi goreng,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA123,AP103,Roti boong,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA125,AP104,Roti warna sawo matang,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA126,AP105,Sarimuka,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA127,AP106,Spaghetti,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA128,AP107,Srikaya ketan,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA129,AP108,Sunduk lawang,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA130,AP109,Suwir-suwir,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA054,AP110,Tipa-tipa,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA131,AP111,Wajit camilan,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA132,AP112,Widaran,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA133,AP113,Wingko babat,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDA134,AP114,Yangko,OLAHAN/PRODUK/KOMPOSIT,Serealia,117
+IDB001,BR001,"Arrowroot, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB002,BR002,"Batatas gembili, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB003,BR003,"Batatas kelapa, ubi, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB007,BR004,"Belitung, talas, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB009,BR005,"Bengkuang, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB010,BR006,"Bentul (Komba), talas, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB040,BR007,"Gadeng/Gadung, kering",TUNGGAL/SINGLE,Umbi berpati,118
+IDB012,BR008,"Gadung, ubi, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB014,BR009,"Ganyong, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB016,BR010,"Gembili, ubi, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB017,BR011,"Hofa/Ubi hutan, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB018,BR012,"Kaburan, ubi, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB019,BR013,"Kentang, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB020,BR014,"Kentang hitam, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB021,BR015,"Keribang, ubi, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB022,BR016,"Ketela pohon/ singkong, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB024,BR017,Lepok/Ubi rumput,TUNGGAL/SINGLE,Umbi berpati,118
+IDB043,BR018,"Sagu aren, kering",TUNGGAL/SINGLE,Umbi berpati,118
+IDB044,BR019,"Sagu aren, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB045,BR020,Sagu kasbi segar,TUNGGAL/SINGLE,Umbi berpati,118
+IDB046,BR021,Sagu lempeng,TUNGGAL/SINGLE,Umbi berpati,118
+IDB047,BR022,"Sagu singkong, kering",TUNGGAL/SINGLE,Umbi berpati,118
+IDB026,BR023,"Sente, talas, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB027,BR024,"Suweg, talas, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB029,BR025,"Talas bogor, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB031,BR026,"Talas pontianak, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB032,BR027,"Talas viqueque, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB033,BR028,"Ubi jalar, kuning, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB035,BR029,"Ubi jalar manis, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB036,BR030,"Ubi jalar merah, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB037,BR031,"Ubi jalar putih, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB038,BR032,Ubi jalar tinta/ kemayung,TUNGGAL/SINGLE,Umbi berpati,118
+,BR033,"Umbi Uwi, segar",TUNGGAL/SINGLE,Umbi berpati,118
+IDB004,BP001,"Batatas kelapa, ubi, bakar",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB005,BP002,"Batatas kelapa, ubi, kukus",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB006,BP003,"Batatas tali, ubi, rebus",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB008,BP004,"Belitung, talas, kukus",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB011,BP005,"Bentul, talas, kukus",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB013,BP006,"Gadung, ubi, kukus",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB015,BP007,"Ganyong, rebus",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB023,BP008,Ketela pohon/singkong kukus,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB028,BP009,"Suweg, talas, kukus",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB030,BP010,"Talas bogor, kukus",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB034,BP011,"Ubi jalar, kuning, kukus",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB039,BP012,Ubi jalar tinta/ kemayung kukus,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB052,BP013,Bagea kelapa asin,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB053,BP014,Bagea kelapa manis,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB054,BP015,Bagea kenari asin,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB055,BP016,Bagea kenari manis,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB056,BP017,Bagea kw 1,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB057,BP018,Bagea kw 2,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+,BP019,Beras Cerdas,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+,BP020,Beras ganyong,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+,BP021,Beras Siger,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB058,BP022,Biji nangka/Biji salak,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB059,BP023,Bubur sagu,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB060,BP024,Cassavastick,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB061,BP025,Ceriping getuk singkong,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+,BP026,Gatot,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+,BP027,Geblek,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB062,BP028,Getuk goreng,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB063,BP029,Getuk singkong,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB064,BP030,Gurandil,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB065,BP031,Kabuto,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB066,BP032,Kapurung,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB067,BP033,Kecimpring singkong goreng,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB068,BP034,Keremes,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB069,BP035,Keripik gadung,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB070,BP036,Keripik kentang,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB071,BP037,Keripik singkong,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB072,BP038,Keripik singkong berbumbu,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB073,BP039,Keripik ubi,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB074,BP040,Kerupuk cumi goreng,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB041,BP041,Kerupuk kemplang (ikan) mentah,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB075,BP042,Kerupuk kemplang goreng,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB076,BP043,Kerupuk kemplang panggang,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB077,BP044,Kerupuk mie kuning goreng,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,118
+IDB078,BP045,Kerupuk udang goreng,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB079,BP046,Kue bangket,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB080,BP047,Kue putu singkong,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB081,BP048,Lanting getuk,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB042,BP049,Mi golosor,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP050,Mie Bendo,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP051,Mie Sagu,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB082,BP052,Ongol-ongol sagu,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP053,Oyek,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB025,BP054,Papeda,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP055,Rasbi (Beras Ubi),OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP056,Rasi (Beras Singkong),OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB083,BP057,Sagu forno,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP058,Sagu Lemak (Kue Sagon),OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB084,BP059,Sagu manis,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP060,Sagu Rendang,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB085,BP061,Sagu sinole,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB086,BP062,Serimping talas kebumen,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB048,BP063,Tapai singkong,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB049,BP064,Tepung Arrowroot,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP065,Tepung Ganyong,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP066,Tepung Gaplek,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB050,BP067,"Tepung kentang, kering",OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP068,Tepung Mocaf,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP069,Tepung Sente,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB051,BP070,Tepung singkong/ Tapioka,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP071,Tepung Tales Beneng,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP072,Tepung Ubi Ungu,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP073,Tiwul,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP074,Tiwul Instan,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+,BP075,Ubi Cilembu,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDB087,BP076,Uli batatas,OLAHAN/PRODUK/KOMPOSIT,Umbi berpati,119
+IDC004,CR001,"Kacang arab, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC005,CR002,"Kacang babi, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC006,CR003,"Kacang belimbing (kecipir), kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC008,CR004,"Kacang beracun, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC010,CR005,"Kacang bogor, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC012,CR006,"Kacang bogor, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC013,CR007,"Kacang endel, biji, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC014,CR008,"Kacang ercis, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC015,CR009,"kacang galing, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC016,CR010,"Kacang gude, biji, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC017,CR011,"Kacang gude, biji, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC021,CR012,"Kacang hijau var. bakti, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC022,CR013,"Kacang hijau var. siwalik, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC019,CR014,"Kacang hijau, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC023,CR015,"Kacang hitam, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC024,CR016,"Kacang kapri, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC025,CR017,"Kacang kedelai, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC026,CR018,"Kacang kedelai, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC029,CR019,"Kacang kincai, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC030,CR020,"Kacang komak, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC031,CR021,"Kacang kuning, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC032,CR022,"Kacang lebui /iris, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC033,CR023,"Kacang mentega, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC034,CR024,"Kacang merah /banda, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC039,CR025,"Kacang merah tua, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC035,CR026,"Kacang merah, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC037,CR027,"Kacang merah, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC001,CR028,"Kacang mete/biji jambu monyet, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC040,CR029,"Kacang panjang, biji, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC045,CR030,Kacang tanah sangan,TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC046,CR031,Kacang tanah sangan tanpa selaput,TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC041,CR032,"Kacang tanah, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC047,CR033,"Kacang tolo / tunggak, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC049,CR034,"Kacang tunis, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC050,CR035,"Kacang uci, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC051,CR036,"Kacang urei, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC058,CR037,"Kenari banda, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC057,CR038,"Kenari, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC059,CR039,"Komak polong, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC060,CR040,"Koro andong, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC061,CR041,"Koro benguk, biji, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC062,CR042,"Koro kerupuk, biji, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC063,CR043,"Koro loke, biji, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC064,CR044,"Koro roay, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC065,CR045,"Koro wedus, biji, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC067,CR046,"Lamtoro biji, muda, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC066,CR047,"Lamtoro biji, tua, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC068,CR048,Lamtoro var. gung tanpa kulit,TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC069,CR049,Lamtoro var. lokal dengan kulit,TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC003,CR050,"Nangka, biji, segar",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC070,CR051,"Saga merah terkupas, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC071,CR052,"Wijen, kering",TUNGGAL/SINGLE,"Kacang, biji, bean",120
+IDC007,CP001,"Kacang belimbing, rebus",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC009,CP002,"Kacang bogor, goreng",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC011,CP003,"Kacang bogor, rebus",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC018,CP004,"Kacang gude, rebus",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC020,CP005,"kacang hijau, rebus",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC027,CP006,"Kacang kedelai, goreng",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC028,CP007,"Kacang kedelai, rebus",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC036,CP008,"Kacang merah kering, rebus",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC038,CP009,"Kacang merah segar, rebus",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC002,CP010,"Kacang mete/biji jambu monyet, goreng",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC044,CP011,Kacang tanah rebus dg kulit,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC042,CP012,"Kacang tanah, goreng",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC043,CP013,"Kacang tanah, rebus",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC048,CP014,"Kacang tolo, rebus",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC072,CP015,Ampas kacang hijau,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC073,CP016,"Ampas tahu, mentah",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC075,CP017,Ampas tahu kukus,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC074,CP018,"Ampas tahu, kering",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC123,CP019,Pepea oncom ampas tahu,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC076,CP020,Bungkil biji karet,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC077,CP021,Bungkil kacang tanah,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC078,CP022,Bungkil kelapa,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDA033,CP023,Dodol banjarmasin,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",120
+IDC079,CP024,Emping (kerupuk melinjo),OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC080,CP025,Emping komak,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC125,CP026,Enting-enting gepuk hello kity,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC126,CP027,Enting-enting gepuk kacang tanah,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC127,CP028,Enting-enting wijen,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDA074,CP029,Geplak,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDA075,CP030,Geplak jahe,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC081,CP031,Kacang atom,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC082,CP032,Kacang goyang,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC083,CP033,Kacang negara,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC084,CP034,Kacang sukro,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC085,CP035,Kacang tanah sari,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC086,CP036,Keju kacang tanah (peanut butter),OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC087,CP037,Kembang tahu,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC088,CP038,Kembang tahu rebus,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC128,CP039,Keripik oncom,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC129,CP040,Keripik tempe,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC130,CP041,Keripik tempe abadi besar,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC131,CP042,Keripik tempe abadi murni,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC133,CP043,Keripik tempe abadi sedang,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC134,CP044,Keripik tempe abadi telur,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC132,CP045,Kerupik tempe abadi prima,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC089,CP046,Kwaci,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC138,CP047,Melinjo emping tebal goreng manis,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC137,CP048,"Melinjo emping tebal, goreng asin",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC139,CP049,Melinjo emping tipis goreng,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC140,CP050,Moon tahu,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC090,CP051,Oncom,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC091,CP052,Oncom ampas kacang hijau,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC092,CP053,Oncom kacang hijau + singkong,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC093,CP054,Oncom kacang tanah pepes,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC141,CP055,Rempeyek kacang tanah,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC142,CP056,Rempeyek kacang tolo,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC143,CP057,Rempeyek kacang uci,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC144,CP058,Sayur lebui,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC096,CP059,"Saridele, bubuk",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC097,CP060,Susu kedelai,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC098,CP061,"Tahu, mentah",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC099,CP062,Tahu goreng,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC100,CP063,Tahu telur,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC101,CP064,Takwa,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC102,CP065,Tauco,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC103,CP066,"Tauco cap beruang, cake",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC104,CP067,"Tauco cap DAS, cake",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC105,CP068,Tauco cap meong,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC106,CP069,Tauji cap singa,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC107,CP070,Tempe bongkrek,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC108,CP071,Tempe gembus P3G,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC109,CP072,Tempe gembus yogya,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC110,CP073,Tempe kacang babi,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC111,CP074,Tempe kacang belimbing,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC112,CP075,Tempe kedelai + jagung,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC118,CP076,"Tempe kedelai murni, goreng",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC117,CP077,"Tempe kedelai murni, mentah",OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC113,CP078,Tempe koro benguk,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC114,CP079,Tempe lamtoro,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC115,CP080,Tempe lamtoro var. gung dengan kulit,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC116,CP081,Tempe lamtoro var. gung tanpa kulit,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC119,CP082,Tempe pasar,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC120,CP083,Tempe pasar goreng,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC121,CP084,Tepung hunkwe (pati kacang ijo),OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+,CP085,Tepung Jalejo,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDC122,CP086,Tepung kacang kedelai,OLAHAN/PRODUK/KOMPOSIT,"Kacang, biji, bean",121
+IDD001,DR001,"Akar tonjong, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD002,DR002,"Ale, toge, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD003,DR003,"Andaliman, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD004,DR004,"Andewi, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD005,DR005,"Bakung, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD006,DR006,"Baligo, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD007,DR007,"Bawang bombay, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD008,DR008,"Bayam, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD010,DR009,"Bayam merah, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD012,DR010,"Bit, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD013,DR011,Buah kelor,TUNGGAL/SINGLE,Sayuran,122
+IDD014,DR012,Buah merah,TUNGGAL/SINGLE,Sayuran,122
+IDD015,DR013,"Buncis, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD017,DR014,"Bunga pepaya, segar",TUNGGAL/SINGLE,Sayuran,122
+,DR015,"Bunga turi, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD018,DR016,"Caisin, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD019,DR017,"Daun bangun-bangun, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD020,DR018,"Daun bawang merah, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD021,DR019,"Daun bebuas, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD022,DR020,"Daun belem, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD023,DR021,"Daun bluntas, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD024,DR022,"Daun gandaria, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD025,DR023,"Daun gedi besar, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD026,DR024,"Daun gedi kecil, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD027,DR025,"Daun gelang, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD028,DR026,"Daun gunda bali, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD029,DR027,"Daun gunda serang, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD030,DR028,"Daun jambu mete muda, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD031,DR029,"Daun jampang, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD032,DR030,"Daun jawaw seluang, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD033,DR031,"Daun jonghe, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD034,DR032,"Daun kacang ma, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD035,DR033,"Daun kacang panjang, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD037,DR034,"Daun kasbi/singkong karet, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD038,DR035,"Daun katuk, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD040,DR036,"Daun kecipir, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD041,DR037,"Daun kedondong, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD042,DR038,"Daun kelor, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD044,DR039,"Daun kemang, segar",TUNGGAL/SINGLE,Sayuran,122
+,DR040,"Daun kenikir, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD045,DR041,"Daun kesum, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD046,DR042,"Daun kol sawi, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD047,DR043,"Daun koro, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD048,DR044,"Daun kubis, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD049,DR045,"Daun kumak, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD050,DR046,"Daun labu siam, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD051,DR047,"Daun labu waluh/kuning, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD052,DR048,"Daun lamtoro, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD053,DR049,"Daun leilem, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD054,DR050,"Daun leunca, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD055,DR051,"Daun lobak, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD056,DR052,"Daun lompong talas, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD057,DR053,"Daun mangkokan, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD058,DR054,"Daun matel ambon, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD059,DR055,"Daun melinjo, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD060,DR056,"Daun mengkudu, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD062,DR057,"Daun ndusuk, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD063,DR058,"Daun oyong, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD064,DR059,"Daun pakis, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD065,DR060,"Daun pakis longgiho, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD066,DR061,"Daun pakis wambateu, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD067,DR062,"Daun paku, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD068,DR063,"Daun pangi, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD069,DR064,"Daun pare, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD070,DR065,"Daun pepaya, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD071,DR066,"Daun pohpohan, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD072,DR067,"Daun selasih, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD073,DR068,"Daun semanggi, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD074,DR069,"Daun simpur, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD075,DR070,"Daun singkil, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD076,DR071,"Daun singkong, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD077,DR072,"Daun singkong ambon, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD078,DR073,"Daun singkong ampenan, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD079,DR074,"Daun singkong kopang, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD081,DR075,"Daun sintrong, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD082,DR076,"Daun talas, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD173,DR077,"Daun tespong, segar",TUNGGAL/SINGLE,Sayuran,122
+IDD084,DR078,"Daun ubi kuning, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD085,DR079,"Daun ubi merah, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD087,DR080,"Daun ubi putih, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD088,DR081,"Daun ubi tinta, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD089,DR082,"Eceng, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD090,DR083,"Gambas (oyong), segar",TUNGGAL/SINGLE,Sayuran,123
+IDD091,DR084,"Genjer, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD092,DR085,"Jagung muda / semi, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD093,DR086,Jamur encik,TUNGGAL/SINGLE,Sayuran,123
+IDD094,DR087,"Jamur kuping, kering",TUNGGAL/SINGLE,Sayuran,123
+IDD095,DR088,"Jamur kuping, segar",TUNGGAL/SINGLE,Sayuran,123
+,DR089,"Jamur merang, segar",TUNGGAL/SINGLE,Sayuran,123
+,DR090,"Jamur tiram, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD096,DR091,Jamur sagu,TUNGGAL/SINGLE,Sayuran,123
+IDD097,DR092,"Jantung pisang, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD098,DR093,"Jengkol, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD099,DR094,"Jotang, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD100,DR095,"Kabau, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD101,DR096,"Kacang mekah, polong, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD102,DR097,"Kacang panjang, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD105,DR098,Kacang ranti polong,TUNGGAL/SINGLE,Sayuran,123
+IDD106,DR099,"Kalakai, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD107,DR100,"Kangkung, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD110,DR101,Kangkung tondano,TUNGGAL/SINGLE,Sayuran,123
+IDD111,DR102,"Kapri muda, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD112,DR103,Karawila,TUNGGAL/SINGLE,Sayuran,123
+IDD113,DR104,"Kecipir muda, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD114,DR105,"Kecombrang, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD115,DR106,"Kelawi, kluwih, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD116,DR107,"Kembang turi, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD117,DR108,"Kerokot, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD118,DR109,"Ketimun, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD119,DR110,"Ketimun krai, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD120,DR111,"Ketimun madura, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD121,DR112,"Komak, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD122,DR113,Kool kembang,TUNGGAL/SINGLE,Sayuran,123
+IDD123,DR114,"Kool merah, kool putih",TUNGGAL/SINGLE,Sayuran,123
+IDD124,DR115,"Koro kerupuk, polong",TUNGGAL/SINGLE,Sayuran,123
+IDD125,DR116,"Koro wedus, polong",TUNGGAL/SINGLE,Sayuran,123
+IDD126,DR117,"Kucai, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD127,DR118,"Kucai muda (Lokio), segar",TUNGGAL/SINGLE,Sayuran,123
+IDD128,DR119,Kulit melinjo,TUNGGAL/SINGLE,Sayuran,123
+IDD129,DR120,"Kundur, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD130,DR121,"Labu air, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD131,DR122,"Labu kuning, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD132,DR123,"Labu siam, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD133,DR124,"Labu waluh, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD134,DR125,"Lantar, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD135,DR126,"Lobak, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD136,DR127,"Lumai/Leunca, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD137,DR128,"Melinjo, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD138,DR129,Mostarda metan -sawi,TUNGGAL/SINGLE,Sayuran,123
+IDD139,DR130,"Nangka muda, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD140,DR131,"Paria putih, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD142,DR132,"Pepare ular, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD143,DR133,"Pepaya muda, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD144,DR134,"Petai, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD145,DR135,"Peterseli, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD146,DR136,"Pucuk lumai/daun leunca, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD147,DR137,"Putri malu, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD148,DR138,"Rebung, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD149,DR139,"Rimbang, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD150,DR140,Rumput laut,TUNGGAL/SINGLE,Sayuran,123
+IDD151,DR141,"Sawi, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD152,DR142,"Sawi putih / pecai, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD153,DR143,"Sawi taiwan, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD154,DR144,"Sawi tanah, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD155,DR145,"Selada, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD156,DR146,"Selada air, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD158,DR147,"Seledri, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD159,DR148,"Taoge, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD160,DR149,"Taoge kacang kedelai, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD161,DR150,"Taoge kacang tunggak, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD163,DR151,"Tebu terubuk (lilin), segar",TUNGGAL/SINGLE,Sayuran,123
+IDD164,DR152,"Tekokak, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD165,DR153,"Tekokak, kering",TUNGGAL/SINGLE,Sayuran,123
+IDD166,DR154,"Terong, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD167,DR155,"Terong asam, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD169,DR156,"Terung belanda, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD170,DR157,"Terung bengkulu, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD168,DR158,"Terong hintalo, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD171,DR159,Terung panjang,TUNGGAL/SINGLE,Sayuran,123
+IDD174,DR160,"Tomat, air (sari), segar",TUNGGAL/SINGLE,Sayuran,123
+IDD175,DR161,"Tomat merah, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD176,DR162,"Tomat muda, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD177,DR163,"Uceng/ bunga melinjo, segar",TUNGGAL/SINGLE,Sayuran,123
+IDD178,DR164,"Umbut kelapa, segar",TUNGGAL/SINGLE,Sayuran,124
+IDD179,DR165,Umbut rotan,TUNGGAL/SINGLE,Sayuran,124
+IDD180,DR166,"Wortel, segar",TUNGGAL/SINGLE,Sayuran,124
+IDD009,DP001,"Bayam, kukus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD011,DP002,"Bayam, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD016,DP003,"Buncis, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD036,DP004,"Daun kacang panjang, kukus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD039,DP005,"Daun katuk, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD043,DP006,"Daun kelor, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD061,DP007,"Daun mengkudu, kukus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD080,DP008,"Daun singkong, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD083,DP009,"Daun talas, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD086,DP010,"Daun ubi merah, kukus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD103,DP011,"Kacang panjang, kukus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD104,DP012,"Kacang panjang, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD108,DP013,"Kangkung, kukus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD109,DP014,"Kangkung, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD141,DP015,"Paria putih, kukus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD157,DP016,"Selada, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD224,DP017,"Taoge, goreng",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD162,DP018,"Taoge, seduh",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD172,DP019,"Terung panjang, kukus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD181,DP020,"Wortel, rebus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD182,DP021,"Wortel, kukus",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD183,DP022,"Asinan Bogor, sayuran",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD185,DP023,"Anyang, sayur",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD186,DP024,"Ares, sayur",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD187,DP025,Arwan sirsir,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD188,DP026,Beberuk,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD189,DP027,Botok lamtoro,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD191,DP028,Buntil daun talas,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD192,DP029,Cammetutu,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD193,DP030,"Cap cai, sayur",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD194,DP031,Gado-gado,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD195,DP032,"Gudeg, sayur",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD196,DP033,Gulai pakis,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD197,DP034,Gulai pliek,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD198,DP035,Kadada katembe,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD199,DP036,"Kaparende, sayur",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD200,DP037,"Karedok, sayur",OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD201,DP038,Keripik bayam,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD203,DP039,Kotiu hinela tawang nggole,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD184,DP040,Lema/ Rebung asam,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD205,DP041,Lilin bungkus gedi,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD206,DP042,Olah-olah,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD207,DP043,Paku hinela wulelenggapaya,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD208,DP044,Pelecing kangkung,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD209,DP045,Purundawa,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD211,DP046,Rujak cingur,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD212,DP047,Sayur asem,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD213,DP048,Sayur bunga pepaya,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD214,DP049,Sayur garu,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD215,DP050,Sayur kohu-kohu,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD216,DP051,Sayur lilin-terubuk,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD217,DP052,Sayur ndusuk,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD218,DP053,Sayur sop,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD219,DP054,Sayur umbut kelapa,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD220,DP055,Sayur umbut rotan,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD221,DP056,Shabu-shabu,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD222,DP057,Semur jengkol,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD223,DP058,Tinira ninahu nggaluku,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD225,DP059,Tumis bayam bersantan,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD226,DP060,Waluh balamak,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDD227,DP061,Woku ubi,OLAHAN/PRODUK/KOMPOSIT,Sayuran,124
+IDE001,ER001,"Alpukat, segar",TUNGGAL/SINGLE,Buah,125
+IDE002,ER002,"Anggur hutan, segar",TUNGGAL/SINGLE,Buah,125
+IDE004,ER003,"Apel malang, segar",TUNGGAL/SINGLE,Buah,125
+IDE003,ER004,"Apel, segar",TUNGGAL/SINGLE,Buah,125
+IDE005,ER005,"Arbai, segar",TUNGGAL/SINGLE,Buah,125
+IDE006,ER006,"Belimbing, segar",TUNGGAL/SINGLE,Buah,125
+IDE007,ER007,"Biwah, segar",TUNGGAL/SINGLE,Buah,125
+IDE008,ER008,"Buah atung, segar",TUNGGAL/SINGLE,Buah,125
+IDE009,ER009,"Buah kelenting, segar",TUNGGAL/SINGLE,Buah,125
+IDE010,ER010,"Buah kom, segar",TUNGGAL/SINGLE,Buah,125
+IDE011,ER011,"Buah mentega (Bisbul), segar",TUNGGAL/SINGLE,Buah,125
+,ER012,"Buah Naga Merah, segar",TUNGGAL/SINGLE,Buah,125
+,ER013,"Buah Naga Putih, segar",TUNGGAL/SINGLE,Buah,125
+IDE012,ER014,"Buah negri, segar",TUNGGAL/SINGLE,Buah,125
+IDE013,ER015,"Buah nona, segar",TUNGGAL/SINGLE,Buah,125
+IDE014,ER016,"Buah rotan, segar",TUNGGAL/SINGLE,Buah,125
+IDE015,ER017,"Buah rukam, segar",TUNGGAL/SINGLE,Buah,125
+IDE016,ER018,"Buah ruruhi, segar",TUNGGAL/SINGLE,Buah,125
+IDE017,ER019,"Buah tuppa, segar",TUNGGAL/SINGLE,Buah,125
+IDE018,ER020,"Carica papaya, segar",TUNGGAL/SINGLE,Buah,125
+IDE019,ER021,"Cempedak, segar",TUNGGAL/SINGLE,Buah,125
+IDE020,ER022,"Duku, segar",TUNGGAL/SINGLE,Buah,125
+IDE021,ER023,"Durian, segar",TUNGGAL/SINGLE,Buah,125
+IDE022,ER024,"Duwet, segar",TUNGGAL/SINGLE,Buah,125
+IDE023,ER025,"Embacang, segar",TUNGGAL/SINGLE,Buah,125
+IDE024,ER026,"Encung asam, segar",TUNGGAL/SINGLE,Buah,125
+IDE025,ER027,"Erbis, segar",TUNGGAL/SINGLE,Buah,125
+IDE026,ER028,Gandaria masak,TUNGGAL/SINGLE,Buah,125
+IDE027,ER029,"Gatep, segar",TUNGGAL/SINGLE,Buah,125
+IDE028,ER030,"Jambu air, segar",TUNGGAL/SINGLE,Buah,125
+IDE029,ER031,Jambu biji,TUNGGAL/SINGLE,Buah,125
+IDE030,ER032,Jambu bj putih tdk brbj,TUNGGAL/SINGLE,Buah,125
+IDE031,ER033,"Jambu bol, segar",TUNGGAL/SINGLE,Buah,125
+IDE032,ER034,"Jambu monyet, segar",TUNGGAL/SINGLE,Buah,125
+IDE033,ER035,"Jeruk bali, segar",TUNGGAL/SINGLE,Buah,125
+IDE034,ER036,"Jeruk banjar, segar",TUNGGAL/SINGLE,Buah,125
+IDE035,ER037,Jeruk garut-keprok,TUNGGAL/SINGLE,Buah,125
+,ER038,"Jeruk Kalamansi, segar",TUNGGAL/SINGLE,Buah,125
+IDE036,ER039,"Jeruk manis, segar",TUNGGAL/SINGLE,Buah,125
+IDE037,ER040,"Jeruk nipis, segar",TUNGGAL/SINGLE,Buah,125
+IDE038,ER041,"Jeruk ragi, segar",TUNGGAL/SINGLE,Buah,125
+IDE039,ER042,"Kawista, segar",TUNGGAL/SINGLE,Buah,125
+IDE041,ER043,"Kedondong masak, segar",TUNGGAL/SINGLE,Buah,125
+IDE040,ER044,"Kedondong, segar",TUNGGAL/SINGLE,Buah,125
+IDC052,ER045,"Kelapa hutan, kering",TUNGGAL/SINGLE,Buah,125
+IDC054,ER046,"Kelapa muda, daging, segar",TUNGGAL/SINGLE,Buah,125
+IDE042,ER047,"Kemang, segar",TUNGGAL/SINGLE,Buah,125
+IDE043,ER048,"Kesemek, segar",TUNGGAL/SINGLE,Buah,125
+IDE044,ER049,"Kokosan, segar",TUNGGAL/SINGLE,Buah,125
+IDE045,ER050,"Kranji, segar",TUNGGAL/SINGLE,Buah,125
+IDE046,ER051,"Langsat, segar",TUNGGAL/SINGLE,Buah,125
+IDE047,ER052,"Lemon, segar",TUNGGAL/SINGLE,Buah,125
+IDE048,ER053,"Lontar, segar",TUNGGAL/SINGLE,Buah,125
+IDE049,ER054,"Mangga, segar",TUNGGAL/SINGLE,Buah,125
+IDE050,ER055,"Mangga benggala, segar",TUNGGAL/SINGLE,Buah,125
+IDE051,ER056,"Mangga gedung, segar",TUNGGAL/SINGLE,Buah,125
+IDE052,ER057,"Mangga golek, segar",TUNGGAL/SINGLE,Buah,125
+IDE053,ER058,"Mangga harumanis, segar",TUNGGAL/SINGLE,Buah,125
+IDE054,ER059,"Mangga indramayu, segar",TUNGGAL/SINGLE,Buah,125
+IDE055,ER060,"Mangga kopek, segar",TUNGGAL/SINGLE,Buah,125
+IDE056,ER061,"Mangga kwini, segar",TUNGGAL/SINGLE,Buah,125
+IDE057,ER062,"Mangga manalagi, segar",TUNGGAL/SINGLE,Buah,125
+IDE058,ER063,"Mangga muda, segar",TUNGGAL/SINGLE,Buah,125
+IDE059,ER064,"Manggis, segar",TUNGGAL/SINGLE,Buah,125
+IDE060,ER065,"Markisa, segar",TUNGGAL/SINGLE,Buah,125
+IDE061,ER066,"Matoa, segar",TUNGGAL/SINGLE,Buah,125
+,ER067,"Melon, segar",TUNGGAL/SINGLE,Buah,125
+IDE062,ER068,"Menteng, segar",TUNGGAL/SINGLE,Buah,125
+IDE064,ER069,"Nanas palembang, segar",TUNGGAL/SINGLE,Buah,125
+IDE063,ER070,"Nanas, segar",TUNGGAL/SINGLE,Buah,125
+IDE065,ER071,"Nangka masak pohon, segar",TUNGGAL/SINGLE,Buah,125
+IDE066,ER072,"Pala, daging, segar",TUNGGAL/SINGLE,Buah,125
+IDE067,ER073,"Pepaya, segar",TUNGGAL/SINGLE,Buah,125
+IDE068,ER074,"Pisang ambon, segar",TUNGGAL/SINGLE,Buah,125
+IDE069,ER075,"Pisang angleng (pisang ampyang), segar",TUNGGAL/SINGLE,Buah,125
+IDE070,ER076,"Pisang ayam, segar",TUNGGAL/SINGLE,Buah,125
+IDE071,ER077,"Pisang gapi, segar",TUNGGAL/SINGLE,Buah,125
+IDE072,ER078,"Pisang goroho, segar",TUNGGAL/SINGLE,Buah,125
+IDE073,ER079,"Pisang hijau, segar",TUNGGAL/SINGLE,Buah,125
+IDE074,ER080,"Pisang kayu, segar",TUNGGAL/SINGLE,Buah,126
+IDE075,ER081,"Pisang kepok, segar",TUNGGAL/SINGLE,Buah,126
+IDE076,ER082,"Pisang ketip, segar",TUNGGAL/SINGLE,Buah,126
+IDE077,ER083,"Pisang kidang, segar",TUNGGAL/SINGLE,Buah,126
+IDE078,ER084,"Pisang lampung, segar",TUNGGAL/SINGLE,Buah,126
+IDE080,ER085,"Pisang mas bali ampenan, segar",TUNGGAL/SINGLE,Buah,126
+IDE081,ER086,"Pisang mas bali kopang, segar",TUNGGAL/SINGLE,Buah,126
+IDE079,ER087,"Pisang mas, segar",TUNGGAL/SINGLE,Buah,126
+IDE083,ER088,"Pisang raja sereh, segar",TUNGGAL/SINGLE,Buah,126
+IDE082,ER089,"Pisang raja, segar",TUNGGAL/SINGLE,Buah,126
+IDE084,ER090,"Pisang rotan, segar",TUNGGAL/SINGLE,Buah,126
+IDE085,ER091,"Pisang talas, segar",TUNGGAL/SINGLE,Buah,126
+IDE086,ER092,Pisang tujuh bulan,TUNGGAL/SINGLE,Buah,126
+IDE087,ER093,"Pisang ua, segar",TUNGGAL/SINGLE,Buah,126
+IDE088,ER094,"Pisang uli, segar",TUNGGAL/SINGLE,Buah,126
+IDE089,ER095,"Purut, segar",TUNGGAL/SINGLE,Buah,126
+IDE091,ER096,"Rambutan binjai, segar",TUNGGAL/SINGLE,Buah,126
+IDE090,ER097,"Rambutan, segar",TUNGGAL/SINGLE,Buah,126
+IDE093,ER098,"Salak bali, segar",TUNGGAL/SINGLE,Buah,126
+IDE094,ER099,"Salak medan, segar",TUNGGAL/SINGLE,Buah,126
+IDE095,ER100,"Salak pondoh, segar",TUNGGAL/SINGLE,Buah,126
+IDE092,ER101,"Salak, segar",TUNGGAL/SINGLE,Buah,126
+IDE096,ER102,"Sawo duren, segar",TUNGGAL/SINGLE,Buah,126
+IDE097,ER103,"Sawo kecik, segar",TUNGGAL/SINGLE,Buah,126
+IDE098,ER104,"Sawo Manila, segar",TUNGGAL/SINGLE,Buah,126
+IDE099,ER105,"Semangka, segar",TUNGGAL/SINGLE,Buah,126
+IDE100,ER106,"Sirsak, segar",TUNGGAL/SINGLE,Buah,126
+IDE101,ER107,"Sowa, segar",TUNGGAL/SINGLE,Buah,126
+IDE102,ER108,"Srikaya, segar",TUNGGAL/SINGLE,Buah,126
+IDE103,ER109,"Sukun muda, segar",TUNGGAL/SINGLE,Buah,126
+IDE104,ER110,"Sukun tua, segar",TUNGGAL/SINGLE,Buah,126
+IDE105,ER111,"Vigus, segar",TUNGGAL/SINGLE,Buah,126
+IDE106,ER112,"Wani, segar",TUNGGAL/SINGLE,Buah,126
+IDE116,EP001,Barongko,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE107,EP002,Dodol nanas,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE108,EP003,Getuk pisang,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE109,EP004,Keripik lampung,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE110,EP005,Ledre pisang,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE111,EP006,Lempog durian,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE117,EP007,Loka anjoro,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE112,EP008,Rica-rica taipa,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE118,EP009,Rujak aceh,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE113,EP010,Sale kesemek,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE115,EP011,Sale pisang siam,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE114,EP012,"Sale pisang, cilacap",OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDE119,EP013,Sanggara belanda,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+,EP014,Tepung Pisang,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+,EP015,Tepung Sukun,OLAHAN/PRODUK/KOMPOSIT,Buah,126
+IDF008,FR001,"Anak sapi, daging, gemuk, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF009,FR002,"Anak sapi, daging, kurus, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF010,FR003,"Anak sapi, daging, sedang, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF001,FR004,"Angsa, daging, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF002,FR005,"Ayam, daging, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF023,FR006,"Ayam, dideh/darah, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF079,FR007,"Ayam, hati, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF011,FR008,"Babi, daging, gemuk, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF012,FR009,"Babi, daging, kurus, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF025,FR010,"Babi, ginjal, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF029,FR011,"Babi, hati, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF004,FR012,"Bebek (itik), daging, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF005,FR013,"Bebek alabio, daging, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF007,FR014,"Belibis, daging, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF034,FR015,"Burung, sarang, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF013,FR016,"Domba, daging, gemuk, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF014,FR017,"Domba, daging, kurus, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF027,FR018,"Domba, ginjal, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF015,FR019,"Kambing, daging, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF016,FR020,"Kelinci, daging, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF017,FR021,"Kerbau, daging, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF018,FR022,"Kuda, daging, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF003,FR023,"Sapi, babat, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF019,FR024,"Sapi, daging, gemuk, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF020,FR025,"Sapi, daging, kurus, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF021,FR026,"Sapi, daging, lemak sedang, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF022,FR027,"Sapi, daleman, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF024,FR028,"Sapi, dideh/darah",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF028,FR029,"Sapi, ginjal, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF031,FR030,"Sapi, keleponan, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF030,FR031,"Sapi, liver, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF032,FR032,"Sapi, otak, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF037,FR033,"Sapi, usus, segar",TUNGGAL/SINGLE,"Daging, unggas",127
+IDF036,FR034,Ulat sagu segar,TUNGGAL/SINGLE,"Daging, unggas",127
+IDF052,FP001,"Ayam, ampela, goreng",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF122,FP002,"Ayam, usus, goreng",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF006,FP003,"Bebek, daging, goreng",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF042,FP004,"Buaya, daging, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF048,FP005,Ham,OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF044,FP006,"Itik alabio, daging, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF049,FP007,Kerupuk urat,OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF045,FP008,"Menjangan, daging, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF033,FP009,"Punai, daging, goreng",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF047,FP010,"Rusa, daging, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF038,FP011,"Sapi, abon",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF039,FP012,"Sapi, abon, asli",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF040,FP013,"Sapi, daging, asap",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF043,FP014,"Sapi, daging, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF041,FP015,"Sapi, daging, kornet",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF050,FP016,"Sapi, daging, sosis (Worst)",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF051,FP017,"Sapi, hati, sosis (liverworst)",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF046,FP018,"Sapi, paru, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF093,FP019,"Sapi, paru, goreng",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF035,FP020,"Ulat sagu, panggang",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF053,FP021,"Ayam goreng church texas, dada",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF054,FP022,"Ayam goreng church, texas paha",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF055,FP023,"Ayam goreng church texas, sayap",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF056,FP024,"Ayam goreng kalasan, paha",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF057,FP025,"Ayam goreng kentucky, dada",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF058,FP026,"Ayam goreng Kentucky, paha",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF059,FP027,"Ayam goreng Kentucky, sayap",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF060,FP028,Ayam goreng mbok berek dada,OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF061,FP029,"Ayam goreng pasundan, dada",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF062,FP030,"Ayam goreng pasundan, paha",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF063,FP031,"Ayam goreng pioneer, dada",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF064,FP032,"Ayam goreng sukabumi, dada",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF065,FP033,"Ayam goreng sukabumi, paha",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF066,FP034,"Ayam taliwang, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF067,FP035,"Babi hutan masak rica, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF068,FP036,Beef burger,OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",127
+IDF069,FP037,"Beef teriyaki, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF070,FP038,"Beef yakiniku, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDD190,FP039,Brongkos,OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF071,FP040,"Bulgogi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF072,FP041,"Chicken teriyaki, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF073,FP042,"Chikiniku, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF074,FP043,"Coto mangkasara, kuda, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF075,FP044,"Coto mangkasara, sapi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF076,FP045,"Djibokum, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF077,FP046,"Empal (daging) Goreng, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF078,FP047,Gulai kambing,OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF080,FP048,"Jangang bintatoeng, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF081,FP049,"Kalio ayam, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF082,FP050,"Kalio jeroan, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF083,FP051,"Kalio kikil (tunjang), masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF084,FP052,"Kalio otak, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF085,FP053,"Lawar babi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF086,FP054,"Lawar penyu, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF087,FP055,"Lawara jangang, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF088,FP056,"Naan maran sapi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF089,FP057,"Nasu likku, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF090,FP058,"Oramu ninahu ndawa olaho, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF091,FP059,"Paniki masak santan, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF092,FP060,"Pelolah manuk, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF094,FP061,"Rawon, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF095,FP062,"Rendang sapi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF096,FP063,"RW, anjing, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF097,FP064,"Sate, penyu, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF098,FP065,"Sate pusut, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF099,FP066,"Penyu, serapah, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF100,FP067,"Sie reuboh, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF101,FP068,"Sop buntut, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF102,FP069,"Sop daging sapi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF103,FP070,"Sop kaki sapi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF104,FP071,"Sop kambing, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF105,FP072,"Sop konro, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF106,FP073,"Sop saudara, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF107,FP074,"Soto bandung, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF108,FP075,"Soto banjar, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF109,FP076,"Soto betawi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF110,FP077,"Soto jeroan, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF111,FP078,"Soto kudus, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF112,FP079,"Soto madura, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF113,FP080,"Soto padang, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF114,FP081,"Soto pekalongan, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF115,FP082,"Soto pemalang, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF116,FP083,"Soto sukaraja, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF117,FP084,"Soto sulung, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF118,FP085,"Sukiyaki, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF119,FP086,"Tedong pallu basa, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF120,FP087,"Tikus rica, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDF121,FP088,"Tinoransa, masakan",OLAHAN/PRODUK/KOMPOSIT,"Daging, unggas",128
+IDG013,GR001,"Belut, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG015,GR002,"Belut,laut, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG025,GR003,"Cumi-cumi, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG001,GR004,"Ikan bader, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG002,GR005,"Ikan balong, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG003,GR006,"Ikan bambangan, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG004,GR007,"Ikan bandeng, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG005,GR008,"Ikan banjar, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG006,GR009,"Ikan baronang, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG007,GR010,"Ikan batung, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG008,GR011,"Ikan baung, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG010,GR012,"Ikan bawal, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG011,GR013,"Ikan Belida, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG016,GR014,"Ikan beunteur, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG017,GR015,"Ikan biawan, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG018,GR016,"Ikan bili, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG019,GR017,"Ikan bubara, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG020,GR018,"Ikan bulan-bulan, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG021,GR019,"Ikan cakalang, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG022,GR020,"Ikan cakalang, hati, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG023,GR021,"Ikan cakalang, jantung, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG024,GR022,"Ikan cakalang, perut, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG027,GR023,"Ikan daun, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG028,GR024,"Ikan ekor kuning, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG029,GR025,"Ikan gabus, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG031,GR026,"Ikan heu, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG032,GR027,"Ikan hitam, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG033,GR028,"Ikan hiu, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG035,GR029,"Ikan kacangan, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG036,GR030,"Ikan kakap, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG037,GR031,"Ikan kakatua, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG038,GR032,"Ikan kalaban, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG039,GR033,"Ikan kamera (kakap merah), segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG040,GR034,"Ikan kapar, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG041,GR035,"Ikan kawalinya, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG046,GR036,"Ikan keru-keru, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG047,GR037,"Ikan kima, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG051,GR038,"Ikan lais, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG053,GR039,"Ikan layang, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG054,GR040,"Ikan layur, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG055,GR041,"Ikan lehoma, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG056,GR042,"Ikan lemuru, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG057,GR043,"Ikan lidah, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG059,GR044,"Ikan malalugis, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG060,GR045,"Ikan mamar merah, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG061,GR046,"Ikan mas, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG063,GR047,"Ikan mayong, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG064,GR048,"Ikan mujahir, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG067,GR049,"Ikan nasu metti, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG042,GR050,"Ikan oci, kembung, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG068,GR051,"Ikan paling, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG069,GR052,"Ikan papuyu/ betok, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG071,GR053,"Ikan patin, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG073,GR054,"Ikan pomo, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG074,GR055,"Ikan puntin, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG078,GR056,"Ikan saluang, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG079,GR057,"Ikan sarden, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG080,GR058,"Ikan selar, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG081,GR059,"Ikan sepat, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG082,GR060,"Ikan sidat, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG083,GR061,"Ikan sunu, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG084,GR062,"Ikan tahuman, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG085,GR063,"Ikan tarmon, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG086,GR064,"Ikan telan, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG087,GR065,"Ikan tembang, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG088,GR066,"Ikan tempahas, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG089,GR067,"Ikan terbang, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG090,GR068,"Ikan teri, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG091,GR069,"Ikan titang, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG092,GR070,"Ikan tongkol, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG093,GR071,"Ikan turi, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG043,GR072,"Keong, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG044,GR073,"Kepiting, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG045,GR074,"Kerang, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG048,GR075,"Kodok, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG049,GR076,"Kura-kura, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG050,GR077,"Kuro, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG058,GR078,"Lokan, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG075,GR079,"Rajungan, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",129
+IDG076,GR080,"Rebon, udang kecil, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",130
+IDG077,GR081,Rusip,TUNGGAL/SINGLE,"Ikan, kerang, udang",130
+IDG094,GR082,"Udang galah, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",130
+IDG095,GR083,"Udang, besar, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",130
+IDG096,GR084,"Udang, segar",TUNGGAL/SINGLE,"Ikan, kerang, udang",130
+IDG101,GP001,"Bekicot, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG014,GP002,"Belut, goreng",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG026,GP003,"Cumi-cumi, goreng",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG112,GP004,"Ikan asin, kering",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG100,GP005,"Ikan bandeng presto, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG009,GP006,Ikan baung bakar,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG012,GP007,Ikan Belida bakar,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG102,GP008,"Ikan cakalang asap, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG103,GP009,"Ikan cakalang asin, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG104,GP010,"Ikan calo/ peda, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG109,GP011,"Ikan Gabus asap, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG110,GP012,"Ikan Gabus, kering",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG030,GP013,"Ikan gete, goreng",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG111,GP014,"Ikan hiu, kering",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG115,GP015,"Ikan katombo, asin",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG113,GP016,"Ikan kayu, kering",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG052,GP017,Ikan Lais bakar,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG117,GP018,"Ikan lomak asin, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG062,GP019,Ikan Mas pepes,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG065,GP020,Ikan mujahir goreng,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG066,GP021,Ikan Mujahir pepes,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG107,GP022,"Ikan mujahir, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG070,GP023,"Ikan Papuyu, bakar",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG072,GP024,"Ikan Patin, bakar",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG118,GP025,"Ikan peda banjar, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG119,GP026,"Ikan pepetek, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG120,GP027,"Ikan Pindang banjar, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG121,GP028,"Ikan Pindang benggol, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG122,GP029,"Ikan Pindang layang, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG123,GP030,"Ikan Pindang selar, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+,GP031,"Ikan sale, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG126,GP032,"Ikan sale lais, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG127,GP033,"Ikan saluang, kering, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG114,GP034,"Ikan sanggang, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG105,GP035,"Ikan selar kuning, cue, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG129,GP036,"Ikan selar, kering, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG130,GP037,"Ikan sepat, kering, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG131,GP038,"Ikan sunu, asin, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG132,GP039,"Ikan, tepung, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG137,GP040,"Ikan Teri nasi, kering, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG134,GP041,"Ikan Teri, bubuk, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG135,GP042,"Ikan teri, kering, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG136,GP043,"Ikan Teri, kering, tawar, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG133,GP044,"Ikan Teri, tepung, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG116,GP045,"Kerang, asap, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG106,GP046,"Kerang, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG124,GP047,"Rebon, kering, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG125,GP048,"Rebung laut, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG128,GP049,Sardines dalam kaleng,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG108,GP050,"Teripang, dendeng, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG138,GP051,"Udang kering, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG139,GP052,"Udang papay, mentah",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG097,GP053,Abon haruwan,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG098,GP054,Abon ikan,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG099,GP055,"Betok wadi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG140,GP056,"Bou ninahu ndamate, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG141,GP057,"Bouiki ninahu nggaluku, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG142,GP058,Cakalang asar (asap),OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG143,GP059,"Dendeng belut, goreng, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG144,GP060,"Dendeng mujahir, goreng, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG145,GP061,Fillet o-fish,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG146,GP062,"Gete kuah asam, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG147,GP063,"Gulai asam keueung, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG148,GP065,"Gulai ikan, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG149,GP064,"Gulai ikan paya, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDH016,GP066,"Gulai keumamah, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG150,GP067,"Gulai tiram, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG151,GP068,"Gurame asem manis, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG152,GP069,"Ikan asar merah, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG154,GP070,"Jambal goreng, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG153,GP071,"Jukku pallu kaloa, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG155,GP072,"Kaholeo, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDD204,GP073,Lawara penjah,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG156,GP074,"Model, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG157,GP075,"Mujahir acar kuning, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG158,GP076,"Parede baleh, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",130
+IDG159,GP077,"Pempek adaan, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG160,GP078,"Pempek belida, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG161,GP079,"Pempek kapal selam, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG162,GP080,"Pempek kelesan, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG163,GP081,"Pempek kulit, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG164,GP082,"Pempek telur, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG165,GP083,"Pempek tenggiri, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG166,GP084,"Pencok lele, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG167,GP085,Pinda,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG168,GP086,"Pindang kenari, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG169,GP087,"Saboko gurita, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG170,GP088,"Saboko saltan, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG171,GP089,"Saboko sardin, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+,GP090,Sate Bandeng,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG172,GP091,"Sepi, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG173,GP092,"Tekwan, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG174,GP093,"Teri belado, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDG175,GP094,"Tumis bandeng, masakan",OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDH022,GP095,Tumis keumamah,OLAHAN/PRODUK/KOMPOSIT,"Ikan, kerang, udang",131
+IDH001,HR001,"Telur ayam kampung, segar",TUNGGAL/SINGLE,Telur,132
+IDH002,HR002,"Telur ayam ras, segar",TUNGGAL/SINGLE,Telur,132
+IDH003,HR003,"Telur ayam ras, bagian kuning, segar",TUNGGAL/SINGLE,Telur,132
+IDH004,HR004,"Telur ayam ras, bagian putih, segar",TUNGGAL/SINGLE,Telur,132
+IDH006,HR005,"Telur bebek alabio, segar",TUNGGAL/SINGLE,Telur,132
+IDH007,HR006,"Telur bebek , bagian kuning, segar",TUNGGAL/SINGLE,Telur,132
+IDH008,HR007,"Telur bebek, bagian putih, segar",TUNGGAL/SINGLE,Telur,132
+IDH005,HR008,"Telur bebek tambak, segar",TUNGGAL/SINGLE,Telur,132
+IDH009,HR009,"Telur burung maleo, segar",TUNGGAL/SINGLE,Telur,132
+IDH011,HR010,"Telur burung puyuh, segar",TUNGGAL/SINGLE,Telur,132
+IDH010,HR011,"Telur penyu, segar",TUNGGAL/SINGLE,Telur,132
+IDH020,HP001,"Telur ayam, dadar, masakan",OLAHAN/PRODUK/KOMPOSIT,Telur,132
+IDH012,HP002,"Telur bebek, asin, mentah",OLAHAN/PRODUK/KOMPOSIT,Telur,132
+IDH021,HP003,"Telur bebek, dadar, masakan",OLAHAN/PRODUK/KOMPOSIT,Telur,132
+IDH013,HP004,"Telur ikan, asin, mentah",OLAHAN/PRODUK/KOMPOSIT,Telur,132
+IDH014,HP005,"Bayau mi balu, masakan",OLAHAN/PRODUK/KOMPOSIT,Telur,132
+IDH015,HP006,"Cucuru bayau, masakan",OLAHAN/PRODUK/KOMPOSIT,Telur,132
+IDH017,HP007,"Gulai telur ikan, masakan",OLAHAN/PRODUK/KOMPOSIT,Telur,132
+IDH018,HP008,"Kalio telur, masakan",OLAHAN/PRODUK/KOMPOSIT,Telur,132
+IDJ001,JR001,"Kepala susu - krim, segar",TUNGGAL/SINGLE,Susu,132
+IDJ002,JR002,Susu ibu - ASI,TUNGGAL/SINGLE,Susu,132
+IDJ003,JR003,"Susu kambing, segar",TUNGGAL/SINGLE,Susu,132
+IDJ004,JR004,"Susu kerbau, segar",TUNGGAL/SINGLE,Susu,132
+IDJ011,JR005,"Susu kuda, segar",TUNGGAL/SINGLE,Susu,132
+IDJ005,JR006,"Susu sapi, segar",TUNGGAL/SINGLE,Susu,132
+IDJ005,JP001,Es krim,OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ006,JP002,Hangop,OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ007,JP003,Keju,OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ008,JP004,Kwark (Quark),OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ014,JP005,"Susu asam untuk bayi, bubuk",OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ013,JP006,Susu bubuk,OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ009,JP007,Susu kental manis,OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ010,JP008,Susu kental tak manis,OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ015,JP009,"Susu skim, bubuk",OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ012,JP010,"Susu skim, segar",OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDJ016,JP011,"Yoghurt, segar",OLAHAN/PRODUK/KOMPOSIT,Susu,132
+IDC055,KR001,"Kelapa setengah tua, daging, segar",TUNGGAL/SINGLE,Lemak dan minyak,132
+IDC056,KR002,"Kelapa tua, daging, segar",TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK001,KR003,Lemak babi (lard),TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK002,KR004,Lemak babi (bacon),TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK003,KR005,Lemak ikan,TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK004,KR006,Lemak kerbau (lemak sapi),TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK007,KR007,"Minyak hiu, hati",TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK008,KR008,Minyak ikan,TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK009,KR009,Minyak kacang tanah,TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK010,KR010,Minyak kedelai,TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK011,KR011,Minyak kelapa,TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK012,KR012,Minyak kelapa sawit,TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK013,KR013,Minyak wijen,TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK014,KR014,Minyak Zaitun,TUNGGAL/SINGLE,Lemak dan minyak,132
+IDK005,KP001,Margarin,OLAHAN/PRODUK/KOMPOSIT,Lemak dan minyak,132
+IDK006,KP002,Mentega,OLAHAN/PRODUK/KOMPOSIT,Lemak dan minyak,132
+IDC095,KP003,Santan (dengan air),OLAHAN/PRODUK/KOMPOSIT,Lemak dan minyak,132
+IDC094,KP004,Santan murni,OLAHAN/PRODUK/KOMPOSIT,Lemak dan minyak,132
+IDM002,MP001,"Coklat manis, batang",OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM003,MP002,"Coklat pahit, batang",OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM004,MP003,"Coklat susu, batang",OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM001,MP004,Coklat bubuk,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM005,MP005,Gula aren,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM006,MP006,Gula kelapa,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM007,MP007,Gula putih,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM008,MP008,"Jam, selai",OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM009,MP009,Kopi bubuk instant,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM010,MP010,Madu,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM012,MP011,Markisa squash,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM011,MP012,"Markisa squash, BD",OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM013,MP013,Melase,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM014,MP014,Sirup,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM015,MP015,Sirup pirous,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM016,MP016,Teh hijau daun kering,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM017,MP017,Teh hitam daun kering,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDM018,MP018,Teh melati daun kering,OLAHAN/PRODUK/KOMPOSIT,"Gula, sirup, konfeksioneri",133
+IDN001,NR001,"Asam arang coklat, segar",TUNGGAL/SINGLE,Bumbu,133
+IDN002,NR002,"Asam arang merah, segar",TUNGGAL/SINGLE,Bumbu,133
+IDN003,NR003,"Asan kandis, kering",TUNGGAL/SINGLE,Bumbu,133
+IDN004,NR004,"Asam kandis, segar",TUNGGAL/SINGLE,Bumbu,133
+IDN005,NR005,"Asam masak pohon, segar",TUNGGAL/SINGLE,Bumbu,133
+IDN006,NR006,"Asam payak, segar",TUNGGAL/SINGLE,Bumbu,133
+IDN008,NR007,Bawang merah,TUNGGAL/SINGLE,Bumbu,133
+IDN009,NR008,Bawang putih,TUNGGAL/SINGLE,Bumbu,133
+IDN012,NR009,Boros kunci,TUNGGAL/SINGLE,Bumbu,133
+IDN013,NR010,Boros laja,TUNGGAL/SINGLE,Bumbu,133
+IDN014,NR011,Cabai gembor merah,TUNGGAL/SINGLE,Bumbu,133
+IDN015,NR012,Cabai hijau segar,TUNGGAL/SINGLE,Bumbu,133
+IDN016,NR013,Cabai merah kering,TUNGGAL/SINGLE,Bumbu,133
+IDN017,NR014,Cabai merah segar,TUNGGAL/SINGLE,Bumbu,133
+IDN018,NR015,Cabai rawit segar,TUNGGAL/SINGLE,Bumbu,133
+IDN019,NR016,Cengkeh kering,TUNGGAL/SINGLE,Bumbu,133
+IDN021,NR017,"Daun salam, bubuk",TUNGGAL/SINGLE,Bumbu,133
+IDN022,NR018,Jahe,TUNGGAL/SINGLE,Bumbu,133
+IDN024,NR019,Kemiri,TUNGGAL/SINGLE,Bumbu,133
+IDN025,NR020,Ketumbar,TUNGGAL/SINGLE,Bumbu,133
+IDN026,NR021,Kluwek,TUNGGAL/SINGLE,Bumbu,133
+IDN027,NR022,Kunyit,TUNGGAL/SINGLE,Bumbu,133
+IDN028,NR023,Merica,TUNGGAL/SINGLE,Bumbu,133
+IDN029,NR024,Pala biji,TUNGGAL/SINGLE,Bumbu,133
+IDN007,NP001,Balichong,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN010,NP002,Bekasam,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN011,NP003,Bekasang,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN020,NP004,Cuka,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN023,NP005,Kecap,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN030,NP006,Petis ikan,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN031,NP007,Petis udang kering,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN032,NP008,Petis udang pasta,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN033,NP009,Saos tomat,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN034,NP010,Tempoya,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN035,NP011,Terasi,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN036,NP012,Terasi dobo,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDN037,NP013,Terasi merah,OLAHAN/PRODUK/KOMPOSIT,Bumbu,133
+IDC053,QR001,"Kelapa muda, air, segar",TUNGGAL/SINGLE,Minuman,134
