@@ -119,13 +119,64 @@ export default function NutritionContent() {
   const currentChild = activeChild || childList[0] || null;
   const childName = currentChild?.name ?? "Si Kecil";
 
+  const today = useMemo(() => new Date().toISOString().split("T")[0], []);
+  const storageKey = `nutriva_meal_done_${currentChild?.id || "default"}_${today}`;
+
   const ageMonths = useMemo(() => {
     return getDiffMonths(currentChild?.birthDate);
   }, [currentChild?.birthDate]);
 
   useEffect(() => {
-    setScheduleList(getScheduleForChild(ageMonths));
-  }, [ageMonths]);
+    let ignore = false;
+    async function loadSchedule() {
+      const baseSchedule = getScheduleForChild(ageMonths);
+      let activeSchedule = baseSchedule;
+
+      if (currentChild?.id) {
+        try {
+          const savedPlans = await recipeService.getSavedMealPlans(currentChild.id);
+          if (savedPlans && savedPlans.length > 0) {
+            const latestPlan = savedPlans[0];
+            const sessions = latestPlan.input_preferences?.sessions;
+            if (Array.isArray(sessions) && sessions.length > 0) {
+              activeSchedule = sessions.map((s, idx) => ({
+                time: s.time || "12:00",
+                tag: s.type || "Makan",
+                title: s.menu || "Menu Seimbang",
+                nutrients: s.nutrients || "Rencana makan kustom balita Anda.",
+                next: idx === 0,
+                done: false,
+              }));
+            }
+          }
+        } catch (err) {
+          console.warn("Gagal membaca saved plan:", err);
+        }
+      }
+
+      if (!ignore) {
+        try {
+          const savedDone = JSON.parse(localStorage.getItem(storageKey) || "{}");
+          const mapped = activeSchedule.map((item, idx) => {
+            const isDone = savedDone[idx] !== undefined ? !!savedDone[idx] : item.done;
+            return {
+              ...item,
+              done: isDone,
+              next: item.next && !isDone,
+            };
+          });
+          setScheduleList(mapped);
+        } catch {
+          setScheduleList(activeSchedule);
+        }
+      }
+    }
+
+    loadSchedule();
+    return () => {
+      ignore = true;
+    };
+  }, [currentChild?.id, ageMonths, storageKey]);
 
   useEffect(() => {
     let ignore = false;
@@ -157,9 +208,19 @@ export default function NutritionContent() {
   }, [ageMonths]);
 
   const toggleConfirm = (index) => {
-    setScheduleList((prev) =>
-      prev.map((s, idx) => (idx === index ? { ...s, done: !s.done, next: false } : s))
-    );
+    setScheduleList((prev) => {
+      const nextList = prev.map((s, idx) => (idx === index ? { ...s, done: !s.done, next: false } : s));
+      try {
+        const doneMap = {};
+        nextList.forEach((s, idx) => {
+          doneMap[idx] = s.done;
+        });
+        localStorage.setItem(storageKey, JSON.stringify(doneMap));
+      } catch (err) {
+        console.warn("Gagal simpan status makan lokal:", err);
+      }
+      return nextList;
+    });
   };
 
   return (
