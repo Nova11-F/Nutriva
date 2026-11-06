@@ -123,8 +123,8 @@ export default function GrowthContent() {
         currentChild?.birthLength;
       return {
         date: "Belum ada pengukuran",
-        weight: currentChild?.initialWeightKg ? `${currentChild.initialWeightKg}` : "-",
-        height: currentChild?.initialHeightCm ? `${currentChild.initialHeightCm}` : "-",
+        weight: initW ? `${initW}` : "-",
+        height: initH ? `${initH}` : "-",
         head: "-",
         deltaWeight: "Data awal saat registrasi",
         deltaHeight: "Data awal saat registrasi",
