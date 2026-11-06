@@ -126,6 +126,7 @@ export const growthService = {
   /** Semua riwayat pertumbuhan anak (urut tanggal naik). */
   async getByChild(childId) {
     if (!childId) return [];
+    const locals = getLocalRecords(childId);
     try {
       const { data, error } = await supabase
         .from("growth_records")
@@ -134,19 +135,28 @@ export const growthService = {
         .order("measurement_date", { ascending: true });
 
       if (!error && data && data.length > 0) {
-        return data.map(mapRow);
+        return data.map(mapRow).map((row) => {
+          if (row.headCircumference == null) {
+            const match = locals.find((l) => l.id === row.id || l.date === row.date);
+            if (match?.headCircumference) {
+              return { ...row, headCircumference: match.headCircumference };
+            }
+          }
+          return row;
+        });
       }
     } catch (err) {
       console.warn("Supabase query growth records error, falling back to local:", err.message);
     }
 
     // Fallback lokal jika data belum ada di Supabase atau offline
-    return getLocalRecords(childId);
+    return locals;
   },
 
   /** Pengukuran terakhir. */
   async getLatest(childId) {
     if (!childId) return null;
+    const locals = getLocalRecords(childId);
     try {
       const { data, error } = await supabase
         .from("growth_records")
@@ -157,13 +167,19 @@ export const growthService = {
         .maybeSingle();
 
       if (!error && data) {
-        return mapRow(data);
+        const row = mapRow(data);
+        if (row.headCircumference == null) {
+          const match = locals.find((l) => l.id === row.id || l.date === row.date);
+          if (match?.headCircumference) {
+            row.headCircumference = match.headCircumference;
+          }
+        }
+        return row;
       }
     } catch (err) {
       console.warn("Supabase getLatest error:", err.message);
     }
 
-    const locals = getLocalRecords(childId);
     return locals.length > 0 ? locals[locals.length - 1] : null;
   },
 
@@ -203,6 +219,9 @@ export const growthService = {
       const { data, error } = await insertRecord(payload);
       if (!error && data) {
         savedRow = mapRow(data);
+        if (headCircumference && savedRow.headCircumference == null) {
+          savedRow.headCircumference = Number(headCircumference);
+        }
       } else if (error && error.code === "23505") {
         throw new Error("Pengukuran pada tanggal ini sudah pernah dicatat.");
       } else if (error) {
@@ -235,7 +254,14 @@ export const growthService = {
     try {
       const raw = localStorage.getItem(LOCAL_GROWTH_KEY);
       const list = raw ? JSON.parse(raw) : [];
-      list.push(localRecord);
+      const idx = list.findIndex(
+        (r) => (savedRow && r.id === savedRow.id) || (String(r.childId) === String(childId) && r.date === date)
+      );
+      if (idx >= 0) {
+        list[idx] = { ...list[idx], ...localRecord };
+      } else {
+        list.push(localRecord);
+      }
       localStorage.setItem(LOCAL_GROWTH_KEY, JSON.stringify(list));
     } catch (e) {
       console.warn("Gagal simpan ke localStorage:", e);

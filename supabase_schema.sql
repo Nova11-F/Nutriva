@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS public.growth_records (
   age_in_months NUMERIC(4,1) NOT NULL,
   weight_kg NUMERIC(5,2) NOT NULL CHECK (weight_kg BETWEEN 1.0 AND 50.0),
   height_cm NUMERIC(5,2) NOT NULL CHECK (height_cm BETWEEN 30.0 AND 160.0),
+  head_circumference_cm NUMERIC(5,2) CHECK (head_circumference_cm BETWEEN 20.0 AND 70.0),
   z_score_waz NUMERIC(4,2),
   z_score_haz NUMERIC(4,2),
   z_score_whz NUMERIC(4,2),
