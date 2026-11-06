@@ -18,6 +18,14 @@ function getDiffMonths(birthDateStr, targetDateStr) {
   return months;
 }
 
+function getTodayLocalDate() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
 export default function AddMeasurementPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,17 +34,19 @@ export default function AddMeasurementPage() {
 
   const backTo = location.state?.from ?? "/growth";
 
-  const [selectedChildId, setSelectedChildId] = useState(child?.id ?? childList[0]?.id ?? "");
-  const [measurementDate, setMeasurementDate] = useState(() => new Date().toISOString().split("T")[0]);
+  const [selectedChildId, setSelectedChildId] = useState("");
+  const [measurementDate, setMeasurementDate] = useState(getTodayLocalDate);
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [headCircumference, setHeadCircumference] = useState("");
   const [note, setNote] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Derivasi child yang aktif: prioritaskan yang dipilih manual, jika belum ada ambil child aktif atau anak pertama
+  const activeChildId = selectedChildId || child?.id || childList[0]?.id || "";
   const selectedChild = useMemo(() => {
-    return childList.find((c) => c.id === selectedChildId) ?? child ?? childList[0] ?? null;
-  }, [childList, selectedChildId, child]);
+    return childList.find((c) => c.id === activeChildId) ?? child ?? childList[0] ?? null;
+  }, [childList, activeChildId, child]);
 
   const childOptions = useMemo(() => {
     return childList.map((c) => {
@@ -56,7 +66,9 @@ export default function AddMeasurementPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!selectedChildId && !selectedChild?.id) {
+    const activeChild = selectedChild || childList.find((c) => c.id === activeChildId) || child;
+
+    if (!activeChildId || !activeChild) {
       showError("Silakan pilih anak terlebih dahulu.");
       return;
     }
@@ -79,19 +91,21 @@ export default function AddMeasurementPage() {
     try {
       setLoading(true);
       await growthService.add({
-        childId: selectedChildId || selectedChild.id,
+        childId: activeChildId,
         date: measurementDate,
         weight: Number(weight),
         height: Number(height),
         headCircumference: headCircumference ? Number(headCircumference) : null,
         ageInMonths: currentAgeMonths,
-        birthDate: selectedChild.birthDate,
-        gender: selectedChild.gender,
+        birthDate: activeChild.birthDate,
+        gender: activeChild.gender || "Laki-laki",
+        note: note ? note.trim() : undefined,
       });
 
       showSuccess("Data pengukuran pertumbuhan berhasil disimpan!");
       navigate("/growth");
     } catch (err) {
+      console.error("Gagal menyimpan pengukuran:", err);
       showError(err.message || "Gagal menyimpan pengukuran.");
     } finally {
       setLoading(false);
@@ -146,7 +160,7 @@ export default function AddMeasurementPage() {
               label="Anak"
               placeholder="Pilih anak"
               options={childOptions}
-              value={selectedChildId || selectedChild?.id || ""}
+              value={activeChildId}
               onChange={(e) => setSelectedChildId(e.target.value)}
               required
             />
@@ -162,7 +176,7 @@ export default function AddMeasurementPage() {
               type="date"
               value={measurementDate}
               onChange={(e) => setMeasurementDate(e.target.value)}
-              max={new Date().toISOString().split("T")[0]}
+              max={getTodayLocalDate()}
               required
             />
             {selectedChild && (

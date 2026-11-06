@@ -25,12 +25,42 @@ export function ToastProvider({ children }) {
     [hideToast]
   );
 
-  const value = useMemo(() => ({ showToast, hideToast }), [showToast, hideToast]);
+  const showSuccess = useCallback(
+    (message, duration = 3000) => showToast(message, "success", duration),
+    [showToast]
+  );
+
+  const showError = useCallback(
+    (message, duration = 4000) => showToast(message, "error", duration),
+    [showToast]
+  );
+
+  const showWarning = useCallback(
+    (message, duration = 3500) => showToast(message, "warning", duration),
+    [showToast]
+  );
+
+  const showInfo = useCallback(
+    (message, duration = 3000) => showToast(message, "info", duration),
+    [showToast]
+  );
+
+  const value = useMemo(
+    () => ({
+      showToast,
+      hideToast,
+      showSuccess,
+      showError,
+      showWarning,
+      showInfo,
+    }),
+    [showToast, hideToast, showSuccess, showError, showWarning, showInfo]
+  );
 
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+      <div className="fixed bottom-4 right-4 z-[9999] flex max-w-sm flex-col gap-2">
         {toasts.map((toast) => (
           <Toast
             key={toast.id}

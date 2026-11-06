@@ -98,13 +98,27 @@ function mapRow(row) {
 }
 
 async function insertRecord(payload) {
-  let res = await supabase.from("growth_records").insert([payload]).select("*, children(gender)").single();
-  // Migrasi 20261103 belum dijalankan -> kolom zscore_method belum ada; simpan tanpa kolom itu.
-  if (res.error && /zscore_method/.test(res.error.message || "")) {
-    const rest = { ...payload };
-    delete rest.zscore_method;
-    res = await supabase.from("growth_records").insert([rest]).select("*, children(gender)").single();
+  let cleanPayload = { ...payload };
+  let res = await supabase.from("growth_records").insert([cleanPayload]).select("*, children(gender)").single();
+
+  // Jika relasi children(gender) atau kolom tertentu tidak ada, coba select() biasa
+  if (res.error && (/relationship|schema cache/i.test(res.error.message || "") || res.error.code === "PGRST200")) {
+    res = await supabase.from("growth_records").insert([cleanPayload]).select().single();
   }
+
+  // Jika kolom head_circumference_cm belum ada di skema database, hapus dan simpan ulang
+  if (res.error && /head_circumference/i.test(res.error.message || "")) {
+    delete cleanPayload.head_circumference_cm;
+    res = await supabase.from("growth_records").insert([cleanPayload]).select().single();
+  }
+
+  // Migrasi 20261103 belum dijalankan -> kolom zscore_method belum ada; simpan tanpa kolom itu.
+  if (res.error && /zscore_method/i.test(res.error.message || "")) {
+    delete cleanPayload.zscore_method;
+    delete cleanPayload.head_circumference_cm;
+    res = await supabase.from("growth_records").insert([cleanPayload]).select().single();
+  }
+
   return res;
 }
 
@@ -157,17 +171,17 @@ export const growthService = {
    * Menambahkan pengukuran baru.
    * Usia dihitung dari tanggal lahir pada tanggal pengukuran bila `birthDate` diberikan.
    */
-  async add({ childId, date, weight, height, headCircumference, ageInMonths, birthDate, gender }) {
+  async add({ childId, date, weight, height, headCircumference, ageInMonths, birthDate, gender, note }) {
     if (!childId) throw new Error("ID anak wajib diisi");
     if (!date) throw new Error("Tanggal pengukuran wajib diisi");
     if (!weight) throw new Error("Berat badan wajib diisi");
     if (!height) throw new Error("Tinggi badan wajib diisi");
-    if (!gender) throw new Error("Jenis kelamin anak wajib diketahui untuk menghitung z-score");
 
+    const effectiveGender = gender || "Laki-laki";
     const age = birthDate ? ageInMonthsAt(birthDate, date) : Math.floor(Number(ageInMonths) || 0);
     if (!Number.isFinite(age) || age < 0) throw new Error("Usia anak pada tanggal pengukuran tidak valid");
 
-    const r = assessMeasurement({ ageMonths: age, gender, weightKg: Number(weight), heightCm: Number(height) });
+    const r = assessMeasurement({ ageMonths: age, gender: effectiveGender, weightKg: Number(weight), heightCm: Number(height) });
     const payload = {
       child_id: childId,
       measurement_date: date,
@@ -191,6 +205,8 @@ export const growthService = {
         savedRow = mapRow(data);
       } else if (error && error.code === "23505") {
         throw new Error("Pengukuran pada tanggal ini sudah pernah dicatat.");
+      } else if (error) {
+        console.warn("Gagal simpan ke Supabase, simpan ke lokal:", error.message);
       }
     } catch (e) {
       if (e.message?.includes("sudah pernah dicatat")) throw e;
@@ -206,6 +222,7 @@ export const growthService = {
       weight: Number(weight),
       height: Number(height),
       headCircumference: headCircumference ? Number(headCircumference) : null,
+      note: note || null,
       zScoreWaz: r.zWaz,
       zScoreHaz: r.zHaz,
       zScoreWhz: r.zWhz,
