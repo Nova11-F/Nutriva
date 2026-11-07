@@ -469,10 +469,16 @@ export default function HomeDashboard({ child }) {
                 </span>
               </div>
               <p className="text-2xl font-bold text-text">
-                {m.value}{" "}
-                <span className="text-sm font-medium text-gray-500">
-                  {m.unit}
-                </span>
+                {m.value !== "-" ? (
+                  <>
+                    {m.value}{" "}
+                    <span className="text-sm font-medium text-gray-500">
+                      {m.unit}
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-gray-400 font-normal">-</span>
+                )}
               </p>
               <p className="text-xs text-gray-500">{m.delta}</p>
             </Card>

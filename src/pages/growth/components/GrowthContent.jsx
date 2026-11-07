@@ -152,11 +152,13 @@ export default function GrowthContent() {
       }
     }
 
+    const effectiveHead = latest.headCircumference ?? currentChild?.headCircumference ?? null;
+
     return {
       date: formatDate(latest.date),
       weight: latest.weight.toFixed(1),
       height: latest.height.toFixed(1),
-      head: latest.headCircumference ? latest.headCircumference.toFixed(1) : "-",
+      head: effectiveHead ? Number(effectiveHead).toFixed(1) : "-",
       deltaWeight,
       deltaHeight,
       deltaHead,
@@ -358,8 +360,14 @@ export default function GrowthContent() {
                     Lingkar Kepala
                   </p>
                   <p className="text-3xl font-bold text-text">
-                    {latestMetric.head}{" "}
-                    <span className="text-sm font-medium text-gray-500">cm</span>
+                    {latestMetric.head !== "-" ? (
+                      <>
+                        {latestMetric.head}{" "}
+                        <span className="text-sm font-medium text-gray-500">cm</span>
+                      </>
+                    ) : (
+                      <span className="text-gray-400 font-normal">-</span>
+                    )}
                   </p>
                   <p className="text-xs text-gray-500">{latestMetric.deltaHead}</p>
                 </Card>

@@ -39,21 +39,50 @@ export function buildAssessPayload(child, latestRecord) {
   return payload;
 }
 
+const LOCAL_RISK_KEY = "nutriva_risk_assessments_local";
+
+function getLocalRisk(childId) {
+  try {
+    const raw = localStorage.getItem(LOCAL_RISK_KEY);
+    if (!raw) return null;
+    const list = JSON.parse(raw);
+    const item = Array.isArray(list) ? list.find((r) => r.child_id === childId) : null;
+    return item ? mapRow(item) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveLocalRisk(row) {
+  try {
+    const raw = localStorage.getItem(LOCAL_RISK_KEY);
+    const list = raw ? JSON.parse(raw) : [];
+    const filtered = Array.isArray(list) ? list.filter((r) => r.child_id !== row.child_id) : [];
+    filtered.unshift(row);
+    localStorage.setItem(LOCAL_RISK_KEY, JSON.stringify(filtered.slice(0, 50)));
+  } catch (e) {
+    console.warn("Gagal simpan asesmen risiko ke localStorage:", e);
+  }
+}
+
 export const riskService = {
   async getLatest(childId) {
     if (!childId) return null;
-    const { data, error } = await supabase
-      .from("risk_assessments")
-      .select("*")
-      .eq("child_id", childId)
-      .order("assessed_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
-    if (error) {
-      console.warn("Riwayat asesmen belum tersedia:", error.message);
-      return null;
+    try {
+      const { data, error } = await supabase
+        .from("risk_assessments")
+        .select("*")
+        .eq("child_id", childId)
+        .order("assessed_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      if (!error && data) {
+        return mapRow(data);
+      }
+    } catch {
+      // offline / permission fallback
     }
-    return data ? mapRow(data) : null;
+    return getLocalRisk(childId);
   },
 
   /**
@@ -80,8 +109,18 @@ export const riskService = {
       model_version: res.risk_model?.model_version || "unknown",
       input_snapshot: { ...payload },
     };
-    const { data, error } = await supabase.from("risk_assessments").insert(row).select().single();
-    if (error) console.warn("Hasil asesmen tidak tersimpan:", error.message);
-    return mapRow(data || { ...row, id: `local-${Date.now()}`, assessed_at: new Date().toISOString() });
+    const localRow = { ...row, id: `local-${Date.now()}`, assessed_at: new Date().toISOString() };
+    saveLocalRisk(localRow);
+
+    try {
+      const { data, error } = await supabase.from("risk_assessments").insert(row).select().single();
+      if (!error && data) {
+        saveLocalRisk(data);
+        return mapRow(data);
+      }
+    } catch {
+      // gunakan localRow
+    }
+    return mapRow(localRow);
   },
 };
