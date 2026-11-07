@@ -199,12 +199,50 @@ export default function RecipeListPage() {
   }, []);
 
   const featured = useMemo(() => {
-    const primary = recipesList[0] || fallbackRecipes[0];
+    const list = recipesList && recipesList.length > 0 ? recipesList : fallbackRecipes;
+
+    // Hitung kelompok usia balita jika data anak tersedia
+    let targetAgeGroup = null;
+    if (child?.birthDate || child?.birth_date) {
+      const bDate = child.birthDate || child.birth_date;
+      const birth = new Date(bDate);
+      const now = new Date();
+      let m = (now.getFullYear() - birth.getFullYear()) * 12 + (now.getMonth() - birth.getMonth());
+      if (now.getDate() < birth.getDate()) m -= 1;
+      const ageMonths = Math.max(0, m);
+
+      if (ageMonths >= 12) targetAgeGroup = "12+ Bulan";
+      else if (ageMonths >= 9) targetAgeGroup = "9-11 Bulan";
+      else if (ageMonths >= 6) targetAgeGroup = "6-8 Bulan";
+    }
+
+    // Filter resep yang cocok usia dan aman dari preferensi alergi anak
+    const childAllergies = (child?.allergies || child?.avoided_foods || []).map((a) => a.toLowerCase());
+    const candidates = list.filter((r) => {
+      const matchAge = !targetAgeGroup || r.age === targetAgeGroup;
+      if (!matchAge) return false;
+      if (childAllergies.length > 0) {
+        const fullText = `${r.title} ${(r.ingredients || []).join(" ")}`.toLowerCase();
+        if (childAllergies.some((al) => fullText.includes(al))) return false;
+      }
+      return true;
+    });
+
+    const activePool = candidates.length > 0 ? candidates : list;
+
+    // Rotasi Harian Deterministik: berganti otomatis setiap hari pukul 00:00 (Opsi B)
+    const today = new Date();
+    const startOfYear = new Date(today.getFullYear(), 0, 0);
+    const diff = today - startOfYear;
+    const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const daySeed = today.getFullYear() * 366 + dayOfYear;
+    const primary = activePool[daySeed % activePool.length] || list[0] || fallbackRecipes[0];
+
     return {
       id: primary.id,
       slug: primary.slug,
       image: primary.image,
-      badge: `Menu Pilihan Gizi Pekan Ini • Cocok untuk ${child?.name || "Si Kecil"}`,
+      badge: `Menu Pilihan Gizi Hari Ini • Cocok untuk ${child?.name || "Si Kecil"}`,
       title: primary.title,
       desc: primary.desc,
       stage: `Tahapan: ${primary.age}`,
