@@ -8,3 +8,4 @@ ALTER TABLE public.growth_records
 
 ALTER TABLE public.children
   ADD COLUMN IF NOT EXISTS initial_head_circumference_cm NUMERIC(5,2);
+

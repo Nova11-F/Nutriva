@@ -45,6 +45,8 @@ SYNONYMS = [  # normalisasi variasi penulisan sebelum TF-IDF (diterapkan ke doku
     (r"\bpicky( eater)?\b", "pilih-pilih susah makan"), (r"\b(bb|berat badan)\b", "berat"),
     (r"\b(tb|tinggi badan|panjang badan)\b", "tinggi"), (r"\bvaksin(asi)?\b", "imunisasi"),
     (r"\b(mencret|bab cair)\b", "diare"), (r"\bnyusu\b", "menyusu"),
+    (r"\b(tanda(-tanda)?|ciri(-ciri)?|gejala)\b", "tanda ciri gejala"),
+    (r"\b(ber)?risiko\b", "faktor risiko"),
 ]
 
 

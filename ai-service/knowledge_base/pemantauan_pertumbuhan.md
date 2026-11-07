@@ -3,7 +3,7 @@ id: pemantauan-pertumbuhan
 title: Pemantauan pertumbuhan dan arti z-score
 source: WHO Child Growth Standards (2006); Permenkes RI No. 2 Tahun 2020 tentang Standar Antropometri Anak
 source_detail: "[isi pasal/lampiran setelah verifikasi]"
-topics: pertumbuhan, posyandu, timbang, tinggi badan, z-score, stunting
+topics: pertumbuhan, posyandu, timbang, tinggi badan, z-score, stunting, tanda bahaya pertumbuhan, kurva kms, grafik pertumbuhan
 status: SEED
 ---
 Pertumbuhan anak dipantau dengan menimbang berat badan dan mengukur panjang atau tinggi badan secara rutin, idealnya setiap bulan di Posyandu, lalu dibandingkan dengan standar pertumbuhan WHO.
