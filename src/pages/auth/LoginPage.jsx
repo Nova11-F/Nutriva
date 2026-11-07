@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Form from "../../components/ui/Form";
 import Input from "../../components/ui/Input";
@@ -11,11 +11,18 @@ import { childService } from "../../services/childService";
 export default function LoginPage() {
   const navigate = useNavigate();
   const { showToast, hideToast } = useToast();
-  const { login } = useAuth();
+  const { user, login, loading: authLoading } = useAuth();
 
   const [values, setValues] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // Jika user sudah memiliki sesi aktif, otomatis arahkan langsung ke /home
+  useEffect(() => {
+    if (user && !authLoading) {
+      navigate("/home", { replace: true });
+    }
+  }, [user, authLoading, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,17 +43,29 @@ export default function LoginPage() {
     const loadingId = showToast("Sedang masuk...", "loading");
 
     try {
-      const user = await login({
+      const loggedInUser = await login({
         email: values.email,
         password: values.password,
       });
 
-      const existingChildren = await childService.getAllByUserId(user.id);
-
       hideToast(loadingId);
       showToast("Berhasil masuk", "success");
 
-      navigate(existingChildren.length > 0 ? "/home" : "/onboarding");
+      // Cek apakah ada profil anak dengan batas timeout 1.5 detik agar navigasi instan
+      let targetPath = "/home";
+      try {
+        const existingChildren = await Promise.race([
+          childService.getAllByUserId(loggedInUser.id),
+          new Promise((resolve) => setTimeout(() => resolve(null), 1500)),
+        ]);
+        if (existingChildren && existingChildren.length === 0) {
+          targetPath = "/onboarding";
+        }
+      } catch {
+        targetPath = "/home";
+      }
+
+      navigate(targetPath, { replace: true });
     } catch (err) {
       hideToast(loadingId);
       showToast(err.message, "error");

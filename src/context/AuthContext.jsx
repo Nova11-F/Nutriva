@@ -33,7 +33,15 @@ export function AuthProvider({ children }) {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (session?.user) {
-          const profile = await authService.getProfile(session.user.id);
+          let profile = null;
+          try {
+            profile = await Promise.race([
+              authService.getProfile(session.user.id),
+              new Promise((resolve) => setTimeout(() => resolve(null), 1500)),
+            ]);
+          } catch {
+            // fallback ke metadata
+          }
           if (mounted) {
             setUser({
               ...session.user,

@@ -41,7 +41,17 @@ export const authService = {
       throw new Error(error.message);
     }
 
-    const profile = await this.getProfile(data.user.id);
+    // Ambil profil dengan timeout 1.5s agar login tidak pernah menggantung jika network lambat
+    let profile = null;
+    try {
+      profile = await Promise.race([
+        this.getProfile(data.user.id),
+        new Promise((resolve) => setTimeout(() => resolve(null), 1500)),
+      ]);
+    } catch {
+      // fallback ke user_metadata
+    }
+
     return {
       ...data.user,
       name: profile?.full_name || data.user.user_metadata?.full_name || email.split("@")[0],
