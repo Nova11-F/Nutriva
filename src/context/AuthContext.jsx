@@ -31,32 +31,29 @@ export function AuthProvider({ children }) {
       });
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      (event, session) => {
+        if (!mounted) return;
         if (session?.user) {
-          let profile = null;
-          try {
-            profile = await Promise.race([
-              authService.getProfile(session.user.id),
-              new Promise((resolve) => setTimeout(() => resolve(null), 1500)),
-            ]);
-          } catch {
-            // fallback ke metadata
-          }
-          if (mounted) {
-            setUser({
+          // Cukup set data dasar dari session — profil lengkap sudah
+          // di-fetch oleh authService.login() / getSession() sebelumnya.
+          // Jangan panggil getProfile lagi di sini agar tidak duplikasi.
+          setUser((prev) => {
+            // Jika user sudah di-set oleh login(), pertahankan data profil lengkap
+            if (prev?.id === session.user.id && prev?.name) return prev;
+            // Fallback pertama kali (misal auto-refresh tab)
+            return {
               ...session.user,
               name:
-                profile?.full_name ||
                 session.user.user_metadata?.full_name ||
                 session.user.email.split("@")[0],
-              role: profile?.user_segment || "parent",
-              avatar_url: profile?.avatar_url || null,
-            });
-          }
+              role: "parent",
+              avatar_url: null,
+            };
+          });
         } else {
-          if (mounted) setUser(null);
+          setUser(null);
         }
-        if (mounted) setLoading(false);
+        setLoading(false);
       }
     );
 

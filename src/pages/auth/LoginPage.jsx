@@ -51,21 +51,21 @@ export default function LoginPage() {
       hideToast(loadingId);
       showToast("Berhasil masuk", "success");
 
-      // Cek apakah ada profil anak dengan batas timeout 1.5 detik agar navigasi instan
-      let targetPath = "/home";
-      try {
-        const existingChildren = await Promise.race([
-          childService.getAllByUserId(loggedInUser.id),
-          new Promise((resolve) => setTimeout(() => resolve(null), 1500)),
-        ]);
-        if (existingChildren && existingChildren.length === 0) {
-          targetPath = "/onboarding";
-        }
-      } catch {
-        targetPath = "/home";
-      }
+      // Navigasi instan ke /home — cek profil anak di latar belakang
+      // supaya tidak ada delay tambahan setelah login
+      navigate("/home", { replace: true });
 
-      navigate(targetPath, { replace: true });
+      // Cek anak secara async, redirect ke onboarding jika belum ada
+      childService
+        .getAllByUserId(loggedInUser.id)
+        .then((children) => {
+          if (children && children.length === 0) {
+            navigate("/onboarding", { replace: true });
+          }
+        })
+        .catch(() => {
+          // abaikan error, tetap di /home
+        });
     } catch (err) {
       hideToast(loadingId);
       showToast(err.message, "error");

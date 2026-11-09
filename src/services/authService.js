@@ -78,7 +78,17 @@ export const authService = {
     if (error || !session?.user) return null;
 
     const user = session.user;
-    const profile = await this.getProfile(user.id);
+
+    // Gunakan timeout agar tidak hang saat Supabase cold-start
+    let profile = null;
+    try {
+      profile = await Promise.race([
+        this.getProfile(user.id),
+        new Promise((resolve) => setTimeout(() => resolve(null), 1500)),
+      ]);
+    } catch {
+      // fallback ke user_metadata
+    }
 
     return {
       ...user,
