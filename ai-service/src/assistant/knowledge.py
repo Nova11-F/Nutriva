@@ -45,7 +45,7 @@ SYNONYMS = [  # normalisasi variasi penulisan sebelum TF-IDF (diterapkan ke doku
     (r"\bpicky( eater)?\b", "pilih-pilih susah makan"), (r"\b(bb|berat badan)\b", "berat"),
     (r"\b(tb|tinggi badan|panjang badan)\b", "tinggi"), (r"\bvaksin(asi)?\b", "imunisasi"),
     (r"\b(mencret|bab cair)\b", "diare"), (r"\bnyusu\b", "menyusu"),
-    (r"\b(tanda(-tanda)?|ciri(-ciri)?|gejala)\b", "tanda ciri gejala"),
+    (r"\b(tanda(-tanda)?|ciri(-ciri)?|gejala)\b", "tanda"),
     (r"\b(ber)?risiko\b", "faktor risiko"),
 ]
 
@@ -75,7 +75,7 @@ def _parse(path: Path) -> list[Chunk]:
 
 
 @lru_cache(maxsize=1)
-def load_kb() -> tuple[list[Chunk], TfidfVectorizer, np.ndarray]:
+def load_kb() -> tuple[list[Chunk], tuple[TfidfVectorizer, TfidfVectorizer], tuple[np.ndarray, np.ndarray]]:
     chunks: list[Chunk] = []
     for p in sorted(KB_DIR.glob("*.md")):
         if p.name.lower() == "readme.md":
@@ -83,16 +83,21 @@ def load_kb() -> tuple[list[Chunk], TfidfVectorizer, np.ndarray]:
         chunks.extend(_parse(p))
     if not chunks:
         raise RuntimeError(f"knowledge base kosong: {KB_DIR}")
-    vec = TfidfVectorizer(lowercase=True, stop_words=STOPWORDS, ngram_range=(1, 2), sublinear_tf=True)
-    # judul ikut di-index supaya pertanyaan pendek tetap menemukan dokumen yang tepat
-    mat = vec.fit_transform([normalize(f"{c.title}. {c.topics}. {c.text}") for c in chunks])
-    return chunks, vec, mat
+    vec_body = TfidfVectorizer(lowercase=True, stop_words=STOPWORDS, ngram_range=(1, 2), sublinear_tf=True)
+    vec_meta = TfidfVectorizer(lowercase=True, stop_words=STOPWORDS, ngram_range=(1, 2), sublinear_tf=True)
+    # Pisahkan skor isi paragraf (body) dan metadata dokumen (title/topics) agar paragraf pendek tidak menutupi paragraf inti yang panjang
+    mat_body = vec_body.fit_transform([normalize(c.text) for c in chunks])
+    mat_meta = vec_meta.fit_transform([normalize(f"{c.title}. {c.topics}") for c in chunks])
+    return chunks, (vec_body, vec_meta), (mat_body, mat_meta)
 
 
 def retrieve(query: str, k: int = 4, min_score: float = 0.03, max_per_doc: int = 2) -> list[tuple[Chunk, float]]:
     """Top-k paragraf, maksimal `max_per_doc` paragraf per dokumen agar konteks beragam."""
-    chunks, vec, mat = load_kb()
-    sims = cosine_similarity(vec.transform([normalize(query)]), mat).ravel()
+    chunks, (vec_body, vec_meta), (mat_body, mat_meta) = load_kb()
+    nq = normalize(query)
+    sim_body = cosine_similarity(vec_body.transform([nq]), mat_body).ravel()
+    sim_meta = cosine_similarity(vec_meta.transform([nq]), mat_meta).ravel()
+    sims = 0.65 * sim_body + 0.35 * sim_meta
     out, per_doc = [], {}
     for i in np.argsort(-sims):
         if sims[i] < min_score or len(out) >= k:

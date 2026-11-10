@@ -27,6 +27,9 @@ def test_routing_matches_eval_labels(item):
 def test_retrieval_finds_relevant_doc():
     assert retrieve("kapan mulai mpasi?")[0][0].doc_id == "mpasi-dasar"
     assert retrieve("anakku GTM")[0][0].doc_id == "anak-susah-makan"
+    stunting_hits = retrieve("Apa saja tanda-tanda stunting pada anak?")
+    assert stunting_hits[0][0].doc_id == "stunting-indonesia"
+    assert any("weight faltering" in c.text.lower() for c, _ in stunting_hits)
 
 
 def test_emergency_and_dosage_never_call_llm():

@@ -12,9 +12,12 @@ import {
   Bookmark,
   Users,
   ChevronRight,
+  Utensils,
 } from "lucide-react";
 import { useChild } from "../../../hooks/useChild";
 import { recipeService } from "../../../services/recipeService";
+import { todayISO } from "../../../utils/formatDate";
+import DailySummaryBar from "./DailySummaryBar";
 
 function getDiffMonths(birthDateStr, targetDateStr = new Date()) {
   if (!birthDateStr) return 0;
@@ -115,11 +118,12 @@ export default function NutritionContent() {
 
   const [inspirations, setInspirations] = useState(fallbackInspirations);
   const [scheduleList, setScheduleList] = useState([]);
+  const [dailySummary, setDailySummary] = useState(null);
 
   const currentChild = activeChild || childList[0] || null;
   const childName = currentChild?.name ?? "Si Kecil";
 
-  const today = useMemo(() => new Date().toISOString().split("T")[0], []);
+  const today = useMemo(() => todayISO(), []);
   const storageKey = `nutriva_meal_done_${currentChild?.id || "default"}_${today}`;
 
   const ageMonths = useMemo(() => {
@@ -207,6 +211,17 @@ export default function NutritionContent() {
     };
   }, [ageMonths]);
 
+  useEffect(() => {
+    let ignore = false;
+    if (!currentChild?.id) return undefined;
+    recipeService.getDailyNutritionSummary(currentChild.id, today).then((sum) => {
+      if (!ignore) setDailySummary(sum);
+    });
+    return () => {
+      ignore = true;
+    };
+  }, [currentChild?.id, today]);
+
   const toggleConfirm = (index) => {
     setScheduleList((prev) => {
       const nextList = prev.map((s, idx) => (idx === index ? { ...s, done: !s.done, next: false } : s));
@@ -238,6 +253,14 @@ export default function NutritionContent() {
             </p>
           </div>
           <div className="flex w-full flex-col gap-2 md:w-fit md:flex-row">
+            <Button
+              variant="outline"
+              onClick={() => navigate("/nutrition/log-food")}
+              className="flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Utensils className="size-4 md:size-5" />
+              Catat Makanan
+            </Button>
             <Button
               variant="outline"
               onClick={() => navigate("/nutrition/recipes")}
@@ -356,6 +379,16 @@ export default function NutritionContent() {
             </Card>
           </div>
         </section>
+
+        {/* Ringkasan Nutrisi Harian (Log Food) */}
+        <DailySummaryBar
+          childName={childName}
+          ageMonths={ageMonths}
+          summary={dailySummary}
+          dateLabel="Hari Ini"
+          actionLabel="Catat Makanan Hari Ini"
+          onAction={() => navigate("/nutrition/log-food")}
+        />
 
         {/* Jadwal Makan Dinamis */}
         <Card className="flex flex-col gap-4">
