@@ -6,14 +6,14 @@ import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
 import RecipeCard from "../../components/ui/RecipeCard";
 import Spinner from "../../components/ui/Spinner";
-import buburWortel from "../../assets/images/bubur-wortel.png";
 import { recipeService } from "../../services/recipeService";
+import { getRecipeImage, handleRecipeImgError } from "../../utils/recipeImages";
 
 const defaultRecipeFallback = {
   id: "1",
   title: "Nasi Gurih Semur Ayam Kampung & Telur Puyuh",
   desc: "Menu padat kalori dan kaya zat besi hewani ganda (daging ayam kampung & telur puyuh) untuk mendukung percepatan laju tumbuh kembang linear serta proteksi primer pencegahan stunting pada balita usia 12-24 bulan.",
-  image: buburWortel,
+  image: getRecipeImage("nasi-masak-ayam-kecap-sayur"),
   tags: [
     "Cegah Stunting",
     "Prohe Ganda",
@@ -119,7 +119,7 @@ export default function RecipeDetailPage() {
             id: res.id,
             title: res.title,
             desc: `Menu gizi seimbang yang divalidasi oleh ${res.validated_by || "Konselor MPASI"} berdasarkan standar ${res.source_authority || "Kemenkes RI"}.`,
-            image: res.image_url || buburWortel,
+            image: getRecipeImage(res),
             tags: res.allergen_tags && res.allergen_tags.length > 0
               ? [`${res.min_age_months}-${res.max_age_months} Bulan`, `Porsi: ${res.portion_size || "1 Mangkok"}`, ...res.allergen_tags]
               : [`${res.min_age_months}-${res.max_age_months} Bulan`, `Porsi: ${res.portion_size || "1 Mangkok"}`, "Cegah Stunting", "Bebas MSG"],
@@ -149,7 +149,7 @@ export default function RecipeDetailPage() {
             .map((item) => ({
               id: item.id,
               slug: item.slug,
-              image: item.image_url || buburWortel,
+              image: getRecipeImage(item),
               category: `${item.portion_size || "Porsi MPASI"}`,
               title: item.title,
               desc: `Untuk balita ${item.min_age_months}-${item.max_age_months} bulan.`,
@@ -259,6 +259,7 @@ export default function RecipeDetailPage() {
             <img
               src={recipeData.image}
               alt={recipeData.title}
+              onError={handleRecipeImgError}
               className="h-72 w-full rounded-2xl object-cover md:h-90"
             />
             <span className="absolute bottom-3 left-3 rounded-md bg-black/60 px-2 py-1 text-[10px] font-bold uppercase text-white">

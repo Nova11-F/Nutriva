@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Card from "../../../components/ui/Card";
 import Button from "../../../components/ui/Button";
-import buburWortel from "../../../assets/images/bubur-wortel.png";
 import {
   Plus,
   CalendarDays,
@@ -11,6 +10,42 @@ import {
   MessageSquareMore,
 } from "lucide-react";
 import Header from "../../../components/navigation/Header";
+import { getRecipeImage, handleRecipeImgError } from "../../../utils/recipeImages";
+
+const SAMPLE_INSPIRATIONS = [
+  {
+    slug: "bubur-ayam-wortel",
+    category: "Prohe & Sayur: Ayam + Wortel",
+    title: "Bubur Ayam Wortel",
+    desc: "Kaya protein hewani dan vitamin A untuk mendukung tumbuh kembang serta daya tahan tubuh balita usia 6-12 bulan.",
+    stats: "180 kkal • 8g Protein",
+    time: "20 Menit",
+  },
+  {
+    slug: "pepes-tahu",
+    category: "Menu Kukus: Tahu + Ayam",
+    title: "Pepes Tahu",
+    desc: "Olahan tahu kukus lembut dibungkus daun pisang berpadu wortel, ayam, dan telur untuk balita 12+ bulan.",
+    stats: "305 kkal • 17.9g Protein",
+    time: "25 Menit",
+  },
+  {
+    slug: "nasi-tim-ikan-tuna-telur-puyuh",
+    category: "Omega-3 & Kolin: Tuna + Puyuh",
+    title: "Nasi Tim Ikan Tuna Telur Puyuh",
+    desc: "Tinggi protein ikan laut dan kolin telur puyuh untuk mendukung kecerdasan serta pertumbuhan optimal.",
+    stats: "215 kkal • 12g Protein",
+    time: "25 Menit",
+  },
+  {
+    slug: "nugget-tempe-ayam-sayuran",
+    category: "Finger Food: Tempe + Ayam",
+    title: "Nugget Tempe Ayam Sayuran",
+    desc: "Finger food renyah bergizi seimbang agar anak antusias makan mandiri dan mencegah defisiensi zat besi.",
+    stats: "195 kkal • 10g Protein",
+    time: "25 Menit",
+  },
+];
 
 export default function NutritionEmpty() {
   const navigate = useNavigate();
@@ -122,7 +157,11 @@ export default function NutritionEmpty() {
               balita
             </p>
           </div>
-          <Button variant="Noborder" className="group flex items-center hover:underline">
+          <Button
+            variant="Noborder"
+            onClick={() => navigate("/nutrition/recipes")}
+            className="group flex items-center hover:underline"
+          >
             Lihat Semua Resep
             <ChevronRight
               size={20}
@@ -131,154 +170,51 @@ export default function NutritionEmpty() {
           </Button>
         </div>
         <div className="grid grid-cols-1 items-strech justify-between gap-4 md:grid-cols-4">
-          <Card
-            padding="none"
-            variant="default"
-            className="group flex flex-col gap-4 overflow-hidden hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
-          >
-            <div className="relative w-full h-70 overflow-hidden">
-              <img
-                src={buburWortel}
-                alt="Bubur Ayam Wortel"
-                className="w-full h-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300"
-              />
-              <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 text-md font-bold px-3 py-1.5 rounded-xl shadow-sm z-10">
-                20 Menit
-              </span>
-            </div>
-            <div className="flex flex-col gap-2 p-5">
-              <h4 className="text-sm text-primary font-bold">
-                Prohe & Sayur: Ayam + Wortel
-              </h4>
-              <h3 className="text-xl text-text font-bold leading-snug">
-                Bubur Ayam Wortel
-              </h3>
-              <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
-                Kaya protein hewan dan vitamin A untuk mendukung tumbuh kembang
-                serta daya tahan tubuh balita usia 6-12 bulan...
-              </p>
-              <div className="flex items-center justify-between pt-4 mt-2 border-t border-gray-100">
-                <span className="text-sm font-semibold text-gray-800">
-                  180 kkal • 8g Protein
+          {SAMPLE_INSPIRATIONS.map((item) => (
+            <Card
+              key={item.slug}
+              padding="none"
+              variant="default"
+              className="group flex flex-col gap-4 overflow-hidden hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            >
+              <div className="relative w-full h-70 overflow-hidden">
+                <img
+                  src={getRecipeImage(item.slug)}
+                  alt={item.title}
+                  loading="lazy"
+                  onError={handleRecipeImgError}
+                  className="w-full h-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300"
+                />
+                <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 text-md font-bold px-3 py-1.5 rounded-xl shadow-sm z-10">
+                  {item.time}
                 </span>
-                <button className="flex items-center gap-1 text-sm font-semibold cursor-pointer text-secondary hover:underline hover:text-primary">
-                  Lihat Resep
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
               </div>
-            </div>
-          </Card>
-          <Card
-            padding="none"
-            variant="default"
-            className="group flex flex-col gap-4 overflow-hidden hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
-          >
-            <div className="relative w-full h-70 overflow-hidden">
-              <img
-                src={buburWortel}
-                alt="Bubur Ayam Wortel"
-                className="w-full h-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300"
-              />
-              <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 text-md font-bold px-3 py-1.5 rounded-xl shadow-sm z-10">
-                20 Menit
-              </span>
-            </div>
-            <div className="flex flex-col gap-2 p-5">
-              <h4 className="text-sm text-primary font-bold">
-                Prohe & Sayur: Ayam + Wortel
-              </h4>
-              <h3 className="text-xl text-text font-bold leading-snug">
-                Bubur Ayam Wortel
-              </h3>
-              <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
-                Kaya protein hewan dan vitamin A untuk mendukung tumbuh kembang
-                serta daya tahan tubuh balita usia 6-12 bulan...
-              </p>
-              <div className="flex items-center justify-between pt-4 mt-2 border-t border-gray-100">
-                <span className="text-sm font-semibold text-gray-800">
-                  180 kkal • 8g Protein
-                </span>
-                <button className="flex items-center gap-1 text-sm font-semibold cursor-pointer text-secondary hover:underline hover:text-primary">
-                  Lihat Resep
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
+              <div className="flex flex-1 flex-col gap-2 p-5">
+                <h4 className="text-sm text-primary font-bold">
+                  {item.category}
+                </h4>
+                <h3 className="text-xl text-text font-bold leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
+                  {item.desc}
+                </p>
+                <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                  <span className="text-sm font-semibold text-gray-800">
+                    {item.stats}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => navigate(`/nutrition/${item.slug}`)}
+                    className="flex items-center gap-1 text-sm font-semibold cursor-pointer text-secondary hover:underline hover:text-primary"
+                  >
+                    Lihat Resep
+                    <span aria-hidden="true">&rarr;</span>
+                  </button>
+                </div>
               </div>
-            </div>
-          </Card>
-          <Card
-            padding="none"
-            variant="default"
-            className="group flex flex-col gap-4 overflow-hidden hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
-          >
-            <div className="relative w-full h-70 overflow-hidden">
-              <img
-                src={buburWortel}
-                alt="Bubur Ayam Wortel"
-                className="w-full h-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300"
-              />
-              <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 text-md font-bold px-3 py-1.5 rounded-xl shadow-sm z-10">
-                20 Menit
-              </span>
-            </div>
-            <div className="flex flex-col gap-2 p-5">
-              <h4 className="text-sm text-primary font-bold">
-                Prohe & Sayur: Ayam + Wortel
-              </h4>
-              <h3 className="text-xl text-text font-bold leading-snug">
-                Bubur Ayam Wortel
-              </h3>
-              <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
-                Kaya protein hewan dan vitamin A untuk mendukung tumbuh kembang
-                serta daya tahan tubuh balita usia 6-12 bulan...
-              </p>
-              <div className="flex items-center justify-between pt-4 mt-2 border-t border-gray-100">
-                <span className="text-sm font-semibold text-gray-800">
-                  180 kkal • 8g Protein
-                </span>
-                <button className="flex items-center gap-1 text-sm font-semibold cursor-pointer text-secondary hover:underline hover:text-primary">
-                  Lihat Resep
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
-              </div>
-            </div>
-          </Card>
-          <Card
-            padding="none"
-            variant="default"
-            className="group flex flex-col gap-4 overflow-hidden hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
-          >
-            <div className="relative w-full h-70 overflow-hidden">
-              <img
-                src={buburWortel}
-                alt="Bubur Ayam Wortel"
-                className="w-full h-full object-cover rounded-t-xl group-hover:scale-105 transition-transform duration-300"
-              />
-              <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 text-md font-bold px-3 py-1.5 rounded-xl shadow-sm z-10">
-                20 Menit
-              </span>
-            </div>
-            <div className="flex flex-col gap-2 p-5">
-              <h4 className="text-sm text-primary font-bold">
-                Prohe & Sayur: Ayam + Wortel
-              </h4>
-              <h3 className="text-xl text-text font-bold leading-snug">
-                Bubur Ayam Wortel
-              </h3>
-              <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
-                Kaya protein hewan dan vitamin A untuk mendukung tumbuh kembang
-                serta daya tahan tubuh balita usia 6-12 bulan...
-              </p>
-              <div className="flex items-center justify-between pt-4 mt-2 border-t border-gray-100">
-                <span className="text-sm font-semibold text-gray-800">
-                  180 kkal • 8g Protein
-                </span>
-                <button className="flex items-center gap-1 text-sm font-semibold cursor-pointer text-secondary hover:underline hover:text-primary">
-                  Lihat Resep
-                  <span aria-hidden="true">&rarr;</span>
-                </button>
-              </div>
-            </div>
-          </Card>
+            </Card>
+          ))}
         </div>
         <Card
           variant="default"

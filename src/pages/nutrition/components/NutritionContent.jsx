@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../../components/navigation/Header";
 import Card from "../../../components/ui/Card";
 import Button from "../../../components/ui/Button";
-import buburWortel from "../../../assets/images/bubur-wortel.png";
 import {
   Plus,
   Check,
@@ -17,6 +16,7 @@ import {
 import { useChild } from "../../../hooks/useChild";
 import { recipeService } from "../../../services/recipeService";
 import { todayISO } from "../../../utils/formatDate";
+import { getRecipeImage, handleRecipeImgError } from "../../../utils/recipeImages";
 import DailySummaryBar from "./DailySummaryBar";
 
 function getDiffMonths(birthDateStr, targetDateStr = new Date()) {
@@ -69,7 +69,7 @@ const fallbackInspirations = [
   {
     id: 1,
     slug: "bubur-ayam-wortel",
-    image: buburWortel,
+    image: getRecipeImage("bubur-ayam-wortel"),
     category: "Protein & Sayur: Ayam + Wortel",
     title: "Bubur Ayam Wortel",
     desc: "Kaya protein hewani dan vitamin A untuk mendukung tumbuh kembang serta daya tahan tubuh balita usia 6-12 bulan.",
@@ -80,7 +80,7 @@ const fallbackInspirations = [
   {
     id: 2,
     slug: "salmon-chowder-jagung",
-    image: buburWortel,
+    image: getRecipeImage("salmon-chowder-jagung"),
     category: "Protein Hewani: Salmon + Jagung",
     title: "Creamy Salmon Chowder Jagung Manis",
     desc: "Sumber omega-3 untuk perkembangan otak, dengan tekstur lembut yang mudah ditelan.",
@@ -91,7 +91,7 @@ const fallbackInspirations = [
   {
     id: 3,
     slug: "bakso-daging-pisang",
-    image: buburWortel,
+    image: getRecipeImage("bakso-daging-pisang"),
     category: "Finger Food: Daging + Pisang",
     title: "Bakso Daging Pisang Santan",
     desc: "Finger food kaya zat besi untuk melatih anak makan sendiri dan mencegah anemia.",
@@ -102,7 +102,7 @@ const fallbackInspirations = [
   {
     id: 4,
     slug: "pudding-ubi-ungu",
-    image: buburWortel,
+    image: getRecipeImage("pudding-ubi-ungu"),
     category: "Karbohidrat & Sayur: Ubi + Bayam",
     title: "Pudding Ubi Ungu Bayam",
     desc: "Camilan sehat berserat dengan vitamin dan mineral untuk menjaga pencernaan anak.",
@@ -191,7 +191,7 @@ export default function NutritionContent() {
           const mapped = data.slice(0, 4).map((r) => ({
             id: r.id,
             slug: r.slug,
-            image: r.image_url || buburWortel,
+            image: getRecipeImage(r),
             category: `${r.portion_size || "Porsi MPASI"}`,
             title: r.title,
             desc: r.instructions?.[0]?.text || `Menu bergizi seimbang untuk balita usia ${r.min_age_months}-${r.max_age_months} bulan.`,
@@ -504,6 +504,8 @@ export default function NutritionContent() {
                   <img
                     src={m.image}
                     alt={m.title}
+                    loading="lazy"
+                    onError={handleRecipeImgError}
                     className="h-full w-full rounded-t-xl object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <span className="absolute bottom-3 right-3 z-10 rounded-xl bg-white/90 px-3 py-1.5 text-md font-bold text-gray-800 shadow-sm backdrop-blur-sm">

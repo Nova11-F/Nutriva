@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Bookmark } from "lucide-react";
 import Card from "./Card";
 import Button from "./Button";
+import { getRecipeImage, handleRecipeImgError } from "../../utils/recipeImages";
 
 export default function RecipeCard({ recipe: m, saved = false, onToggleSave }) {
   const navigate = useNavigate();
@@ -14,8 +15,10 @@ export default function RecipeCard({ recipe: m, saved = false, onToggleSave }) {
     >
       <div className="relative h-70 w-full overflow-hidden">
         <img
-          src={m.image}
+          src={getRecipeImage(m)}
           alt={m.title}
+          loading="lazy"
+          onError={handleRecipeImgError}
           className="h-full w-full rounded-t-xl object-cover transition-transform duration-300 group-hover:scale-105"
         />
 

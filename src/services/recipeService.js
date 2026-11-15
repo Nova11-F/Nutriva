@@ -2,6 +2,7 @@ import { supabase } from "./supabase";
 import { recipes as localRecipes } from "../data/recipe";
 import { todayISO } from "../utils/formatDate";
 import { calculatePortionNutrition } from "../utils/nutritionUtils";
+import { getRecipeImage } from "../utils/recipeImages";
 
 const LOCAL_FOOD_LOGS_KEY = "nutriva_food_logs_local";
 const LOCAL_RECENT_FOODS_KEY = "nutriva_recent_foods_local";
@@ -57,8 +58,8 @@ function formatLocalRecipe(r) {
     id: r.id,
     title: r.title,
     slug: r.slug,
-    image_url: r.image,
-    image: r.image,
+    image_url: getRecipeImage(r),
+    image: getRecipeImage(r),
     min_age_months: r.minAgeMonths,
     max_age_months: r.maxAgeMonths,
     minAgeMonths: r.minAgeMonths,

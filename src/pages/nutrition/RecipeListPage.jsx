@@ -12,9 +12,9 @@ import {
 import Header from "../../components/navigation/Header";
 import Card from "../../components/ui/Card";
 import Button from "../../components/ui/Button";
-import buburWortel from "../../assets/images/bubur-wortel.png";
 import { recipeService } from "../../services/recipeService";
 import { useChild } from "../../hooks/useChild";
+import { getRecipeImage, handleRecipeImgError } from "../../utils/recipeImages";
 
 const ageFilters = ["Semua Usia", "6-8 Bulan", "9-11 Bulan", "12+ Bulan"];
 const categoryFilters = [
@@ -29,7 +29,7 @@ const fallbackRecipes = [
   {
     id: 1,
     slug: "bubur-ayam-wortel",
-    image: buburWortel,
+    image: getRecipeImage("bubur-ayam-wortel"),
     age: "6-8 Bulan",
     cat: "Protein Hewani",
     category: "Protein & Sayur: Ayam + Wortel",
@@ -43,7 +43,7 @@ const fallbackRecipes = [
   {
     id: 2,
     slug: "salmon-chowder-jagung",
-    image: buburWortel,
+    image: getRecipeImage("salmon-chowder-jagung"),
     age: "9-11 Bulan",
     cat: "Protein Hewani",
     category: "Protein Hewani: Salmon + Jagung",
@@ -57,7 +57,7 @@ const fallbackRecipes = [
   {
     id: 3,
     slug: "bakso-daging-pisang",
-    image: buburWortel,
+    image: getRecipeImage("bakso-daging-pisang"),
     age: "12+ Bulan",
     cat: "Finger Food",
     category: "Finger Food: Daging + Pisang",
@@ -71,7 +71,7 @@ const fallbackRecipes = [
   {
     id: 4,
     slug: "pudding-ubi-ungu",
-    image: buburWortel,
+    image: getRecipeImage("pudding-ubi-ungu"),
     age: "6-8 Bulan",
     cat: "Sayur & Buah",
     category: "Karbohidrat & Sayur: Ubi + Bayam",
@@ -85,7 +85,7 @@ const fallbackRecipes = [
   {
     id: 5,
     slug: "bubur-saring-hati-ayam",
-    image: buburWortel,
+    image: getRecipeImage("bubur-saring-hati-ayam"),
     age: "9-11 Bulan",
     cat: "Protein Hewani",
     category: "Protein Hewani: Hati Ayam + Brokoli",
@@ -99,7 +99,7 @@ const fallbackRecipes = [
   {
     id: 6,
     slug: "smoothie-alpukat-pisang",
-    image: buburWortel,
+    image: getRecipeImage("smoothie-alpukat-pisang"),
     age: "12+ Bulan",
     cat: "Camilan",
     category: "Camilan: Alpukat + Pisang",
@@ -170,7 +170,7 @@ export default function RecipeListPage() {
             return {
               id: r.id,
               slug: r.slug,
-              image: r.image_url || buburWortel,
+              image: getRecipeImage(r),
               age: ageLabel,
               cat: catLabel,
               category: `${r.portion_size || "Porsi MPASI"} · ${r.meal_frequency || "Utama"}`,
@@ -411,6 +411,7 @@ export default function RecipeListPage() {
                 <img
                   src={featured.image}
                   alt={featured.title}
+                  onError={handleRecipeImgError}
                   className="h-64 w-full rounded-xl object-cover md:h-80"
                 />
                 <span className="absolute bottom-5 left-5 rounded-full bg-emerald-900/90 px-3 py-1 text-xs font-semibold text-white">
@@ -454,6 +455,8 @@ export default function RecipeListPage() {
                     <img
                       src={m.image}
                       alt={m.title}
+                      loading="lazy"
+                      onError={handleRecipeImgError}
                       className="h-full w-full rounded-t-xl object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <span className="absolute bottom-3 right-3 z-10 rounded-xl bg-white/90 px-3 py-1.5 text-sm font-bold text-gray-800 shadow-sm backdrop-blur-sm">
@@ -502,6 +505,7 @@ export default function RecipeListPage() {
                 size="sm"
                 disabled={current === 1}
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
+                className="inline-flex items-center gap-1.5 text-sm disabled:opacity-50"
               >
                 <ChevronLeft size={16} /> Sebelumnya
               </Button>
@@ -513,6 +517,7 @@ export default function RecipeListPage() {
                 size="sm"
                 disabled={current === totalPages}
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                className="inline-flex items-center gap-1.5 text-sm disabled:opacity-50"
               >
                 Selanjutnya <ChevronRight size={16} />
               </Button>
