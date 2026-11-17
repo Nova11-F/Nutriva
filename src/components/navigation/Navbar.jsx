@@ -85,9 +85,9 @@ export default function Navbar() {
           <img
             src={Logo}
             alt="Logo Nutriva"
-            className="h-12 w-auto object-contain lg:h-20"
+            className="h-12 w-auto object-contain lg:h-16"
           />
-          <h1 className="text-2xl font-bold text-primary lg:text-3xl">
+          <h1 className="text-xl font-bold text-primary lg:text-2xl">
             Nutriva
           </h1>
         </div>
@@ -101,7 +101,7 @@ export default function Navbar() {
               aria-current={
                 activeMenu === menu.id ? "location" : undefined
               }
-              className={`cursor-pointer whitespace-nowrap text-lg transition-colors duration-300 ${
+              className={`cursor-pointer whitespace-nowrap text-md transition-colors duration-300 ${
                 activeMenu === menu.id
                   ? "font-bold text-text"
                   : "font-medium text-gray-500 hover:text-text"
@@ -139,9 +139,9 @@ export default function Navbar() {
           className="flex items-center justify-center rounded-lg p-2 text-text transition-colors hover:bg-soft xl:hidden"
         >
           {isMenuOpen ? (
-            <X size={28} />
+            <X size={24} />
           ) : (
-            <Menu size={28} />
+            <Menu size={24} />
           )}
         </button>
       </div>
@@ -165,7 +165,7 @@ export default function Navbar() {
               aria-current={
                 activeMenu === menu.id ? "location" : undefined
               }
-              className={`w-full rounded-lg px-4 py-3 text-left text-base transition-colors duration-200 ${
+              className={`w-full rounded-lg px-4 py-3 text-left text-xs lg:text-sm transition-colors duration-200 ${
                 activeMenu === menu.id
                   ? "bg-soft font-bold text-primary"
                   : "font-medium text-gray-600 hover:bg-soft hover:text-primary"
