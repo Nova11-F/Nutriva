@@ -26,7 +26,7 @@ export default function Button({
 
   return (
     <button
-      className={`rounded-xl font-bold text-lg cursor-pointer transition duration-300 ${variants[variant]} ${sizes[size]} ${className}`}
+      className={`rounded-lg font-bold text-xs lg:text-sm cursor-pointer transition duration-300 ${variants[variant]} ${sizes[size]} ${className}`}
       disabled={loading}
       {...props}
     >

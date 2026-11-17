@@ -26,7 +26,7 @@ export default function Card({
 
   return (
     <div
-      className={`rounded-xl transition-all duration-300 ${variants[variant]} ${paddings[padding]} ${
+      className={`rounded-lg transition-all duration-300 ${variants[variant]} ${paddings[padding]} ${
         hoverable ? "transition hover:-translate-y-1 hover:shadow-lg" : ""
       } ${className}`}
       {...props}

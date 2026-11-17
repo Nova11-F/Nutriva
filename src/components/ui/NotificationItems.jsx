@@ -176,11 +176,11 @@ export default function NotificationItems({ className = "" }) {
         }
         aria-expanded={open}
         aria-haspopup="dialog"
-        className="relative rounded-md border cursor-pointer border-gray-300 px-2 py-1.5 transition-colors hover:bg-gray-50 md:rounded-lg md:px-3 md:py-2.5"
+        className="relative rounded-md border cursor-pointer border-gray-300 px-2 py-1.5 transition-colors hover:bg-gray-50 lg:py-2"
       >
-        <BellRing className="size-5 text-gray-500 md:size-6" />
+        <BellRing className="size-4 text-gray-500 md:size-5" />
         {unreadCount > 0 && (
-          <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-danger text-[10px] font-bold text-surface">
+          <span className="absolute -right-1 -top-1 flex size-3 items-center justify-center rounded-full bg-danger text-[8px] font-bold text-surface lg:size-4 lg:text-[10px]">
             {unreadCount}
           </span>
         )}

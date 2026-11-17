@@ -112,7 +112,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden shrink-0 items-center gap-4 xl:flex">
+        <div className="hidden shrink-0 items-center gap-2 xl:flex">
           <Button
             variant="outline"
             size="md"
@@ -175,7 +175,7 @@ export default function Navbar() {
             </button>
           ))}
 
-          <div className="mt-3 flex flex-col gap-3 border-t border-gray-200 pt-4">
+          <div className="mt-3 flex flex-col gap-2 border-t border-gray-200 pt-4">
             <Button
               variant="outline"
               size="md"
