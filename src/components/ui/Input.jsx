@@ -2,7 +2,7 @@ import { useId, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
 export const fieldStyle =
-  "w-full rounded-lg border bg-gray-50 px-3 py-2 text-sm text-text " +
+  "w-full rounded-md border bg-gray-50 px-3 py-2 text-xs lg:text-sm text-text " +
   "placeholder:text-gray-400 outline-none transition " +
   "focus:border-secondary focus:bg-surface focus:ring-2 focus:ring-green-100";
 
@@ -70,7 +70,7 @@ export default function Input({
   return (
     <div className={className}>
       {label && (
-        <label htmlFor={id} className="mb-2 block text-sm text-gray-500">
+        <label htmlFor={id} className="mb-2 block px-2 text-xs lg:text-sm text-gray-500">
           {label}
         </label>
       )}

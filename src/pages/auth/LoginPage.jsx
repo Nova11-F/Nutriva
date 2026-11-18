@@ -76,11 +76,11 @@ export default function LoginPage() {
 
   return (
     <div className="w-full max-w-lg">
-      <div className="mb-4 flex flex-col gap-2 px-4 md:gap-4 md:mb-8">
-        <h1 className="text-center text-4xl font-bold text-text">
+      <div className="mb-4 flex flex-col gap-2 px-4">
+        <h1 className="text-center text-xl font-bold text-text lg:text-2xl">
           Masuk ke Nutriva
         </h1>
-        <p className="mt-1 text-sm text-gray-500 text-center">
+        <p className="text-xs text-gray-500 text-center lg:text-sm">
           Lanjutkan menggunakan akun Anda. Setelah masuk, sistem akan mengecek
           apakah profil anak sudah tersedia.
         </p>
@@ -136,9 +136,9 @@ export default function LoginPage() {
         </div>
       </Form>
 
-      <Card variant="success" className="mt-8 text-sm text-gray-600">
-        <p className="mb-2 font-medium text-gray-700">Setelah masuk</p>
-        <p>
+      <Card variant="success" className="mt-4 text-gray-600">
+        <p className="mb-2 text-sm font-medium text-gray-700">Setelah masuk</p>
+        <p className="text-xs tracking-wide">
           Jika belum ada Profil Anak → Pengaturan Profil Anak. Jika sudah ada →
           Beranda Personal.
         </p>

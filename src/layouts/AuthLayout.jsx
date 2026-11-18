@@ -6,11 +6,11 @@ export default function AuthLayout() {
     <div className="flex h-screen flex-col bg-stone-50 px-4 py-5 md:px-10">
       <header>
         <Link to="/" className="inline-block">
-          <img src={logo} alt="Nutriva" className="h-20 w-auto md:h-30" />
+          <img src={logo} alt="Nutriva" className="h-20 w-auto lg:h-24" />
         </Link>
       </header>
 
-      <main className="flex items-center justify-center py-8">
+      <main className="flex items-center justify-center py-4">
         <Outlet />
       </main>
     </div>

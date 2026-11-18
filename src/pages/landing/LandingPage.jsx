@@ -31,12 +31,12 @@ export default function LandingPage() {
               <Button
                 variant="primary"
                 size="xl"
-                className="w-full"
+                className="w-full lg:w-fit"
                 onClick={() => navigate("/login")}
               >
                 Mulai Sekarang
               </Button>
-              <Button variant="outline" size="xl" className="w-full">
+              <Button variant="outline" size="xl" className="w-full lg:w-fit">
                 <a href="#value">Pelajari Nutriva</a>
               </Button>
             </div>
