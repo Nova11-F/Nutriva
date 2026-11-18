@@ -15,6 +15,19 @@
   --animate-toast-in: toast-in 0.25s ease-out;
 }
 
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .steps-grid {
+    grid-template-columns: repeat(var(--total), minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+
   @keyframes toast-in {
     from { opacity: 0; transform: translateY(-8px); }
     to   { opacity: 1; transform: translateY(0); }

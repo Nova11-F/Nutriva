@@ -268,14 +268,14 @@ function OnboardingWizard({ editing, parentOnly = false }) {
     <div className="flex flex-col gap-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-lg lg:text-2xl font-bold text-gray-900">
             {parentOnly
               ? "Ubah Profil Orang Tua"
               : isEdit
                 ? `Ubah Profil ${editing.name}`
                 : "Pendaftaran Profil Balita Baru"}
           </h1>
-          <p className="mt-1 text-xs text-gray-500">
+          <p className="mt-1 text-[10px] lg:text-xs text-gray-500">
             {parentOnly
               ? "Perbarui nomor telepon, kota, dan peran Anda."
               : isEdit
@@ -289,7 +289,7 @@ function OnboardingWizard({ editing, parentOnly = false }) {
           onClick={() => navigate(backTo)}
           className="flex shrink-0 items-center gap-2"
         >
-          <ArrowLeft size={16} />{" "}
+          <ArrowLeft className="size-3" strokeWidth={3} />{" "}
           <span className="hidden md:inline">Batal & Kembali</span>
         </Button>
       </div>
@@ -297,8 +297,8 @@ function OnboardingWizard({ editing, parentOnly = false }) {
       <StepIndicator steps={steps} current={step} />
 
       <div>
-        <h2 className="text-lg font-semibold text-text">{current.title}</h2>
-        <p className="mb-4 text-sm text-gray-500">{current.description}</p>
+        <h2 className="text-md font-semibold text-text lg:text-lg">{current.title}</h2>
+        <p className="mb-4 text-xs text-gray-500 lg:text-sm">{current.description}</p>
 
         <Form
           onSubmit={handleSubmit}
@@ -311,7 +311,7 @@ function OnboardingWizard({ editing, parentOnly = false }) {
                   onClick={() => goTo(step - 1)}
                   className="flex items-center gap-2"
                 >
-                  <ArrowLeft size={16} /> Kembali
+                  <ArrowLeft className="size-3" strokeWidth={3} /> Kembali
                 </Button>
               ) : (
                 <span />
@@ -340,7 +340,7 @@ function OnboardingWizard({ editing, parentOnly = false }) {
                     )
                   ) : (
                     <>
-                      Lanjut <ArrowRight size={16} />
+                      Lanjut <ArrowRight className="size-3" strokeWidth={3}/>
                     </>
                   )}
                 </Button>
