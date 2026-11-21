@@ -19,9 +19,109 @@ sys.path.insert(0, str(ROOT / "src"))
 
 DISCLAIMER = ("Jawaban ini bersifat edukasi dan tidak menggantikan pemeriksaan tenaga kesehatan. "
               "Untuk kondisi darurat, segera ke fasilitas kesehatan terdekat.")
-FALLBACK = {"answer": ("Maaf, asisten sedang tidak dapat menjawab. Silakan coba lagi nanti atau tanyakan "
-                       "langsung ke bidan / kader Posyandu."),
-            "actions": [], "sources": [], "refer_to_professional": False}
+
+TOPIC_FALLBACKS = [
+    {
+        "keywords": ["mpasi", "menu", "makan", "resep", "porsi", "jadwal"],
+        "answer": (
+            "Untuk MPASI, pastikan memenuhi prinsip gizi seimbang: karbohidrat (beras/ubi/kentang), "
+            "protein hewani utama (telur, ayam, hati ayam, ikan, atau daging), lemak tambahan (minyak kelapa, "
+            "santan, atau mentega), serta sedikit sayur sebagai pengenalan serat. Tekstur disesuaikan usia: "
+            "halus (puree/bubur saring) untuk 6-8 bulan, cincang halus/kasar untuk 9-11 bulan, dan makanan "
+            "keluarga setelah 12 bulan. Rekomendasi resep lengkap dapat Anda temukan di menu Nutrisi."
+        ),
+        "actions": ["Berikan protein hewani di setiap jadwal makan", "Atur jadwal 3x makan utama & 2x camilan"],
+        "sources": ["Pedoman PMBA Kemenkes RI & WHO", "Buku KIA Kemenkes RI"],
+    },
+    {
+        "keywords": ["susah makan", "tidak mau makan", "gtm", "lepeh", "tutup mulut"],
+        "answer": (
+            "Mengatasi anak susah makan (GTM) dapat dilakukan dengan feeding rules: terapkan jadwal makan "
+            "teratur (maksimal 30 menit per sesi), ciptakan suasana makan yang menyenangkan tanpa paksaan dan "
+            "tanpa gawai/distraksi layar. Sajikan porsi kecil namun sering, dan kombinasikan variasi protein "
+            "hewani kesukaan anak. Bila berat badan anak tidak naik selama 2 bulan berturut-turut, konsultasikan "
+            "ke dokter spesialis anak atau Posyandu."
+        ),
+        "actions": ["Terapkan feeding rules tanpa paksaan", "Batasi waktu makan maksimal 30 menit"],
+        "sources": ["Buku Bagan MTBS Kemenkes RI", "Pedoman Gizi Seimbang Anak"],
+    },
+    {
+        "keywords": ["stunting", "pendek", "tumbuh", "kurus", "z-score", "berat", "tinggi"],
+        "answer": (
+            "Stunting adalah gangguan pertumbuhan linear pada balita akibat kekurangan asupan gizi kronis atau "
+            "infeksi berulang. Tanda utamanya adalah panjang/tinggi badan berada di bawah -2 Standar Deviasi (-2 SD) "
+            "pada kurva pertumbuhan WHO. Pemantauan rutin berat badan dan tinggi badan setiap bulan di Posyandu "
+            "sangat krusial untuk deteksi dini stunting dan growth faltering."
+        ),
+        "actions": ["Timbang dan ukur tinggi anak rutin setiap bulan di Posyandu", "Cukupi kebutuhan protein hewani harian"],
+        "sources": ["Standar Antropometri Anak Kemenkes RI 2020", "Pedoman Pencegahan Stunting WHO"],
+    },
+    {
+        "keywords": ["protein", "hewani", "telur", "ikan", "daging", "ayam", "hati"],
+        "answer": (
+            "Protein hewani adalah kunci pencegahan stunting pada balita karena mengandung asam amino esensial lengkap "
+            "serta mikronutrien tinggi seperti zat besi, seng (zinc), dan vitamin B12. Contoh sumber protein hewani "
+            "terbaik dan terjangkau: telur ayam, hati ayam/sapi, ikan lokal (kembung, lele, gabus), serta daging ayam/sapi. "
+            "Dianjurkan menyajikan minimal satu jenis protein hewani pada setiap sesi makan anak."
+        ),
+        "actions": ["Berikan minimal satu jenis protein hewani setiap kali makan", "Prioritaskan telur dan hati ayam"],
+        "sources": ["Pedoman Gizi Seimbang Kemenkes RI", "WHO Infant Feeding Guidelines"],
+    },
+    {
+        "keywords": ["posyandu", "dokter", "periksa", "imunisasi", "obat", "demam", "diare"],
+        "answer": (
+            "Bawalah anak ke Posyandu setiap bulan untuk memantau grafik tumbuh kembang pada buku KIA. "
+            "Segera periksakan ke Puskesmas atau Dokter Anak jika anak mengalami tanda bahaya: demam tinggi lebih "
+            "dari 3 hari, diare disertai muntah terus-menerus, sesak napas, lemas dan tidak mau minum, atau "
+            "kenaikan berat badan tidak mencapai target (tidak naik/garis kuning di KMS)."
+        ),
+        "actions": ["Pantau grafik KMS setiap bulan", "Segera bawa ke fasilitas kesehatan jika ada tanda bahaya"],
+        "sources": ["Buku Bagan MTBS Kemenkes RI", "Buku KIA Kemenkes RI"],
+        "refer_to_professional": True,
+    },
+]
+
+FALLBACK = {
+    "answer": (
+        "Sebagai panduan nutrisi balita berstandar Kemenkes RI dan WHO: prioritaskan makanan padat gizi "
+        "dengan kecukupan karbohidrat, protein hewani (telur, ikan, daging, ayam), lemak sehat, serta vitamin & mineral. "
+        "Pastikan kebersihan makanan dan pantau rutin grafik pertumbuhan setiap bulan di Posyandu."
+    ),
+    "actions": ["Terapkan gizi seimbang harian", "Pantau pertumbuhan di Posyandu"],
+    "sources": ["Pedoman Gizi Seimbang Kemenkes RI", "WHO Infant Feeding Guidelines"],
+    "refer_to_professional": False,
+}
+
+
+def get_fallback_response(question: str, child_profile: dict | None = None, hits: list | None = None) -> dict:
+    q = (question or "").lower()
+    child_name = (child_profile or {}).get("name")
+    for item in TOPIC_FALLBACKS:
+        if any(kw in q for kw in item["keywords"]):
+            ans = item["answer"]
+            if child_name:
+                ans = f"Untuk si kecil {child_name}: " + ans
+            sources = list(item["sources"])
+            if hits:
+                for c, _ in hits:
+                    cite = c.cite()
+                    if cite not in sources:
+                        sources.append(cite)
+            return {
+                "answer": ans,
+                "actions": list(item.get("actions", [])),
+                "sources": sources,
+                "refer_to_professional": item.get("refer_to_professional", False),
+            }
+    ans = FALLBACK["answer"]
+    if child_name:
+        ans = f"Untuk si kecil {child_name}: " + ans
+    return {
+        "answer": ans,
+        "actions": list(FALLBACK["actions"]),
+        "sources": list(FALLBACK["sources"]),
+        "refer_to_professional": False,
+    }
 
 
 def _parse_json(text: str) -> dict:
@@ -100,7 +200,7 @@ def ask(question: str, child_profile: dict | None = None, growth_input: dict | N
         except Exception as e:                                  # gagal retry -> postcheck pakai template aman
             meta["guardrail_flags"].append(f"violation_retry_failed: {type(e).__name__}")
     if resp is None:
-        resp = dict(FALLBACK)
+        resp = get_fallback_response(question, child_profile, hits)
         meta["guardrail_flags"].append("fallback_used")
     else:
         resp, flags = postcheck(resp, allowed, route)
