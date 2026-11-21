@@ -91,7 +91,7 @@ export default function AssistantChat({ child }) {
           {!loading && messages.length === 0 && (
             <ChatBubble
               role="bot"
-              text={`Halo! Saya asisten AI Nutriva. Silakan tanyakan seputar nutrisi dan tumbuh kembang ${child.name}. Pilih salah satu pertanyaan di bawah, atau tulis pertanyaan Anda sendiri.`}
+              text={`Halo Ayah dan Bunda! Saya asisten AI Nutriva. Silakan tanyakan seputar nutrisi dan tumbuh kembang ${child.name}. Pilih salah satu pertanyaan di bawah, atau tulis pertanyaan Anda sendiri.`}
             />
           )}
 

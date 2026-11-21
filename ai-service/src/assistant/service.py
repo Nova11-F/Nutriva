@@ -96,11 +96,10 @@ FALLBACK = {
 def get_fallback_response(question: str, child_profile: dict | None = None, hits: list | None = None) -> dict:
     q = (question or "").lower()
     child_name = (child_profile or {}).get("name")
+    greeting = f"Halo Ayah dan Bunda! Terkait si kecil {child_name}, " if child_name else "Halo Ayah dan Bunda! "
     for item in TOPIC_FALLBACKS:
         if any(kw in q for kw in item["keywords"]):
-            ans = item["answer"]
-            if child_name:
-                ans = f"Untuk si kecil {child_name}: " + ans
+            ans = greeting + item["answer"]
             sources = list(item["sources"])
             if hits:
                 for c, _ in hits:
@@ -113,9 +112,7 @@ def get_fallback_response(question: str, child_profile: dict | None = None, hits
                 "sources": sources,
                 "refer_to_professional": item.get("refer_to_professional", False),
             }
-    ans = FALLBACK["answer"]
-    if child_name:
-        ans = f"Untuk si kecil {child_name}: " + ans
+    ans = greeting + FALLBACK["answer"]
     return {
         "answer": ans,
         "actions": list(FALLBACK["actions"]),
