@@ -18,7 +18,7 @@ export default function BottomNav() {
         >
           {({ isActive }) => (
             <>
-              <Icon className="size-4 md:size-6" strokeWidth={isActive ? 3 : 2} />
+              <Icon className="size-4 md:size-5" strokeWidth={isActive ? 3 : 2} />
               <span className= " text-[10px] md:text-sm">{shortLabel ?? label}</span>
             </>
           )}
