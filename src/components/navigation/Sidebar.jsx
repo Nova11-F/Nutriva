@@ -1,12 +1,33 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import { navItems } from "./navItems";
+import { LogOut } from "lucide-react";
+import { useToast } from "../../hooks/useToast";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import Button from "../ui/Button";
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+
+  const { logout } = useAuth();
+
+  const { showToast } = useToast();
+
+  const handleLogout = () => {
+    logout();
+    showToast("Anda telah keluar", "success");
+    navigate("/");
+  };
   return (
-    <aside className="sticky top-0 hidden h-screen w-72 shrink-0 flex-col gap-10 border-r border-gray-300 bg-surface px-2 py-10 lg:flex lg:w-60 xl:w-80">
+    <aside className="sticky top-0 hidden h-screen w-72 justify-between shrink-0 flex-col gap-10 border-r border-gray-300 bg-surface px-2 py-6 lg:flex lg:w-60 xl:w-80">
+      <div className="flex flex-col gap-10">
       <div className="flex items-center gap-2 px-2">
-        <img src={Logo} alt="Logo Nutriva" className="h-14 w-auto object-cover" />
+        <img
+          src={Logo}
+          alt="Logo Nutriva"
+          className="h-14 w-auto object-cover"
+        />
         <h1 className="text-2xl font-bold text-primary">Nutriva</h1>
       </div>
 
@@ -16,7 +37,7 @@ export default function Sidebar() {
             key={path}
             to={path}
             className={({ isActive }) =>
-              `flex items-center gap-4 rounded-xl p-4 font-medium transition-all duration-300 ${
+              `flex items-center gap-4 rounded-lg p-4 text-xs font-medium transition-all duration-300 ${
                 isActive
                   ? "bg-soft text-primary"
                   : "text-gray-500 hover:bg-soft hover:text-primary"
@@ -32,6 +53,17 @@ export default function Sidebar() {
           </NavLink>
         ))}
       </nav>
+</div>
+        <Button
+          variant="ghost"
+          onClick={handleLogout}
+          className="group flex items-center justify-center gap-2 border border-danger px-4 py-2 hover:bg-danger"
+        >
+          <LogOut size={20} className="text-danger group-hover:text-surface" />
+          <span className="text-danger text-xs group-hover:text-surface">
+            Keluar Akun (Logout)
+          </span>
+        </Button>
     </aside>
   );
 }
