@@ -112,7 +112,7 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="grid grid-cols-1 items-stretch gap-2 md:grid-cols-2 lg:grid-cols-4">
-          <Card className="p-6 flex flex-col gap-1 w-full lg:gap-2 lg:p-8 2xl:w-150">
+          <Card className="p-6 flex flex-col gap-1 w-full lg:gap-2 lg:p-8">
             <p className="text-md font-semibold text-primary lg:text-lg">01</p>
             <h3 className="text-lg font-semibold text-text lg:text-xl">
               Menu & Porsi
@@ -122,7 +122,7 @@ export default function LandingPage() {
               sehari-hari.
             </p>
           </Card>
-          <Card className="p-6 flex flex-col gap-1 w-full lg:gap-2 lg:p-8 2xl:w-150">
+          <Card className="p-6 flex flex-col gap-1 w-full lg:gap-2 lg:p-8">
             <p className="text-md font-semibold text-primary lg:text-lg">02</p>
             <h3 className="text-lg font-semibold text-text lg:text-xl">
               Pertumbuhan
@@ -131,7 +131,7 @@ export default function LandingPage() {
               Khawatir berat atau tinggi anak tidak berkembang sesuai harapan.
             </p>
           </Card>
-          <Card className="p-6 flex flex-col gap-1 w-full lg:gap-2 lg:p-8 2xl:w-150">
+          <Card className="p-6 flex flex-col gap-1 w-full lg:gap-2 lg:p-8">
             <p className="text-md font-semibold text-primary lg:text-lg">03</p>
             <h3 className="text-lg font-semibold text-text lg:text-xl">
               Informasi Gizi
@@ -141,7 +141,7 @@ export default function LandingPage() {
               dibandingkan.
             </p>
           </Card>
-          <Card className="p-6 flex flex-col gap-1 w-full lg:gap-2 lg:p-8 2xl:w-150">
+          <Card className="p-6 flex flex-col gap-1 w-full lg:gap-2 lg:p-8">
             <p className="text-md font-semibold text-primary lg:text-lg">04</p>
             <h3 className="text-lg font-semibold text-text lg:text-xl">
               Aksi Sehari-hari

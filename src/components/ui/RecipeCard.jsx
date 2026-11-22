@@ -40,12 +40,12 @@ export default function RecipeCard({ recipe: m, saved = false, onToggleSave }) {
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-5">
-        <h4 className="text-sm font-bold text-primary">{m.category}</h4>
-        <h3 className="text-xl font-bold leading-snug text-text">{m.title}</h3>
-        <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">{m.desc}</p>
+        <h4 className="text-xs text-primary font-bold lg:text-sm">{m.category}</h4>
+        <h3 className="text-lg text-text font-bold leading-snug lg:text-xl">{m.title}</h3>
+        <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 lg:text-sm">{m.desc}</p>
 
         <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
-          <span className="text-sm font-semibold text-gray-800">
+          <span className="text-xs font-semibold text-gray-800 lg:text-sm">
             {m.kcal} • {m.protein}
           </span>
           <Button

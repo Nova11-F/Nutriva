@@ -147,8 +147,8 @@ export default function NutritionEmpty() {
           </Card>
         </div>
 
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col gap-1 lg:gap-2 px-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-center">
+          <div className="flex flex-col md:col-span-2 gap-1 lg:gap-2 px-2">
             <h2 className="text-lg text-text font-semibold lg:text-2xl">
               Inspirasi & Ide Resep Sehat si Kecil
             </h2>
@@ -160,7 +160,7 @@ export default function NutritionEmpty() {
           <Button
             variant="Noborder"
             onClick={() => navigate("/nutrition/recipes")}
-            className="group flex items-center hover:underline"
+            className="group flex items-center justify-end self-end hover:underline"
           >
             Lihat Semua Resep
             <ChevronRight

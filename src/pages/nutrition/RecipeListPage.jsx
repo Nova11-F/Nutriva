@@ -296,7 +296,7 @@ export default function RecipeListPage() {
   return (
     <>
       <Header variant="nutrisi" />
-      <div className="flex flex-col gap-5 px-4 pb-6 md:px-6">
+      <div className="flex flex-col gap-5 px-4">
         <button
           onClick={() => navigate("/nutrition")}
           className="flex w-fit items-center gap-1 text-sm font-medium text-primary hover:underline cursor-pointer"
@@ -468,18 +468,18 @@ export default function RecipeListPage() {
                   </div>
 
                   <div className="flex flex-1 flex-col gap-2 p-5">
-                    <h4 className="text-sm font-bold text-primary">
+                    <h4 className="text-xs text-primary font-bold lg:text-sm">
                       {m.category}
                     </h4>
-                    <h3 className="text-xl font-bold leading-snug text-text">
+                    <h3 className="text-lg text-text font-bold leading-snug lg:text-xl">
                       {m.title}
                     </h3>
-                    <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">
+                    <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 lg:text-sm">
                       {m.desc}
                     </p>
 
                     <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
-                      <span className="text-sm font-semibold text-gray-800">
+                      <span className="text-xs font-semibold text-gray-800 lg:text-sm">
                         {m.kcal} • {m.protein}
                       </span>
                       <Button

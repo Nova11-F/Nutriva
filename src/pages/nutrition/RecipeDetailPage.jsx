@@ -193,9 +193,10 @@ export default function RecipeDetailPage() {
   return (
     <>
       <Header variant="nutrisi" />
-      <div className="flex flex-col gap-6 px-4 pb-6 md:px-6">
+      <div className="flex flex-col gap-6 px-4">
         <Button
           onClick={() => navigate("/nutrition/recipes")}
+          size="none"
           variant="noborder"
           className="flex w-fit items-center gap-1 text-sm font-medium text-primary md:text-lg hover:underline cursor-pointer"
         >
@@ -327,11 +328,11 @@ export default function RecipeDetailPage() {
                         className="size-5 accent-green-700 cursor-pointer"
                       />
                       <span
-                        className={`flex-1 text-base ${done ? "text-gray-400 line-through" : "text-text"}`}
+                        className={`flex-1 text-xs lg:text-sm ${done ? "text-gray-400 line-through" : "text-text"}`}
                       >
                         {ing.name}
                       </span>
-                      <span className="text-sm font-semibold text-gray-500">
+                      <span className="text-xs lg:text-sm font-semibold text-gray-500">
                         {ing.qty}
                       </span>
                     </label>
