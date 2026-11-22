@@ -206,6 +206,9 @@ def ask(question: str, child_profile: dict | None = None, growth_input: dict | N
             resp["refer_to_professional"] = True
             meta["guardrail_flags"].append("forced_referral_growth_alert")
 
+    if resp.get("answer") and not resp["answer"].strip().startswith(("Halo Ayah dan Bunda", "Halo Ayah & Bunda")):
+        resp["answer"] = f"Halo Ayah dan Bunda! {resp['answer'].strip()}"
+
     resp["source_details"] = [{"title": t, "reference": src_detail.get(t, "-"), "url": src_url.get(t) or None}
                              for t in resp.get("sources", [])]
     meta["raw_output"] = raw[:2000]

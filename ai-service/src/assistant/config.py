@@ -47,7 +47,7 @@ class LLMConfig:
     provider: str = "gemini"
     api_key: str = ""
     base_url: str = ""
-    model: str = "gemini-3.5-flash-lite"
+    model: str = "gemini-3.5-flash"
     temperature: float = 0.2
     top_p: float = 0.9
     max_tokens: int = 600

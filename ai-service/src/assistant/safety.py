@@ -55,7 +55,7 @@ _FORBIDDEN_OUT = [
 ]
 
 EMERGENCY_TEMPLATE = {
-    "answer": ("Kondisi yang Anda ceritakan bisa termasuk tanda bahaya. Mohon segera bawa anak ke Puskesmas, "
+    "answer": ("Halo Ayah dan Bunda! Kondisi yang Anda ceritakan bisa termasuk tanda bahaya. Mohon segera bawa anak ke Puskesmas, "
                "IGD rumah sakit, atau dokter terdekat sekarang. Jangan menunggu dan jangan hanya mengandalkan "
                "informasi dari aplikasi."),
     "actions": ["Segera ke fasilitas kesehatan terdekat atau hubungi layanan darurat 119",
@@ -64,7 +64,7 @@ EMERGENCY_TEMPLATE = {
     "refer_to_professional": True,
 }
 DOSAGE_TEMPLATE = {
-    "answer": ("Nutriva tidak memberikan dosis obat, vitamin, atau suplemen karena jenis dan dosisnya harus "
+    "answer": ("Halo Ayah dan Bunda! Nutriva tidak memberikan dosis obat, vitamin, atau suplemen karena jenis dan dosisnya harus "
                "disesuaikan dengan berat badan dan kondisi anak oleh tenaga kesehatan. Silakan tanyakan ke dokter, "
                "bidan, atau apoteker."),
     "actions": ["Tanyakan dosis ke dokter, bidan, atau apoteker", "Bawa Buku KIA dan catatan berat badan terakhir anak"],
@@ -124,7 +124,7 @@ def postcheck(answer: dict, allowed_sources: list[str], route: str) -> tuple[dic
     if any(f.startswith("forbidden_") for f in flags):
         # jangan pernah tampilkan diagnosis/dosis ke pengguna
         safe = DOSAGE_TEMPLATE if "forbidden_dosage" in flags else {
-            "answer": ("Penetapan status gizi atau stunting hanya bisa dilakukan tenaga kesehatan melalui "
+            "answer": ("Halo Ayah dan Bunda! Penetapan status gizi atau stunting hanya bisa dilakukan tenaga kesehatan melalui "
                        "pengukuran langsung. Silakan periksakan anak ke Posyandu atau Puskesmas."),
             "actions": ["Ukur tinggi dan timbang berat badan anak di Posyandu",
                         "Diskusikan hasilnya dengan bidan atau petugas gizi Puskesmas"],

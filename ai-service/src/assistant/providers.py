@@ -39,7 +39,7 @@ def _gemini(cfg: LLMConfig, system: str, user: str) -> tuple[str, dict]:
             "generationConfig": gen}
     headers = {"x-goog-api-key": cfg.api_key, "Content-Type": "application/json", **cfg.extra_headers}
     models_to_try = [cfg.model]
-    for m in ["gemini-3.5-flash", "gemini-flash-lite-latest"]:
+    for m in ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-flash-lite-latest", "gemini-3.8-flash"]:
         if m not in models_to_try:
             models_to_try.append(m)
 
@@ -64,7 +64,7 @@ def _gemini(cfg: LLMConfig, system: str, user: str) -> tuple[str, dict]:
         fb = data.get("promptFeedback", {})
         raise LLMError(f"Gemini tidak mengembalikan kandidat (blockReason={fb.get('blockReason')})")
     parts = (cands[0].get("content") or {}).get("parts") or []
-    text = "".join(p.get("text", "") for p in parts if isinstance(p, dict))
+    text = "".join(p.get("text", "") for p in parts if isinstance(p, dict) and not p.get("thought"))
     if not text:
         raise LLMError(f"Gemini mengembalikan jawaban kosong (finishReason={cands[0].get('finishReason')})")
     um = data.get("usageMetadata", {})
