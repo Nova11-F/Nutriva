@@ -21,16 +21,16 @@ export default function GrowthEmpty() {
   return (
     <>
       <Header variant="pertumbuhan" />
-      <div className="flex flex-col gap-6 mt-6 px-4 md:gap-8">
-        <Card className="flex flex-col p-8 gap-2 md:gap-4 md:px-15 md:py-12 bg-linear-to-r from-background to-soft ">
-          <div className="w-fit inline-flex items-center gap-2 bg-soft text-primary px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase md:px-4 md:py-2.5 md:text-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary md:w-2 md:h-2"></span>
+      <div className="flex flex-col gap-4 mt-6 px-4 md:gap-6">
+        <Card className="p-4 md:p-6 flex flex-col gap-2 md:gap-4 items-start justify-between bg-linear-to-r from-background to-soft">
+          <div className="w-fit inline-flex items-center gap-2 bg-soft text-primary px-3 py-1.5 rounded-full text-[8px] font-semibold tracking-wide uppercase md:px-4 md:py-2.5 md:text-[10px]">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary lg:w-2 lg:h-2"></span>
             Langkah Awal Nutrisi Cerdas
           </div>
-          <h2 className="text-2xl text-text font-bold tracking-tight leading-normal md:text-5xl">
+          <h2 className="text-2xl text-text font-bold md:text-4xl">
             Tambahkan profil anak untuk mulai memantau pertumbuhan.
           </h2>
-          <p className="w-full text-xs text-gray-700 leading-normal tracking-wide md:text-xl">
+          <p className="w-full text-xs text-gray-500 leading-normal tracking-wide md:text-sm">
             Tanpa Profil Anak, Nutriva tidak menampilkan grafik, BB/TB, atau
             analisis pertumbuhan personal. Daftarkan identitas dan tanggal lahir
             si kecil untuk mengakses kalkulator z-score, jadwal vaksinasi, dan
@@ -38,74 +38,74 @@ export default function GrowthEmpty() {
           </p>
           <Button
             variant="outline"
-            className="flex items-center justify-center text-sm gap-2 md:text-xl md:w-fit"
+            className="flex items-center justify-center text-sm gap-2 lg:text-base md:w-fit"
             onClick={goAdd}
           >
-            <Plus strokeWidth={2} className="size-4 md:size-6" />
+            <Plus strokeWidth={2} className="size-4 lg:size-6" />
             Tambah Profil Anak
           </Button>
         </Card>
 
-        <div className="flex flex-col px-2 gap-1 md:gap-2 md:px-4">
-          <h2 className="text-xl text-text font-semibold md:text-2xl">
+        <div className="flex flex-col  gap-1 lg:gap-2 px-2 lg:px-4">
+          <h2 className="text-lg text-text font-semibold lg:text-2xl">
             Pratinjau Fitur Pemantauan
           </h2>
-          <p className="text-gray-500 text-xs tracking-wide md:text-lg">
+          <p className="text-gray-500 text-xs lg:text-base">
             Gambaran fitur lengkap yang dapat diakses untuk memantau tumbuh
             kembang si kecil secara optimal.
           </p>
         </div>
-        <div className="grid grid-cols-1 items-strech justify-between gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 items-strech justify-between gap-4 lg:grid-cols-3">
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-8 tracking-wide md:gap-4 md:p-15 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
-            <div className="bg-soft rounded-xl p-4 md:p-6 w-fit transition-all duration-300 group-hover:bg-primary">
+            <div className="bg-soft rounded-lg w-fit p-4 transition-all duration-300 group-hover:bg-primary">
               <ChartColumn
                 strokeWidth={2}
                 className="size-5 text-primary md:size-6 transition-colors duration-300 group-hover:text-white"
               />
             </div>
-            <h3 className="text-xl text-text font-semibold md:text-2xl">
+            <h3 className="text-base text-text font-semibold flex items-center lg:min-h-14 lg:text-lg">
               Riwayat Pertumbuhan
             </h3>
-            <p className="text-sm text-gray-500 md:text-lg">
+            <p className="text-xs text-gray-500 tracking-wide lg:text-sm">
               Pantau perkembangan fisik anak secara berkala dengan grafik kurva
               pertumbuhan yang jelas dan mudah dipahami.
             </p>
           </Card>
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-8 tracking-wide md:gap-4 md:p-15 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
-            <div className="bg-soft rounded-xl p-4 md:p-6 w-fit transition-all duration-300 group-hover:bg-primary">
+            <div className="bg-soft rounded-lg w-fit p-4 transition-all duration-300 group-hover:bg-primary">
               <ShieldAlert
                 strokeWidth={2}
                 className="size-5 text-primary md:size-6 transition-colors duration-300 group-hover:text-white"
               />
             </div>
-            <h3 className="text-xl text-text font-semibold md:text-2xl">
+            <h3 className="text-base text-text font-semibold flex items-center lg:min-h-14 lg:text-lg">
               Deteksi Stunting
             </h3>
-            <p className="text-sm text-gray-500 md:text-lg">
+            <p className="text-xs text-gray-500 tracking-wide lg:text-sm">
               Deteksi dini risiko stunting secara akurat sesuai standar medis
               untuk pencegahan lebih cepat..
             </p>
           </Card>
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-8 tracking-wide md:gap-4 md:p-15 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
-            <div className="bg-soft rounded-xl p-4 md:p-6 w-fit transition-all duration-300 group-hover:bg-primary">
+            <div className="bg-soft rounded-lg w-fit p-4 transition-all duration-300 group-hover:bg-primary">
               <NotebookPen
                 strokeWidth={2}
                 className="size-5 text-primary md:size-6 transition-colors duration-300 group-hover:text-white"
               />
             </div>
-            <h3 className="text-xl text-text font-semibold md:text-2xl">
+            <h3 className="text-base text-text font-semibold flex items-center lg:min-h-14 lg:text-lg">
               Input Data Pertumbuhan
             </h3>
-            <p className="text-sm text-gray-500 md:text-lg">
+            <p className="text-xs text-gray-500 tracking-wide lg:text-sm">
               Kemudahan entri data fisik balita kapan saja untuk pemantauan
               kesehatan yang konsisten.
             </p>

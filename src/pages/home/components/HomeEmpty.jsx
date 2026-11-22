@@ -59,7 +59,7 @@ export default function HomeEmpty() {
         <div className="grid grid-cols-1 items-strech justify-between gap-4 lg:grid-cols-3">
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-4 tracking-wide md:p-8 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
             <div className="bg-soft rounded-lg w-fit p-4 transition-all duration-300 group-hover:bg-primary">
               <BookOpenText
@@ -68,10 +68,10 @@ export default function HomeEmpty() {
                group-hover:text-white"
               />
             </div>
-            <h3 className="text-lg text-text font-semibold md:text-xl">
+            <h3 className="text-base text-text font-semibold flex items-center lg:min-h-14 lg:text-lg">
               Perencanaan & Pelacakan Nutrisi
             </h3>
-            <p className="text-xs text-gray-500 tracking-wide md:text-sm">
+            <p className="text-xs text-gray-500 tracking-wide lg:text-sm">
               Susun menu harian bergizi, pantau asupan kalori dan nutrisi
               penting, serta catat makanan favorit si kecil untuk memenuhi
               kebutuhan gizinya.
@@ -79,7 +79,7 @@ export default function HomeEmpty() {
           </Card>
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-4 tracking-wide md:p-8 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
             <div className="bg-soft rounded-lg p-4 w-fit transition-all duration-300 group-hover:bg-primary">
               <ChartColumn
@@ -88,10 +88,10 @@ export default function HomeEmpty() {
                group-hover:text-white"
               />
             </div>
-            <h3 className="text-lg text-text font-semibold md:text-xl">
+            <h3 className="text-base text-text font-semibold flex items-center lg:min-h-14 lg:text-lg">
               Pemantauan Pertumbuhan
             </h3>
-            <p className="text-xs text-gray-500 tracking-wide md:text-sm">
+            <p className="text-xs text-gray-500 tracking-wide lg:text-sm">
               Catat berat badan, tinggi badan, dan lingkar kepala secara
               berkala. Pantau perkembangan si kecil melalui grafik pertumbuhan
               yang informatif.
@@ -99,7 +99,7 @@ export default function HomeEmpty() {
           </Card>
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-4 tracking-wide md:p-8 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
             <div className="bg-soft rounded-lg p-4 w-fit transition-all duration-300 group-hover:bg-primary">
               <MessageSquareMore
@@ -108,10 +108,10 @@ export default function HomeEmpty() {
                group-hover:text-white"
               />
             </div>
-            <h3 className="text-lg text-text font-semibold md:text-xl">
+            <h3 className="text-base text-text font-semibold flex items-center lg:min-h-14 lg:text-lg">
               Asisten AI Nutrisi Personal
             </h3>
-            <p className="text-xs text-gray-500 tracking-wide md:text-sm">
+            <p className="text-xs text-gray-500 tracking-wide lg:text-sm">
               Dapatkan panduan seputar MPASI, alergi makanan, dan tekstur
               makanan sesuai usia anak untuk mendukung tumbuh kembangnya.
             </p>
@@ -146,7 +146,7 @@ export default function HomeEmpty() {
             </p>
           <Button
             variant="primary"
-            className="py-2 px-4 flex items-center justify-center gap-2 w-full md:w-fit shrink-0"
+            className="py-2 px-4 flex items-center justify-center gap-2 w-full lg:w-fit shrink-0"
             onClick={goAssistant}
           >
             <Plus size={24} strokeWidth={2} className="" />
@@ -156,7 +156,7 @@ export default function HomeEmpty() {
         <Card className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row gap-2 md:justify-between">
             <div className="flex flex-col lg:gap-1">
-              <h3 className="text-lg text-text font-semibold lg:text-2xl">
+              <h3 className="text-lg text-text font-bold lg:text-xl">
                 Inspirasi Menu Harian Bernutrisi
               </h3>
               <p className="text-xs text-gray-500 font-semibold md:text-md">
@@ -171,26 +171,26 @@ export default function HomeEmpty() {
           </div>
           <div className="grid grid-cols-1 gap-2 md:gap-4 md:grid-cols-3">
             <Card variant="soft" className="px-4 py-2 md:p-4">
-              <h4 className="text-sm text-secondary font-bold uppercase lg:text-base">
+              <h4 className="text-xs text-secondary font-bold uppercase lg:text-sm">
                 Sarapan Pagi
               </h4>
-              <p className="text-gray-500 text-xs font-semibold lg:text-sm">
+              <p className="text-gray-500 text-[10px] font-semibold lg:text-xs">
                 Bubur Hati Ayam & Bayam Merah
               </p>
             </Card>
             <Card variant="soft" className="px-4 py-2 md:p-4">
-              <h4 className="text-sm text-secondary font-bold uppercase lg:text-base">
+              <h4 className="text-xs text-secondary font-bold uppercase lg:text-sm">
                 Makan Siang
               </h4>
-              <p className="text-gray-500 text-xs font-semibold lg:text-sm">
+              <p className="text-gray-500 text-[10px] font-semibold lg:text-xs">
                 Bubur Hati Ayam & Bayam Merah
               </p>
             </Card>
             <Card variant="soft" className="px-4 py-2 md:p-4">
-              <h4 className="text-sm text-secondary font-bold uppercase lg:text-base">
+              <h4 className="text-xs text-secondary font-bold uppercase lg:text-sm">
                 Makan Malam
               </h4>
-              <p className="text-gray-500 text-xs font-semibold lg:text-sm">
+              <p className="text-gray-500 text-[10px] font-semibold lg:text-xs">
                 Bubur Hati Ayam & Bayam Merah
               </p>
             </Card>
