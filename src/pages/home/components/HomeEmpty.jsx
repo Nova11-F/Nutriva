@@ -18,8 +18,11 @@ export default function HomeEmpty() {
   return (
     <>
       <Header variant="default"></Header>
-      <div className="flex flex-col gap-6 mt-6 px-4 md-gap-8">
-        <Card className="flex flex-col p-8 gap-4 md:gap-8 md:px-15 md:py-12 bg-linear-to-r from-background to-soft ">
+      <div className="flex flex-col gap-6 mt-6 px-4 md:gap-8">
+        <Card
+          variant="default"
+          className="p-6 md:p-8 flex flex-col xl:flex-row gap-6 md:gap-8 items-start md:items-center justify-between bg-linear-to-r from-background to-soft"
+        >
           <div className="w-fit inline-flex items-center gap-2 bg-soft text-primary px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase md:px-4 md:py-2.5 md:text-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-primary md:w-2 md:h-2"></span>
             Langkah Awal Nutrisi Cerdas
@@ -116,7 +119,7 @@ export default function HomeEmpty() {
         </div>
         <Card
           variant="default"
-          className="p-8 flex gap-8 items-center justify-between bg-linear-to-r  from-background to-soft "
+          className="p-8 flex flex-col gap-8 items-center justify-between bg-linear-to-r  from-background to-soft "
         >
           <div className="bg-primary rounded-2xl p-6">
             <Sparkle
@@ -142,7 +145,7 @@ export default function HomeEmpty() {
           </div>
           <Button
             variant="primary"
-            className="py-2 px-4 flex items-center justify-center gap-2 w-90"
+            className="py-2 px-4 flex items-center justify-center gap-2 w-full md:w-fit shrink-0"
             onClick={goAssistant}
           >
             <Plus size={24} strokeWidth={2} className="" />

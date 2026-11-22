@@ -4,10 +4,10 @@ import BottomNav from "../components/navigation/BottomNav";
 
 export default function MainLayout() {
   return (
-    <div className="flex min-h-screen bg-surface">
+    <div className="flex min-h-screen w-full bg-surface">
       <Sidebar />
 
-      <main className="min-w-0 flex-1 p-4 pb-28 md:p-8 md:pb-8">
+      <main className="min-w-0 flex-1 md:px-4 py-4 pb-24 lg:pb-8">
         <Outlet />
       </main>
 

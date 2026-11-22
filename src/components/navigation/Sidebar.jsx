@@ -4,10 +4,10 @@ import { navItems } from "./navItems";
 
 export default function Sidebar() {
   return (
-    <aside className="sticky top-0 hidden h-screen w-72 shrink-0 flex-col gap-10 border-r border-gray-300 bg-surface px-4 py-10 xl:flex lg:w-80">
-      <div className="flex items-center gap-2 px-4">
-        <img src={Logo} alt="Logo Nutriva" className="h-16 w-auto object-cover" />
-        <h1 className="text-3xl font-bold text-primary">Nutriva</h1>
+    <aside className="sticky top-0 hidden h-screen w-72 shrink-0 flex-col gap-10 border-r border-gray-300 bg-surface px-2 py-10 lg:flex lg:w-60 xl:w-80">
+      <div className="flex items-center gap-2 px-2">
+        <img src={Logo} alt="Logo Nutriva" className="h-14 w-auto object-cover" />
+        <h1 className="text-2xl font-bold text-primary">Nutriva</h1>
       </div>
 
       <nav className="flex flex-col gap-1">
