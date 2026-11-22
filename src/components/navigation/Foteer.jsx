@@ -2,18 +2,18 @@ import Logo from "../../assets/images/logo.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200 pt-16 pb-12 px-2 2xl:px-12">
-      <div className="mx-8 grid grid-cols-1 md:grid-cols-5 gap-8 pb-8 border-b border-gray-200 md:gap-12 md:mx-20 md:pb-16">
+    <footer className="bg-white border-t border-gray-200 py-8 px-2">
+      <div className="mx-8 grid grid-cols-1 md:grid-cols-5 gap-8 pb-8 border-b-2 border-gray-200 md:gap-12 md:mx-8 md:pb-8">
         <div className="md:col-span-2 space-y-2 md:space-y-4">
           <div className="flex items-center gap-2">
             <img
               src={Logo}
               alt="logo nutriva"
-              className="w-auto h-20 object-cover"
+              className="w-auto h-15 md:h-20 object-cover"
             />
-            <h1 className="text-primary font-bold text-3xl">Nutriva</h1>
+            <h1 className="text-primary font-bold text-2xl md:text-3xl">Nutriva</h1>
           </div>
-          <p className="text-sm text-gray-500 max-w-md leading-relaxed">
+          <p className="text-xs md:text-xs text-gray-500 max-w-md leading-relaxed">
             Pendamping Nutrisi & Tumbuh Kembang Anak untuk Orang Tua.
           </p>
         </div>
@@ -26,7 +26,7 @@ export default function Footer() {
             <li>
               <a
                 href="#experiences"
-                className="hover:text-secondary transition"
+                className="text-xs md:text-xs hover:text-secondary transition"
               >
                 Nutrisi
               </a>
@@ -34,7 +34,7 @@ export default function Footer() {
             <li>
               <a
                 href="#experiences"
-                className="hover:text-secondary transition"
+                className="text-xs md:text-xs hover:text-secondary transition"
               >
                 Pertumbuhan
               </a>
@@ -42,7 +42,7 @@ export default function Footer() {
             <li>
               <a
                 href="#experiences"
-                className="hover:text-secondary transition"
+                className="text-xs md:text-xs hover:text-secondary transition"
               >
                 Asisten AI
               </a>
@@ -58,7 +58,7 @@ export default function Footer() {
             <li>
               <a
                 href="#carakerja"
-                className="hover:text-secondary transition"
+                className="text-xs md:text-xs hover:text-secondary transition"
               >
                 Tentang Nutriva
               </a>
@@ -66,13 +66,13 @@ export default function Footer() {
             <li>
               <a
                 href="#carakerja"
-                className="hover:text-secondary transition"
+                className="text-xs md:text-xs hover:text-secondary transition"
               >
                 Cara Kerja
               </a>
             </li>
             <li>
-              <a href="#trust" className="hover:text-secondary transition">
+              <a href="#trust" className="text-xs md:text-xs hover:text-secondary transition">
                 Trust & Safety
               </a>
             </li>
@@ -85,12 +85,12 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-sm text-slate-600">
             <li>
-              <a href="#trust" className="hover:text-secondary transition">
+              <a href="#trust" className="text-xs md:text-xs hover:text-secondary transition">
                 Privasi
               </a>
             </li>
             <li>
-              <a href="#trust" className="hover:text-secondary transition">
+              <a href="#trust" className="text-xs md:text-xs hover:text-secondary transition">
                 Ketentuan
               </a>
             </li>
@@ -98,13 +98,13 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-8 pt-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 md:mx-20 md:pt-8">
-        <p className="leading-relaxed">
+      <div className="mx-8 pt-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 md:pt-8">
+        <p className="text-[10px] md:text-xs leading-relaxed md:max-w-md lg:max-w-2xl">
           Nutriva menyediakan informasi edukatif dan bukan layanan diagnosis
           medis. Konsultasikan kondisi kesehatan anak kepada tenaga kesehatan
           yang sesuai.
         </p>
-        <p>&copy; 2026 Nutriva. Hak cipta dilindungi.</p>
+        <p className="text-[10px] md:text-xs">&copy; 2026 Nutriva. Hak cipta dilindungi.</p>
       </div>
     </footer>
   );

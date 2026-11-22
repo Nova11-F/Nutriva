@@ -57,9 +57,9 @@ export default function LandingPage() {
           <div className="hidden relative lg:flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md">
               {/* Background circles */}
-              <div className="absolute -top-[15%] -left-[10%] w-[100%] aspect-square bg-soft rounded-full pointer-events-none" />
+              <div className="absolute -top-[10%] -left-[10%] w-[110%] xl:w-[100%] aspect-square bg-soft rounded-full pointer-events-none" />
 
-              <div className="absolute -top-[12%] right-[12%] w-[20%] aspect-square bg-light rounded-full pointer-events-none" />
+              <div className="absolute -top-[12%] right-[5%] w-[20%] xl:right-[12%] aspect-square bg-light rounded-full pointer-events-none" />
 
               {/* Image container */}
               <div className="relative bg-surface p-4 rounded-3xl shadow-2xl border border-soft w-fit">
@@ -111,7 +111,7 @@ export default function LandingPage() {
             menjadi lebih mudah
           </p>
         </div>
-        <div className="flex flex-col items-center gap-2 lg:flex 2xl:flex-row">
+        <div className="grid grid-cols-1 items-stretch gap-2 md:grid-cols-2 lg:grid-cols-4">
           <Card className="p-6 flex flex-col gap-1 w-full lg:gap-2 lg:p-8 2xl:w-150">
             <p className="text-md font-semibold text-primary lg:text-lg">01</p>
             <h3 className="text-lg font-semibold text-text lg:text-xl">
@@ -170,34 +170,34 @@ export default function LandingPage() {
             langkah yang mudah diikuti.
           </p>
         </div>
-        <div className="flex flex-col items-center gap-4 lg:flex lg:flex-row lg:items-stretch">
-          <Card className="p-4 flex flex-col gap-2 w-full lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-2 md:items-stretch">
+          <Card className="p-4 flex flex-col gap-2 w-full lg:p-8">
             <p className="text-md font-bold text-primary bg-soft px-4 py-2 rounded-lg w-fit lg:text-lg lg:px-5 lg:py-3">
               P
             </p>
             <h3 className="text-lg lg:px-1 font-bold text-hover tracking-wider lg:text-xl">Plan</h3>
-            <p className=" text-gray-500 text-sm lg:text-md">
+            <p className=" text-gray-500 text-xs lg:text-md">
               Rencanakan kebutuhan nutrisi dan menu yang lebih terarah.
             </p>
           </Card>
-          <Card className="p-4 flex flex-col gap-2 w-full lg:px-8">
+          <Card className="p-4 flex flex-col gap-2 w-full lg:p-8">
             <p className="text-md font-bold text-primary bg-soft px-4 py-2 rounded-lg w-fit lg:text-lg lg:px-5 lg:py-3">
               T
             </p>
             <h3 className="text-lg lg:px-1 font-bold text-hover tracking-wider lg:text-xl">Track</h3>
-            <p className="text-gray-500 text-sm lg:text-md">
+            <p className="text-gray-500 text-xs lg:text-md">
               Catat makanan dan pertumbuhan untuk melihat perubahan dari waktu
               ke waktu.
             </p>
           </Card>
-          <Card className="p-4 flex flex-col gap-2 w-full lg:px-8">
+          <Card className="p-4 flex flex-col gap-2 w-full lg:p-8">
             <p className="text-md font-bold text-primary bg-soft px-4 py-2 rounded-lg w-fit lg:text-lg lg:px-5 lg:py-3">
               U
             </p>
             <h3 className="text-lg lg:px-1 font-bold text-hover tracking-wider lg:text-xl">
               Understand
             </h3>
-            <p className="text-gray-500 text-sm lg:text-md">
+            <p className="text-gray-500 text-xs lg:text-md">
               Pahami ringkasan dan analisis yang relevan dengan konteks anak.
             </p>
           </Card>
@@ -221,7 +221,7 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="flex flex-col items-stretch gap-4 lg:flex-row lg:justify-between">
-          <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-full h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft">
+          <div className="group p-6 md:p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-full h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft">
             <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
               <Soup
                 size={20}
@@ -229,6 +229,7 @@ export default function LandingPage() {
                 className="text-primary group-hover:text-surface transition-all duration-300"
               />
             </div>
+            <div className="flex flex-col gap-2">
             <h3 className="text-xl font-semibold text-text md:text-2xl">
               Nutrisi
             </h3>
@@ -236,22 +237,23 @@ export default function LandingPage() {
               Rencanakan menu, cari makanan, catat porsi, dan lihat ringkasan
               nutrisi harian.
             </p>
-            <div className="flex flex-col gap-2 my-3 md:my-6 md:gap-4">
-              <span className="flex items-center gap-4 text-md text-gray-500 font-semibold md:text-lg">
+            </div>
+            <div className="flex flex-col gap-2 md:gap-4">
+              <span className="flex items-center gap-2 md:gap-4 text-sm text-gray-500 font-semibold md:text-base">
                 <span className="w-2 h-2 rounded-full bg-secondary"></span>{" "}
                 Perencana Menu & rekomendasi menu
               </span>
-              <span className="flex items-center gap-4 text-md text-gray-500 font-semibold md:text-lg">
+              <span className="flex items-center gap-2 md:gap-4 text-sm text-gray-500 font-semibold md:text-base">
                 <span className="w-2 h-2 rounded-full bg-secondary"></span> Cari
                 Makanan & Porsi Makanan
               </span>
-              <span className="flex items-center gap-4 text-md text-gray-500 font-semibold md:text-lg">
+              <span className="flex items-center gap-2 md:gap-4 text-sm text-gray-500 font-semibold md:text-base">
                 <span className="w-2 h-2 rounded-full bg-secondary"></span>{" "}
                 Ringkasan Nutrisi Harian
               </span>
             </div>
           </div>
-          <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-full h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft">
+          <div className="group p-6 md:p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-full h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft">
             <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
               <ChartLine
                 size={20}
@@ -259,29 +261,31 @@ export default function LandingPage() {
                 className="text-primary group-hover:text-surface transition-all duration-300"
               />
             </div>
+            <div className="flex flex-col gap-2">
             <h3 className="text-xl font-semibold text-text md:text-2xl">
               Pemantauan Pertumbuhan
             </h3>
-            <p className="text-md text-gray-500 tracking-wide md:text-lg">
+            <p className="text-base text-gray-500 tracking-wide md:text-lg">
               Catat pengukuran dan pahami pola pertumbuhan anak dari waktu ke
               waktu.
             </p>
-            <div className="flex flex-col gap-2 my-3 md:my-6 md:gap-4">
-              <span className="flex items-center gap-4 text-md text-gray-500 font-semibold md:text-lg">
+            </div>
+            <div className="flex flex-col gap-2 md:gap-4">
+              <span className="flex items-center gap-2 md:gap-4 text-sm text-gray-500 font-semibold md:text-base">
                 <span className="w-2 h-2 rounded-full bg-secondary"></span>{" "}
                 Tambah Pengukuran & Riwayat
               </span>
-              <span className="flex items-center gap-4 text-md text-gray-500 font-semibold md:text-lg">
+              <span className="flex items-center gap-2 md:gap-4 text-sm text-gray-500 font-semibold md:text-base">
                 <span className="w-2 h-2 rounded-full bg-secondary"></span>{" "}
                 Grafik Pertumbuhan & Analisis
               </span>
-              <span className="flex items-center gap-4 text-md text-gray-500 font-semibold md:text-lg">
+              <span className="flex items-center gap-2 md:gap-4 text-sm text-gray-500 font-semibold md:text-base">
                 <span className="w-2 h-2 rounded-full bg-secondary"></span>{" "}
                 Peringatan Dini
               </span>
             </div>
           </div>
-          <div className="group p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-full h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft ">
+          <div className="group p-6 md:p-8 bg-surface flex flex-col gap-4 border-2 border-gray-300 rounded-xl w-full h-auto hover:border-secondary hover:shadow-lg hover:shadow-soft ">
             <div className="bg-soft w-fit p-4 rounded-xl group-hover:bg-primary transition-all duration-300">
               <Sparkle
                 size={20}
@@ -289,23 +293,25 @@ export default function LandingPage() {
                 className="text-primary group-hover:text-surface transition-all duration-300"
               />
             </div>
+            <div className="flex flex-col gap-2">
             <h3 className="text-xl font-semibold text-text md:text-2xl">
               Asisten AI
             </h3>
-            <p className="text-md text-gray-500 tracking-wide md:text-lg">
+            <p className="text-base text-gray-500 tracking-wide md:text-lg">
               Dapatkan informasi edukatif yang lebih kontekstual tanpa
               menggantikan tenaga kesehatan.
             </p>
-            <div className="flex flex-col gap-2 my-3 md:my-6 md:gap-4">
-              <span className="flex items-center gap-4 text-md text-gray-500 font-semibold md:text-lg">
+            </div>
+            <div className="flex flex-col gap-2 md:gap-4">
+              <span className="flex items-center gap-2 md:gap-4 text-sm text-gray-500 font-semibold md:text-base">
                 <span className="w-2 h-2 rounded-full bg-secondary"></span>{" "}
                 Context-aware answer
               </span>
-              <span className="flex items-center gap-4 text-md text-gray-500 font-semibold md:text-lg">
+              <span className="flex items-center gap-2 md:gap-4 text-sm text-gray-500 font-semibold md:text-base">
                 <span className="w-2 h-2 rounded-full bg-secondary"></span>{" "}
                 Informasi tepercaya
               </span>
-              <span className="flex items-center gap-4 text-md text-gray-500 font-semibold md:text-lg">
+              <span className="flex items-center gap-2 md:gap-4 text-sm text-gray-500 font-semibold md:text-base">
                 <span className="w-2 h-2 rounded-full bg-secondary"></span>{" "}
                 Referral guidance non-diagnostik
               </span>
@@ -328,15 +334,15 @@ export default function LandingPage() {
             personal.
           </p>
         </div>
-        <div className="grid grid-cols-1 items-stretch gap-10 md:grid-cols-4">
+        <div className="grid grid-cols-1 items-stretch gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col items-center gap-2">
             <p className="flex items-center justify-center text-xl font-semibold text-surface w-16 h-16 rounded-full bg-primary lg:text-2xl lg:mb-6 lg:w-20 lg:h-20">
               1
             </p>
-            <h3 className="text-xl font-semibold text-text lg:text-2xl">
+            <h3 className="text-lg font-semibold text-text text-center lg:text-xl">
               Buat Profil Anak
             </h3>
-            <p className="text-md text-gray-500 text-center lg:text-lg lg:w-auto">
+            <p className="text-sm text-gray-500 text-center lg:text-base lg:w-auto">
               Isi informasi dasar agar pengalaman lebih relevan.
             </p>
           </div>
@@ -344,10 +350,10 @@ export default function LandingPage() {
             <p className="flex items-center justify-center text-xl font-semibold text-surface w-16 h-16 rounded-full bg-primary lg:text-2xl lg:mb-6 lg:w-20 lg:h-20">
               2
             </p>
-            <h3 className="text-xl font-semibold text-text lg:text-2xl">
+            <h3 className="text-lg font-semibold text-text text-center lg:text-xl">
               Rencanakan Nutrisi
             </h3>
-            <p className="text-md text-gray-500 text-center lg:text-lg lg:w-auto">
+            <p className="text-sm text-gray-500 text-center lg:text-base lg:w-auto">
               Susun menu dan catat asupan sesuai kebutuhan harian.
             </p>
           </div>
@@ -355,10 +361,10 @@ export default function LandingPage() {
             <p className="flex items-center justify-center text-xl font-semibold text-surface w-16 h-16 rounded-full bg-primary lg:text-2xl lg:mb-6 lg:w-20 lg:h-20">
               3
             </p>
-            <h3 className="text-xl font-semibold text-text lg:text-2xl">
+            <h3 className="text-lg font-semibold text-text text-center lg:text-xl">
               Pantau Pertumbuhan
             </h3>
-            <p className="text-md text-gray-500 text-center lg:text-lg lg:w-auto">
+            <p className="text-sm text-gray-500 text-center lg:text-base lg:w-auto">
               Tambahkan pengukuran dan lihat pola dari waktu ke waktu.
             </p>
           </div>
@@ -366,10 +372,10 @@ export default function LandingPage() {
             <p className="flex items-center justify-center text-xl font-semibold text-surface w-16 h-16 rounded-full bg-primary lg:text-2xl lg:mb-6 lg:w-20 lg:h-20">
               4
             </p>
-            <h3 className="text-xl font-semibold text-text lg:text-2xl">
+            <h3 className="text-lg font-semibold text-text text-center lg:text-xl">
               Dapatkan Analisis
             </h3>
-            <p className="text-md text-gray-500 text-center lg:text-lg lg:w-auto">
+            <p className="text-sm text-gray-500 text-center lg:text-base lg:w-auto">
               Gunakan ringkasan dan Asisten AI sebagai panduan edukatif.
             </p>
           </div>
@@ -380,7 +386,7 @@ export default function LandingPage() {
         id="tentang"
         className="h-auto bg-soft px-8 py-15 flex flex-col gap-8 scroll-mt-24 2xl:px-20 2xl:py-20"
       >
-        <Card className="flex items-center p-8 gap-8 justify-around shadow-md md:px-12 md:py-10 md:gap-10 max-sm:flex-col">
+        <Card className="flex items-center p-4 gap-4 md:p-6 md:gap-8 justify-around shadow-md xl:px-12 xl:py-10 max-sm:flex-col">
           <div className="flex flex-col gap-4">
             <p className="text-md font-semibold text-primary uppercase 2xl:text-lg">
               TRUST & SAFETY
@@ -395,28 +401,28 @@ export default function LandingPage() {
               ketika diperlukan.
             </p>
             <div className="grid grid-cols-2 gap-2 lg:gap-4">
-              <p className="flex items-center gap-4 text-text text-xs font-semibold lg:text-sm">
+              <p className="flex items-center gap-4 text-text text-[10px] font-semibold md:text-xs xl:text-sm">
                 <span className="bg-soft rounded-full w-auto h-auto p-1.5 lg:p-2">
                   {" "}
                   <Check className="text-primary size-3 lg:size-5" />
                 </span>
                 Informasi edukatif
               </p>
-              <p className="flex items-center gap-4 text-text text-xs font-semibold lg:text-sm">
+              <p className="flex items-center gap-4 text-text text-[10px] font-semibold md:text-xs xl:text-sm">
                 <span className="bg-soft rounded-full w-auto h-auto p-1.5 lg:p-2">
                   {" "}
                   <Check className="text-primary size-3 lg:size-5" />
                 </span>
                 Validasi/kolaborasi ahli gizi
               </p>
-              <p className="flex items-center gap-4 text-text text-xs font-semibold lg:text-sm">
+              <p className="flex items-center gap-4 text-text text-[10px] font-semibold  md:text-xs xl:text-sm">
                 <span className="bg-soft rounded-full w-auto h-auto p-1.5 lg:p-2">
                   {" "}
                   <Check className="text-primary size-3 lg:size-5" />
                 </span>
                 Referral guidance
               </p>
-                <p className="flex items-center gap-4 text-text text-xs font-semibold lg:text-sm">
+                <p className="flex items-center gap-4 text-text text-[10px] font-semibold md:text-xs xl:text-sm">
                 <span className="bg-soft rounded-full w-auto h-auto p-1.5 lg:p-2">
                   {" "}
                   <Check className="text-primary size-3 lg:size-5" />
@@ -445,7 +451,7 @@ export default function LandingPage() {
         <h3 className="text-surface text-2xl font-bold text-center lg:text-4xl">
           Mulai Dampingi Tumbuh Kembang Anak dengan Lebih Terarah
         </h3>
-        <p className="text-gray-200 text-center text-lg tracking-wide lg:text-xl">
+        <p className="text-gray-200 text-center text-base tracking-wide xl:text-lg">
           Mulai dari langkah kecil: kenali kebutuhan anak, catat
           perkembangannya, dan pahami informasi yang relevan.
         </p>
@@ -456,7 +462,7 @@ export default function LandingPage() {
         >
           Mulai Sekarang
         </Button>
-        <p className="text-gray-200 text-md lg:text-lg text-center tracking-wide">
+        <p className="text-gray-200 text-base xl:text-lg text-center tracking-wide">
           Daftar untuk membuat profil anak atau masuk jika sudah memiliki akun.
         </p>
       </section>
