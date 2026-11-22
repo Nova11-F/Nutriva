@@ -58,7 +58,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="w-full max-w-lg">
+    <div className="mx-auto w-full max-w-lg">
       <div className="mb-4 flex flex-col gap-2 px-4">
         <h1 className="text-center text-xl font-bold text-text lg:text-2xl">Buat akun Nutriva</h1>
         <p className="text-xs text-gray-500 text-center lg:text-sm">

@@ -56,10 +56,10 @@ export default function ChangePasswordPage() {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-lg px-4">
-        <div className="mb-6 flex flex-col gap-2">
-          <h2 className="text-2xl font-bold text-text">Ubah Kata Sandi</h2>
-          <p className="text-sm text-gray-500">
+      <div className="mx-auto w-full max-w-lg">
+        <div className="mb-4 flex flex-col gap-2 px-4">
+          <h2 className="text-center text-xl font-bold text-text lg:text-2xl">Ubah Kata Sandi</h2>
+          <p className="text-xs text-gray-500 text-center lg:text-sm">
             Masukkan kata sandi saat ini, lalu pilih kata sandi baru minimal 8 karakter.
           </p>
         </div>

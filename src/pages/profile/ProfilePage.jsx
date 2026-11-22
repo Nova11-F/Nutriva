@@ -116,7 +116,7 @@ export default function ProfilePage() {
       <Header variant="profil" />
       <div className="px-4">
         <div className="mt-6 flex flex-col gap-2">
-          <div className="mb-2 flex items-center gap-2 px-2 md:mb-4 md:px-4">
+          <div className="mb-1 md:mb-2 flex items-center gap-2">
             <SquareUserRound
               strokeWidth={2}
               className="size-6 text-secondary md:size-8"
@@ -165,11 +165,11 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-2 lg:grid-cols-4 lg:gap-4">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
               {infoItems.map(({ label, value }) => (
-                <Card key={label} variant="silver" className="px-8">
-                  <h4 className="text-lg font-bold text-gray-500">{label}</h4>
-                  <p className="break-words text-lg font-semibold text-text">
+                <Card key={label} variant="silver" className="px-4 py-3">
+                  <h4 className="text-base font-bold text-gray-500 lg:text-lg">{label}</h4>
+                  <p className="break-words text-sm font-semibold text-text lg:text-base">
                     {value}
                   </p>
                 </Card>
@@ -180,7 +180,7 @@ export default function ProfilePage() {
 
         <div className="flex flex-col gap-4">
           <div className="mt-6 flex items-center justify-between">
-            <div className="flex flex-col gap-2 px-2 md:px-4">
+            <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
                 <Baby
                   strokeWidth={2}
@@ -190,7 +190,7 @@ export default function ProfilePage() {
                   Profil Anak
                 </h3>
               </div>
-              <p className="text-xs font-medium text-gray-500 md:text-lg">
+              <p className="text-xs font-medium text-gray-500 lg:text-sm">
                 Pantau kurva tumbuh kembang WHO dan kebutuhan gizi individual
                 balita
               </p>
@@ -205,15 +205,15 @@ export default function ProfilePage() {
           {childLoading && <Spinner center label="Memuat profil anak..." />}
 
           {!childLoading && childList.length === 0 && (
-            <Card className="mb-6 flex flex-col gap-4 p-8">
-              <div className="flex w-fit items-center gap-2 rounded-2xl bg-soft px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary md:text-sm">
-                <Sparkles className="size-4 fill-primary md:size-5" />
+            <Card className="mb-6 flex flex-col gap-2 p-4 lg:p-6">
+              <div className="flex w-fit items-center gap-2 rounded-2xl bg-soft px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-primary ">
+                <Sparkles className="size-4 fill-primary lg:size-5" />
                 Langkah Pertama Pemantauan
               </div>
-              <h3 className="text-xl font-bold text-text md:text-2xl">
+              <h3 className="text-xl font-bold text-text tracking-wide lg:text-2xl">
                 Belum ada profil anak
               </h3>
-              <p className="text-lg font-medium text-gray-400">
+              <p className="text-sm text-gray-500 lg:text-base">
                 Tambahkan profil anak untuk mendapatkan rekomendasi nutrisi,
                 pemantauan pertumbuhan, dan jawaban Asisten AI yang sesuai
                 dengan kondisi anak Anda.
@@ -226,8 +226,8 @@ export default function ProfilePage() {
                   <Plus size={24} />
                   Tambah profil anak
                 </Button>
-                <p className="flex items-center gap-2 text-lg font-medium text-gray-500">
-                  <Clock size={20} />
+                <p className="flex items-center gap-2 text-sm font-medium text-gray-500">
+                  <Clock className="size-4 lg:size-5" />
                   Hanya butuh 2 menit untuk melengkapi data
                 </p>
               </div>
@@ -338,8 +338,8 @@ export default function ProfilePage() {
 
           <Card className="flex flex-col gap-6 p-4">
             <div className="flex items-center gap-2">
-              <BellRing size={24} className="text-gray-500" />
-              <h4 className="text-xl font-semibold uppercase text-text">
+              <BellRing className="size-5 lg:size-6 text-gray-500" />
+              <h4 className="text-lg text-text font-semibold lg:text-xl">
                 Notifikasi & Pengingat
               </h4>
             </div>
@@ -350,8 +350,8 @@ export default function ProfilePage() {
                 className="flex items-center justify-between gap-4"
               >
                 <div>
-                  <p className="text-lg font-semibold text-text">{title}</p>
-                  <p className="text-md font-medium text-gray-500">{desc}</p>
+                  <p className="text-base font-semibold text-text lg:text-lg">{title}</p>
+                  <p className="text-xs text-gray-500 lg:text-sm">{desc}</p>
                 </div>
                 <Input
                   type="checkbox"
@@ -365,12 +365,12 @@ export default function ProfilePage() {
           </Card>
         </div>
 
-        <div className="flex flex-col gap-4 border-t-2 border-t-gray-500 pt-6 md:flex-row md:mb-15 xl:mb-0 md:items-center md:justify-between">
-          <div className="flex flex-col gap-2">
-            <h4 className="text-xl font-semibold text-text">
+        <div className="flex flex-col gap-4 border-t-2 border-t-gray-500 pt-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-1">
+            <h4 className="text-lg font-semibold text-text lg:text-xl">
               Keluar dari Akun Nutriva
             </h4>
-            <p className="text-lg font-medium text-gray-500">
+            <p className="text-xs font-medium text-gray-500 lg:text-sm">
               Keluar dari sesi ini di peramban ini. Data Anda tetap tersimpan
               dengan aman.
             </p>
@@ -381,10 +381,9 @@ export default function ProfilePage() {
             className="group flex items-center justify-center gap-2 border border-danger px-4 py-2 hover:bg-danger"
           >
             <LogOut
-              size={24}
-              className="text-danger group-hover:text-surface"
+              className="size-5 text-danger group-hover:text-surface"
             />
-            <span className="text-danger group-hover:text-surface">
+            <span className="text-xs text-danger group-hover:text-surface">
               Keluar Akun (Logout)
             </span>
           </Button>

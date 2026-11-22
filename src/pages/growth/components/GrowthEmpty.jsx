@@ -111,51 +111,51 @@ export default function GrowthEmpty() {
             </p>
           </Card>
         </div>
-        <div className=" grid grid-cols-1 md:flex items-stretch gap-4">
-          <Card className="flex flex-col gap-4 md:gap-6 md:pt-6">
+        <div className=" grid grid-cols-1 items-stretch gap-4">
+          <Card className="flex flex-col gap-2 md:gap-6 md:pt-6">
             <div className="flex items-center justify-start gap-2 md:gap-4">
-              <div className="bg-soft px-3 py-2.5 rounded-xl md:p-6">
+              <div className="bg-soft p-4 rounded-lg">
                 <Ruler className=" size-5 text-primary md:size-6" />
               </div>
-              <h3 className="text-xl text-text font-semibold tracking-wide md:text-2xl">
+              <h3 className="text-lg text-text font-semibold lg:text-2xl">
                 Panduan pengukuran Akurat di Rumah
               </h3>
             </div>
-            <div className="flex items-stretch justify-between gap-2 md:gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch justify-between gap-2 md:gap-4">
               <Card variant="silver" className="flex flex-col gap-4 ">
                 <div className="flex gap-2 items-center">
                   <Scale className="size-5 text-secondary md:size-6" />
-                  <h4 className="text-sm text-text font-semibold md:text-xl">
+                  <h4 className="text-base text-text font-semibold flex items-center lg:min-h-14 lg:text-lg">
                     Menimbang Berat Badan
                   </h4>
                 </div>
-                <p className="text-gray-500 text-xs md:font-medium tracking-wide md:text-lg">
+                <p className="text-xs text-gray-500 tracking-wide lg:text-sm">
                   Timbang di pagi hari sebelum sarapan dengan pakaian minimal menggunakan timbangan digital akurat (ketelitian 10–50 g).
                 </p>
               </Card>
               <Card variant="silver" className="flex flex-col gap-4">
                 <div className="flex gap-2 items-center">
                   <RulerDimensionLine className="size-5 text-secondary md:size-6" />
-                  <h4 className="text-sm text-text font-semibold md:text-xl">
+                  <h4 className="text-base text-text font-semibold flex items-center lg:min-h-14 lg:text-lg">
                     Mengukur Tinggi Badan
                   </h4>
                 </div>
-                <p className="text-gray-500 text-xs md:font-medium tracking-wide md:text-lg">
+                <p className="text-xs text-gray-500 tracking-wide lg:text-sm">
                   Telentang untuk anak &lt; 2 tahun, atau berdiri tegak menempel
                   dinding tanpa alas kaki untuk anak &gt; 2 tahun.
                 </p>
               </Card>
             </div>
           </Card>
-          <Card variant="primary" className="flex flex-col gap-4 p-8">
-            <div className="w-fit inline-flex items-center gap-2 bg-soft text-primary px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase">
-              <span className="w-2 h-2 rounded-full bg-primary"></span>
+          <Card variant="primary" className="flex flex-col gap-2 p-4 lg:p-6">
+            <div className="w-fit inline-flex items-center gap-2 bg-soft text-primary px-3 py-1.5 rounded-full text-[10px] font-semibold tracking-wide uppercase md:px-4 md:py-2.5 ">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
               Konsultasi Langsung
             </div>
-            <h3 className="text-2xl font-bold">
+            <h3 className="text-lg font-bold">
               Ragu dengan grafik tumbuh kembang anak?
             </h3>
-            <p className="text-md md:text-lg">
+            <p className="text-xs tracking-wide lg:text-sm">
               Dapatkan rekomendasi gizi, ASI, dan MPASI tepat untuk berat badan
               ideal si kecil bersama Asisten AI Nutriva.
             </p>
@@ -169,7 +169,7 @@ export default function GrowthEmpty() {
                 strokeWidth={3}
                 className="text-primary group-hover:text-surface"
               />
-              <p className="text-lg font-semibold text-primary group-hover:text-surface">
+              <p className="text-sm font-semibold text-primary group-hover:text-surface">
                 Tanya Asisten Ai Nutriva
               </p>
             </Button>

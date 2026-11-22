@@ -318,15 +318,6 @@ function OnboardingWizard({ editing, parentOnly = false }) {
               )}
 
               <div className="flex items-center gap-2">
-                {current.optional && (
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    onClick={() => goTo(step + 1)}
-                  >
-                    Lewati
-                  </Button>
-                )}
                 <Button
                   type="submit"
                   loading={saving}

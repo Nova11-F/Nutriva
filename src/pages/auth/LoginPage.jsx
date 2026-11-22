@@ -75,7 +75,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="w-full max-w-lg">
+    <div className="mx-auto w-full max-w-lg">
       <div className="mb-4 flex flex-col gap-2 px-4">
         <h1 className="text-center text-xl font-bold text-text lg:text-2xl">
           Masuk ke Nutriva

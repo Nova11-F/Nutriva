@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.png";
 
 export default function OnboardingLayout() {
   return (
-    <div className="min-h-screen bg-stone-50 px-4 py-5 md:px-10">
+    <div className="min-h-screen bg-stone-50 px-4 py-5 md:px-8">
       <header>
         <Link to="/" className="inline-block">
           <img src={logo} alt="Nutriva" className="h-20 w-auto lg:h-24" />
