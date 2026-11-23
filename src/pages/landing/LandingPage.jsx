@@ -3,6 +3,7 @@ import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
 import { ChartLine, Sparkle, Soup, ShieldCheck, Check } from "lucide-react";
 import imageLanding from "../../assets/images/landingpage.png";
+import Reveal from "../../components/Reveal"
 
 export default function LandingPage() {
   const navigate = useNavigate();
