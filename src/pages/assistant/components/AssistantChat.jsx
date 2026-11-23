@@ -10,12 +10,16 @@ import { useFetch } from "../../../hooks/useFetch";
 import { useToast } from "../../../hooks/useToast";
 import { assistantService } from "../../../services/assistantService";
 import { suggestedQuestions } from "../../../data/chatMessages";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function AssistantChat({ child }) {
   const { showToast } = useToast();
-  const { data: history, loading } = useFetch(() => assistantService.getHistory(child.id), [child.id]);
+  const { data: history, loading } = useFetch(
+    () => assistantService.getHistory(child.id),
+    [child.id],
+  );
 
-  const [extra, setExtra] = useState([]);    
+  const [extra, setExtra] = useState([]);
   const [cleared, setCleared] = useState(false);
   const [draft, setDraft] = useState("");
   const [sending, setSending] = useState(false);
@@ -33,17 +37,30 @@ export default function AssistantChat({ child }) {
 
     const now = Date.now();
     const priorMessages = messages;
-    setExtra((prev) => [...prev, { id: now, role: "user", text, createdAt: new Date(now).toISOString() }]);
+    setExtra((prev) => [
+      ...prev,
+      { id: now, role: "user", text, createdAt: new Date(now).toISOString() },
+    ]);
     setDraft("");
     setSending(true);
 
     try {
-      const reply = await assistantService.sendMessage(child, text, priorMessages);
+      const reply = await assistantService.sendMessage(
+        child,
+        text,
+        priorMessages,
+      );
       setExtra((prev) => [...prev, reply]);
-      if (reply.degraded) showToast("Asisten sedang terbatas, jawaban yang ditampilkan adalah jawaban aman.", "info");
+      if (reply.degraded)
+        showToast(
+          "Asisten sedang terbatas, jawaban yang ditampilkan adalah jawaban aman.",
+          "info",
+        );
     } catch (err) {
       // pesan tidak tersimpan di server: tandai gagal dan kembalikan teks ke input
-      setExtra((prev) => prev.map((m) => (m.id === now ? { ...m, failed: true } : m)));
+      setExtra((prev) =>
+        prev.map((m) => (m.id === now ? { ...m, failed: true } : m)),
+      );
       setDraft(text);
       showToast(err.message || "Pesan gagal dikirim", "error");
     } finally {
@@ -67,7 +84,15 @@ export default function AssistantChat({ child }) {
     <>
       <Header variant="ai" />
 
-      <div className="mx-4 flex h-[calc(100dvh-11rem)] flex-col overflow-hidden rounded-xl border border-gray-200 bg-surface shadow-sm md:mx-6 xl:h-[calc(100dvh-8rem)]">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.5,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="mx-4 flex h-[calc(100dvh-11rem)] flex-col overflow-hidden rounded-xl border border-gray-200 bg-surface shadow-sm md:mx-6 xl:h-[calc(100dvh-8rem)]"
+      >
         <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
           <div className="flex items-center gap-2">
             <div className="flex size-9 items-center justify-center rounded-full bg-soft text-primary">
@@ -75,39 +100,85 @@ export default function AssistantChat({ child }) {
             </div>
             <div>
               <p className="text-sm font-semibold text-text">AI Nutriva</p>
-              <p className="text-[11px] text-gray-500">Menjawab untuk {child.name}</p>
+              <p className="text-[11px] text-gray-500">
+                Menjawab untuk {child.name}
+              </p>
             </div>
           </div>
           {messages.length > 0 && (
-            <Button size="sm" variant="ghost" onClick={handleClear} className="flex items-center gap-1">
-              <Eraser size={14} /> <span className="hidden md:inline">Hapus chat</span>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={handleClear}
+              className="flex items-center gap-1"
+            >
+              <Eraser size={14} />{" "}
+              <span className="hidden md:inline">Hapus chat</span>
             </Button>
           )}
         </div>
 
-        <div className="flex flex-1 flex-col gap-4 overflow-y-auto px-4 py-4" aria-live="polite">
+        <div
+          className="flex flex-1 flex-col gap-4 overflow-y-auto px-4 py-4"
+          aria-live="polite"
+        >
           {loading && <Spinner center label="Memuat percakapan..." />}
 
-          {!loading && messages.length === 0 && (
-            <ChatBubble
-              role="bot"
-              text={`Halo Ayah dan Bunda! Saya asisten AI Nutriva. Silakan tanyakan seputar nutrisi dan tumbuh kembang ${child.name}. Pilih salah satu pertanyaan di bawah, atau tulis pertanyaan Anda sendiri.`}
-            />
-          )}
+        {!loading && (
+          <AnimatePresence initial={false}>
+            {messages.length === 0 && (
+              <motion.div
+                key="welcome-message"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35 }}
+              >
+                <ChatBubble
+                  role="bot"
+                  text={`Halo Ayah dan Bunda! Saya asisten AI Nutriva. Silakan tanyakan seputar nutrisi dan tumbuh kembang ${child.name}. Pilih salah satu pertanyaan di bawah, atau tulis pertanyaan Anda sendiri.`}
+                />
+              </motion.div>
+            )}
 
-          {!loading && messages.map((m) => <ChatBubble key={m.id} {...m} />)}
-          {sending && <TypingIndicator />}
-          {!loading && messages.length > 0 && (
-            <p className="text-center text-[11px] text-gray-400">
-              Jawaban AI bersifat edukasi, bukan diagnosis. Untuk kondisi darurat segera ke fasilitas kesehatan.
-            </p>
-          )}
+            {messages.map((m) => (
+              <ChatBubble key={m.id} {...m} />
+            ))}
+
+            {sending && (
+              <motion.div
+                key="typing-indicator"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                transition={{ duration: 0.25 }}
+              >
+                <TypingIndicator />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
           <div ref={bottomRef} />
         </div>
 
-        <ChatInput value={draft} onChange={setDraft} onSend={handleSend}
-        disabled={sending} suggestions={suggestedQuestions} />
-      </div>
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.15,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <ChatInput
+            value={draft}
+            onChange={setDraft}
+            onSend={handleSend}
+            disabled={sending}
+            suggestions={suggestedQuestions}
+          />
+        </motion.div>
+      </motion.div>
     </>
   );
 }

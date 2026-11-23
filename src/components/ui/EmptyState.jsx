@@ -1,12 +1,30 @@
+import { motion } from "motion/react";
 import Button from "./Button";
 
-export default function EmptyState({ icon: Icon, title, description, actionLabel, onAction }) {
+export default function EmptyState({
+  icon: Icon,
+  title,
+  description,
+  actionLabel,
+  onAction,
+}) {
   return (
-    <div className="mx-4 flex flex-col items-center gap-3 rounded-xl border-2 border-gray-300 p-10 text-center md:mx-6">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95, y: 12 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{
+        duration: 0.45,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="mx-4 flex flex-col items-center gap-3 rounded-xl border-2 border-gray-300 p-10 text-center"
+    >
       {Icon && <Icon size={40} className="text-primary" />}
+
       <h3 className="text-lg font-semibold text-text">{title}</h3>
+
       <p className="max-w-sm text-sm text-gray-500">{description}</p>
+
       {actionLabel && <Button onClick={onAction}>{actionLabel}</Button>}
-    </div>
+    </motion.div>
   );
 }
