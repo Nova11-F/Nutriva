@@ -27,6 +27,7 @@ import {
   validateNutrition,
   validateParent,
 } from "../../utils/onboardingValidators";
+import { motion, AnimatePresence } from "motion/react";
 
 const ALL_STEPS = [
   {
@@ -297,8 +298,12 @@ function OnboardingWizard({ editing, parentOnly = false }) {
       <StepIndicator steps={steps} current={step} />
 
       <div>
-        <h2 className="text-md font-semibold text-text lg:text-lg">{current.title}</h2>
-        <p className="mb-4 text-xs text-gray-500 lg:text-sm">{current.description}</p>
+        <h2 className="text-md font-semibold text-text lg:text-lg">
+          {current.title}
+        </h2>
+        <p className="mb-4 text-xs text-gray-500 lg:text-sm">
+          {current.description}
+        </p>
 
         <Form
           onSubmit={handleSubmit}
@@ -331,7 +336,7 @@ function OnboardingWizard({ editing, parentOnly = false }) {
                     )
                   ) : (
                     <>
-                      Lanjut <ArrowRight className="size-3" strokeWidth={3}/>
+                      Lanjut <ArrowRight className="size-3" strokeWidth={3} />
                     </>
                   )}
                 </Button>
@@ -339,13 +344,26 @@ function OnboardingWizard({ editing, parentOnly = false }) {
             </div>
           }
         >
-          <Component
-            values={values}
-            errors={errors}
-            onChange={handleChange}
-            setValue={setValue}
-            isEdit={isEdit}
-          />
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={current.key}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{
+                duration: 0.3,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <Component
+                values={values}
+                errors={errors}
+                onChange={handleChange}
+                setValue={setValue}
+                isEdit={isEdit}
+              />
+            </motion.div>
+          </AnimatePresence>
         </Form>
       </div>
     </div>
