@@ -5,6 +5,7 @@ import Input from "../../components/ui/Input";
 import Button from "../../components/ui/Button";
 import { useToast } from "../../hooks/useToast";
 import { useAuth } from "../../hooks/useAuth";
+import { motion } from "motion/react";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -12,14 +13,21 @@ export default function RegisterPage() {
   const { register } = useAuth();
 
   const [values, setValues] = useState({
-    name: "", email: "", password: "", confirmPassword: "", agree: false,
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    agree: false,
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setValues((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+    setValues((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
@@ -30,7 +38,8 @@ export default function RegisterPage() {
     if (!values.name.trim()) newErrors.name = "Nama wajib diisi";
     if (!values.email.includes("@")) newErrors.email = "Email tidak valid";
     if (values.password.length < 8) newErrors.password = "Minimal 8 karakter";
-    if (values.confirmPassword !== values.password) newErrors.confirmPassword = "Kata sandi tidak sama";
+    if (values.confirmPassword !== values.password)
+      newErrors.confirmPassword = "Kata sandi tidak sama";
     if (!values.agree) newErrors.agree = "Anda harus menyetujui ketentuan";
 
     setErrors(newErrors);
@@ -51,18 +60,29 @@ export default function RegisterPage() {
       navigate("/login");
     } catch (err) {
       hideToast(loadingId);
-      showToast(err.message, "error"); 
+      showToast(err.message, "error");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="mx-auto w-full max-w-lg">
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="mx-auto w-full max-w-lg"
+    >
       <div className="mb-4 flex flex-col gap-2 px-4">
-        <h1 className="text-center text-xl font-bold text-text lg:text-2xl">Buat akun Nutriva</h1>
+        <h1 className="text-center text-xl font-bold text-text lg:text-2xl">
+          Buat akun Nutriva
+        </h1>
         <p className="text-xs text-gray-500 text-center lg:text-sm">
-          Registrasi hanya membuat akun. Personalisasi baru aktif setelah profil anak dibuat.
+          Registrasi hanya membuat akun. Personalisasi baru aktif setelah profil
+          anak dibuat.
         </p>
       </div>
 
@@ -75,26 +95,60 @@ export default function RegisterPage() {
             </Button>
             <p className="mt-4 text-center text-xs text-gray-500">
               Sudah punya akun?{" "}
-              <Link to="/login" className="font-medium text-primary hover:underline">
+              <Link
+                to="/login"
+                className="font-medium text-primary hover:underline"
+              >
                 Masuk
               </Link>
             </p>
           </>
         }
       >
-        <Input label="Nama" name="name" placeholder="Nama pengguna"
-               value={values.name} onChange={handleChange} error={errors.name} />
-        <Input label="Email" name="email" type="email" placeholder="nama@email.com"
-               value={values.email} onChange={handleChange} error={errors.email} />
-        <Input label="Kata Sandi" name="password" type="password" placeholder="Minimal 8 karakter"
-               value={values.password} onChange={handleChange} error={errors.password} />
-        <Input label="Konfirmasi Kata Sandi" name="confirmPassword" type="password"
-               placeholder="Ulangi kata sandi"
-               value={values.confirmPassword} onChange={handleChange} error={errors.confirmPassword} />
-        <Input type="checkbox" name="agree" checked={values.agree} onChange={handleChange}
-               label="Saya menyetujui ketentuan penggunaan dan kebijakan privasi."
-               error={errors.agree} />
+        <Input
+          label="Nama"
+          name="name"
+          placeholder="Nama pengguna"
+          value={values.name}
+          onChange={handleChange}
+          error={errors.name}
+        />
+        <Input
+          label="Email"
+          name="email"
+          type="email"
+          placeholder="nama@email.com"
+          value={values.email}
+          onChange={handleChange}
+          error={errors.email}
+        />
+        <Input
+          label="Kata Sandi"
+          name="password"
+          type="password"
+          placeholder="Minimal 8 karakter"
+          value={values.password}
+          onChange={handleChange}
+          error={errors.password}
+        />
+        <Input
+          label="Konfirmasi Kata Sandi"
+          name="confirmPassword"
+          type="password"
+          placeholder="Ulangi kata sandi"
+          value={values.confirmPassword}
+          onChange={handleChange}
+          error={errors.confirmPassword}
+        />
+        <Input
+          type="checkbox"
+          name="agree"
+          checked={values.agree}
+          onChange={handleChange}
+          label="Saya menyetujui ketentuan penggunaan dan kebijakan privasi."
+          error={errors.agree}
+        />
       </Form>
-    </div>
+    </motion.div>
   );
 }

@@ -7,6 +7,7 @@ import Card from "../../components/ui/Card";
 import { useToast } from "../../hooks/useToast";
 import { useAuth } from "../../hooks/useAuth";
 import { childService } from "../../services/childService";
+import { motion } from "motion/react";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -75,7 +76,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-lg">
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="mx-auto w-full max-w-lg"
+    >
       <div className="mb-4 flex flex-col gap-2 px-4">
         <h1 className="text-center text-xl font-bold text-text lg:text-2xl">
           Masuk ke Nutriva
@@ -143,6 +152,6 @@ export default function LoginPage() {
           Beranda Personal.
         </p>
       </Card>
-    </div>
+    </motion.div>
   );
 }
