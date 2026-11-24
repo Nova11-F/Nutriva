@@ -27,6 +27,7 @@ import {
   Check,
   Trash2,
 } from "lucide-react";
+import Reveal from "../../components/Reveal";
 
 const genderLabel = { female: "Perempuan", male: "Laki-laki" };
 
@@ -116,95 +117,106 @@ export default function ProfilePage() {
       <Header variant="profil" />
       <div className="px-4">
         <div className="mt-6 flex flex-col gap-2">
-          <div className="mb-1 md:mb-2 flex items-center gap-2">
-            <SquareUserRound
-              strokeWidth={2}
-              className="size-6 text-secondary md:size-8"
-            />
-            <h3 className="text-xl font-semibold text-text md:text-2xl">
-              Profil Orang Tua
-            </h3>
-          </div>
+          <Reveal variant="slide-up">
+            <div className="mb-1 md:mb-2 flex items-center gap-2">
+              <SquareUserRound
+                strokeWidth={2}
+                className="size-6 text-secondary md:size-8"
+              />
+              <h3 className="text-xl font-semibold text-text md:text-2xl">
+                Profil Orang Tua
+              </h3>
+            </div>
+          </Reveal>
 
-          <Card className="flex flex-col gap-4 md:gap-6">
-            <div className="grid grid-cols-1 gap-4 md:flex md:items-center md:justify-between">
-              <div className="flex items-center gap-4">
-                <div className="flex size-20 items-center justify-center rounded-xl bg-secondary text-2xl font-bold">
-                  {parent.name.charAt(0).toUpperCase()}
+          <Reveal variant="slide-up">
+            <Card className="flex flex-col gap-4 md:gap-6">
+              <div className="grid grid-cols-1 gap-4 md:flex md:items-center md:justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="flex size-20 items-center justify-center rounded-xl bg-secondary text-2xl font-bold">
+                    {parent.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div className="flex flex-col ">
+                    <h4 className="text-xl font-semibold text-text">
+                      {parent.name}
+                    </h4>
+                    <p className="text-md font-medium text-gray-500">
+                      {parent.role}
+                    </p>
+                    <p className="text-md font-medium text-gray-400">
+                      Bergabung sejak {parent.joined}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex flex-col ">
-                  <h4 className="text-xl font-semibold text-text">
-                    {parent.name}
-                  </h4>
-                  <p className="text-md font-medium text-gray-500">
-                    {parent.role}
-                  </p>
-                  <p className="text-md font-medium text-gray-400">
-                    Bergabung sejak {parent.joined}
-                  </p>
+
+                <div className="flex items-center justify-center gap-2 md:gap-4">
+                  <Button
+                    variant="outline"
+                    onClick={goEditParent}
+                    className="flex w-full items-center justify-center gap-2 md:w-fit"
+                  >
+                    <Pencil className="size-5 md:size-6" />
+                    Edit Profil
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={goChangePassword}
+                    className="flex w-full items-center justify-center gap-2 md:w-fit"
+                  >
+                    <KeyRound className="size-5 md:size-6" />
+                    Ubah Sandi
+                  </Button>
                 </div>
               </div>
 
-              <div className="flex items-center justify-center gap-2 md:gap-4">
-                <Button
-                  variant="outline"
-                  onClick={goEditParent}
-                  className="flex w-full items-center justify-center gap-2 md:w-fit"
-                >
-                  <Pencil className="size-5 md:size-6" />
-                  Edit Profil
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={goChangePassword}
-                  className="flex w-full items-center justify-center gap-2 md:w-fit"
-                >
-                  <KeyRound className="size-5 md:size-6" />
-                  Ubah Sandi
-                </Button>
+              <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
+                {infoItems.map(({ label, value }, index) => (
+                  <Reveal key={label} variant="pop-up" delay={index * 0.1}>
+                    <Card key={label} variant="silver" className="px-4 py-3">
+                      <h4 className="text-base font-bold text-gray-500 lg:text-lg">
+                        {label}
+                      </h4>
+                      <p className="break-words text-sm font-semibold text-text lg:text-base">
+                        {value}
+                      </p>
+                    </Card>
+                  </Reveal>
+                ))}
               </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
-              {infoItems.map(({ label, value }) => (
-                <Card key={label} variant="silver" className="px-4 py-3">
-                  <h4 className="text-base font-bold text-gray-500 lg:text-lg">{label}</h4>
-                  <p className="break-words text-sm font-semibold text-text lg:text-base">
-                    {value}
-                  </p>
-                </Card>
-              ))}
-            </div>
-          </Card>
+            </Card>
+          </Reveal>
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="mt-6 flex items-center justify-between">
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <Baby
-                  strokeWidth={2}
-                  className="size-6 text-secondary md:size-8"
-                />
-                <h3 className="text-xl font-semibold text-text md:text-2xl">
-                  Profil Anak
-                </h3>
+          <Reveal variant="slide-up">
+            <div className="mt-6 flex items-center justify-between">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <Baby
+                    strokeWidth={2}
+                    className="size-6 text-secondary md:size-8"
+                  />
+                  <h3 className="text-xl font-semibold text-text md:text-2xl">
+                    Profil Anak
+                  </h3>
+                </div>
+                <p className="text-xs font-medium text-gray-500 lg:text-sm">
+                  Pantau kurva tumbuh kembang WHO dan kebutuhan gizi individual
+                  balita
+                </p>
               </div>
-              <p className="text-xs font-medium text-gray-500 lg:text-sm">
-                Pantau kurva tumbuh kembang WHO dan kebutuhan gizi individual
-                balita
-              </p>
+              <Card variant="silver" padding="sm">
+                <p className="md:text-md text-center text-xs font-semibold text-text">
+                  {childList.length} Anak Terdaftar
+                </p>
+              </Card>
             </div>
-            <Card variant="silver" padding="sm">
-              <p className="md:text-md text-center text-xs font-semibold text-text">
-                {childList.length} Anak Terdaftar
-              </p>
-            </Card>
-          </div>
+          </Reveal>
 
           {childLoading && <Spinner center label="Memuat profil anak..." />}
 
           {!childLoading && childList.length === 0 && (
+             <Reveal variant="slide-up">
             <Card className="mb-6 flex flex-col gap-2 p-4 lg:p-6">
               <div className="flex w-fit items-center gap-2 rounded-2xl bg-soft px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-primary ">
                 <Sparkles className="size-4 fill-primary lg:size-5" />
@@ -232,12 +244,14 @@ export default function ProfilePage() {
                 </p>
               </div>
             </Card>
+            </Reveal>
           )}
 
           {!childLoading &&
-            childList.map((c) => {
+            childList.map((c, index) => {
               const isActive = c.id === child?.id;
               return (
+                <Reveal key={c.id} variant="pop-up" delay={index * 0.1}>
                 <Card
                   key={c.id}
                   variant={isActive ? "success" : "default"}
@@ -310,6 +324,7 @@ export default function ProfilePage() {
                     </Button>
                   </div>
                 </Card>
+                </Reveal>
               );
             })}
 
@@ -326,6 +341,7 @@ export default function ProfilePage() {
         </div>
 
         <div className="mb-10 flex flex-col gap-4">
+          <Reveal variant="slide-up">
           <div className="flex items-center gap-2 px-2">
             <SlidersHorizontal
               strokeWidth={2}
@@ -335,7 +351,9 @@ export default function ProfilePage() {
               Pengaturan dan Preferensi Nutriva
             </h3>
           </div>
+          </Reveal>
 
+          <Reveal variant="slide-up">
           <Card className="flex flex-col gap-6 p-4">
             <div className="flex items-center gap-2">
               <BellRing className="size-5 lg:size-6 text-gray-500" />
@@ -350,7 +368,9 @@ export default function ProfilePage() {
                 className="flex items-center justify-between gap-4"
               >
                 <div>
-                  <p className="text-base font-semibold text-text lg:text-lg">{title}</p>
+                  <p className="text-base font-semibold text-text lg:text-lg">
+                    {title}
+                  </p>
                   <p className="text-xs text-gray-500 lg:text-sm">{desc}</p>
                 </div>
                 <Input
@@ -363,8 +383,10 @@ export default function ProfilePage() {
               </div>
             ))}
           </Card>
+          </Reveal>
         </div>
 
+        <Reveal variant="slide-up">
         <div className="flex flex-col gap-4 border-t-2 border-t-gray-500 pt-6 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-1">
             <h4 className="text-lg font-semibold text-text lg:text-xl">
@@ -380,14 +402,13 @@ export default function ProfilePage() {
             onClick={handleLogout}
             className="group flex items-center justify-center gap-2 border border-danger px-4 py-2 hover:bg-danger"
           >
-            <LogOut
-              className="size-5 text-danger group-hover:text-surface"
-            />
+            <LogOut className="size-5 text-danger group-hover:text-surface" />
             <span className="text-xs text-danger group-hover:text-surface">
               Keluar Akun (Logout)
             </span>
           </Button>
         </div>
+        </Reveal>
       </div>
     </>
   );
