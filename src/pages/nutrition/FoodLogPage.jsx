@@ -28,6 +28,7 @@ import {
   SUGGESTED_FOOD_KEYWORDS,
   normalizeServingOptions,
 } from "../../utils/nutritionUtils";
+import Reveal from "../../components/Reveal";
 
 export default function FoodLogPage() {
   const navigate = useNavigate();
@@ -205,8 +206,9 @@ export default function FoodLogPage() {
   return (
     <>
       <Header variant="nutrisi" />
-      <div className="flex flex-col gap-5 px-4 pb-8 md:px-6">
+      <div className="flex flex-col gap-5 px-4 pb-8">
         {/* Navigasi Kembali & Pemilih Anak / Tanggal */}
+        <Reveal variant="slide-up">
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
             <button
@@ -254,18 +256,22 @@ export default function FoodLogPage() {
             />
           </div>
         </div>
+        </Reveal>
 
         {/* Ringkasan Nutrisi Harian */}
+        <Reveal variant="slide-up">
         <DailySummaryBar
           childName={childName}
           ageMonths={ageMonths}
           summary={dailySummary}
           dateLabel={dateLabel}
         />
+        </Reveal>
 
         {/* Area Utama: Pencarian (Kiri) & Input Porsi (Kanan) */}
         <div className="grid gap-5 lg:grid-cols-12 lg:items-start">
           {/* Kolom Kiri: Search & Quick Access */}
+          <Reveal variant="slide-up">
           <Card className="flex flex-col gap-4 lg:col-span-7">
             <div className="flex flex-col gap-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
@@ -467,9 +473,11 @@ export default function FoodLogPage() {
               </div>
             )}
           </Card>
+          </Reveal>
 
           {/* Kolom Kanan: Panel Input Porsi & Hasil Gizi */}
           <div className="lg:col-span-5">
+            <Reveal variant="slide-up" delay={0.1}>
             <FoodPortionPanel
               key={manualMode ? "manual" : selectedFood?.id || "empty"}
               selectedFood={selectedFood}
@@ -482,10 +490,12 @@ export default function FoodLogPage() {
               }}
               onSaveLog={handleSaveLog}
             />
+            </Reveal>
           </div>
         </div>
 
         {/* Riwayat Log Makanan Tanggal Terpilih */}
+        <Reveal variant="slide-up">
         <Card className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <div>
@@ -545,6 +555,7 @@ export default function FoodLogPage() {
             </ul>
           )}
         </Card>
+        </Reveal>
       </div>
     </>
   );

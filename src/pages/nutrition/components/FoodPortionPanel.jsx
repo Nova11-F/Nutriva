@@ -9,6 +9,7 @@ import {
   calculatePortionNutrition,
   normalizeServingOptions,
 } from "../../../utils/nutritionUtils";
+import Reveal from "../../../components/Reveal";
 
 const EMPTY_MANUAL = {
   name: "",
@@ -126,6 +127,7 @@ export default function FoodPortionPanel({
 
   if (!selectedFood && !manualMode) {
     return (
+      <Reveal variant="slide-up">
       <Card variant="soft" className="flex flex-col items-center gap-3 py-10 text-center">
         <div className="flex size-12 items-center justify-center rounded-2xl bg-white text-primary shadow-xs">
           <Utensils size={24} />
@@ -144,10 +146,12 @@ export default function FoodPortionPanel({
           <PenLine size={14} /> Atau Input Makanan Manual
         </Button>
       </Card>
+      </Reveal>
     );
   }
 
   return (
+     <Reveal variant="slide-up">
     <Card className="flex flex-col gap-4 border-primary/40">
       <div className="flex items-start justify-between gap-2 border-b border-gray-100 pb-3">
         <div>
@@ -338,6 +342,7 @@ export default function FoodPortionPanel({
 
         {/* Nutrition Result Card */}
         {previewNutrition && (
+           <Reveal variant="pop-up">
           <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-3.5">
             <div className="mb-2.5 flex items-center justify-between">
               <span className="flex items-center gap-1.5 text-xs font-bold text-emerald-900">
@@ -384,6 +389,7 @@ export default function FoodPortionPanel({
               </p>
             )}
           </div>
+          </Reveal>
         )}
 
         {formError && <p className="text-xs font-medium text-danger">{formError}</p>}
@@ -397,5 +403,6 @@ export default function FoodPortionPanel({
         </Button>
       </form>
     </Card>
+    </Reveal>
   );
 }
