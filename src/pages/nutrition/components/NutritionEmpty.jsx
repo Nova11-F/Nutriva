@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Header from "../../../components/navigation/Header";
 import { getRecipeImage, handleRecipeImgError } from "../../../utils/recipeImages";
+import Reveal from "../../../components/Reveal";
 
 const SAMPLE_INSPIRATIONS = [
   {
@@ -56,6 +57,7 @@ export default function NutritionEmpty() {
     <>
       <Header variant="nutrisi" />
       <div className="flex flex-col gap-4 mt-6 px-4 md:gap-6">
+        <Reveal variant="slide-up">
         <Card className="p-4 md:p-6 flex flex-col gap-2 md:gap-4 items-start justify-between bg-linear-to-r from-background to-soft">
           <div className="w-fit inline-flex items-center gap-2 bg-soft text-primary px-3 py-1.5 rounded-full text-[8px] font-semibold tracking-wide uppercase md:px-4 md:py-2.5 md:text-[10px]">
             <span className="w-1.5 h-1.5 rounded-full bg-primary lg:w-2 lg:h-2"></span>
@@ -79,7 +81,9 @@ export default function NutritionEmpty() {
             Tambah Profil Anak
           </Button>
         </Card>
+        </Reveal>
 
+        <Reveal variant="slide-up">
         <div className="flex flex-col gap-1 lg:gap-2 px-2 lg:px-4">
           <h2 className="text-lg text-text font-semibold lg:text-2xl">
             Fitur Nutrisi Nutriva
@@ -89,7 +93,9 @@ export default function NutritionEmpty() {
             seluruh modul pemantauan gizi berikut:
           </p>
         </div>
+        </Reveal>
         <div className="grid grid-cols-1 items-strech justify-between gap-4 lg:grid-cols-3">
+           <Reveal variant="pop-up" delay={0}>
           <Card
             variant="default"
             className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
@@ -108,6 +114,8 @@ export default function NutritionEmpty() {
               sesuai tahapan tekstur usia anak.
             </p>
           </Card>
+          </Reveal>
+          <Reveal variant="pop-up" delay={0.1}>
           <Card
             variant="default"
             className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
@@ -126,6 +134,8 @@ export default function NutritionEmpty() {
               harian untuk pencegahan stunting dini.
             </p>
           </Card>
+          </Reveal>
+           <Reveal variant="pop-up" delay={0.2}>
           <Card
             variant="default"
             className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
@@ -145,10 +155,12 @@ export default function NutritionEmpty() {
               kecil.
             </p>
           </Card>
+          </Reveal>
         </div>
 
+        <Reveal variant="slide-up">
         <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-center">
-          <div className="flex flex-col md:col-span-2 gap-1 lg:gap-2 px-2">
+          <div className="flex flex-col md:col-span-2 gap-1 px-2">
             <h2 className="text-lg text-text font-semibold lg:text-2xl">
               Inspirasi & Ide Resep Sehat si Kecil
             </h2>
@@ -169,13 +181,15 @@ export default function NutritionEmpty() {
             />
           </Button>
         </div>
+        </Reveal>
         <div className="grid grid-cols-1 items-strech justify-between gap-2 lg:gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {SAMPLE_INSPIRATIONS.map((item) => (
+          {SAMPLE_INSPIRATIONS.map((item, index) => (
+             <Reveal key={item.slug} variant="pop-up" delay={index * 0.1}>
             <Card
               key={item.slug}
               padding="none"
               variant="default"
-              className="group flex flex-col gap-4 overflow-hidden hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+              className="group flex flex-col gap-4 h-full overflow-hidden hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
             >
               <div className="relative w-full h-70 overflow-hidden">
                 <img
@@ -185,7 +199,7 @@ export default function NutritionEmpty() {
                   onError={handleRecipeImgError}
                   className="w-full h-full object-cover rounded-t-md group-hover:scale-105 transition-transform duration-300"
                 />
-                <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 text-md font-bold px-3 py-1.5 rounded-xl shadow-sm z-10">
+                <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-bold px-3 py-1 rounded-xl shadow-sm z-10">
                   {item.time}
                 </span>
               </div>
@@ -193,20 +207,20 @@ export default function NutritionEmpty() {
                 <h4 className="text-xs text-primary font-bold lg:text-sm">
                   {item.category}
                 </h4>
-                <h3 className="text-lg text-text font-bold leading-snug lg:text-xl">
+                <h3 className="text-lg text-text font-bold leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 lg:text-sm">
+                <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
                   {item.desc}
                 </p>
                 <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-xs font-semibold text-gray-800 lg:text-sm">
+                  <span className="text-xs font-semibold text-gray-800 ">
                     {item.stats}
                   </span>
                   <button
                     type="button"
                     onClick={() => navigate(`/nutrition/${item.slug}`)}
-                    className="flex items-center gap-1 text-xs lg:text-sm font-semibold cursor-pointer text-secondary hover:underline hover:text-primary"
+                    className="flex items-center gap-1 text-xs font-semibold cursor-pointer text-secondary hover:underline hover:text-primary"
                   >
                     Lihat Resep
                     <span aria-hidden="true">&rarr;</span>
@@ -214,11 +228,13 @@ export default function NutritionEmpty() {
                 </div>
               </div>
             </Card>
+            </Reveal>
           ))}
         </div>
+        <Reveal variant="slide-up">
         <Card
           variant="default"
-          className="p-4 flex flex-col gap-4 lg:p-6 lg:gap-6 justify-between bg-linear-to-r  from-background to-soft  "
+          className="p-4 flex flex-col gap-4 lg:p-6 justify-between bg-linear-to-r  from-background to-soft  "
         >
           <div className="flex items-center justify-start gap-2 md:gap-4">
             <div className="bg-primary rounded-2xl p-4">
@@ -250,6 +266,7 @@ export default function NutritionEmpty() {
             Mulai Tanya Asisten Ai
           </Button>
         </Card>
+        </Reveal>
       </div>
     </>
   );

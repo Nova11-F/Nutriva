@@ -198,9 +198,9 @@ export default function RecipeDetailPage() {
           onClick={() => navigate("/nutrition/recipes")}
           size="none"
           variant="noborder"
-          className="flex w-fit items-center gap-1 text-sm font-medium text-primary md:text-lg hover:underline cursor-pointer"
+          className="flex w-fit items-center gap-1 text-sm font-medium text-primary hover:underline cursor-pointer"
         >
-          <ArrowLeft className="size-4 md:size-6" /> Kembali ke Katalog Resep
+          <ArrowLeft className="size-4" /> Kembali ke Katalog Resep
         </Button>
 
         <Card className="grid gap-6 md:grid-cols-[1.1fr_1fr]">

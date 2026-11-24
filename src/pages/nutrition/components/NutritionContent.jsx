@@ -241,7 +241,7 @@ export default function NutritionContent() {
   return (
     <>
       <Header variant="nutrisi" />
-      <div className="flex flex-col gap-5 px-4 pb-6 md:px-6">
+      <div className="flex flex-col gap-5 px-4 pb-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
           <div>
             <h1 className="mt-2 text-2xl font-bold text-text md:text-3xl">
@@ -254,26 +254,29 @@ export default function NutritionContent() {
           </div>
           <div className="flex w-full flex-col gap-2 md:w-fit md:flex-row">
             <Button
+            size="sm"
               variant="outline"
               onClick={() => navigate("/nutrition/log-food")}
               className="flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Utensils className="size-4 md:size-5" />
+              <Utensils className="size-4" />
               Catat Makanan
             </Button>
             <Button
+            size="sm"
               variant="outline"
               onClick={() => navigate("/nutrition/recipes")}
               className="flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Bookmark className="size-4 md:size-6" />
+              <Bookmark className="size-4" />
               Katalog Resep
             </Button>
             <Button
+            size="sm"
               className="flex items-center justify-center gap-2 cursor-pointer"
               onClick={() => navigate("/nutrition/MealPlan")}
             >
-              <Plus className="size-4 md:size-6" /> Buat Rencana Makan
+              <Plus className="size-4" /> Buat Rencana Makan
             </Button>
           </div>
         </div>
@@ -506,35 +509,35 @@ export default function NutritionContent() {
                     alt={m.title}
                     loading="lazy"
                     onError={handleRecipeImgError}
-                    className="h-full w-full rounded-t-xl object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="h-full w-full rounded-t-md object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <span className="absolute bottom-3 right-3 z-10 rounded-xl bg-white/90 px-3 py-1.5 text-md font-bold text-gray-800 shadow-sm backdrop-blur-sm">
+                  <span className="absolute bottom-3 right-3 z-10 rounded-xl bg-white/90 px-3 py-1 text-xs font-bold text-gray-800 shadow-sm backdrop-blur-sm">
                     {m.time}
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col gap-2 p-5">
-                  <h4 className="text-sm font-bold text-primary">
+                <div className="flex flex-1 flex-col gap-2 p-4">
+                  <h4 className="text-xs font-bold text-primary">
                     {m.category}
                   </h4>
-                  <h3 className="text-xl font-bold leading-snug text-text">
+                  <h3 className="text-lg font-bold leading-snug text-text">
                     {m.title}
                   </h3>
-                  <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">
+                  <p className="line-clamp-2 text-xs leading-relaxed text-gray-500">
                     {m.desc}
                   </p>
 
                   <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
-                    <span className="text-sm font-semibold text-gray-800">
+                    <span className="text-xs font-semibold text-gray-800">
                       {m.kcal} • {m.protein}
                     </span>
-                    <Button
+                    <button
                       variant="noborder"
                       onClick={() => navigate(m.slug ? `/nutrition/${m.slug}` : `/nutrition/${m.id}`)}
-                      className="flex cursor-pointer items-center gap-1 text-sm font-semibold text-secondary hover:text-primary hover:underline"
+                      className="flex cursor-pointer items-center gap-1 text-xs font-semibold text-secondary hover:text-primary hover:underline"
                     >
                       Lihat Resep <span aria-hidden="true">&rarr;</span>
-                    </Button>
+                    </button>
                   </div>
                 </div>
               </Card>

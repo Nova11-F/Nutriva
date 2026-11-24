@@ -19,10 +19,10 @@ export default function RecipeCard({ recipe: m, saved = false, onToggleSave }) {
           alt={m.title}
           loading="lazy"
           onError={handleRecipeImgError}
-          className="h-full w-full rounded-t-xl object-cover transition-transform duration-300 group-hover:scale-105"
+          className="h-full w-full rounded-t-md object-cover transition-transform duration-300 group-hover:scale-105"
         />
 
-        <span className="absolute bottom-3 right-3 z-10 rounded-xl bg-white/90 px-3 py-1.5 text-sm font-bold text-gray-800 shadow-sm backdrop-blur-sm">
+        <span className="absolute bottom-3 right-3 z-10 rounded-xl bg-white/90 px-3 py-1 text-xs font-bold text-gray-800 shadow-sm backdrop-blur-sm">
           {m.time}
         </span>
 
@@ -41,22 +41,22 @@ export default function RecipeCard({ recipe: m, saved = false, onToggleSave }) {
 
       <div className="flex flex-1 flex-col gap-2 p-5">
         <h4 className="text-xs text-primary font-bold lg:text-sm">{m.category}</h4>
-        <h3 className="text-lg text-text font-bold leading-snug lg:text-xl">{m.title}</h3>
-        <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 lg:text-sm">{m.desc}</p>
+        <h3 className="text-lg text-text font-bold leading-snug ">{m.title}</h3>
+        <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 ">{m.desc}</p>
 
         <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
-          <span className="text-xs font-semibold text-gray-800 lg:text-sm">
+          <span className="text-xs font-semibold text-gray-800 ">
             {m.kcal} • {m.protein}
           </span>
-          <Button
+          <button
             variant="noborder"
-            size="sm"
+            size="none"
             type="button"
             onClick={() => navigate(m.slug ? `/nutrition/${m.slug}` : (m.id ? `/nutrition/${m.id}` : "/nutrition/recipeId"))}
-            className="flex cursor-pointer items-center gap-1 text-sm font-semibold text-secondary hover:text-primary hover:underline"
+            className="flex cursor-pointer items-center gap-1 text-xs font-semibold text-secondary hover:text-primary hover:underline"
           >
             Lihat Resep <span aria-hidden="true">&rarr;</span>
-          </Button>
+          </button>
         </div>
       </div>
     </Card>
