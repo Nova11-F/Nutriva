@@ -11,7 +11,7 @@ export default function RecipeCard({ recipe: m, saved = false, onToggleSave }) {
     <Card
       padding="none"
       variant="default"
-      className="group flex flex-col overflow-hidden transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-soft"
+      className="group flex flex-col h-full overflow-hidden transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-soft"
     >
       <div className="relative h-70 w-full overflow-hidden">
         <img
@@ -40,7 +40,7 @@ export default function RecipeCard({ recipe: m, saved = false, onToggleSave }) {
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-5">
-        <h4 className="text-xs text-primary font-bold lg:text-sm">{m.category}</h4>
+        <h4 className="text-xs text-primary font-bold">{m.category}</h4>
         <h3 className="text-lg text-text font-bold leading-snug ">{m.title}</h3>
         <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 ">{m.desc}</p>
 

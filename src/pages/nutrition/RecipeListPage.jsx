@@ -15,6 +15,7 @@ import Button from "../../components/ui/Button";
 import { recipeService } from "../../services/recipeService";
 import { useChild } from "../../hooks/useChild";
 import { getRecipeImage, handleRecipeImgError } from "../../utils/recipeImages";
+import Reveal from "../../components/Reveal";
 
 const ageFilters = ["Semua Usia", "6-8 Bulan", "9-11 Bulan", "12+ Bulan"];
 const categoryFilters = [
@@ -157,13 +158,31 @@ export default function RecipeListPage() {
 
             // Deteksi kategori dinamis
             const ingList = Array.isArray(r.ingredients) ? r.ingredients : [];
-            const fullText = `${r.title} ${r.slug || ""} ${r.portion_size || ""} ${r.meal_frequency || ""} ${ingList.join(" ")}`.toLowerCase();
+            const fullText =
+              `${r.title} ${r.slug || ""} ${r.portion_size || ""} ${r.meal_frequency || ""} ${ingList.join(" ")}`.toLowerCase();
             let catLabel = "Protein Hewani";
-            if (fullText.includes("finger food") || fullText.includes("bola-bola") || fullText.includes("bakso") || fullText.includes("nugget")) {
+            if (
+              fullText.includes("finger food") ||
+              fullText.includes("bola-bola") ||
+              fullText.includes("bakso") ||
+              fullText.includes("nugget")
+            ) {
               catLabel = "Finger Food";
-            } else if (fullText.includes("puding") || fullText.includes("pudding") || fullText.includes("smoothie") || fullText.includes("camilan") || fullText.includes("selingan")) {
+            } else if (
+              fullText.includes("puding") ||
+              fullText.includes("pudding") ||
+              fullText.includes("smoothie") ||
+              fullText.includes("camilan") ||
+              fullText.includes("selingan")
+            ) {
               catLabel = "Camilan";
-            } else if (fullText.includes("sayur") || fullText.includes("buah") || fullText.includes("sup") || fullText.includes("bayam") || fullText.includes("wortel")) {
+            } else if (
+              fullText.includes("sayur") ||
+              fullText.includes("buah") ||
+              fullText.includes("sup") ||
+              fullText.includes("bayam") ||
+              fullText.includes("wortel")
+            ) {
               catLabel = "Sayur & Buah";
             }
 
@@ -175,7 +194,9 @@ export default function RecipeListPage() {
               cat: catLabel,
               category: `${r.portion_size || "Porsi MPASI"} · ${r.meal_frequency || "Utama"}`,
               title: r.title,
-              desc: r.instructions?.[0]?.text || `Menu bergizi seimbang untuk balita usia ${r.min_age_months}-${r.max_age_months} bulan.`,
+              desc:
+                r.instructions?.[0]?.text ||
+                `Menu bergizi seimbang untuk balita usia ${r.min_age_months}-${r.max_age_months} bulan.`,
               ingredients: ingList,
               kcal: `${r.main_nutrients?.calories ?? "–"} kkal`,
               protein: `${r.main_nutrients?.protein_g ?? "–"}g Protein`,
@@ -185,7 +206,9 @@ export default function RecipeListPage() {
 
           // Gabungkan dengan fallback agar katalog selalu lengkap
           const uniqueIds = new Set(mapped.map((m) => m.slug || m.title));
-          const restFallback = fallbackRecipes.filter((fb) => !uniqueIds.has(fb.slug || fb.title));
+          const restFallback = fallbackRecipes.filter(
+            (fb) => !uniqueIds.has(fb.slug || fb.title),
+          );
           setRecipesList([...mapped, ...restFallback]);
         }
       } catch (err) {
@@ -199,7 +222,8 @@ export default function RecipeListPage() {
   }, []);
 
   const featured = useMemo(() => {
-    const list = recipesList && recipesList.length > 0 ? recipesList : fallbackRecipes;
+    const list =
+      recipesList && recipesList.length > 0 ? recipesList : fallbackRecipes;
 
     // Hitung kelompok usia balita jika data anak tersedia
     let targetAgeGroup = null;
@@ -207,7 +231,9 @@ export default function RecipeListPage() {
       const bDate = child.birthDate || child.birth_date;
       const birth = new Date(bDate);
       const now = new Date();
-      let m = (now.getFullYear() - birth.getFullYear()) * 12 + (now.getMonth() - birth.getMonth());
+      let m =
+        (now.getFullYear() - birth.getFullYear()) * 12 +
+        (now.getMonth() - birth.getMonth());
       if (now.getDate() < birth.getDate()) m -= 1;
       const ageMonths = Math.max(0, m);
 
@@ -217,12 +243,15 @@ export default function RecipeListPage() {
     }
 
     // Filter resep yang cocok usia dan aman dari preferensi alergi anak
-    const childAllergies = (child?.allergies || child?.avoided_foods || []).map((a) => a.toLowerCase());
+    const childAllergies = (child?.allergies || child?.avoided_foods || []).map(
+      (a) => a.toLowerCase(),
+    );
     const candidates = list.filter((r) => {
       const matchAge = !targetAgeGroup || r.age === targetAgeGroup;
       if (!matchAge) return false;
       if (childAllergies.length > 0) {
-        const fullText = `${r.title} ${(r.ingredients || []).join(" ")}`.toLowerCase();
+        const fullText =
+          `${r.title} ${(r.ingredients || []).join(" ")}`.toLowerCase();
         if (childAllergies.some((al) => fullText.includes(al))) return false;
       }
       return true;
@@ -236,7 +265,8 @@ export default function RecipeListPage() {
     const diff = today - startOfYear;
     const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
     const daySeed = today.getFullYear() * 366 + dayOfYear;
-    const primary = activePool[daySeed % activePool.length] || list[0] || fallbackRecipes[0];
+    const primary =
+      activePool[daySeed % activePool.length] || list[0] || fallbackRecipes[0];
 
     return {
       id: primary.id,
@@ -249,9 +279,17 @@ export default function RecipeListPage() {
       ribbon: "Rasio Emas 4 Bintang",
       stats: [
         { label: "Energi Total", value: primary.kcal },
-        { label: "Protein Hewani", value: primary.protein, accent: "text-emerald-300" },
+        {
+          label: "Protein Hewani",
+          value: primary.protein,
+          accent: "text-emerald-300",
+        },
         { label: "Waktu Masak", value: primary.time },
-        { label: "Rekomendasi", value: "Kemenkes RI", accent: "text-yellow-300" },
+        {
+          label: "Rekomendasi",
+          value: "Kemenkes RI",
+          accent: "text-yellow-300",
+        },
       ],
     };
   }, [recipesList, child]);
@@ -266,12 +304,18 @@ export default function RecipeListPage() {
 
       const titleMatch = r.title?.toLowerCase().includes(q);
       const descMatch = r.desc?.toLowerCase().includes(q);
-      const catMatch = r.category?.toLowerCase().includes(q) || r.cat?.toLowerCase().includes(q);
-      const ingMatch = Array.isArray(r.ingredients) && r.ingredients.some((ing) => {
-        const text = typeof ing === "string" ? ing : (ing?.name || "");
-        return text.toLowerCase().includes(q);
-      });
-      const nutrientMatch = r.kcal?.toLowerCase().includes(q) || r.protein?.toLowerCase().includes(q);
+      const catMatch =
+        r.category?.toLowerCase().includes(q) ||
+        r.cat?.toLowerCase().includes(q);
+      const ingMatch =
+        Array.isArray(r.ingredients) &&
+        r.ingredients.some((ing) => {
+          const text = typeof ing === "string" ? ing : ing?.name || "";
+          return text.toLowerCase().includes(q);
+        });
+      const nutrientMatch =
+        r.kcal?.toLowerCase().includes(q) ||
+        r.protein?.toLowerCase().includes(q);
 
       return titleMatch || descMatch || catMatch || ingMatch || nutrientMatch;
     });
@@ -304,139 +348,151 @@ export default function RecipeListPage() {
           <ArrowLeft size={16} /> Kembali ke Nutrisi
         </button>
 
-        <Card className="flex flex-col gap-4">
-          <div className="flex gap-2">
-            <div className="relative flex-1">
-              <Search
-                size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-              />
-              <input
-                value={query}
-                onChange={(e) => changeFilter(setQuery)(e.target.value)}
-                placeholder="Cari resep, bahan, atau kandungan gizi..."
-                aria-label="Cari resep"
-                className="w-full rounded-lg border border-gray-200 bg-gray-50 py-2.5 pl-9 pr-3 text-sm outline-none focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/20"
-              />
-            </div>
-            <button
-              onClick={() => navigate("/nutrition/MealPlan")}
-              className="hidden sm:flex items-center gap-1.5 rounded-lg bg-emerald-50 px-4 py-2 text-xs font-semibold text-primary transition hover:bg-emerald-100 cursor-pointer"
-            >
-              <Sparkles size={14} /> Susun Meal Plan
-            </button>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold text-gray-500">
-                Usia Balita:
-              </span>
-              {ageFilters.map((a) => (
-                <button
-                  key={a}
-                  onClick={() => changeFilter(setAge)(a)}
-                  className={chip(age === a)}
-                >
-                  {a}
-                </button>
-              ))}
+        <Reveal variant="slide-up">
+          <Card className="flex flex-col gap-4">
+            <div className="flex gap-2">
+              <div className="relative flex-1">
+                <Search
+                  size={16}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                />
+                <input
+                  value={query}
+                  onChange={(e) => changeFilter(setQuery)(e.target.value)}
+                  placeholder="Cari resep, bahan, atau kandungan gizi..."
+                  aria-label="Cari resep"
+                  className="w-full rounded-lg border border-gray-200 bg-gray-50 py-2.5 pl-9 pr-3 text-sm outline-none focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/20"
+                />
+              </div>
+              <button
+                onClick={() => navigate("/nutrition/MealPlan")}
+                className="hidden sm:flex items-center gap-1.5 rounded-lg bg-emerald-50 px-4 py-2 text-xs font-semibold text-primary transition hover:bg-emerald-100 cursor-pointer"
+              >
+                <Sparkles size={14} /> Susun Meal Plan
+              </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold text-gray-500">
-                Kategori:
-              </span>
-              {categoryFilters.map((c) => (
-                <button
-                  key={c}
-                  onClick={() => changeFilter(setCat)(c)}
-                  className={chip(cat === c)}
-                >
-                  {c}
-                </button>
-              ))}
-            </div>
-          </div>
-        </Card>
-
-        {/* Featured Hero Recipe */}
-        <section className="relative overflow-hidden rounded-3xl bg-linear-to-br from-slate-900 via-emerald-950 to-slate-900 p-6 text-white shadow-xl md:p-8">
-          <div className="grid items-center gap-8 lg:grid-cols-2">
-            <div className="flex flex-col gap-4">
-              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-emerald-500/20 px-3.5 py-1 text-xs font-medium text-emerald-300 ring-1 ring-inset ring-emerald-500/30">
-                <Sparkles size={14} /> {featured.badge}
-              </span>
-
-              <h1 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
-                {featured.title}
-              </h1>
-
-              <p className="line-clamp-3 text-sm leading-relaxed text-slate-300">
-                {featured.desc}
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {featured.stats.map((s) => (
-                  <div
-                    key={s.label}
-                    className="rounded-xl bg-white/5 p-3 backdrop-blur-xs ring-1 ring-white/10"
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-semibold text-gray-500">
+                  Usia Balita:
+                </span>
+                {ageFilters.map((a) => (
+                  <button
+                    key={a}
+                    onClick={() => changeFilter(setAge)(a)}
+                    className={chip(age === a)}
                   >
-                    <p className="text-[11px] font-medium text-slate-400">
-                      {s.label}
-                    </p>
-                    <p
-                      className={`text-sm font-bold ${
-                        s.accent ?? "text-white"
-                      }`}
-                    >
-                      {s.value}
-                    </p>
-                  </div>
+                    {a}
+                  </button>
                 ))}
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  onClick={() => navigate(featured.slug ? `/nutrition/${featured.slug}` : `/nutrition/${featured.id}`)}
-                  className="flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400 cursor-pointer"
-                >
-                  Lihat Detail Resep & Takaran <ArrowRight size={16} />
-                </button>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-semibold text-gray-500">
+                  Kategori:
+                </span>
+                {categoryFilters.map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => changeFilter(setCat)(c)}
+                    className={chip(cat === c)}
+                  >
+                    {c}
+                  </button>
+                ))}
               </div>
             </div>
+          </Card>
+        </Reveal>
 
-            <div className="relative">
-              <div className="relative rounded-2xl bg-white p-2 shadow-2xl">
-                <img
-                  src={featured.image}
-                  alt={featured.title}
-                  onError={handleRecipeImgError}
-                  className="h-64 w-full rounded-xl object-cover md:h-80"
-                />
-                <span className="absolute bottom-5 left-5 rounded-full bg-emerald-900/90 px-3 py-1 text-xs font-semibold text-white">
-                  {featured.stage}
+        {/* Featured Hero Recipe */}
+        <Reveal variant="slide-up">
+          <section className="relative overflow-hidden rounded-3xl bg-linear-to-br from-slate-900 via-emerald-950 to-slate-900 p-6 text-white shadow-xl md:p-8">
+            <div className="grid items-center gap-8 lg:grid-cols-2">
+              <div className="flex flex-col gap-4">
+                <span className="inline-flex w-fit items-center gap-2 rounded-full bg-emerald-500/20 px-3.5 py-1 text-xs font-medium text-emerald-300 ring-1 ring-inset ring-emerald-500/30">
+                  <Sparkles size={14} /> {featured.badge}
+                </span>
+
+                <h1 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
+                  {featured.title}
+                </h1>
+
+                <p className="line-clamp-3 text-sm leading-relaxed text-slate-300">
+                  {featured.desc}
+                </p>
+
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {featured.stats.map((s) => (
+                    <div
+                      key={s.label}
+                      className="rounded-xl bg-white/5 p-3 backdrop-blur-xs ring-1 ring-white/10"
+                    >
+                      <p className="text-[11px] font-medium text-slate-400">
+                        {s.label}
+                      </p>
+                      <p
+                        className={`text-sm font-bold ${
+                          s.accent ?? "text-white"
+                        }`}
+                      >
+                        {s.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    onClick={() =>
+                      navigate(
+                        featured.slug
+                          ? `/nutrition/${featured.slug}`
+                          : `/nutrition/${featured.id}`,
+                      )
+                    }
+                    className="flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400 cursor-pointer"
+                  >
+                    Lihat Detail Resep & Takaran <ArrowRight size={16} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="relative rounded-2xl bg-white p-2 shadow-2xl">
+                  <img
+                    src={featured.image}
+                    alt={featured.title}
+                    onError={handleRecipeImgError}
+                    className="h-64 w-full rounded-xl object-cover md:h-80"
+                  />
+                  <span className="absolute bottom-5 left-5 rounded-full bg-emerald-900/90 px-3 py-1 text-xs font-semibold text-white">
+                    {featured.stage}
+                  </span>
+                </div>
+
+                <span className="absolute -top-3 right-4 flex items-center gap-1.5 rounded-full bg-slate-800 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
+                  <Award size={14} className="text-yellow-400" />{" "}
+                  {featured.ribbon}
                 </span>
               </div>
-
-              <span className="absolute -top-3 right-4 flex items-center gap-1.5 rounded-full bg-slate-800 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
-                <Award size={14} className="text-yellow-400" />{" "}
-                {featured.ribbon}
-              </span>
             </div>
-          </div>
-        </section>
+          </section>
+        </Reveal>
 
         {/* Katalog Resep Terverifikasi */}
         <section className="flex flex-col gap-3">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold text-text">
-              Katalog Resep Terverifikasi
-            </h2>
-            <span className="text-xs text-gray-500">
-              {filtered.length} resep ditemukan
-            </span>
-          </div>
+          <Reveal variant="slide-up">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-bold text-text">
+                Katalog Resep Terverifikasi
+              </h2>
+              <span className="text-xs text-gray-500">
+                {filtered.length} resep ditemukan
+              </span>
+            </div>
+          </Reveal>
 
           {shown.length === 0 ? (
             <Card className="py-10 text-center text-sm text-gray-500">
@@ -444,101 +500,125 @@ export default function RecipeListPage() {
             </Card>
           ) : (
             <div className="grid grid-cols-1 items-stretch gap-2 md:grid-cols-2 2xl:grid-cols-4">
-              {shown.map((m) => (
-                <Card
+              {shown.map((m, index) => (
+                <Reveal
                   key={m.id || m.slug}
-                  padding="none"
-                  variant="default"
-                  className="group flex flex-col overflow-hidden transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-soft"
+                  variant="pop-up"
+                  delay={index * 0.1}
                 >
-                  <div className="relative h-70 w-full overflow-hidden">
-                    <img
-                      src={m.image}
-                      alt={m.title}
-                      loading="lazy"
-                      onError={handleRecipeImgError}
-                      className="h-full w-full rounded-t-md object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <span className="absolute bottom-3 right-3 z-10 rounded-xl bg-white/90 px-3 py-1 text-xs font-bold text-gray-800 shadow-sm backdrop-blur-sm">
-                      {m.time}
-                    </span>
-                    <span className="absolute left-3 top-3 z-10 rounded-full bg-primary px-2.5 py-1 text-[10px] font-semibold text-surface">
-                      {m.age}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-1 flex-col gap-2 p-4">
-                    <h4 className="text-xs text-primary font-bold ">
-                      {m.category}
-                    </h4>
-                    <h3 className="text-lg text-text font-bold leading-snug">
-                      {m.title}
-                    </h3>
-                    <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
-                      {m.desc}
-                    </p>
-
-                    <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
-                      <span className="text-xs font-semibold text-gray-800 ">
-                        {m.kcal} • {m.protein}
+                  <Card
+                    key={m.id || m.slug}
+                    padding="none"
+                    variant="default"
+                    className="group flex flex-col h-full overflow-hidden transition-all duration-300 hover:border-secondary hover:shadow-lg hover:shadow-soft"
+                  >
+                    <div className="relative h-70 w-full overflow-hidden">
+                      <img
+                        src={m.image}
+                        alt={m.title}
+                        loading="lazy"
+                        onError={handleRecipeImgError}
+                        className="h-full w-full rounded-t-md object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <span className="absolute bottom-3 right-3 z-10 rounded-xl bg-white/90 px-3 py-1 text-xs font-bold text-gray-800 shadow-sm backdrop-blur-sm">
+                        {m.time}
                       </span>
-                      <button
-                        variant="noborder"
-                        size="none"
-                        onClick={() => navigate(m.slug ? `/nutrition/${m.slug}` : `/nutrition/${m.id}`)}
-                        className="flex cursor-pointer items-center gap-1 text-xs font-semibold text-secondary hover:text-primary hover:underline"
-                      >
-                        Lihat Resep <span aria-hidden="true">&rarr;</span>
-                      </button>
+                      <span className="absolute left-3 top-3 z-10 rounded-full bg-primary px-2.5 py-1 text-[10px] font-semibold text-surface">
+                        {m.age}
+                      </span>
                     </div>
-                  </div>
-                </Card>
+
+                    <div className="flex flex-1 flex-col gap-2 p-4">
+                      <h4 className="text-xs text-primary font-bold ">
+                        {m.category}
+                      </h4>
+                      <h3 className="text-lg text-text font-bold leading-snug">
+                        {m.title}
+                      </h3>
+                      <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
+                        {m.desc}
+                      </p>
+
+                      <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
+                        <span className="text-xs font-semibold text-gray-800 ">
+                          {m.kcal} • {m.protein}
+                        </span>
+                        <button
+                          variant="noborder"
+                          size="none"
+                          onClick={() =>
+                            navigate(
+                              m.slug
+                                ? `/nutrition/${m.slug}`
+                                : `/nutrition/${m.id}`,
+                            )
+                          }
+                          className="flex cursor-pointer items-center gap-1 text-xs font-semibold text-secondary hover:text-primary hover:underline"
+                        >
+                          Lihat Resep <span aria-hidden="true">&rarr;</span>
+                        </button>
+                      </div>
+                    </div>
+                  </Card>
+                </Reveal>
               ))}
             </div>
           )}
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="mt-4 flex items-center justify-center gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                disabled={current === 1}
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                className="inline-flex items-center gap-1.5 text-sm disabled:opacity-50"
-              >
-                <ChevronLeft size={16} /> Sebelumnya
-              </Button>
-              <span className="text-xs text-gray-500">
-                Halaman {current} dari {totalPages}
-              </span>
-              <Button
-                variant="outline"
-                size="sm"
-                disabled={current === totalPages}
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                className="inline-flex items-center gap-1.5 text-sm disabled:opacity-50"
-              >
-                Selanjutnya <ChevronRight size={16} />
-              </Button>
-            </div>
+            <Reveal variant="slide-up">
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={current === 1}
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  className="inline-flex items-center gap-1.5 text-sm disabled:opacity-50"
+                >
+                  <ChevronLeft size={16} /> Sebelumnya
+                </Button>
+                <span className="text-xs text-gray-500">
+                  Halaman {current} dari {totalPages}
+                </span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={current === totalPages}
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  className="inline-flex items-center gap-1.5 text-sm disabled:opacity-50"
+                >
+                  Selanjutnya <ChevronRight size={16} />
+                </Button>
+              </div>
+            </Reveal>
           )}
         </section>
 
         {/* 4 Pilar MPASI Sehat */}
         <section className="flex flex-col gap-3">
-          <h2 className="text-lg font-bold text-text">
-            4 Kaidah Emas MPASI Kemenkes RI
-          </h2>
+          <Reveal variant="slide-up">
+            <h2 className="text-lg font-bold text-text">
+              4 Kaidah Emas MPASI Kemenkes RI
+            </h2>
+          </Reveal>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {goldenRules.map((r, i) => (
-              <Card key={r.title} variant="soft" className="flex flex-col gap-1.5">
-                <span className="flex size-7 items-center justify-center rounded-full bg-primary text-xs font-bold text-surface">
-                  {i + 1}
-                </span>
-                <h3 className="font-bold text-text">{r.title}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed">{r.desc}</p>
-              </Card>
+              <Reveal key={r.title} variant="pop-up" delay={i * 0.1}>
+                <Card
+                  key={r.title}
+                  variant="soft"
+                  className="flex flex-col gap-1.5"
+                >
+                  <span className="flex size-7 items-center justify-center rounded-full bg-primary text-xs font-bold text-surface">
+                    {i + 1}
+                  </span>
+                  <h3 className="font-bold text-text">{r.title}</h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    {r.desc}
+                  </p>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </section>

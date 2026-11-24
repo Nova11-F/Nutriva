@@ -18,6 +18,7 @@ import { recipeService } from "../../../services/recipeService";
 import { todayISO } from "../../../utils/formatDate";
 import { getRecipeImage, handleRecipeImgError } from "../../../utils/recipeImages";
 import DailySummaryBar from "./DailySummaryBar";
+import Reveal from "../../../components/Reveal";
 
 function getDiffMonths(birthDateStr, targetDateStr = new Date()) {
   if (!birthDateStr) return 0;
@@ -242,7 +243,8 @@ export default function NutritionContent() {
     <>
       <Header variant="nutrisi" />
       <div className="flex flex-col gap-5 px-4 pb-6">
-        <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+        <Reveal variant="slide-up">
+        <div className="flex flex-col gap-3 lg:flex-row md:items-start md:justify-between">
           <div>
             <h1 className="mt-2 text-2xl font-bold text-text md:text-3xl">
               Nutrisi & Gizi Anak
@@ -280,9 +282,11 @@ export default function NutritionContent() {
             </Button>
           </div>
         </div>
+        </Reveal>
 
         {/* Profil Balita Dinamis */}
         <section className="flex flex-col gap-3">
+          <Reveal variant="slide-up">
           <div className="flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
               Profil Balita Terdaftar{" "}
@@ -301,9 +305,10 @@ export default function NutritionContent() {
               <Plus size={12} /> Tambah Profil Anak
             </Button>
           </div>
+          </Reveal>
 
           <div className="grid gap-3 md:grid-cols-3">
-            {childList.map((p) => {
+            {childList.map((p, index) => {
               const active = p.id === currentChild?.id;
               const pAge = getDiffMonths(p.birthDate);
               const initial = p.name ? p.name.slice(0, 2).toUpperCase() : "AN";
@@ -313,6 +318,7 @@ export default function NutritionContent() {
               const phase = getMpasiPhase(pAge);
 
               return (
+                <Reveal key={p.id} variant="pop-up" delay={index * 0.1}>
                 <Card
                   key={p.id}
                   variant={active ? "success" : "default"}
@@ -361,9 +367,12 @@ export default function NutritionContent() {
                     </span>
                   </div>
                 </Card>
+
+                </Reveal>
               );
             })}
 
+            <Reveal variant="pop-up" delay={childList.length * 0.1}>
             <Card variant="soft" className="flex flex-col gap-2">
               <div className="flex items-center gap-2 font-semibold text-text">
                 <Users size={16} className="text-primary" /> Punya Balita Lain?
@@ -380,10 +389,12 @@ export default function NutritionContent() {
                 Daftarkan Profil Anak Baru <ChevronRight size={12} />
               </button>
             </Card>
+            </Reveal>
           </div>
         </section>
 
         {/* Ringkasan Nutrisi Harian (Log Food) */}
+        <Reveal variant="slide-up">
         <DailySummaryBar
           childName={childName}
           ageMonths={ageMonths}
@@ -392,8 +403,10 @@ export default function NutritionContent() {
           actionLabel="Catat Makanan Hari Ini"
           onAction={() => navigate("/nutrition/log-food")}
         />
+        </Reveal>
 
         {/* Jadwal Makan Dinamis */}
+        <Reveal variant="slide-up">
         <Card className="flex flex-col gap-4">
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
@@ -421,11 +434,11 @@ export default function NutritionContent() {
             </div>
           </div>
 
-          <ol className="grid gap-3 lg:grid-cols-2">
+          <ol className="grid gap-2 lg:grid-cols-2">
             {scheduleList.map((s, idx) => (
               <li
                 key={s.time}
-                className={`flex items-start gap-3 rounded-xl border p-4 transition ${
+                className={`flex items-start gap-2 rounded-xl border p-4 transition ${
                   s.next ? "border-primary bg-soft/40" : "border-gray-200"
                 } ${s.done ? "bg-gray-50/60 opacity-75" : ""}`}
               >
@@ -441,7 +454,7 @@ export default function NutritionContent() {
                   <Check size={14} />
                 </button>
                 <div className="flex min-w-0 flex-1 flex-col gap-1">
-                  <div className="flex flex-wrap items-center gap-2 text-[11px]">
+                  <div className="flex flex-wrap items-center gap-2 text-[10px]">
                     <span className="font-semibold text-gray-500">
                       {s.time}
                     </span>
@@ -454,8 +467,8 @@ export default function NutritionContent() {
                       </span>
                     )}
                   </div>
-                  <p className="font-semibold text-text">{s.title}</p>
-                  <p className="text-xs text-gray-500">{s.nutrients}</p>
+                  <p className="font-semibold text-sm lg:text-base text-text">{s.title}</p>
+                  <p className="text-[10px] lg:text-xs text-gray-500">{s.nutrients}</p>
                 </div>
                 {s.next && !s.done && (
                   <Button
@@ -470,9 +483,11 @@ export default function NutritionContent() {
             ))}
           </ol>
         </Card>
+        </Reveal>
 
         {/* Inspirasi Resep Dinamis */}
         <section className="flex flex-col gap-3">
+          <Reveal variant="slide-up">
           <div className="flex gap-2 md:flex-row md:items-center justify-between">
             <div>
               <h2 className="text-lg font-bold text-text">
@@ -494,9 +509,11 @@ export default function NutritionContent() {
               />
             </Button>
           </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-4">
-            {inspirations.map((m) => (
+          <div className="grid grid-cols-1 items-stretch gap-2 md:grid-cols-2 lg:grid-cols-4">
+            {inspirations.map((m, index) => (
+              <Reveal key={m.id || m.slug} variant="pop-up" delay={index * 0.1}>
               <Card
                 key={m.id || m.slug}
                 padding="none"
@@ -541,11 +558,13 @@ export default function NutritionContent() {
                   </div>
                 </div>
               </Card>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* AI Assistant Banner */}
+        <Reveal variant="slide-up">
         <Card
           className="flex flex-col gap-4 border-primary bg-primary text-surface md:flex-row md:items-center md:justify-between"
           variant="primary"
@@ -569,6 +588,7 @@ export default function NutritionContent() {
             <Sparkles size={16} /> Konsultasi ke Asisten AI
           </Button>
         </Card>
+        </Reveal>
       </div>
     </>
   );

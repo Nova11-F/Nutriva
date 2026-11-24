@@ -8,6 +8,7 @@ import RecipeCard from "../../components/ui/RecipeCard";
 import Spinner from "../../components/ui/Spinner";
 import { recipeService } from "../../services/recipeService";
 import { getRecipeImage, handleRecipeImgError } from "../../utils/recipeImages";
+import Reveal from "../../components/Reveal";
 
 const defaultRecipeFallback = {
   id: "1",
@@ -91,14 +92,18 @@ export default function RecipeDetailPage() {
     async function fetchDetail() {
       setLoading(true);
       try {
-        const targetId = recipeId && recipeId !== "recipeId" ? recipeId : "bubur-ayam-wortel";
+        const targetId =
+          recipeId && recipeId !== "recipeId" ? recipeId : "bubur-ayam-wortel";
         const res = await recipeService.getRecipeDetail(targetId);
 
         if (!ignore && res) {
           // Parse ingredients
           const ingList = Array.isArray(res.ingredients)
             ? res.ingredients.map((ing) => {
-                const parts = typeof ing === "string" ? ing.split(":") : [ing.name, ing.qty];
+                const parts =
+                  typeof ing === "string"
+                    ? ing.split(":")
+                    : [ing.name, ing.qty];
                 return {
                   name: parts[0]?.trim() || "Bahan makanan",
                   qty: parts[1]?.trim() || "Secukupnya",
@@ -111,7 +116,10 @@ export default function RecipeDetailPage() {
             ? res.instructions.map((ins, i) => ({
                 title: ins.step || `Langkah ${i + 1}`,
                 time: ins.time || "5 menit",
-                text: typeof ins === "string" ? ins : (ins.text || ins.description || ""),
+                text:
+                  typeof ins === "string"
+                    ? ins
+                    : ins.text || ins.description || "",
               }))
             : defaultRecipeFallback.steps;
 
@@ -120,9 +128,19 @@ export default function RecipeDetailPage() {
             title: res.title,
             desc: `Menu gizi seimbang yang divalidasi oleh ${res.validated_by || "Konselor MPASI"} berdasarkan standar ${res.source_authority || "Kemenkes RI"}.`,
             image: getRecipeImage(res),
-            tags: res.allergen_tags && res.allergen_tags.length > 0
-              ? [`${res.min_age_months}-${res.max_age_months} Bulan`, `Porsi: ${res.portion_size || "1 Mangkok"}`, ...res.allergen_tags]
-              : [`${res.min_age_months}-${res.max_age_months} Bulan`, `Porsi: ${res.portion_size || "1 Mangkok"}`, "Cegah Stunting", "Bebas MSG"],
+            tags:
+              res.allergen_tags && res.allergen_tags.length > 0
+                ? [
+                    `${res.min_age_months}-${res.max_age_months} Bulan`,
+                    `Porsi: ${res.portion_size || "1 Mangkok"}`,
+                    ...res.allergen_tags,
+                  ]
+                : [
+                    `${res.min_age_months}-${res.max_age_months} Bulan`,
+                    `Porsi: ${res.portion_size || "1 Mangkok"}`,
+                    "Cegah Stunting",
+                    "Bebas MSG",
+                  ],
             rating: 4.9,
             reviews: 128,
             validator: `Divalidasi oleh ${res.validated_by || "Ahli Gizi"} (${res.source_authority || "Kemenkes RI"})`,
@@ -130,9 +148,20 @@ export default function RecipeDetailPage() {
             info: [
               { label: "Usia Min", value: `${res.min_age_months} Bulan` },
               { label: "Frekuensi", value: res.meal_frequency || "3x sehari" },
-              { label: "Protein", value: `${res.main_nutrients?.protein_g ?? "–"} g` },
-              { label: "Budget", value: res.budget_tier ? res.budget_tier.toUpperCase() : "EKONOMIS" },
-              { label: "Zat Besi", value: `${res.main_nutrients?.iron_mg ?? "–"} mg` },
+              {
+                label: "Protein",
+                value: `${res.main_nutrients?.protein_g ?? "–"} g`,
+              },
+              {
+                label: "Budget",
+                value: res.budget_tier
+                  ? res.budget_tier.toUpperCase()
+                  : "EKONOMIS",
+              },
+              {
+                label: "Zat Besi",
+                value: `${res.main_nutrients?.iron_mg ?? "–"} mg`,
+              },
             ],
             ingredients: ingList,
             steps: stepList,
@@ -174,16 +203,17 @@ export default function RecipeDetailPage() {
 
   const toggleIngredient = (name) =>
     setChecked((prev) =>
-      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]
+      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name],
     );
 
   const toggleOther = (id) =>
     setSavedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
 
   const checkedCount = useMemo(() => {
-    return recipeData.ingredients.filter((ing) => checked.includes(ing.name)).length;
+    return recipeData.ingredients.filter((ing) => checked.includes(ing.name))
+      .length;
   }, [recipeData.ingredients, checked]);
 
   if (loading) {
@@ -203,232 +233,254 @@ export default function RecipeDetailPage() {
           <ArrowLeft className="size-4" /> Kembali ke Katalog Resep
         </Button>
 
-        <Card className="grid gap-6 md:grid-cols-[1.1fr_1fr]">
-          <div className="flex flex-col justify-center gap-4">
-            <div className="flex flex-wrap gap-2">
-              {recipeData.tags.map((t, i) => (
-                <span
-                  key={t}
-                  className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ${
-                    i === 0
-                      ? "bg-soft text-primary"
-                      : "bg-gray-100 text-gray-600"
-                  }`}
-                >
-                  {i === 0 && <Check size={12} />} {t}
-                </span>
-              ))}
-            </div>
-
-            <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-text md:text-4xl">
-              {recipeData.title}
-            </h1>
-            <p className="text-sm leading-relaxed text-gray-600">
-              {recipeData.desc}
-            </p>
-
-            <div className="flex flex-col gap-2 rounded-xl border border-gray-200 bg-gray-50 p-4">
-              <div className="flex items-center gap-2 text-sm">
-                <span className="flex text-yellow-400">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={14} className="fill-current" />
-                  ))}
-                </span>
-                <b className="text-text">{recipeData.rating}</b>
-                <span className="text-xs text-gray-500">
-                  ({recipeData.reviews} ulasan terverifikasi)
-                </span>
+        <Reveal variant="slide-up">
+          <Card className="grid gap-6 md:grid-cols-[1.1fr_1fr]">
+            <div className="flex flex-col justify-center gap-4">
+              <div className="flex flex-wrap gap-2">
+                {recipeData.tags.map((t, i) => (
+                  <span
+                    key={t}
+                    className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ${
+                      i === 0
+                        ? "bg-soft text-primary"
+                        : "bg-gray-100 text-gray-600"
+                    }`}
+                  >
+                    {i === 0 && <Check size={12} />} {t}
+                  </span>
+                ))}
               </div>
-              <p className="flex items-center gap-1 text-xs font-medium text-primary">
-                <ShieldCheck size={14} /> {recipeData.validator}
+
+              <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-text md:text-4xl">
+                {recipeData.title}
+              </h1>
+              <p className="text-sm leading-relaxed text-gray-600">
+                {recipeData.desc}
               </p>
-            </div>
 
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-              {recipeData.info.map((i) => (
-                <div key={i.label} className="rounded-xl bg-gray-50 p-3">
-                  <p className="text-[10px] font-semibold uppercase text-gray-500">
-                    {i.label}
-                  </p>
-                  <p className="mt-1 text-sm font-bold text-text">{i.value}</p>
+              <div className="flex flex-col gap-2 rounded-xl border border-gray-200 bg-gray-50 p-4">
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="flex text-yellow-400">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} size={14} className="fill-current" />
+                    ))}
+                  </span>
+                  <b className="text-text">{recipeData.rating}</b>
+                  <span className="text-xs text-gray-500">
+                    ({recipeData.reviews} ulasan terverifikasi)
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
+                <p className="flex items-center gap-1 text-xs font-medium text-primary">
+                  <ShieldCheck size={14} /> {recipeData.validator}
+                </p>
+              </div>
 
-          <div className="relative">
-            <img
-              src={recipeData.image}
-              alt={recipeData.title}
-              onError={handleRecipeImgError}
-              className="h-72 w-full rounded-2xl object-cover md:h-90"
-            />
-            <span className="absolute bottom-3 left-3 rounded-md bg-black/60 px-2 py-1 text-[10px] font-bold uppercase text-white">
-              Foto Sajian Asli
-            </span>
-            <span className="absolute bottom-3 right-3 rounded-full bg-emerald-800/90 px-3 py-1 text-xs font-semibold text-white">
-              {recipeData.kcal}
-            </span>
-            <button
-              onClick={() => setSaved((s) => !s)}
-              aria-pressed={saved}
-              aria-label={saved ? "Hapus dari tersimpan" : "Simpan resep"}
-              className="absolute right-3 top-3 flex size-10 items-center justify-center rounded-full bg-white/90 shadow-sm backdrop-blur-sm cursor-pointer"
-            >
-              <Bookmark
-                size={20}
-                className={
-                  saved ? "fill-primary text-primary" : "text-gray-600"
-                }
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+                {recipeData.info.map((i) => (
+                  <div key={i.label} className="rounded-xl bg-gray-50 p-3">
+                    <p className="text-[10px] font-semibold uppercase text-gray-500">
+                      {i.label}
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-text">
+                      {i.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative">
+              <img
+                src={recipeData.image}
+                alt={recipeData.title}
+                onError={handleRecipeImgError}
+                className="h-72 w-full rounded-2xl object-cover md:h-90"
               />
-            </button>
-          </div>
-        </Card>
+              <span className="absolute bottom-3 left-3 rounded-md bg-black/60 px-2 py-1 text-[10px] font-bold uppercase text-white">
+                Foto Sajian Asli
+              </span>
+              <span className="absolute bottom-3 right-3 rounded-full bg-emerald-800/90 px-3 py-1 text-xs font-semibold text-white">
+                {recipeData.kcal}
+              </span>
+              <button
+                onClick={() => setSaved((s) => !s)}
+                aria-pressed={saved}
+                aria-label={saved ? "Hapus dari tersimpan" : "Simpan resep"}
+                className="absolute right-3 top-3 flex size-10 items-center justify-center rounded-full bg-white/90 shadow-sm backdrop-blur-sm cursor-pointer"
+              >
+                <Bookmark
+                  size={20}
+                  className={
+                    saved ? "fill-primary text-primary" : "text-gray-600"
+                  }
+                />
+              </button>
+            </div>
+          </Card>
+        </Reveal>
 
         <div className="grid items-start gap-4 lg:grid-cols-[1fr_1.4fr]">
           {/* Bahan-Bahan */}
-          <Card padding="lg" className="flex flex-col gap-5">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <h2 className="text-xl font-bold text-text">Bahan-bahan</h2>
-                <p className="text-sm text-gray-500">
-                  Untuk 1 porsi anak. Centang bahan yang sudah siap.
-                </p>
+          <Reveal variant="slide-up">
+            <Card padding="lg" className="flex flex-col gap-5">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h2 className="text-xl font-bold text-text">Bahan-bahan</h2>
+                  <p className="text-sm text-gray-500">
+                    Untuk 1 porsi anak. Centang bahan yang sudah siap.
+                  </p>
+                </div>
+                <span className="shrink-0 rounded-full bg-soft px-3 py-1 text-xs font-semibold text-primary">
+                  {checkedCount}/{recipeData.ingredients.length} siap
+                </span>
               </div>
-              <span className="shrink-0 rounded-full bg-soft px-3 py-1 text-xs font-semibold text-primary">
-                {checkedCount}/{recipeData.ingredients.length} siap
-              </span>
-            </div>
 
-            <div className="h-1.5 overflow-hidden rounded-full bg-gray-200">
-              <div
-                className="h-full rounded-full bg-primary transition-all duration-300"
-                style={{
-                  width: `${(checkedCount / Math.max(1, recipeData.ingredients.length)) * 100}%`,
-                }}
-              />
-            </div>
+              <div className="h-1.5 overflow-hidden rounded-full bg-gray-200">
+                <div
+                  className="h-full rounded-full bg-primary transition-all duration-300"
+                  style={{
+                    width: `${(checkedCount / Math.max(1, recipeData.ingredients.length)) * 100}%`,
+                  }}
+                />
+              </div>
 
-            <ul className="flex flex-col gap-2.5">
-              {recipeData.ingredients.map((ing) => {
-                const done = checked.includes(ing.name);
-                return (
-                  <li key={ing.name}>
-                    <label
-                      className={`flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition ${
-                        done
-                          ? "border-primary bg-soft"
-                          : "border-gray-200 hover:border-primary"
-                      }`}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={done}
-                        onChange={() => toggleIngredient(ing.name)}
-                        className="size-5 accent-green-700 cursor-pointer"
-                      />
-                      <span
-                        className={`flex-1 text-xs lg:text-sm ${done ? "text-gray-400 line-through" : "text-text"}`}
+              <ul className="flex flex-col gap-2.5">
+                {recipeData.ingredients.map((ing) => {
+                  const done = checked.includes(ing.name);
+                  return (
+                    <li key={ing.name}>
+                      <label
+                        className={`flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition ${
+                          done
+                            ? "border-primary bg-soft"
+                            : "border-gray-200 hover:border-primary"
+                        }`}
                       >
-                        {ing.name}
-                      </span>
-                      <span className="text-xs lg:text-sm font-semibold text-gray-500">
-                        {ing.qty}
-                      </span>
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
-          </Card>
+                        <input
+                          type="checkbox"
+                          checked={done}
+                          onChange={() => toggleIngredient(ing.name)}
+                          className="size-5 accent-green-700 cursor-pointer"
+                        />
+                        <span
+                          className={`flex-1 text-xs lg:text-sm ${done ? "text-gray-400 line-through" : "text-text"}`}
+                        >
+                          {ing.name}
+                        </span>
+                        <span className="text-xs lg:text-sm font-semibold text-gray-500">
+                          {ing.qty}
+                        </span>
+                      </label>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Card>
+          </Reveal>
 
           {/* Langkah Memasak & Tips */}
           <div className="flex flex-col gap-4">
-            <Card padding="lg" className="flex flex-col gap-5">
-              <div>
-                <h2 className="text-xl font-bold text-text">Langkah Memasak</h2>
-                <p className="text-sm text-gray-500">
-                  Ikuti urutan berikut agar tekstur sesuai tahapan si kecil.
-                </p>
-              </div>
+            <Reveal variant="slide-up">
+              <Card padding="lg" className="flex flex-col gap-5">
+                <div>
+                  <h2 className="text-xl font-bold text-text">
+                    Langkah Memasak
+                  </h2>
+                  <p className="text-sm text-gray-500">
+                    Ikuti urutan berikut agar tekstur sesuai tahapan si kecil.
+                  </p>
+                </div>
 
-              <ol className="flex flex-col">
-                {recipeData.steps.map((s, i) => (
-                  <li key={s.title || i} className="flex gap-4">
-                    <div className="flex flex-col items-center">
-                      <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-base font-bold text-surface">
-                        {i + 1}
-                      </span>
-                      {i < recipeData.steps.length - 1 && (
-                        <span className="my-1 w-px flex-1 bg-gray-200" />
-                      )}
-                    </div>
-                    <div
-                      className={`flex flex-col gap-1 ${
-                        i < recipeData.steps.length - 1 ? "pb-6" : ""
-                      }`}
-                    >
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="text-base font-bold text-text">
-                          {s.title}
-                        </h3>
-                        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-500">
-                          {s.time}
+                <ol className="flex flex-col">
+                  {recipeData.steps.map((s, i) => (
+                    <li key={s.title || i} className="flex gap-4">
+                      <div className="flex flex-col items-center">
+                        <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-base font-bold text-surface">
+                          {i + 1}
                         </span>
+                        {i < recipeData.steps.length - 1 && (
+                          <span className="my-1 w-px flex-1 bg-gray-200" />
+                        )}
                       </div>
-                      <p className="text-base leading-relaxed text-gray-600">
-                        {s.text}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </Card>
+                      <div
+                        className={`flex flex-col gap-1 ${
+                          i < recipeData.steps.length - 1 ? "pb-6" : ""
+                        }`}
+                      >
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h3 className="text-base font-bold text-text">
+                            {s.title}
+                          </h3>
+                          <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-500">
+                            {s.time}
+                          </span>
+                        </div>
+                        <p className="text-base leading-relaxed text-gray-600">
+                          {s.text}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </Card>
+            </Reveal>
 
-            <Card
-              variant="warning"
-              padding="lg"
-              className="flex flex-col gap-3"
-            >
-              <h3 className="font-bold text-text">Tips Penyajian & Higienitas</h3>
-              <ul className="flex flex-col gap-2 text-sm text-gray-700">
-                {recipeData.tips.map((t) => (
-                  <li key={t} className="flex gap-2">
-                    <Check
-                      size={16}
-                      className="mt-0.5 shrink-0 text-warning"
-                    />{" "}
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </Card>
+            <Reveal variant="slide-up">
+              <Card
+                variant="warning"
+                padding="lg"
+                className="flex flex-col gap-3"
+              >
+                <h3 className="font-bold text-text">
+                  Tips Penyajian & Higienitas
+                </h3>
+                <ul className="flex flex-col gap-2 text-sm text-gray-700">
+                  {recipeData.tips.map((t) => (
+                    <li key={t} className="flex gap-2">
+                      <Check
+                        size={16}
+                        className="mt-0.5 shrink-0 text-warning"
+                      />{" "}
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </Reveal>
           </div>
         </div>
 
         {/* Rekomendasi Menu Lainnya */}
         {others.length > 0 && (
           <section className="flex flex-col gap-3">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-bold text-text">
-                Rekomendasi Menu Lainnya
-              </h2>
-              <Button
-                variant="noborder"
-                onClick={() => navigate("/nutrition/recipes")}
-                className="text-sm font-semibold text-secondary hover:text-primary hover:underline cursor-pointer"
-              >
-                Lihat Semua Resep
-              </Button>
-            </div>
+            <Reveal variant="slide-up">
+              <div className="flex items-center justify-between">
+                <h2 className="text-lg font-bold text-text">
+                  Rekomendasi Menu Lainnya
+                </h2>
+                <Button
+                  variant="noborder"
+                  onClick={() => navigate("/nutrition/recipes")}
+                  className="text-sm font-semibold text-secondary hover:text-primary hover:underline cursor-pointer"
+                >
+                  Lihat Semua Resep
+                </Button>
+              </div>
+            </Reveal>
             <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {others.map((m) => (
-                <RecipeCard
+              {others.map((m, index) => (
+                <Reveal
                   key={m.id || m.slug}
-                  recipe={m}
-                  saved={savedIds.includes(m.id)}
-                  onToggleSave={toggleOther}
-                />
+                  variant="pop-up"
+                  delay={index * 0.1}
+                >
+                  <RecipeCard
+                    key={m.id || m.slug}
+                    recipe={m}
+                    saved={savedIds.includes(m.id)}
+                    onToggleSave={toggleOther}
+                  />
+                </Reveal>
               ))}
             </div>
           </section>
