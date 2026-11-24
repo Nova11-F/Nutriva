@@ -12,6 +12,8 @@ import {
   MessageSquareMore,
 } from "lucide-react";
 import Header from "../../../components/navigation/Header";
+import Reveal from "../../../components/Reveal";
+
 
 export default function GrowthEmpty() {
   const navigate = useNavigate();
@@ -22,6 +24,7 @@ export default function GrowthEmpty() {
     <>
       <Header variant="pertumbuhan" />
       <div className="flex flex-col gap-4 mt-6 px-4 md:gap-6">
+        <Reveal variant="slide-up">
         <Card className="p-4 md:p-6 flex flex-col gap-2 md:gap-4 items-start justify-between bg-linear-to-r from-background to-soft">
           <div className="w-fit inline-flex items-center gap-2 bg-soft text-primary px-3 py-1.5 rounded-full text-[8px] font-semibold tracking-wide uppercase md:px-4 md:py-2.5 md:text-[10px]">
             <span className="w-1.5 h-1.5 rounded-full bg-primary lg:w-2 lg:h-2"></span>
@@ -45,7 +48,9 @@ export default function GrowthEmpty() {
             Tambah Profil Anak
           </Button>
         </Card>
+        </Reveal>
 
+        <Reveal variant="slide-up">
         <div className="flex flex-col  gap-1 lg:gap-2 px-2 lg:px-4">
           <h2 className="text-lg text-text font-semibold lg:text-2xl">
             Pratinjau Fitur Pemantauan
@@ -55,10 +60,12 @@ export default function GrowthEmpty() {
             kembang si kecil secara optimal.
           </p>
         </div>
+        </Reveal>
         <div className="grid grid-cols-1 items-strech justify-between gap-4 lg:grid-cols-3">
+           <Reveal variant="pop-up">
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 tracking-wide h-full md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
             <div className="bg-soft rounded-lg w-fit p-4 transition-all duration-300 group-hover:bg-primary">
               <ChartColumn
@@ -74,9 +81,12 @@ export default function GrowthEmpty() {
               pertumbuhan yang jelas dan mudah dipahami.
             </p>
           </Card>
+          </Reveal>
+
+           <Reveal variant="pop-up" delay={0.1}>
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 tracking-wide h-full md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
             <div className="bg-soft rounded-lg w-fit p-4 transition-all duration-300 group-hover:bg-primary">
               <ShieldAlert
@@ -92,9 +102,12 @@ export default function GrowthEmpty() {
               untuk pencegahan lebih cepat..
             </p>
           </Card>
+          </Reveal>
+
+          <Reveal variant="pop-up" delay={0.2}>
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 tracking-wide h-full md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
             <div className="bg-soft rounded-lg w-fit p-4 transition-all duration-300 group-hover:bg-primary">
               <NotebookPen
@@ -110,8 +123,10 @@ export default function GrowthEmpty() {
               kesehatan yang konsisten.
             </p>
           </Card>
+          </Reveal>
         </div>
         <div className=" grid grid-cols-1 items-stretch gap-4">
+          <Reveal variant="slide-up">
           <Card className="flex flex-col gap-2 md:gap-6 md:pt-6">
             <div className="flex items-center justify-start gap-2 md:gap-4">
               <div className="bg-soft p-4 rounded-lg">
@@ -147,6 +162,9 @@ export default function GrowthEmpty() {
               </Card>
             </div>
           </Card>
+          </Reveal>
+
+          <Reveal variant="slide-up">
           <Card variant="primary" className="flex flex-col gap-2 p-4 lg:p-6">
             <div className="w-fit inline-flex items-center gap-2 bg-soft text-primary px-3 py-1.5 rounded-full text-[10px] font-semibold tracking-wide uppercase md:px-4 md:py-2.5 ">
               <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
@@ -174,6 +192,7 @@ export default function GrowthEmpty() {
               </p>
             </Button>
           </Card>
+          </Reveal>
         </div>
       </div>
     </>

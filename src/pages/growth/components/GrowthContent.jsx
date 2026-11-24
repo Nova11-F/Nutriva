@@ -10,7 +10,14 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Plus, ShieldCheck, Trash2, TriangleAlert, ChevronRight, Users } from "lucide-react";
+import {
+  Plus,
+  ShieldCheck,
+  Trash2,
+  TriangleAlert,
+  ChevronRight,
+  Users,
+} from "lucide-react";
 import Header from "../../../components/navigation/Header";
 import Card from "../../../components/ui/Card";
 import Button from "../../../components/ui/Button";
@@ -20,6 +27,7 @@ import { useToast } from "../../../hooks/useToast";
 import { growthService } from "../../../services/growthService";
 import { classifyHaz, classifyWaz, classifyWhz } from "../../../lib/whoGrowth";
 import RiskProfileCard from "./RiskProfileCard";
+import Reveal from "../../../components/Reveal";
 
 const chartTabs = [
   { key: "weight", title: "Berat Badan", unit: "kg", color: "#15803d" },
@@ -62,13 +70,20 @@ export default function GrowthContent() {
   const { child: activeChild, childList, selectChild } = useChild();
   const { showSuccess, showError } = useToast();
 
-  const [selectedChildId, setSelectedChildId] = useState(activeChild?.id ?? childList[0]?.id ?? null);
+  const [selectedChildId, setSelectedChildId] = useState(
+    activeChild?.id ?? childList[0]?.id ?? null,
+  );
   const [records, setRecords] = useState([]);
   const [loadingRecords, setLoadingRecords] = useState(true);
   const [tab, setTab] = useState("weight");
 
   const currentChild = useMemo(() => {
-    return childList.find((c) => c.id === selectedChildId) ?? activeChild ?? childList[0] ?? null;
+    return (
+      childList.find((c) => c.id === selectedChildId) ??
+      activeChild ??
+      childList[0] ??
+      null
+    );
   }, [childList, selectedChildId, activeChild]);
 
   // Muat data pengukuran dari Supabase
@@ -147,12 +162,15 @@ export default function GrowthContent() {
       deltaHeight = `${dh >= 0 ? "+" : ""}${dh} cm dari pengukuran sebelumnya`;
 
       if (latest.headCircumference && prev.headCircumference) {
-        const dhead = (latest.headCircumference - prev.headCircumference).toFixed(1);
+        const dhead = (
+          latest.headCircumference - prev.headCircumference
+        ).toFixed(1);
         deltaHead = `${dhead >= 0 ? "+" : ""}${dhead} cm dari pengukuran sebelumnya`;
       }
     }
 
-    const effectiveHead = latest.headCircumference ?? currentChild?.headCircumference ?? null;
+    const effectiveHead =
+      latest.headCircumference ?? currentChild?.headCircumference ?? null;
 
     return {
       date: formatDate(latest.date),
@@ -172,24 +190,53 @@ export default function GrowthContent() {
 
   // Status per indikator (kategori Permenkes RI No. 2/2020, z-score WHO 2006)
   const detections = useMemo(() => {
-    const toNum = (z) => (z === null || z === undefined || z === "" ? null : Number(z));
-    const fmt = (z) => (z === null || Number.isNaN(z) ? "–" : `${z >= 0 ? "+" : ""}${z.toFixed(2)} SD`);
+    const toNum = (z) =>
+      z === null || z === undefined || z === "" ? null : Number(z);
+    const fmt = (z) =>
+      z === null || Number.isNaN(z)
+        ? "–"
+        : `${z >= 0 ? "+" : ""}${z.toFixed(2)} SD`;
     const tone = (z, lowBad, high = Infinity) =>
-      z === null || Number.isNaN(z) ? "ok" : z < -3 ? "bad" : z < lowBad ? "warn" : z > high ? "warn" : "ok";
+      z === null || Number.isNaN(z)
+        ? "ok"
+        : z < -3
+          ? "bad"
+          : z < lowBad
+            ? "warn"
+            : z > high
+              ? "warn"
+              : "ok";
     const haz = toNum(latestMetric.zScoreHaz);
     const waz = toNum(latestMetric.zScoreWaz);
     const whz = toNum(latestMetric.zScoreWhz);
     const label = (fn, z) => (z === null ? "Belum dapat dihitung" : fn(z));
 
     return [
-      { label: "Tinggi menurut Umur (TB/U)", status: label(classifyHaz, haz), tone: tone(haz, -2), zscore: fmt(haz) },
-      { label: "Berat menurut Umur (BB/U)", status: label(classifyWaz, waz), tone: tone(waz, -2, 1), zscore: fmt(waz) },
-      { label: "Berat menurut Tinggi (BB/TB)", status: label(classifyWhz, whz), tone: tone(whz, -2, 1), zscore: fmt(whz) },
+      {
+        label: "Tinggi menurut Umur (TB/U)",
+        status: label(classifyHaz, haz),
+        tone: tone(haz, -2),
+        zscore: fmt(haz),
+      },
+      {
+        label: "Berat menurut Umur (BB/U)",
+        status: label(classifyWaz, waz),
+        tone: tone(waz, -2, 1),
+        zscore: fmt(waz),
+      },
+      {
+        label: "Berat menurut Tinggi (BB/TB)",
+        status: label(classifyWhz, whz),
+        tone: tone(whz, -2, 1),
+        zscore: fmt(whz),
+      },
     ];
   }, [latestMetric]);
 
   const handleDeleteRecord = async (recordId) => {
-    if (!window.confirm("Apakah Anda yakin ingin menghapus data pengukuran ini?")) {
+    if (
+      !window.confirm("Apakah Anda yakin ingin menghapus data pengukuran ini?")
+    ) {
       return;
     }
     try {
@@ -207,95 +254,101 @@ export default function GrowthContent() {
   return (
     <>
       <Header variant="pertumbuhan" />
-      <div className="flex flex-col gap-5 px-4 pb-6 md:px-6">
+      <div className="flex flex-col gap-5 px-4 pb-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-text md:text-3xl">
-              Pemantauan Pertumbuhan
-            </h2>
-            <p className="text-sm text-gray-500">
-              Pantau berat, tinggi, dan status gizi anak dari waktu ke waktu secara akurat sesuai standar WHO.
-            </p>
-          </div>
+          <Reveal variant="slide-up">
+            <div className="flex flex-col gap-1">
+              <h2 className="text-2xl font-bold text-text lg:text-3xl">
+                Pemantauan Pertumbuhan
+              </h2>
+              <p className="text-xs text-gray-500 max-w-md lg:max-w-2xl xl:text-sm">
+                Pantau berat, tinggi, dan status gizi anak dari waktu ke waktu
+                secara akurat sesuai standar WHO.
+              </p>
+            </div>
+          </Reveal>
           <Button
             onClick={() =>
               navigate("/growth/measurement", { state: { from: "/growth" } })
             }
             className="flex w-full items-center justify-center gap-2 md:w-fit"
           >
-            <Plus className="size-4 md:size-6" strokeWidth={3} /> Catat Pengukuran
+            <Plus className="size-4" strokeWidth={3} /> Catat
+            Pengukuran
           </Button>
         </div>
 
         {/* Pemilihan Balita */}
         <section className="flex flex-col gap-3">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-              Pilih Balita{" "}
-              <span className="ml-1 rounded bg-gray-100 px-1.5">
-                {childList.length} Anak
-              </span>
-            </h3>
-          </div>
+          <Reveal variant="slide-up">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                Pilih Balita{" "}
+                <span className="ml-1 rounded bg-gray-100 px-1.5">
+                  {childList.length} Anak
+                </span>
+              </h3>
+            </div>
+          </Reveal>
 
           <div className="grid gap-3 md:grid-cols-3">
-            {childList.map((p) => {
+            {childList.map((p, index) => {
               const active = p.id === currentChild?.id;
               const ageMonths = getDiffMonths(p.birthDate);
               const initial = p.name ? p.name.slice(0, 2).toUpperCase() : "AN";
 
               return (
-                <Card
-                  key={p.id}
-                  variant={active ? "success" : "default"}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={active}
-                  onClick={() => {
-                    setSelectedChildId(p.id);
-                    selectChild(p.id);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
+                <Reveal key={p.id} variant="pop-up" delay={index * 0.1}>
+                  <Card
+                    key={p.id}
+                    variant={active ? "success" : "default"}
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={active}
+                    onClick={() => {
                       setSelectedChildId(p.id);
                       selectChild(p.id);
-                    }
-                  }}
-                  className="flex cursor-pointer justify-center flex-col gap-3 transition hover:border-primary"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex size-10 items-center justify-center rounded-lg bg-soft text-sm font-bold text-primary">
-                      {initial}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate font-semibold text-text">
-                        {p.name}
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        {ageMonths} Bln ·{" "}
-                        {(
-                          p.initialWeightKg ??
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedChildId(p.id);
+                        selectChild(p.id);
+                      }
+                    }}
+                    className="flex cursor-pointer justify-center flex-col gap-3 transition hover:border-primary"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="flex size-10 items-center justify-center rounded-lg bg-soft text-sm font-bold text-primary">
+                        {initial}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate font-semibold text-text">
+                          {p.name}
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          {ageMonths} Bln ·{" "}
+                          {(p.initialWeightKg ??
                           p.initialWeight ??
                           p.initial_weight_kg ??
-                          p.birthWeight
-                        )
-                          ? `${
-                              p.initialWeightKg ??
-                              p.initialWeight ??
-                              p.initial_weight_kg ??
-                              p.birthWeight
-                            } kg`
-                          : "-"}
-                      </p>
+                          p.birthWeight)
+                            ? `${
+                                p.initialWeightKg ??
+                                p.initialWeight ??
+                                p.initial_weight_kg ??
+                                p.birthWeight
+                              } kg`
+                            : "-"}
+                        </p>
+                      </div>
+                      {active && (
+                        <span className="rounded bg-primary px-1.5 py-0.5 text-[10px] font-semibold text-surface">
+                          Aktif
+                        </span>
+                      )}
                     </div>
-                    {active && (
-                      <span className="rounded bg-primary px-1.5 py-0.5 text-[10px] font-semibold text-surface">
-                        Aktif
-                      </span>
-                    )}
-                  </div>
-                </Card>
+                  </Card>
+                </Reveal>
               );
             })}
 
@@ -304,7 +357,8 @@ export default function GrowthContent() {
                 <Users size={16} className="text-primary" /> Punya Balita Lain?
               </div>
               <p className="text-xs text-gray-600">
-                Daftarkan anak lainnya untuk pemantauan pertumbuhan yang terpisah.
+                Daftarkan anak lainnya untuk pemantauan pertumbuhan yang
+                terpisah.
               </p>
               <button
                 onClick={() =>
@@ -318,18 +372,28 @@ export default function GrowthContent() {
           </div>
         </section>
 
-        {currentChild && <RiskProfileCard child={currentChild} latestRecord={records[records.length - 1]} />}
+        {currentChild && (
+          <Reveal variant="slide-up">
+            <RiskProfileCard
+              child={currentChild}
+              latestRecord={records[records.length - 1]}
+            />
+          </Reveal>
+        )}
 
         {loadingRecords ? (
           <Spinner size="lg" center label="Memuat riwayat pertumbuhan..." />
         ) : (
           <>
             {/* Antropometri Terakhir */}
+            <Reveal variant="slide-up">
             <section className="flex flex-col gap-3">
               <div className="flex items-center justify-between">
                 <h3 className="font-bold text-text">Antropometri Terakhir</h3>
                 <span className="text-xs text-gray-500">
-                  {latestMetric.date !== "Belum ada pengukuran" ? `Diukur ${latestMetric.date}` : latestMetric.date}
+                  {latestMetric.date !== "Belum ada pengukuran"
+                    ? `Diukur ${latestMetric.date}`
+                    : latestMetric.date}
                 </span>
               </div>
               <div className="grid gap-3 md:grid-cols-3">
@@ -339,9 +403,13 @@ export default function GrowthContent() {
                   </p>
                   <p className="text-3xl font-bold text-text">
                     {latestMetric.weight}{" "}
-                    <span className="text-sm font-medium text-gray-500">kg</span>
+                    <span className="text-sm font-medium text-gray-500">
+                      kg
+                    </span>
                   </p>
-                  <p className="text-xs text-gray-500">{latestMetric.deltaWeight}</p>
+                  <p className="text-xs text-gray-500">
+                    {latestMetric.deltaWeight}
+                  </p>
                 </Card>
 
                 <Card variant="silver" className="flex flex-col gap-1">
@@ -350,9 +418,13 @@ export default function GrowthContent() {
                   </p>
                   <p className="text-3xl font-bold text-text">
                     {latestMetric.height}{" "}
-                    <span className="text-sm font-medium text-gray-500">cm</span>
+                    <span className="text-sm font-medium text-gray-500">
+                      cm
+                    </span>
                   </p>
-                  <p className="text-xs text-gray-500">{latestMetric.deltaHeight}</p>
+                  <p className="text-xs text-gray-500">
+                    {latestMetric.deltaHeight}
+                  </p>
                 </Card>
 
                 <Card variant="silver" className="flex flex-col gap-1">
@@ -363,18 +435,24 @@ export default function GrowthContent() {
                     {latestMetric.head !== "-" ? (
                       <>
                         {latestMetric.head}{" "}
-                        <span className="text-sm font-medium text-gray-500">cm</span>
+                        <span className="text-sm font-medium text-gray-500">
+                          cm
+                        </span>
                       </>
                     ) : (
                       <span className="text-gray-400 font-normal">-</span>
                     )}
                   </p>
-                  <p className="text-xs text-gray-500">{latestMetric.deltaHead}</p>
+                  <p className="text-xs text-gray-500">
+                    {latestMetric.deltaHead}
+                  </p>
                 </Card>
               </div>
             </section>
+            </Reveal>
 
             {/* Grafik Pertumbuhan Recharts */}
+            <Reveal variant="slide-up">
             <Card className="flex flex-col gap-4">
               <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                 <div>
@@ -405,10 +483,16 @@ export default function GrowthContent() {
 
               {chartData.length === 0 ? (
                 <div className="flex h-48 flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-gray-200 text-center">
-                  <p className="text-sm text-gray-500">Belum ada riwayat pengukuran yang dicatat.</p>
+                  <p className="text-sm text-gray-500">
+                    Belum ada riwayat pengukuran yang dicatat.
+                  </p>
                   <Button
                     size="sm"
-                    onClick={() => navigate("/growth/measurement", { state: { from: "/growth" } })}
+                    onClick={() =>
+                      navigate("/growth/measurement", {
+                        state: { from: "/growth" },
+                      })
+                    }
                   >
                     Tambah Pengukuran Pertama
                   </Button>
@@ -429,7 +513,10 @@ export default function GrowthContent() {
                         width={64}
                       />
                       <Tooltip
-                        formatter={(v) => [`${v} ${activeTab?.unit}`, activeTab?.title]}
+                        formatter={(v) => [
+                          `${v} ${activeTab?.unit}`,
+                          activeTab?.title,
+                        ]}
                       />
                       <Legend />
                       <Line
@@ -446,15 +533,20 @@ export default function GrowthContent() {
                 </div>
               )}
             </Card>
+            </Reveal>  
 
             {/* Deteksi Stunting Standar WHO */}
+            <Reveal variant="slide-up">
             <Card className="flex flex-col gap-4">
               <div className="flex items-start gap-3">
                 <ShieldCheck className="mt-0.5 shrink-0 text-primary" />
                 <div>
-                  <h3 className="text-lg font-bold text-text">Deteksi Status Gizi & Stunting</h3>
+                  <h3 className="text-lg font-bold text-text">
+                    Deteksi Status Gizi & Stunting
+                  </h3>
                   <p className="text-xs text-gray-500">
-                    Berdasarkan antropometri terkini dan standar pertumbuhan balita WHO.
+                    Berdasarkan antropometri terkini dan standar pertumbuhan
+                    balita WHO.
                   </p>
                 </div>
               </div>
@@ -468,7 +560,7 @@ export default function GrowthContent() {
                     <p className="text-[11px] font-semibold uppercase opacity-80">
                       {d.label}
                     </p>
-                    <p className="text-lg font-bold">{d.status}</p>
+                    <p className="text-base font-bold">{d.status}</p>
                     <p className="text-xs opacity-80">Z-score: {d.zscore}</p>
                   </div>
                 ))}
@@ -479,29 +571,52 @@ export default function GrowthContent() {
                 padding="sm"
                 className="flex items-start gap-2 text-xs text-gray-600"
               >
-                <TriangleAlert size={16} className="mt-0.5 shrink-0 text-primary" />
-                Hasil ini bersifat edukatif berbasis panduan WHO. Jika status berada di bawah garis normal atau pertumbuhan melambat, segera konsultasikan ke posyandu, puskesmas, atau dokter anak.
+                <TriangleAlert
+                  size={16}
+                  className="mt-0.5 shrink-0 text-primary"
+                />
+                Hasil ini bersifat edukatif berbasis panduan WHO. Jika status
+                berada di bawah garis normal atau pertumbuhan melambat, segera
+                konsultasikan ke posyandu, puskesmas, atau dokter anak.
               </Card>
             </Card>
+            </Reveal>
 
             {/* Tabel Riwayat Pengukuran */}
+            <Reveal variant="slide-up">
             <Card className="flex flex-col gap-4">
-              <h3 className="text-lg font-bold text-text">Riwayat Pengukuran</h3>
+              <h3 className="text-lg font-bold text-text">
+                Riwayat Pengukuran
+              </h3>
 
               {history.length === 0 ? (
-                <p className="text-sm text-gray-500">Belum ada riwayat pengukuran.</p>
+                <p className="text-sm text-gray-500">
+                  Belum ada riwayat pengukuran.
+                </p>
               ) : (
                 <>
                   <div className="hidden overflow-x-auto md:block">
                     <table className="w-full text-left text-sm">
                       <thead>
                         <tr className="border-b border-gray-200 text-xs uppercase text-gray-500">
-                          <th className="py-2 pr-4 text-center font-semibold">Tanggal</th>
-                          <th className="py-2 pr-4 text-center font-semibold">Berat (kg)</th>
-                          <th className="py-2 pr-4 text-center font-semibold">PB/TB (cm)</th>
-                          <th className="py-2 pr-4 text-center font-semibold">Lingkar Kepala</th>
-                          <th className="py-2 pr-4 font-semibold">Status / Catatan</th>
-                          <th className="py-2 pr-4 text-center font-semibold">Aksi</th>
+                          <th className="py-2 pr-4 text-center font-semibold">
+                            Tanggal
+                          </th>
+                          <th className="py-2 pr-4 text-center font-semibold">
+                            Berat (kg)
+                          </th>
+                          <th className="py-2 pr-4 text-center font-semibold">
+                            PB/TB (cm)
+                          </th>
+                          <th className="py-2 pr-4 text-center font-semibold">
+                            Lingkar Kepala
+                          </th>
+                          <th className="py-2 pr-4 font-semibold">
+                            Status / Catatan
+                          </th>
+                          <th className="py-2 pr-4 text-center font-semibold">
+                            Aksi
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -513,10 +628,16 @@ export default function GrowthContent() {
                             <td className="py-3 pr-4 text-center font-medium text-text">
                               {formatDate(r.date)}
                             </td>
-                            <td className="py-3 pr-4 text-center">{r.weight} kg</td>
-                            <td className="py-3 pr-4 text-center">{r.height} cm</td>
                             <td className="py-3 pr-4 text-center">
-                              {r.headCircumference ? `${r.headCircumference} cm` : "-"}
+                              {r.weight} kg
+                            </td>
+                            <td className="py-3 pr-4 text-center">
+                              {r.height} cm
+                            </td>
+                            <td className="py-3 pr-4 text-center">
+                              {r.headCircumference
+                                ? `${r.headCircumference} cm`
+                                : "-"}
                             </td>
                             <td className="py-3 pr-4 text-gray-500 text-xs">
                               {r.insightMessage || "Pemeriksaan berkala"}
@@ -570,12 +691,16 @@ export default function GrowthContent() {
                           <div className="rounded-lg bg-gray-50 p-2">
                             <p className="text-gray-500">L. Kepala</p>
                             <p className="font-bold text-text">
-                              {r.headCircumference ? `${r.headCircumference} cm` : "-"}
+                              {r.headCircumference
+                                ? `${r.headCircumference} cm`
+                                : "-"}
                             </p>
                           </div>
                         </div>
                         {r.insightMessage && (
-                          <p className="text-xs text-gray-500">{r.insightMessage}</p>
+                          <p className="text-xs text-gray-500">
+                            {r.insightMessage}
+                          </p>
                         )}
                       </li>
                     ))}
@@ -583,6 +708,7 @@ export default function GrowthContent() {
                 </>
               )}
             </Card>
+            </Reveal>
           </>
         )}
       </div>
