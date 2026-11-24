@@ -8,13 +8,17 @@ import Card from "../../components/ui/Card";
 import { useChild } from "../../hooks/useChild";
 import { useToast } from "../../hooks/useToast";
 import { growthService } from "../../services/growthService";
+import Reveal from "../../components/Reveal";
 
 function getDiffMonths(birthDateStr, targetDateStr) {
   if (!birthDateStr || !targetDateStr) return 0;
   const b = new Date(birthDateStr);
   const t = new Date(targetDateStr);
   const diffTime = t - b;
-  const months = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.4375)));
+  const months = Math.max(
+    0,
+    Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.4375)),
+  );
   return months;
 }
 
@@ -45,7 +49,12 @@ export default function AddMeasurementPage() {
   // Derivasi child yang aktif: prioritaskan yang dipilih manual, jika belum ada ambil child aktif atau anak pertama
   const activeChildId = selectedChildId || child?.id || childList[0]?.id || "";
   const selectedChild = useMemo(() => {
-    return childList.find((c) => c.id === activeChildId) ?? child ?? childList[0] ?? null;
+    return (
+      childList.find((c) => c.id === activeChildId) ??
+      child ??
+      childList[0] ??
+      null
+    );
   }, [childList, activeChildId, child]);
 
   const childOptions = useMemo(() => {
@@ -66,7 +75,8 @@ export default function AddMeasurementPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const activeChild = selectedChild || childList.find((c) => c.id === activeChildId) || child;
+    const activeChild =
+      selectedChild || childList.find((c) => c.id === activeChildId) || child;
 
     if (!activeChildId || !activeChild) {
       showError("Silakan pilih anak terlebih dahulu.");
@@ -114,24 +124,26 @@ export default function AddMeasurementPage() {
 
   return (
     <>
-      <div className="mx-auto flex w-full flex-col gap-5 px-4 py-6 md:px-6">
-        <div className="flex items-center justify-between">
-          <div className="px-4">
-            <h2 className="text-2xl font-bold text-text">
-              Catat Pengukuran Baru
-            </h2>
-            <p className="text-sm text-gray-500">
-              Catat berat dan tinggi badan anak untuk memantau pola
-              pertumbuhannya dari waktu ke waktu.
-            </p>
-          </div>
-          <div>
+      <div className="mx-auto flex w-full flex-col gap-5 px-4 py-6">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <Reveal variant="slide-up">
+            <div className="px-4 flex flex-col gap-1">
+              <h2 className="text-xl font-bold text-text lg:text-2xl">
+                Catat Pengukuran Baru
+              </h2>
+              <p className="text-xs text-gray-500">
+                Catat berat dan tinggi badan anak untuk memantau pola
+                pertumbuhannya dari waktu ke waktu.
+              </p>
+            </div>
+          </Reveal>
+          <div className="self-end">
             <Button
               variant="noborder"
               onClick={() => navigate(backTo)}
-              className="flex w-fit items-center gap-1 text-sm font-medium text-primary hover:underline"
+              className="flex w-fit items-center gap-1 text-xs font-medium text-primary hover:underline"
             >
-              <ArrowLeft className="size-4 md:size-6" /> Kembali
+              <ArrowLeft className="size-4 " /> Kembali
             </Button>
           </div>
         </div>
@@ -154,41 +166,55 @@ export default function AddMeasurementPage() {
             </div>
           }
         >
-          <section className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold text-text">1. Pilih Anak</h3>
-            <Select
-              label="Anak"
-              placeholder="Pilih anak"
-              options={childOptions}
-              value={activeChildId}
-              onChange={(e) => setSelectedChildId(e.target.value)}
-              required
-            />
-          </section>
+          <Reveal variant="slide-up">
+            <section className="flex flex-col gap-3">
+              <h3 className="text-sm font-semibold text-text">1. Pilih Anak</h3>
+              <Select
+                label="Anak"
+                placeholder="Pilih anak"
+                options={childOptions}
+                value={activeChildId}
+                onChange={(e) => setSelectedChildId(e.target.value)}
+                required
+              />
+            </section>
+          </Reveal>
 
-          <section className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold text-text">
-              2. Waktu Pengukuran
-            </h3>
-            <Input
-              label="Tanggal Pengukuran"
-              name="date"
-              type="date"
-              value={measurementDate}
-              onChange={(e) => setMeasurementDate(e.target.value)}
-              max={getTodayLocalDate()}
-              required
-            />
-            {selectedChild && (
-              <Card variant="soft" padding="sm" className="text-xs text-gray-600">
-                Usia {selectedChild.name} pada tanggal ini: <b>{currentAgeMonths} bulan</b>.{" "}
-                {currentAgeMonths < 24
-                  ? "Anak di bawah 2 tahun diukur dalam posisi berbaring (panjang badan)."
-                  : "Anak 2 tahun ke atas diukur dalam posisi berdiri tegak (tinggi badan)."}
-              </Card>
-            )}
-          </section>
+          <Reveal variant="slide-up">
+            <section className="flex flex-col gap-3">
+              <h3 className="text-sm font-semibold text-text">
+                2. Waktu Pengukuran
+              </h3>
 
+              <Input
+                label="Tanggal Pengukuran"
+                name="date"
+                type="date"
+                value={measurementDate}
+                onChange={(e) => setMeasurementDate(e.target.value)}
+                max={getTodayLocalDate()}
+                required
+              />
+
+              {selectedChild && (
+                <Reveal variant="pop-up">
+                  <Card
+                    variant="soft"
+                    padding="sm"
+                    className="text-xs text-gray-600"
+                  >
+                    Usia {selectedChild.name} pada tanggal ini:{" "}
+                    <b>{currentAgeMonths} bulan</b>.{" "}
+                    {currentAgeMonths < 24
+                      ? "Anak di bawah 2 tahun diukur dalam posisi berbaring (panjang badan)."
+                      : "Anak 2 tahun ke atas diukur dalam posisi berdiri tegak (tinggi badan)."}
+                  </Card>
+                </Reveal>
+              )}
+            </section>
+          </Reveal>
+
+          <Reveal variant="slide-up">
           <section className="flex flex-col gap-3">
             <h3 className="text-sm font-semibold text-text">
               3. Antropometri Balita
@@ -234,7 +260,9 @@ export default function AddMeasurementPage() {
               onChange={(e) => setHeadCircumference(e.target.value)}
             />
           </section>
+          </Reveal>
 
+          <Reveal variant="slide-up">    
           <section className="flex flex-col gap-3">
             <h3 className="text-sm font-semibold text-text">
               4. Keterangan{" "}
@@ -249,6 +277,7 @@ export default function AddMeasurementPage() {
               onChange={(e) => setNote(e.target.value)}
             />
           </section>
+          </Reveal>
         </Form>
       </div>
     </>

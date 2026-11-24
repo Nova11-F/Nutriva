@@ -8,6 +8,7 @@ import { riskService } from "../../../services/riskService";
 import { isAiServiceConfigured } from "../../../services/aiClient";
 import { countFilledRiskFactors } from "../../../constants/riskFactorOptions";
 import { ageInMonthsAt } from "../../../lib/whoGrowth";
+import Reveal from "../../../components/Reveal";
 
 const ALERT_STYLE = {
   info: { variant: "success", badge: "bg-green-100 text-green-800", label: "Pantau rutin" },
@@ -56,14 +57,31 @@ export default function RiskProfileCard({ child, latestRecord }) {
   const style = ALERT_STYLE[result?.alert] || ALERT_STYLE.info;
 
   return (
-    <section className="flex flex-col gap-3">
-      <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">Analisis AI Nutriva</h3>
-      <Card variant={result ? style.variant : "soft"} className="flex flex-col gap-3">
+  <section className="flex flex-col gap-3">
+    <Reveal variant="slide-up">
+      <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+        Analisis AI Nutriva
+      </h3>
+    </Reveal>
+
+    <Reveal variant="slide-up">
+      <Card
+        variant={result ? style.variant : "soft"}
+        className="flex flex-col gap-3"
+      >
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 font-semibold text-text">
-            <Activity size={18} className="text-primary" /> Profil Risiko Stunting
+            <Activity size={18} className="text-primary" />
+            Profil Risiko Stunting
           </div>
-          {result && <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${style.badge}`}>{style.label}</span>}
+
+          {result && (
+            <span
+              className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${style.badge}`}
+            >
+              {style.label}
+            </span>
+          )}
         </div>
 
         {loading ? (
@@ -71,16 +89,24 @@ export default function RiskProfileCard({ child, latestRecord }) {
         ) : result ? (
           <>
             <p className="text-sm text-text">{result.message}</p>
+
             <p className="text-xs text-gray-500">
-              {BASIS_LABEL[result.basis]} · {new Date(result.assessedAt).toLocaleDateString("id-ID")} · model v{result.modelVersion}
+              {BASIS_LABEL[result.basis]} ·{" "}
+              {new Date(result.assessedAt).toLocaleDateString("id-ID")} ·
+              model v{result.modelVersion}
             </p>
+
             {result.modifiableFactors.length > 0 && (
               <div className="rounded-lg bg-surface/70 p-3">
-                <p className="mb-1 text-xs font-semibold text-gray-600">Hal yang bisa diperbaiki</p>
+                <p className="mb-1 text-xs font-semibold text-gray-600">
+                  Hal yang bisa diperbaiki
+                </p>
+
                 <ul className="space-y-1 text-sm">
                   {result.modifiableFactors.map((f, i) => (
                     <li key={i}>
-                      <span className="font-medium">{f.factor}.</span> {f.suggestion}
+                      <span className="font-medium">{f.factor}.</span>{" "}
+                      {f.suggestion}
                     </li>
                   ))}
                 </ul>
@@ -89,25 +115,46 @@ export default function RiskProfileCard({ child, latestRecord }) {
           </>
         ) : (
           <p className="text-sm text-gray-600">
-            Isi faktor risiko (riwayat kelahiran, kehamilan, pola asuh, dan lingkungan) agar Nutriva dapat memberi
-            peringatan dini, terutama saat belum ada pengukuran terbaru.
+            Isi faktor risiko (riwayat kelahiran, kehamilan, pola asuh, dan
+            lingkungan) agar Nutriva dapat memberi peringatan dini,
+            terutama saat belum ada pengukuran terbaru.
           </p>
         )}
 
         <p className="text-[11px] text-gray-500">
-          Alat bantu edukasi, bukan diagnosis. Status gizi ditetapkan tenaga kesehatan.
+          Alat bantu edukasi, bukan diagnosis. Status gizi ditetapkan
+          tenaga kesehatan.
         </p>
 
         <div className="flex flex-col gap-2 md:flex-row">
-          <Button size="sm" variant="outline" className="flex items-center justify-center gap-1 text-sm"
-            onClick={() => navigate("/growth/risk-profile", { state: { from: "/growth" } })}>
-            {filled ? `Perbarui faktor risiko (${filled} terisi)` : "Isi faktor risiko"} <ChevronRight size={14} />
+          <Button
+            size="sm"
+            variant="outline"
+            className="flex items-center justify-center gap-1 text-sm"
+            onClick={() =>
+              navigate("/growth/risk-profile", {
+                state: { from: "/growth" },
+              })
+            }
+          >
+            {filled
+              ? `Perbarui faktor risiko (${filled} terisi)`
+              : "Isi faktor risiko"}{" "}
+            <ChevronRight size={14} />
           </Button>
-          <Button size="sm" className="flex items-center justify-center gap-1 text-sm" loading={running} onClick={runAssessment}>
-            <RefreshCw size={14} /> {result ? "Analisis ulang" : "Analisis sekarang"}
+
+          <Button
+            size="sm"
+            className="flex items-center justify-center gap-1 text-sm"
+            loading={running}
+            onClick={runAssessment}
+          >
+            <RefreshCw size={14} />
+            {result ? "Analisis ulang" : "Analisis sekarang"}
           </Button>
         </div>
       </Card>
-    </section>
-  );
+    </Reveal>
+  </section>
+);
 }
