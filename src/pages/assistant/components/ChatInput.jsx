@@ -1,8 +1,14 @@
 import { useEffect, useRef } from "react";
 import { SendHorizonal } from "lucide-react";
-import { motion } from "motion/react";
+import Reveal from "../../../components/Reveal";
 
-export default function ChatInput({ value, onChange, onSend, disabled, suggestions }) {
+export default function ChatInput({
+  value,
+  onChange,
+  onSend,
+  disabled,
+  suggestions,
+}) {
   const textareaRef = useRef(null);
 
   useEffect(() => {
@@ -27,15 +33,8 @@ export default function ChatInput({ value, onChange, onSend, disabled, suggestio
   const canSend = value.trim().length > 0 && !disabled;
 
   return (
-      <motion.div
-    initial={{ opacity: 0, y: 15 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{
-      duration: 0.45,
-      ease: [0.22, 1, 0.36, 1],
-    }}
-    className="border-t border-gray-200 bg-surface px-3 pb-3 pt-2 md:px-6"
-  >
+  <Reveal variant="slide-up">
+    <div className="border-t border-gray-200 bg-surface px-3 pb-3 pt-2 md:px-6">
       <div className="-mx-3 mb-2 flex gap-2 overflow-x-auto px-3 pb-1 md:mx-0 md:px-0">
         {suggestions.map((q) => (
           <button
@@ -61,6 +60,7 @@ export default function ChatInput({ value, onChange, onSend, disabled, suggestio
           aria-label="Tulis pertanyaan"
           className="min-h-12 flex-1 resize-none rounded-2xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm outline-none placeholder:text-gray-400 focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/20 md:text-md"
         />
+
         <button
           type="button"
           onClick={onSend}
@@ -75,6 +75,7 @@ export default function ChatInput({ value, onChange, onSend, disabled, suggestio
       <p className="mt-2 text-center text-[10px] text-gray-400">
         Informasi bersifat edukatif dan bukan pengganti tenaga kesehatan.
       </p>
-     </motion.div>
-  );
+    </div>
+  </Reveal>
+);
 }

@@ -11,6 +11,7 @@ import { useToast } from "../../../hooks/useToast";
 import { assistantService } from "../../../services/assistantService";
 import { suggestedQuestions } from "../../../data/chatMessages";
 import { motion, AnimatePresence } from "motion/react";
+import Reveal from "../../../components/Reveal";
 
 export default function AssistantChat({ child }) {
   const { showToast } = useToast();
@@ -84,101 +85,85 @@ export default function AssistantChat({ child }) {
     <>
       <Header variant="ai" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.5,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className="mx-4 flex h-[calc(100dvh-11rem)] flex-col overflow-hidden rounded-xl border border-gray-200 bg-surface shadow-sm md:mx-6 xl:h-[calc(100dvh-8rem)]"
-      >
-        <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
-          <div className="flex items-center gap-2">
-            <div className="flex size-9 items-center justify-center rounded-full bg-soft text-primary">
-              <Sparkles size={18} />
+      <Reveal variant="slide-up">
+        <div className="mx-4 flex h-[calc(100dvh-11rem)] flex-col overflow-hidden rounded-xl border border-gray-200 bg-surface shadow-sm xl:h-[calc(100dvh-8rem)]">
+          <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
+            <div className="flex items-center gap-2">
+              <div className="flex size-9 items-center justify-center rounded-full bg-soft text-primary">
+                <Sparkles size={18} />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-text">AI Nutriva</p>
+                <p className="text-[11px] text-gray-500">
+                  Menjawab untuk {child.name}
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-sm font-semibold text-text">AI Nutriva</p>
-              <p className="text-[11px] text-gray-500">
-                Menjawab untuk {child.name}
-              </p>
-            </div>
+            {messages.length > 0 && (
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={handleClear}
+                className="flex items-center gap-1"
+              >
+                <Eraser size={14} />{" "}
+                <span className="hidden md:inline">Hapus chat</span>
+              </Button>
+            )}
           </div>
-          {messages.length > 0 && (
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={handleClear}
-              className="flex items-center gap-1"
-            >
-              <Eraser size={14} />{" "}
-              <span className="hidden md:inline">Hapus chat</span>
-            </Button>
-          )}
-        </div>
 
-        <div
-          className="flex flex-1 flex-col gap-4 overflow-y-auto px-4 py-4"
-          aria-live="polite"
-        >
-          {loading && <Spinner center label="Memuat percakapan..." />}
+          <div
+            className="flex flex-1 flex-col gap-4 overflow-y-auto px-4 py-4"
+            aria-live="polite"
+          >
+            {loading && <Spinner center label="Memuat percakapan..." />}
 
-        {!loading && (
-          <AnimatePresence initial={false}>
-            {messages.length === 0 && (
-              <motion.div
-                key="welcome-message"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.35 }}
-              >
-                <ChatBubble
-                  role="bot"
-                  text={`Halo Ayah dan Bunda! Saya asisten AI Nutriva. Silakan tanyakan seputar nutrisi dan tumbuh kembang ${child.name}. Pilih salah satu pertanyaan di bawah, atau tulis pertanyaan Anda sendiri.`}
-                />
-              </motion.div>
+            {!loading && (
+              <AnimatePresence initial={false}>
+                {messages.length === 0 && (
+                  <motion.div
+                    key="welcome-message"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.35 }}
+                  >
+                    <ChatBubble
+                      role="bot"
+                      text={`Halo Ayah dan Bunda! Saya asisten AI Nutriva. Silakan tanyakan seputar nutrisi dan tumbuh kembang ${child.name}. Pilih salah satu pertanyaan di bawah, atau tulis pertanyaan Anda sendiri.`}
+                    />
+                  </motion.div>
+                )}
+
+                {messages.map((m) => (
+                  <ChatBubble key={m.id} {...m} />
+                ))}
+
+                {sending && (
+                  <motion.div
+                    key="typing-indicator"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <TypingIndicator />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             )}
+            <div ref={bottomRef} />
+          </div>
 
-            {messages.map((m) => (
-              <ChatBubble key={m.id} {...m} />
-            ))}
-
-            {sending && (
-              <motion.div
-                key="typing-indicator"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={{ duration: 0.25 }}
-              >
-                <TypingIndicator />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        )}
-          <div ref={bottomRef} />
+            <ChatInput
+              value={draft}
+              onChange={setDraft}
+              onSend={handleSend}
+              disabled={sending}
+              suggestions={suggestedQuestions}
+            />
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.15,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          <ChatInput
-            value={draft}
-            onChange={setDraft}
-            onSend={handleSend}
-            disabled={sending}
-            suggestions={suggestedQuestions}
-          />
-        </motion.div>
-      </motion.div>
+      </Reveal>
     </>
   );
 }
