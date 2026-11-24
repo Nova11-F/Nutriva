@@ -9,6 +9,7 @@ import {
   Sparkle,
 } from "lucide-react";
 import Header from "../../../components/navigation/Header";
+import Reveal from "../../../components/Reveal";
 
 export default function HomeEmpty() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function HomeEmpty() {
     <>
       <Header variant="default"></Header>
       <div className="flex flex-col gap-4 mt-6 px-4 md:gap-6">
+        <Reveal variant="slide-up">
         <Card
           variant="default"
           className="p-4 md:p-6 flex flex-col gap-2 md:gap-4 items-start justify-between bg-linear-to-r from-background to-soft"
@@ -46,7 +48,9 @@ export default function HomeEmpty() {
             Tambah Profil Anak
           </Button>
         </Card>
+        </Reveal>
 
+        <Reveal variant="slide-up">
         <div className="flex flex-col  gap-1 lg:gap-2 px-2 lg:px-4">
           <h2 className="text-lg text-text font-semibold lg:text-2xl">
             Yang bisa dilakukan di Nutriva
@@ -56,10 +60,13 @@ export default function HomeEmpty() {
             tersimpan
           </p>
         </div>
+        </Reveal>
+
         <div className="grid grid-cols-1 items-strech justify-between gap-4 lg:grid-cols-3">
+          <Reveal variant="pop-up" delay={0}>
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 h-full tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
             <div className="bg-soft rounded-lg w-fit p-4 transition-all duration-300 group-hover:bg-primary">
               <BookOpenText
@@ -77,9 +84,12 @@ export default function HomeEmpty() {
               kebutuhan gizinya.
             </p>
           </Card>
+          </Reveal>
+
+           <Reveal variant="pop-up" delay={0.1}>
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 h-full tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
             <div className="bg-soft rounded-lg p-4 w-fit transition-all duration-300 group-hover:bg-primary">
               <ChartColumn
@@ -97,9 +107,12 @@ export default function HomeEmpty() {
               yang informatif.
             </p>
           </Card>
+          </Reveal>
+
+          <Reveal variant="pop-up" delay={0.2}>
           <Card
             variant="default"
-            className="group flex flex-col gap-2 p-4 tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
+            className="group flex flex-col gap-2 p-4 h-full tracking-wide md:p-6 hover:border-secondary hover:shadow-lg hover:shadow-soft transition-all duration-300"
           >
             <div className="bg-soft rounded-lg p-4 w-fit transition-all duration-300 group-hover:bg-primary">
               <MessageSquareMore
@@ -116,7 +129,9 @@ export default function HomeEmpty() {
               makanan sesuai usia anak untuk mendukung tumbuh kembangnya.
             </p>
           </Card>
+          </Reveal>
         </div>
+        <Reveal variant="slide-up">
         <Card
           variant="default"
           className="p-4 flex flex-col gap-4 lg:p-6 lg:gap-6 justify-between bg-linear-to-r  from-background to-soft "
@@ -153,6 +168,8 @@ export default function HomeEmpty() {
             Mulai Tanya Asisten Ai
           </Button>
         </Card>
+        </Reveal>
+        <Reveal variant="slide-up">
         <Card className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row gap-2 md:justify-between">
             <div className="flex flex-col lg:gap-1">
@@ -196,6 +213,7 @@ export default function HomeEmpty() {
             </Card>
           </div>
         </Card>
+        </Reveal>
       </div>
     </>
   );
