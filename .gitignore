@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+.netlify
 .env
 update_confirm.sql
 confirm_siti.sql
