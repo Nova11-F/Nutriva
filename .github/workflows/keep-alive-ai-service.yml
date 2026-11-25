@@ -1,0 +1,34 @@
+name: Keep-Alive AI Service
+
+on:
+  schedule:
+    # Ping /health setiap 15 menit agar Hugging Face Space tetap aktif (menghindari cold start)
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Ping endpoint /health AI Service
+        env:
+          AI_URL: ${{ vars.AI_SERVICE_URL || secrets.AI_SERVICE_URL }}
+        run: |
+          if [ -z "$AI_URL" ]; then
+            echo "AI_SERVICE_URL belum disetel di GitHub Variables/Secrets. Melewati ping keep-alive."
+            exit 0
+          fi
+
+          TARGET="${AI_URL%/}/health"
+          echo "Memanggil $TARGET ..."
+          touch /tmp/health.json
+          HTTP_CODE=$(curl -sS -m 60 -o /tmp/health.json -w "%{http_code}" "$TARGET") || HTTP_CODE="000"
+          [ -s /tmp/health.json ] && cat /tmp/health.json && echo ""
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::warning::Health check mengembalikan HTTP $HTTP_CODE (Space mungkin sedang bangun atau build)."
+            exit 1
+          fi
+
+          echo "Backend AI Service aktif (HTTP 200)."
