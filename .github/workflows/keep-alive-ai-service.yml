@@ -2,9 +2,18 @@ name: Keep-Alive AI Service
 
 on:
   schedule:
-    # Ping /health setiap 15 menit agar Hugging Face Space tetap aktif (menghindari cold start)
-    - cron: "*/15 * * * *"
+    # Ping /health setiap 10 menit agar server backend gratis (Render / HF) tetap aktif tanpa cold start
+    - cron: "*/10 * * * *"
   workflow_dispatch:
+    inputs:
+      ai_service_url:
+        description: "URL publik backend AI Service (opsional untuk uji manual)"
+        required: false
+        type: string
+
+env:
+  # Isi URL publik backend AI Service setelah deploy selesai (contoh: https://nutriva-ai.onrender.com)
+  AI_SERVICE_URL: ""
 
 jobs:
   ping:
@@ -13,21 +22,22 @@ jobs:
     steps:
       - name: Ping endpoint /health AI Service
         env:
-          AI_URL: ${{ vars.AI_SERVICE_URL || secrets.AI_SERVICE_URL }}
+          INPUT_URL: ${{ inputs.ai_service_url }}
         run: |
-          if [ -z "$AI_URL" ]; then
-            echo "AI_SERVICE_URL belum disetel di GitHub Variables/Secrets. Melewati ping keep-alive."
+          TARGET_BASE="${INPUT_URL:-$AI_SERVICE_URL}"
+          if [ -z "$TARGET_BASE" ]; then
+            echo "AI_SERVICE_URL belum diisi. Melewati ping keep-alive."
             exit 0
           fi
 
-          TARGET="${AI_URL%/}/health"
+          TARGET="${TARGET_BASE%/}/health"
           echo "Memanggil $TARGET ..."
           touch /tmp/health.json
           HTTP_CODE=$(curl -sS -m 60 -o /tmp/health.json -w "%{http_code}" "$TARGET") || HTTP_CODE="000"
           [ -s /tmp/health.json ] && cat /tmp/health.json && echo ""
 
           if [ "$HTTP_CODE" != "200" ]; then
-            echo "::warning::Health check mengembalikan HTTP $HTTP_CODE (Space mungkin sedang bangun atau build)."
+            echo "::warning::Health check mengembalikan HTTP $HTTP_CODE (server mungkin sedang bangun atau build)."
             exit 1
           fi
 
