@@ -12,8 +12,8 @@ on:
         type: string
 
 env:
-  # Isi URL publik backend AI Service setelah deploy selesai (contoh: https://nutriva-ai.onrender.com)
-  AI_SERVICE_URL: ""
+  # URL publik backend AI Service yang sudah aktif di Vercel
+  AI_SERVICE_URL: "https://nutriva-ai.vercel.app"
 
 jobs:
   ping:
