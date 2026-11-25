@@ -86,7 +86,7 @@ def test_openai_compatible_request_format(monkeypatch):
     assert seen["headers"]["Authorization"] == "Bearer k"
     assert seen["body"]["temperature"] == 0.2 and seen["body"]["max_tokens"] == 600
     assert seen["body"]["response_format"] == {"type": "json_object"}
-    assert r["answer"].startswith("Coba jadwal") and r["sources"] == GOOD["sources"]
+    assert r["answer"].startswith("Halo Ayah dan Bunda! Coba jadwal") and r["sources"] == GOOD["sources"]
 
 
 def test_anthropic_request_format(monkeypatch):
@@ -213,7 +213,7 @@ def test_violation_triggers_one_corrective_retry(monkeypatch):
     cfg = LLMConfig(provider="openai_compatible", base_url="https://x/v1", api_key="k", model="m")
     r = ask("apakah anak saya stunting?", cfg=cfg)
     assert len(calls) == 2 and "melanggar aturan" in calls[1]
-    assert r["answer"].startswith("Angka -2,01") and "mengalami stunting" not in r["answer"]
+    assert r["answer"].startswith("Halo Ayah dan Bunda! Angka -2,01") and "mengalami stunting" not in r["answer"]
 
 
 def test_sources_deduped_and_markdown_stripped():
